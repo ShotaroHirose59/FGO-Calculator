@@ -1,6 +1,7 @@
 {
   "env": {
     "test": {
+      // babel-preset-envを使用することを明示、対象環境をnodeに指定
       "presets": [
         [
           "@babel/preset-env",
