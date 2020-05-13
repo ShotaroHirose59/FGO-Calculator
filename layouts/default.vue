@@ -22,6 +22,7 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <v-divider :inset="inset"></v-divider>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
@@ -40,6 +41,7 @@
 </template>
 
 <script>
+import '@fortawesome/fontawesome-free/css/all.css'
 export default {
   data() {
     return {
@@ -48,19 +50,38 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-home-circle',
+          title: 'ホーム',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'mdi-database',
+          title: 'キャラクター一覧',
+          to: ''
+        },
+        {
+          icon: 'mdi-sword',
+          title: '通常攻撃ダメージ計算',
+          to: ''
+        },
+        {
+          icon: 'mdi-sword-cross',
+          title: '宝具ダメージ計算',
+          to: ''
+        },
+        {
+          icon: 'fab fa-line',
+          title: 'LINE Bot',
+          to: ''
+        },
+        {
+          icon: 'mdi-message-alert',
+          title: 'フィードバック送信',
+          to: ''
         }
       ],
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
+
       title: 'FGO ダメージ計算機'
     }
   }
