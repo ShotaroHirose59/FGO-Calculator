@@ -1,4 +1,5 @@
 # FGO-damage-calculation
+FGOのダメージ計算アプリ
 
 > My fantabulous Nuxt.js project
 
