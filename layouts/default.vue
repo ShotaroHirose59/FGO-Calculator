@@ -22,7 +22,7 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <v-divider :inset="inset"></v-divider>
+        <v-divider></v-divider>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
@@ -45,7 +45,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 export default {
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
       items: [
@@ -55,23 +55,33 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-database',
-          title: 'キャラクター一覧',
-          to: ''
-        },
-        {
-          icon: 'mdi-sword',
-          title: '通常攻撃ダメージ計算',
-          to: ''
-        },
-        {
           icon: 'mdi-sword-cross',
           title: '宝具ダメージ計算',
           to: ''
         },
         {
+          icon: 'mdi-sword-cross',
+          title: '宝具NP獲得計算',
+          to: ''
+        },
+        {
+          icon: 'mdi-sword',
+          title: '通常ダメージ計算',
+          to: ''
+        },
+        {
+          icon: 'mdi-database',
+          title: 'サーヴァント一覧',
+          to: ''
+        },
+        {
           icon: 'fab fa-line',
           title: 'LINE Bot',
+          to: ''
+        },
+        {
+          icon: 'mdi-information-outline',
+          title: 'お知らせ',
           to: ''
         },
         {
@@ -81,7 +91,6 @@ export default {
         }
       ],
       miniVariant: false,
-
       title: 'FGO ダメージ計算機'
     }
   }
