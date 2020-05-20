@@ -72,7 +72,7 @@ export default {
         {
           icon: 'mdi-database',
           title: 'サーヴァント一覧',
-          to: ''
+          to: '/characters'
         },
         {
           icon: 'fab fa-line',
