@@ -1,0 +1,554 @@
+<template>
+  <v-layout column justify-center align-center>
+    <v-flex xs12 sm6 md6>
+      <v-row>
+        <v-card class="col-md-6" max-width="550">
+          <v-card-title class="headline">
+            宝具ダメージ計算
+          </v-card-title>
+          <v-form>
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="3" md="4">
+                  <v-menu transition="slide-x-transition">
+                    <template v-slot:activator="{ change }">
+                      <v-select
+                        v-model="characterClass"
+                        label="クラス"
+                        :items="items.class"
+                        color="teal accent-4"
+                        v-on="change"
+                      ></v-select>
+                    </template>
+                  </v-menu>
+                </v-col>
+
+                <v-col cols="8" sm="3" md="6">
+                  <v-select
+                    v-model="characterName"
+                    label="サーヴァント"
+                    :items="filteredCharacters"
+                    :disabled="!characterClass"
+                    placeholder="先にクラスを選択"
+                    color="teal accent-4"
+                    @input="onChangeVal(characterName)"
+                  ></v-select>
+                </v-col>
+
+                <v-col cols="4" sm="2" md="2">
+                  <v-text-field
+                    v-model="servantNPType"
+                    label="宝具タイプ"
+                    disabled
+                    placeholder="自動"
+                    color="teal accent-4"
+                    class="npType"
+                  ></v-text-field>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <v-select
+                    v-model="npChargeLv"
+                    label="宝具レベル"
+                    :items="items.npChargeLevel"
+                    color="teal accent-4"
+                    @change="onChangeNpmultiplier(npChargeLv)"
+                  ></v-select>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <v-text-field
+                    v-model.number="characterNpmultiplier"
+                    label="宝具倍率"
+                    disabled
+                    suffix="％"
+                    placeholder="自動"
+                    color="teal accent-4"
+                  ></v-text-field>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="numeric"
+                  >
+                    <v-text-field
+                      v-model.number="characterAtk"
+                      label="攻撃力"
+                      :error-messages="errors"
+                      placeholder="自動"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <v-switch
+                    v-model="atk"
+                    label="Lv.100"
+                    :disabled="!characterAtk"
+                    color="teal accent-4"
+                    hide-details
+                    @change="onSwitchAtk()"
+                  ></v-switch>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="atkBuff"
+                      label="攻撃力アップ"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="defDebuff"
+                      label="防御力ダウン"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="cardBuff"
+                      label="カード性能アップ"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="cardDebuff"
+                      label="カード耐性ダウン"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="sAtkBuff"
+                      label="特攻バフ"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="npBuff"
+                      label="宝具威力アップ"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="sNpAtkBuff"
+                      label="宝具特攻"
+                      suffix="％"
+                      :error-messages="errors"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+
+                <v-col cols="6" sm="2" md="3">
+                  <validation-provider
+                    ref="provider"
+                    v-slot="{ errors }"
+                    rules="required|numeric"
+                  >
+                    <v-text-field
+                      v-model.number="fixedDamage"
+                      label="固定ダメージ"
+                      :error-messages="errors"
+                      placeholder="0"
+                      color="teal accent-4"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
+        </v-card>
+        <v-card class="col-md-6">
+          <v-card-title class="headline" max-width="550">
+            ダメージ結果
+          </v-card-title>
+          <v-card-subtitle>
+            宝具ダメージには数値が0.9~1.1倍される乱数調整が存在する。周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
+          </v-card-subtitle>
+          <v-container>
+            <v-row>
+              <v-col cols="6" sm="6" md="6">
+                <!-- キャラクターのイラストと吹き出しを差し込む -->
+                <NpatkCard
+                  :character-name="characterName"
+                  :average-damage="averageDamage"
+                />
+              </v-col>
+
+              <v-col cols="6" sm="6" md="6">
+                <v-list-item color="red">
+                  <v-list-item-content>
+                    <v-list-item-subtitle>TOTAL(最小)</v-list-item-subtitle>
+                    <v-list-item-title class="headline">{{
+                      minimumDamage
+                    }}</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-subtitle>TOTAL(平均)</v-list-item-subtitle>
+                    <v-list-item-title class="headline">{{
+                      averageDamage.toLocaleString()
+                    }}</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-subtitle>TOTAL(最大)</v-list-item-subtitle>
+                    <v-list-item-title class="headline">{{
+                      maximumDamage
+                    }}</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-col>
+
+              <v-col cols="6" sm="4" md="4">
+                <v-select
+                  v-model="classCompatibility"
+                  label="クラス相性"
+                  :items="selectClassCompatibility"
+                  color="teal accent-4"
+                ></v-select>
+              </v-col>
+
+              <v-col cols="6" sm="4" md="4">
+                <v-select
+                  v-model="attributeCompatibility"
+                  label="属性相性"
+                  :items="selectAttributeCompatibility"
+                  color="teal accent-4"
+                ></v-select>
+              </v-col>
+
+              <v-col cols="12" sm="4" md="4">
+                <v-btn color="error" outlined @click="reset()"
+                  >計算リセット</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-row>
+    </v-flex>
+  </v-layout>
+</template>
+
+<script>
+import { ValidationProvider } from 'vee-validate'
+// import HelpInfoNpatk from '@/components/calculator/HelpInfoNpatk.vue'
+import NpatkCard from '@/components/calculator/NpatkCard'
+
+export default {
+  components: {
+    // HelpInfoNpatk,
+    NpatkCard,
+    ValidationProvider
+  },
+  data() {
+    return {
+      HelpInfoNpatk: false,
+      characterClass: '', // 選択されたクラス
+      characterName: '', // 選択されたキャラクター
+      atk: [], // キャラクターの攻撃力の配列
+      switchAtk: false, // 真偽で攻撃力を変更
+      characterAtk: '', // 配列から取得したサーヴァントの攻撃力
+      npmultiplier: [], // キャラクターの宝具倍率の配列
+      characterNpmultiplier: '', // 配列から取り出したサーヴァントの宝具倍率
+      servantNPType: '', // キャラクターの宝具タイプ
+      items: {
+        class: [
+          'セイバー',
+          'アーチャー',
+          'ランサー',
+          'ライダー',
+          'キャスター',
+          'アサシン',
+          'バーサーカー',
+          'ルーラー',
+          'アヴェンジャー',
+          'アルターエゴ',
+          'ムーンキャンサー',
+          'フォーリナー'
+        ],
+        npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
+      },
+      npChargeLv: '', // 選択された宝具レベル
+      selectClassCompatibility: [
+        { text: '等倍', value: 1.0 },
+        { text: '有利', value: 2.0 },
+        { text: '不利', value: 0.5 },
+        { text: '狂・分 有利', value: 1.5 }
+      ],
+      classCompatibility: 1.0, // クラス相性補正 デフォルトでselectClassCompatibilityを'等倍'にする
+      selectAttributeCompatibility: [
+        { text: '等倍', value: 1.0 },
+        { text: '有利', value: 1.1 },
+        { text: '不利', value: 0.9 }
+      ],
+      attributeCompatibility: 1.0, // 属性相性補正。デフォルトでselectAttributeCompatibilityを'等倍'にする
+      atkBuff: 0, // 攻撃力バフ倍率
+      defDebuff: 0, // 防御力デバフ倍率
+      cardBuff: 0, // カードバフ倍率
+      cardDebuff: 0, // カードデバフ倍率
+      sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
+      npBuff: 0, // 宝具威力バフ倍率
+      sNpAtkBuff: 0, // 宝具特攻バフ倍率 (special noble phantasm atk buff)
+      fixedDamage: 0 // 固定ダメージ
+    }
+  },
+  computed: {
+    // stateから状態を取得
+    characters() {
+      return this.$store.getters['characters/orderdCharacters']
+    },
+    // クラスが選択されたら「そのクラスの値を持つキャラクターのみ」をセレクトボックスに表示
+    filteredCharacters() {
+      const filteredCharacters = []
+      for (let i = 0; i < this.characters.length; i++) {
+        const character = this.characters[i]
+        if (character.class === this.characterClass) {
+          filteredCharacters.push(character.name)
+        }
+      }
+      return filteredCharacters
+    },
+    // 宝具の平均ダメージ 乱数調整1.0
+    averageDamage: {
+      get() {
+        return Math.floor(
+          this.characterAtk *
+            (this.characterNpmultiplier / 100) *
+            0.23 *
+            (this.cardVal * ((100 + this.cardBuff + this.cardDebuff) / 100)) *
+            this.classCompatibility *
+            this.attributeCompatibility *
+            this.classCorrection *
+            ((100 + this.atkBuff + this.defDebuff) / 100) *
+            ((100 + this.sAtkBuff + this.npBuff) / 100) *
+            ((100 + this.sNpAtkBuff) / 100) +
+            this.fixedDamage
+        )
+      }
+    },
+    // 宝具の最低ダメージ 乱数調整0.9倍
+    minimumDamage: {
+      get() {
+        return Math.floor(this.averageDamage * 0.9).toLocaleString()
+      }
+    },
+    // 宝具の最高ダメージ 乱数調整1.1倍
+    maximumDamage: {
+      get() {
+        return Math.floor(this.averageDamage * 1.1).toLocaleString()
+      }
+    },
+    // クラス補正値
+    classCorrection: {
+      get() {
+        if (
+          this.characterClass === 'セイバー' ||
+          this.characterClass === 'ライダー' ||
+          this.characterClass === 'ムーンキャンサー' ||
+          this.characterClass === 'アルターエゴ' ||
+          this.characterClass === 'フォーリナー'
+        ) {
+          return 1.0
+        }
+        if (this.characterClass === 'アーチャー') {
+          return 0.95
+        }
+        if (this.characterClass === 'ランサー') {
+          return 1.05
+        }
+        if (
+          this.characterClass === 'キャスター' ||
+          this.characterClass === 'アサシン'
+        ) {
+          return 0.9
+        }
+        if (
+          this.characterClass === 'バーサーカー' ||
+          this.characterClass === 'ルーラー' ||
+          this.characterClass === 'アヴェンジャー'
+        ) {
+          return 1.1
+        } else {
+          return 0
+        }
+      }
+    },
+    // 宝具タイプ補正値
+    cardVal: {
+      get() {
+        if (this.servantNPType === 'Buster') {
+          return 1.5
+        }
+        if (this.servantNPType === 'Arts') {
+          return 1.0
+        }
+        if (this.servantNPType === 'Quick') {
+          return 0.8
+        } else {
+          return 0
+        }
+      }
+    }
+  },
+  // データの初期化 Vuex
+  created() {
+    this.$store.dispatch('characters/init')
+  },
+  methods: {
+    // 選択されたキャラクターが持つ値を取得
+    onChangeVal(characterName) {
+      for (let i = 0; i < this.characters.length; i++) {
+        const character = this.characters[i]
+        if (character.name === characterName) {
+          this.atk = character.atk // 「攻撃力」を一旦配列で取得
+          this.characterAtk = this.atk[0] // デフォルトの攻撃力
+          this.npChargeLv = 1 // 「宝具レベル」を１にする
+          this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
+          this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
+          this.setNpType(character)
+          this.classCompatibility = 1 // 等倍
+          this.attributeCompatibility = 1 // 等倍
+        }
+      }
+    },
+    // 選択されたキャラクターの「宝具タイプ」を返す。 引数が必要だからcomputedではきつい
+    setNpType(character) {
+      if (character.card === 'B') {
+        this.servantNPType = 'Buster'
+      }
+      if (character.card === 'A') {
+        this.servantNPType = 'Arts'
+      }
+      if (character.card === 'Q') {
+        this.servantNPType = 'Quick'
+      }
+    },
+    // キャラクターはデフォルト時([0])とLv.100時([1])の「攻撃力」を持つ。Switchすると値を変更
+    onSwitchAtk() {
+      if (this.switchAtk === false) {
+        this.switchAtk = true
+        this.characterAtk = this.atk[1]
+      } else {
+        this.switchAtk = false
+        this.characterAtk = this.atk[0]
+      }
+    },
+    // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
+    onChangeNpmultiplier(npChargeLv) {
+      if (npChargeLv === 1) {
+        return (this.characterNpmultiplier = this.npmultiplier[0])
+      }
+      if (npChargeLv === 2) {
+        return (this.characterNpmultiplier = this.npmultiplier[1])
+      }
+      if (npChargeLv === 3) {
+        return (this.characterNpmultiplier = this.npmultiplier[2])
+      }
+      if (npChargeLv === 4) {
+        return (this.characterNpmultiplier = this.npmultiplier[3])
+      }
+      if (npChargeLv === 5) {
+        return (this.characterNpmultiplier = this.npmultiplier[4])
+      }
+    },
+    reset() {
+      this.characterClass = ''
+      this.characterName = ''
+      this.atk = []
+      this.characterAtk = ''
+      this.npChargeLv = ''
+      this.npmultiplier = []
+      this.characterNpmultiplier = ''
+      this.servantNPType = ''
+      this.classCompatibility = 1.0 // 等倍
+      this.attributeCompatibility = 1.0 // 等倍
+      this.atkBuff = 0
+      this.defDebuff = 0
+      this.cardBuff = 0
+      this.cardDebuff = 0
+      this.sAtkBuff = 0
+      this.npBuff = 0
+      this.sNpAtkBuff = 0
+      this.fixedDamage = 0
+    }
+  }
+}
+</script>
+
+<style scoped>
+.v-card {
+  border: solid teal 2px;
+  margin: 10px;
+}
+</style>

@@ -16,7 +16,7 @@
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon large>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -30,12 +30,12 @@
       <v-toolbar-title v-text="title" />
     </v-app-bar>
     <v-content>
-      <v-container>
+      <v-container fill-height>
         <nuxt />
       </v-container>
     </v-content>
     <v-footer :fixed="fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }} FGO damage calculation</span>
+      <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
     </v-footer>
   </v-app>
 </template>
@@ -57,7 +57,7 @@ export default {
         {
           icon: 'mdi-sword-cross',
           title: '宝具ダメージ計算',
-          to: ''
+          to: '/npatk-calculation'
         },
         {
           icon: 'mdi-sword-cross',
@@ -67,7 +67,7 @@ export default {
         {
           icon: 'mdi-sword',
           title: '通常ダメージ計算',
-          to: ''
+          to: '/dc/normalatk'
         },
         {
           icon: 'mdi-database',
@@ -77,6 +77,7 @@ export default {
         {
           icon: 'fab fa-line',
           title: 'LINE Bot',
+          color: 'teal accent-1',
           to: ''
         },
         {
@@ -91,7 +92,7 @@ export default {
         }
       ],
       miniVariant: false,
-      title: 'FGO ダメージ計算機'
+      title: 'FGO Calculator'
     }
   }
 }
