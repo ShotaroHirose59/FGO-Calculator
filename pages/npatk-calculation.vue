@@ -5,7 +5,18 @@
         <v-card class="col-md-6" max-width="550">
           <v-card-title class="headline">
             宝具ダメージ計算
+            <v-btn
+              class="ml-5"
+              outlined
+              small
+              fab
+              color="teal"
+              @click="openDisplay"
+            >
+              <v-icon>mdi-help</v-icon>
+            </v-btn>
           </v-card-title>
+          <NpatkDialog ref="dlg" />
           <v-form>
             <v-container>
               <v-row>
@@ -302,18 +313,17 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
-// import HelpInfoNpatk from '@/components/calculator/HelpInfoNpatk.vue'
+import NpatkDialog from '@/components/calculator/npatkDialog'
 import NpatkCard from '@/components/calculator/NpatkCard'
 
 export default {
   components: {
-    // HelpInfoNpatk,
+    NpatkDialog,
     NpatkCard,
     ValidationProvider
   },
   data() {
     return {
-      HelpInfoNpatk: false,
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
@@ -521,6 +531,9 @@ export default {
       if (npChargeLv === 5) {
         return (this.characterNpmultiplier = this.npmultiplier[4])
       }
+    },
+    openDisplay() {
+      this.$refs.dlg.isDisplay = true
     },
     reset() {
       this.characterClass = ''

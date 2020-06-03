@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    // ダメージ結果、選択されたキャラクターによって吹き出しのセリフを出力
+    // ダメージ結果や選択されたキャラクターによって吹き出しのセリフを出力。
     speechBubble: {
       get() {
         if (this.characterName === 'ジャンヌ（オルタ）') {
