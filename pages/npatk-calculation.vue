@@ -247,7 +247,7 @@
             <v-row>
               <v-col cols="6" sm="6" md="6">
                 <!-- キャラクターのイラストと吹き出しを差し込む -->
-                <NpatkCard
+                <NpatkSpeechBubble
                   :character-name="characterName"
                   :average-damage="averageDamage"
                 />
@@ -314,12 +314,12 @@
 <script>
 import { ValidationProvider } from 'vee-validate'
 import NpatkDialog from '@/components/calculator/npatkDialog'
-import NpatkCard from '@/components/calculator/NpatkCard'
+import NpatkSpeechBubble from '@/components/calculator/NpatkSpeechBubble'
 
 export default {
   components: {
     NpatkDialog,
-    NpatkCard,
+    NpatkSpeechBubble,
     ValidationProvider
   },
   data() {
