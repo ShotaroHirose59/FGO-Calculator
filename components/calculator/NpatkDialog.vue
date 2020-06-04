@@ -1,10 +1,10 @@
 <template>
-  <v-dialog v-model="isDisplay" scrollable max-width="720px" lazy>
+  <v-dialog v-model="isDisplay" scrollable max-width="720px">
     <v-card>
       <v-card-title class="headline">
         宝具ダメージ計算方法と入力項目の詳細
         <v-spacer />
-        <v-btn icon flat @click="isDisplay = false">
+        <v-btn icon text @click="isDisplay = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-card-title>
@@ -47,16 +47,16 @@
           <li>
             属性相性補正 ・・・ 属性相性によって入る補正値 (等倍1.0 有利1.1
             不利0.9)<br />
-            FGOの裏設定でサーヴァントは1人につき1つ属性(天,地,人,星,獣)を持っている。(例
+            FGOの裏設定でサーヴァントは1人につき1つ属性(天、地、人、星、獣)を持っている。(例
             アルトリアは地 ギルは天)<br />
-            天は地に強く人に弱い。地は人に強く天に弱い。人は天に強く地に弱い
-            星,獣はお互いに強い。
+            天は地に強く人に弱い。地は人に強く天に弱い。人は天に強く地に弱い。
+            星、獣はお互いに強い。
             FGOで思ったよりダメージが伸びない時はこれが原因。
           </li>
           <li>
-            クラス補正 ・・・ クラスによってはいる補正値 (剣,騎,月,分,降,盾は1.0
-            弓0.95<br />
-            槍1.05 術,殺0.9 狂,裁定,復讐1.1)
+            クラス補正 ・・・ クラスによってはいる補正値
+            (剣、騎、月、分、降、盾は1.0 弓は0.95<br />
+            槍は1.05 術、殺0.9 狂、裁定、復讐は1.1)
           </li>
         </ul>
         <h3 class="mt-3 mb-1">
