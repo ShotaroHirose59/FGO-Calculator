@@ -12,6 +12,16 @@ extend('numeric', {
   message: '半角数値のみ入力可能です'
 })
 
+extend('maxNumericalValue', {
+  validate(value) {
+    if (value > 400) {
+      return false
+    }
+    return true
+  },
+  message: '400以下で設定してください'
+})
+
 export default {
   components: {
     ValidationProvider

@@ -141,7 +141,7 @@
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
-                    rules="required|numeric"
+                    rules="required|numeric|maxNumericalValue"
                   >
                     <v-text-field
                       v-model.number="cardBuff"
@@ -157,7 +157,7 @@
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
-                    rules="required|numeric"
+                    rules="required|numeric|maxNumericalValue"
                   >
                     <v-text-field
                       v-model.number="cardDebuff"
@@ -173,7 +173,7 @@
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
-                    rules="required|numeric"
+                    rules="required|numeric|maxNumericalValue"
                   >
                     <v-text-field
                       v-model.number="sAtkBuff"
@@ -189,7 +189,7 @@
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
-                    rules="required|numeric"
+                    rules="required|numeric|maxNumericalValue"
                   >
                     <v-text-field
                       v-model.number="npBuff"
