@@ -485,7 +485,7 @@ export default {
           this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
           this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
           this.setNpType(character)
-          this.classCompatibility = 1 // 等倍
+          this.setClassCompatibility(character)
           this.attributeCompatibility = 1 // 等倍
         }
       }
@@ -501,6 +501,20 @@ export default {
           break
         case 'Q':
           this.servantNPType = 'Quick'
+          break
+      }
+    },
+    // クラス相性はdefaultで有利にする(数値が大きくなるからUX向上)
+    setClassCompatibility(character) {
+      switch (character.class) {
+        case 'バーサーカー':
+          this.classCompatibility = 1.5
+          break
+        case 'アルターエゴ':
+          this.classCompatibility = 1.5
+          break
+        default:
+          this.classCompatibility = 2.0
           break
       }
     },
