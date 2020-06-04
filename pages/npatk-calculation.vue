@@ -389,7 +389,8 @@ export default {
       }
       return filteredCharacters
     },
-    // 宝具の平均ダメージ 乱数調整1.0
+    // 宝具の平均ダメージ 乱数調整1.0倍 (100で割ってる箇所は数値を％として扱っているから)
+    // 0.23はFGOのダメージ処理で必ず入る固定補正値
     averageDamage: {
       get() {
         return Math.floor(
@@ -422,51 +423,48 @@ export default {
     // クラス補正値
     classCorrection: {
       get() {
-        if (
-          this.characterClass === 'セイバー' ||
-          this.characterClass === 'ライダー' ||
-          this.characterClass === 'ムーンキャンサー' ||
-          this.characterClass === 'アルターエゴ' ||
-          this.characterClass === 'フォーリナー'
-        ) {
-          return 1.0
-        }
-        if (this.characterClass === 'アーチャー') {
-          return 0.95
-        }
-        if (this.characterClass === 'ランサー') {
-          return 1.05
-        }
-        if (
-          this.characterClass === 'キャスター' ||
-          this.characterClass === 'アサシン'
-        ) {
-          return 0.9
-        }
-        if (
-          this.characterClass === 'バーサーカー' ||
-          this.characterClass === 'ルーラー' ||
-          this.characterClass === 'アヴェンジャー'
-        ) {
-          return 1.1
-        } else {
-          return 0
+        switch (this.characterClass) {
+          case 'セイバー':
+            return 1.0
+          case 'ライダー':
+            return 1.0
+          case 'ムーンキャンサー':
+            return 1.0
+          case 'アルターエゴ':
+            return 1.0
+          case 'フォーリナー':
+            return 1.0
+          case 'アーチャー':
+            return 0.95
+          case 'ランサー':
+            return 1.05
+          case 'キャスター':
+            return 0.9
+          case 'アサシン':
+            return 0.9
+          case 'バーサーカー':
+            return 1.1
+          case 'ルーラー':
+            return 1.1
+          case 'アヴェンジャー':
+            return 1.1
+          default:
+            return 0
         }
       }
     },
     // 宝具タイプ補正値
     cardVal: {
       get() {
-        if (this.servantNPType === 'Buster') {
-          return 1.5
-        }
-        if (this.servantNPType === 'Arts') {
-          return 1.0
-        }
-        if (this.servantNPType === 'Quick') {
-          return 0.8
-        } else {
-          return 0
+        switch (this.servantNPType) {
+          case 'Buster':
+            return 1.5
+          case 'Arts':
+            return 1.0
+          case 'Quick':
+            return 0.8
+          default:
+            return 0
         }
       }
     }
@@ -492,16 +490,18 @@ export default {
         }
       }
     },
-    // 選択されたキャラクターの「宝具タイプ」を返す。 引数が必要だからcomputedではきつい
+    // 選択されたキャラクターの「宝具タイプ」を返す。
     setNpType(character) {
-      if (character.card === 'B') {
-        this.servantNPType = 'Buster'
-      }
-      if (character.card === 'A') {
-        this.servantNPType = 'Arts'
-      }
-      if (character.card === 'Q') {
-        this.servantNPType = 'Quick'
+      switch (character.card) {
+        case 'B':
+          this.servantNPType = 'Buster'
+          break
+        case 'A':
+          this.servantNPType = 'Arts'
+          break
+        case 'Q':
+          this.servantNPType = 'Quick'
+          break
       }
     },
     // キャラクターはデフォルト時([0])とLv.100時([1])の「攻撃力」を持つ。Switchすると値を変更
@@ -516,20 +516,22 @@ export default {
     },
     // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
     onChangeNpmultiplier(npChargeLv) {
-      if (npChargeLv === 1) {
-        return (this.characterNpmultiplier = this.npmultiplier[0])
-      }
-      if (npChargeLv === 2) {
-        return (this.characterNpmultiplier = this.npmultiplier[1])
-      }
-      if (npChargeLv === 3) {
-        return (this.characterNpmultiplier = this.npmultiplier[2])
-      }
-      if (npChargeLv === 4) {
-        return (this.characterNpmultiplier = this.npmultiplier[3])
-      }
-      if (npChargeLv === 5) {
-        return (this.characterNpmultiplier = this.npmultiplier[4])
+      switch (npChargeLv) {
+        case 1:
+          this.characterNpmultiplier = this.npmultiplier[0]
+          break
+        case 2:
+          this.characterNpmultiplier = this.npmultiplier[1]
+          break
+        case 3:
+          this.characterNpmultiplier = this.npmultiplier[2]
+          break
+        case 4:
+          this.characterNpmultiplier = this.npmultiplier[3]
+          break
+        case 5:
+          this.characterNpmultiplier = this.npmultiplier[4]
+          break
       }
     },
     openDisplay() {

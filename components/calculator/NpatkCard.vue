@@ -25,43 +25,35 @@ export default {
     }
   },
   computed: {
-    // ダメージ結果や選択されたキャラクターによって吹き出しのセリフを出力。
+    // ダメージ結果や選択されたキャラクターによって吹き出しのセリフを出力
     speechBubble: {
       get() {
-        if (this.characterName === 'ジャンヌ（オルタ）') {
-          return '全ての邪悪をここに……！'
-        }
-        if (this.characterName === '水着ジャンヌ（オルタ）') {
-          return '三つ首の黒竜よ、世界を喰らい尽くせ！'
-        }
-        if (this.characterName === '水着ジャンヌ') {
-          return 'ちっ……アンタも水着なのね'
-        }
-        if (this.characterName === 'ジャンヌサンタリリィ') {
-          return 'アンタは冬までおとなしくしてなさい。'
-        }
-        if (this.characterName === 'アルトリア (オルタ)') {
-          return 'げぇ、世界最高にいけ好かないわね'
-        }
-        if (this.characterName === 'アルトリア（サンタオルタ）') {
-          return 'ちょっ……なんでサンタの格好なのよ！'
-        }
-        if (this.characterName === '水着アルトリア（オルタ）') {
-          return 'このメイドより私の方が火力出せるわよ'
-        }
-        if (this.characterName === 'ジル・ド・レェ（キャスター）') {
-          return 'あら、ジルもいたのね。'
+        switch (this.characterName) {
+          case 'ジャンヌ（オルタ）':
+            return '全ての邪悪をここに……！'
+          case '水着ジャンヌ（オルタ）':
+            return '三つ首の黒竜よ、世界を喰らい尽くせ！'
+          case '水着ジャンヌ':
+            return 'ちっ……アンタも水着なのね'
+          case 'ジャンヌサンタリリィ':
+            return 'アンタは冬までおとなしくしてなさい。'
+          case 'アルトリア (オルタ)':
+            return 'げぇ、世界最高にいけ好かないわね'
+          case 'アルトリア（サンタオルタ）':
+            return 'ちょっ……なんでサンタの格好なのよ！'
+          case '水着アルトリア（オルタ）':
+            return 'このメイドより私の方が火力出せるわよ'
+          case 'ジル・ド・レェ（キャスター）':
+            return 'あら、ジルもいたのね。'
         }
         if (this.averageDamage >= 200000) {
           return 'なかなかやるじゃない'
-        }
-        if (this.averageDamage >= 100000) {
+        } else if (this.averageDamage >= 100000) {
           return 'まあまあね'
-        }
-        if (this.averageDamage >= 10000) {
+        } else if (this.averageDamage >= 10000) {
           return 'スキルで火力が上がるわ'
         } else {
-          return '計算してみなさいよ'
+          return '計算してみなさいよ' // default
         }
       }
     }
