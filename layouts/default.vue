@@ -34,7 +34,7 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer :fixed="fixed" app>
+    <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
     </v-footer>
   </v-app>

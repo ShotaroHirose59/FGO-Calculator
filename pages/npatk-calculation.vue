@@ -274,6 +274,27 @@
             </v-row>
           </v-container>
         </v-card>
+        <!-- スマホの場合だけ、固定フッターを用意 -->
+        <v-footer
+          v-if="$vuetify.breakpoint.xs"
+          :fixed="$vuetify.breakpoint.xs"
+          app
+        >
+          <v-progress-linear
+            height="40"
+            color="purple accent-3"
+            style="color: white;"
+            reactive
+          >
+            <v-flex xs12 sm12>
+              <v-row algin="center">
+                <v-col style="text-align: center; font-size: 1.2rem;">
+                  <strong>TOTAL {{ averageDamage.toLocaleString() }}</strong>
+                </v-col>
+              </v-row>
+            </v-flex>
+          </v-progress-linear>
+        </v-footer>
       </v-row>
     </v-flex>
   </v-layout>
