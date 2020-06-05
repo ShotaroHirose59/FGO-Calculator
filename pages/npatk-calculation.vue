@@ -20,7 +20,7 @@
           <v-form>
             <v-container>
               <v-row>
-                <v-col cols="12" sm="3" md="4">
+                <v-col cols="8" sm="3" md="4">
                   <v-menu transition="slide-x-transition">
                     <template v-slot:activator="{ change }">
                       <v-select
@@ -40,7 +40,7 @@
                     label="サーヴァント"
                     :items="filteredCharacters"
                     :disabled="!characterClass"
-                    placeholder="先にクラスを選択"
+                    placeholder="先にクラス選択"
                     color="teal accent-4"
                     @input="onChangeVal(characterName)"
                   ></v-select>
@@ -105,7 +105,7 @@
                   ></v-switch>
                 </v-col>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-col cols="6" sm="4" md="4">
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -121,23 +121,7 @@
                   </validation-provider>
                 </v-col>
 
-                <v-col cols="6" sm="2" md="3">
-                  <validation-provider
-                    ref="provider"
-                    v-slot="{ errors }"
-                    rules="required|numeric"
-                  >
-                    <v-text-field
-                      v-model.number="defDebuff"
-                      label="防御力ダウン"
-                      suffix="％"
-                      :error-messages="errors"
-                      color="teal accent-4"
-                    ></v-text-field>
-                  </validation-provider>
-                </v-col>
-
-                <v-col cols="6" sm="2" md="3">
+                <v-col cols="6" sm="4" md="4">
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -153,23 +137,7 @@
                   </validation-provider>
                 </v-col>
 
-                <v-col cols="6" sm="2" md="3">
-                  <validation-provider
-                    ref="provider"
-                    v-slot="{ errors }"
-                    rules="required|numeric|maxNumericalValue"
-                  >
-                    <v-text-field
-                      v-model.number="cardDebuff"
-                      label="カード耐性ダウン"
-                      suffix="％"
-                      :error-messages="errors"
-                      color="teal accent-4"
-                    ></v-text-field>
-                  </validation-provider>
-                </v-col>
-
-                <v-col cols="6" sm="2" md="3">
+                <v-col cols="6" sm="4" md="4">
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -185,7 +153,7 @@
                   </validation-provider>
                 </v-col>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-col cols="6" sm="4" md="4">
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -201,7 +169,7 @@
                   </validation-provider>
                 </v-col>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-col cols="6" sm="4" md="4">
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -217,7 +185,7 @@
                   </validation-provider>
                 </v-col>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-col cols="6" sm="4" md="4">
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -364,9 +332,7 @@ export default {
       ],
       attributeCompatibility: 1.0, // 属性相性補正。デフォルトでselectAttributeCompatibilityを'等倍'にする
       atkBuff: 0, // 攻撃力バフ倍率
-      defDebuff: 0, // 防御力デバフ倍率
       cardBuff: 0, // カードバフ倍率
-      cardDebuff: 0, // カードデバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
       sNpAtkBuff: 0, // 宝具特攻バフ倍率 (special noble phantasm atk buff)
@@ -397,11 +363,11 @@ export default {
           this.characterAtk *
             (this.characterNpmultiplier / 100) *
             0.23 *
-            (this.cardVal * ((100 + this.cardBuff + this.cardDebuff) / 100)) *
+            (this.cardVal * ((100 + this.cardBuff) / 100)) *
             this.classCompatibility *
             this.attributeCompatibility *
             this.classCorrection *
-            ((100 + this.atkBuff + this.defDebuff) / 100) *
+            ((100 + this.atkBuff) / 100) *
             ((100 + this.sAtkBuff + this.npBuff) / 100) *
             ((100 + this.sNpAtkBuff) / 100) +
             this.fixedDamage
@@ -563,9 +529,7 @@ export default {
       this.classCompatibility = 1.0 // 等倍
       this.attributeCompatibility = 1.0 // 等倍
       this.atkBuff = 0
-      this.defDebuff = 0
       this.cardBuff = 0
-      this.cardDebuff = 0
       this.sAtkBuff = 0
       this.npBuff = 0
       this.sNpAtkBuff = 0
