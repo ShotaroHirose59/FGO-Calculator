@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isDisplay" scrollable max-width="720px">
+  <v-dialog v-model="isDisplay" scrollable max-width="700px">
     <v-card>
       <v-card-title class="headline">
         使い方と詳細

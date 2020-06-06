@@ -11,7 +11,7 @@
                 small
                 fab
                 color="purple lighten-1"
-                @click="openDisplay"
+                @click="openDisplay()"
               >
                 <v-icon>mdi-help</v-icon>
               </v-btn>
@@ -324,10 +324,26 @@
         <v-card class="col-md-6">
           <v-card-title class="headline" max-width="550">
             ダメージ結果
+            <v-flex style="text-align: right;">
+              <v-btn
+                style="text-align: right;"
+                outlined
+                small
+                fab
+                color="purple lighten-1"
+                @click="openResultDisplay()"
+              >
+                <v-icon>mdi-help</v-icon>
+              </v-btn>
+            </v-flex>
           </v-card-title>
-          <v-card-subtitle>
-            宝具ダメージには数値が0.9~1.1倍される乱数調整が存在する。周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
+          <v-card-subtitle class="mt-1">
+            宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する
+            周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
           </v-card-subtitle>
+
+          <NpatkResultDialog ref="rstDlg" />
+
           <v-container>
             <v-row no-gutters>
               <v-flex xs6 sm6 md6>
@@ -426,7 +442,8 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
-import NpatkDialog from '@/components/calculator/npatkDialog'
+import NpatkDialog from '@/components/calculator/NpatkDialog'
+import NpatkResultDialog from '@/components/calculator/NpatkResultDialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import NpatkSpeechBubble from '@/components/calculator/NpatkSpeechBubble'
 
@@ -434,6 +451,7 @@ export default {
   components: {
     ValidationProvider,
     NpatkDialog,
+    NpatkResultDialog,
     PlusMinusButton,
     NpatkSpeechBubble
   },
@@ -662,6 +680,9 @@ export default {
     },
     openDisplay() {
       this.$refs.dlg.isDisplay = true
+    },
+    openResultDisplay() {
+      this.$refs.rstDlg.isResultDisplay = true
     },
     reset() {
       this.characterClass = ''
