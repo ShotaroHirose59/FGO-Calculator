@@ -3,7 +3,7 @@
     <div class="balloon1">
       <p>{{ speechBubble }}</p>
     </div>
-    <v-img :src="image_src" max-width="150px"></v-img>
+    <v-img :src="image_src" max-width="170px"></v-img>
   </div>
 </template>
 

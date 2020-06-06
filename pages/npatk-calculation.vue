@@ -256,7 +256,7 @@
                   >
                     <v-text-field
                       v-model.number="sNpAtkBuff"
-                      label="宝具特攻"
+                      label="特攻宝具"
                       suffix="％"
                       :error-messages="errors"
                       class="ml-2 mr-1"
@@ -476,7 +476,7 @@ export default {
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
-      sNpAtkBuff: 0, // 宝具特攻バフ倍率 (special noble phantasm atk buff)
+      sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
       dressAtk: 0 // 概念礼装のATK
     }
   },
