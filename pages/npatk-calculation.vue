@@ -5,16 +5,17 @@
         <v-card class="col-md-6" max-width="550">
           <v-card-title class="headline">
             宝具ダメージ計算
-            <v-btn
-              class="ml-5"
-              outlined
-              small
-              fab
-              color="teal accent-4"
-              @click="openDisplay"
-            >
-              <v-icon>mdi-help</v-icon>
-            </v-btn>
+            <v-flex style="text-align: right;">
+              <v-btn
+                outlined
+                small
+                fab
+                color="purple lighten-1"
+                @click="openDisplay"
+              >
+                <v-icon>mdi-help</v-icon>
+              </v-btn>
+            </v-flex>
           </v-card-title>
           <NpatkDialog ref="dlg" />
           <v-form>
@@ -338,7 +339,7 @@
               </v-flex>
 
               <v-flex xs6 sm6 md6>
-                <v-list-item color="red">
+                <v-list-item>
                   <v-list-item-content>
                     <v-list-item-subtitle>TOTAL(最小)</v-list-item-subtitle>
                     <v-list-item-title class="headline">{{
@@ -369,7 +370,7 @@
                   v-model="classCompatibility"
                   label="クラス相性"
                   :items="selectClassCompatibility"
-                  class="ml-2 mr-1"
+                  class="ml-2 mr-5"
                   color="teal accent-4"
                 ></v-select>
               </v-flex>
@@ -379,13 +380,18 @@
                   v-model="attributeCompatibility"
                   label="属性相性"
                   :items="selectAttributeCompatibility"
-                  class="ml-2 mr-1"
+                  class="ml-2 mr-5"
                   color="teal accent-4"
                 ></v-select>
               </v-flex>
 
               <v-flex xs12 sm4 md4>
-                <v-btn color="error" block outlined @click="reset()"
+                <v-btn
+                  color="error"
+                  :block="$vuetify.breakpoint.xs"
+                  class="mt-3"
+                  outlined
+                  @click="reset()"
                   >計算リセット</v-btn
                 >
               </v-flex>
