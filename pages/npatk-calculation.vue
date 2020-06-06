@@ -17,7 +17,10 @@
               </v-btn>
             </v-flex>
           </v-card-title>
-          <NpatkDialog ref="dlg" />
+
+          <!-- ダイアログ(使い方、計算項目の詳細) -->
+          <Dialog ref="dlg" />
+
           <v-form>
             <v-container>
               <v-row no-gutters>
@@ -101,14 +104,14 @@
                     label="Lv.100"
                     :disabled="!characterAtk"
                     hide-details
-                    class="ml-2 mr-1"
+                    class="ml-5 mr-1"
                     color="teal accent-4"
                     @change="onSwitchAtk()"
                   ></v-switch>
                 </v-flex>
+              </v-row>
 
-                <v-spacer></v-spacer>
-
+              <v-row no-gutters>
                 <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
@@ -120,7 +123,7 @@
                       label="攻撃力UP"
                       suffix="％"
                       :error-messages="errors"
-                      class="ml-2 mr-1"
+                      class="mt-4 ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
@@ -155,7 +158,7 @@
                       label="カードUP"
                       suffix="％"
                       :error-messages="errors"
-                      class="ml-2 mr-1"
+                      class="mt-4 ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
@@ -342,13 +345,14 @@
             周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
           </v-card-subtitle>
 
-          <NpatkResultDialog ref="rstDlg" />
+          <!-- ダイアログ(計算方法) -->
+          <ResultDialog ref="rstDlg" />
 
           <v-container>
             <v-row no-gutters>
               <v-flex xs6 sm6 md6>
                 <!-- イラストと吹き出しを差し込む -->
-                <NpatkSpeechBubble
+                <SpeechBubble
                   :character-name="characterName"
                   :average-damage="averageDamage"
                 />
@@ -442,18 +446,18 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
-import NpatkDialog from '@/components/calculator/NpatkDialog'
-import NpatkResultDialog from '@/components/calculator/NpatkResultDialog'
-import PlusMinusButton from '@/components/calculator/PlusMinusButton'
-import NpatkSpeechBubble from '@/components/calculator/NpatkSpeechBubble'
+import Dialog from '@/components/calculator/Npatk/Dialog'
+import ResultDialog from '@/components/calculator/Npatk/ResultDialog'
+import PlusMinusButton from '@/components/calculator/Npatk/PlusMinusButton'
+import SpeechBubble from '@/components/calculator/Npatk/SpeechBubble'
 
 export default {
   components: {
     ValidationProvider,
-    NpatkDialog,
-    NpatkResultDialog,
+    Dialog,
+    ResultDialog,
     PlusMinusButton,
-    NpatkSpeechBubble
+    SpeechBubble
   },
   data() {
     return {
