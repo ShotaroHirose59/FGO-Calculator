@@ -10,7 +10,7 @@
               outlined
               small
               fab
-              color="teal"
+              color="teal accent-4"
               @click="openDisplay"
             >
               <v-icon>mdi-help</v-icon>
@@ -19,66 +19,65 @@
           <NpatkDialog ref="dlg" />
           <v-form>
             <v-container>
-              <v-row>
-                <v-col cols="8" sm="3" md="4">
-                  <v-menu transition="slide-x-transition">
-                    <template v-slot:activator="{ change }">
-                      <v-select
-                        v-model="characterClass"
-                        label="クラス"
-                        :items="items.class"
-                        color="teal accent-4"
-                        v-on="change"
-                      ></v-select>
-                    </template>
-                  </v-menu>
-                </v-col>
+              <v-row no-gutters>
+                <v-flex xs12 sm3 md4>
+                  <v-select
+                    v-model="characterClass"
+                    label="クラス"
+                    :items="items.class"
+                    class="ml-2 mr-1"
+                    color="teal accent-4"
+                  ></v-select>
+                </v-flex>
 
-                <v-col cols="8" sm="3" md="6">
+                <v-flex xs8 sm3 md6>
                   <v-select
                     v-model="characterName"
                     label="サーヴァント"
                     :items="filteredCharacters"
                     :disabled="!characterClass"
                     placeholder="先にクラス選択"
+                    class="ml-2 mr-1"
                     color="teal accent-4"
                     @input="onChangeVal(characterName)"
                   ></v-select>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="4" sm="2" md="2">
+                <v-flex xs4 sm2 md2>
                   <v-text-field
                     v-model="servantNPType"
                     label="宝具タイプ"
                     disabled
                     placeholder="自動"
+                    class="ml-2 mr-1"
                     color="teal accent-4"
-                    class="npType"
                   ></v-text-field>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-flex xs6 sm2 md3>
                   <v-select
                     v-model="npChargeLv"
                     label="宝具レベル"
                     :items="items.npChargeLevel"
+                    class="ml-2 mr-1"
                     color="teal accent-4"
                     @change="onChangeNpmultiplier(npChargeLv)"
                   ></v-select>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-flex xs6 sm2 md3>
                   <v-text-field
                     v-model.number="characterNpmultiplier"
                     label="宝具倍率"
                     disabled
                     suffix="％"
                     placeholder="自動"
+                    class="ml-2 mr-1"
                     color="teal accent-4"
                   ></v-text-field>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-flex xs6 sm2 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -89,23 +88,27 @@
                       label="攻撃力"
                       :error-messages="errors"
                       placeholder="自動"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="2" md="3">
+                <v-flex xs6 sm2 md3>
                   <v-switch
                     v-model="atk"
                     label="Lv.100"
                     :disabled="!characterAtk"
-                    color="teal accent-4"
                     hide-details
+                    class="ml-2 mr-1"
+                    color="teal accent-4"
                     @change="onSwitchAtk()"
                   ></v-switch>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="4" md="4">
+                <v-spacer></v-spacer>
+
+                <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -113,15 +116,34 @@
                   >
                     <v-text-field
                       v-model.number="atkBuff"
-                      label="攻撃力アップ"
+                      label="攻撃力UP"
                       suffix="％"
                       :error-messages="errors"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="4" md="4">
+                <v-flex xs3 sm3 md3>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        atkBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (atkBuff === 0) {
+                          return false
+                        }
+                        atkBuff -= 10
+                      }
+                    "
+                  />
+                </v-flex>
+
+                <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -129,15 +151,34 @@
                   >
                     <v-text-field
                       v-model.number="cardBuff"
-                      label="カード性能アップ"
+                      label="カードUP"
                       suffix="％"
                       :error-messages="errors"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="4" md="4">
+                <v-flex xs3 sm3 md3>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        cardBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (cardBuff === 0) {
+                          return false
+                        }
+                        cardBuff -= 10
+                      }
+                    "
+                  />
+                </v-flex>
+
+                <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -148,12 +189,31 @@
                       label="特攻バフ"
                       suffix="％"
                       :error-messages="errors"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="4" md="4">
+                <v-flex xs3 sm3 md3>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        sAtkBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (sAtkBuff === 0) {
+                          return false
+                        }
+                        sAtkBuff -= 10
+                      }
+                    "
+                  />
+                </v-flex>
+
+                <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -161,15 +221,34 @@
                   >
                     <v-text-field
                       v-model.number="npBuff"
-                      label="宝具威力アップ"
+                      label="宝具威力UP"
                       suffix="％"
                       :error-messages="errors"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="4" md="4">
+                <v-flex xs3 sm3 md3>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        npBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (npBuff === 0) {
+                          return false
+                        }
+                        npBuff -= 10
+                      }
+                    "
+                  />
+                </v-flex>
+
+                <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -180,12 +259,31 @@
                       label="宝具特攻"
                       suffix="％"
                       :error-messages="errors"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
 
-                <v-col cols="6" sm="4" md="4">
+                <v-flex xs3 sm3 md3>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        sNpAtkBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (sNpAtkBuff === 0) {
+                          return false
+                        }
+                        sNpAtkBuff -= 10
+                      }
+                    "
+                  />
+                </v-flex>
+
+                <v-flex xs6 sm6 md6>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
@@ -195,11 +293,11 @@
                       v-model.number="fixedDamage"
                       label="固定ダメージ"
                       :error-messages="errors"
-                      placeholder="0"
+                      class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
-                </v-col>
+                </v-flex>
               </v-row>
             </v-container>
           </v-form>
@@ -212,16 +310,16 @@
             宝具ダメージには数値が0.9~1.1倍される乱数調整が存在する。周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
           </v-card-subtitle>
           <v-container>
-            <v-row>
-              <v-col cols="6" sm="6" md="6">
-                <!-- キャラクターのイラストと吹き出しを差し込む -->
+            <v-row no-gutters>
+              <v-flex xs6 sm6 md6>
+                <!-- イラストと吹き出しを差し込む -->
                 <NpatkSpeechBubble
                   :character-name="characterName"
                   :average-damage="averageDamage"
                 />
-              </v-col>
+              </v-flex>
 
-              <v-col cols="6" sm="6" md="6">
+              <v-flex xs6 sm6 md6>
                 <v-list-item color="red">
                   <v-list-item-content>
                     <v-list-item-subtitle>TOTAL(最小)</v-list-item-subtitle>
@@ -246,31 +344,33 @@
                     }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-              </v-col>
+              </v-flex>
 
-              <v-col cols="6" sm="4" md="4">
+              <v-flex xs6 sm4 md4>
                 <v-select
                   v-model="classCompatibility"
                   label="クラス相性"
                   :items="selectClassCompatibility"
+                  class="ml-2 mr-1"
                   color="teal accent-4"
                 ></v-select>
-              </v-col>
+              </v-flex>
 
-              <v-col cols="6" sm="4" md="4">
+              <v-flex xs6 sm4 md4>
                 <v-select
                   v-model="attributeCompatibility"
                   label="属性相性"
                   :items="selectAttributeCompatibility"
+                  class="ml-2 mr-1"
                   color="teal accent-4"
                 ></v-select>
-              </v-col>
+              </v-flex>
 
-              <v-col cols="12" sm="4" md="4">
-                <v-btn color="error" outlined @click="reset()"
+              <v-flex xs12 sm4 md4>
+                <v-btn color="error" block outlined @click="reset()"
                   >計算リセット</v-btn
                 >
-              </v-col>
+              </v-flex>
             </v-row>
           </v-container>
         </v-card>
@@ -303,13 +403,15 @@
 <script>
 import { ValidationProvider } from 'vee-validate'
 import NpatkDialog from '@/components/calculator/npatkDialog'
+import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import NpatkSpeechBubble from '@/components/calculator/NpatkSpeechBubble'
 
 export default {
   components: {
+    ValidationProvider,
     NpatkDialog,
-    NpatkSpeechBubble,
-    ValidationProvider
+    PlusMinusButton,
+    NpatkSpeechBubble
   },
   data() {
     return {
@@ -562,7 +664,7 @@ export default {
 
 <style scoped>
 .v-card {
-  border: solid teal 2px;
-  margin: 10px;
+  border: solid teal 1px;
+  margin: 5px 10px;
 }
 </style>
