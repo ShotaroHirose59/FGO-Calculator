@@ -85,7 +85,7 @@
                   >
                     <v-text-field
                       v-model.number="characterAtk"
-                      label="攻撃力"
+                      label="ATK"
                       :error-messages="errors"
                       placeholder="自動"
                       class="ml-2 mr-1"
@@ -283,20 +283,38 @@
                   />
                 </v-flex>
 
-                <v-flex xs6 sm6 md6>
+                <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
                     v-slot="{ errors }"
                     rules="required|numeric"
                   >
                     <v-text-field
-                      v-model.number="fixedDamage"
-                      label="固定ダメージ"
+                      v-model.number="dressAtk"
+                      label="礼装ATK"
                       :error-messages="errors"
                       class="ml-2 mr-1"
                       color="teal accent-4"
                     ></v-text-field>
                   </validation-provider>
+                </v-flex>
+
+                <v-flex xs3 sm3 md3>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        dressAtk += 100
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (dressAtk === 0) {
+                          return false
+                        }
+                        dressAtk -= 100
+                      }
+                    "
+                  />
                 </v-flex>
               </v-row>
             </v-container>
@@ -459,7 +477,7 @@ export default {
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
       sNpAtkBuff: 0, // 宝具特攻バフ倍率 (special noble phantasm atk buff)
-      fixedDamage: 0 // 固定ダメージ
+      dressAtk: 0 // 概念礼装のATK
     }
   },
   computed: {
@@ -483,7 +501,7 @@ export default {
     averageDamage: {
       get() {
         return Math.floor(
-          this.characterAtk *
+          (this.characterAtk + this.dressAtk) *
             (this.characterNpmultiplier / 100) *
             0.23 *
             (this.cardVal * ((100 + this.cardBuff) / 100)) *
@@ -492,8 +510,7 @@ export default {
             this.classCorrection *
             ((100 + this.atkBuff) / 100) *
             ((100 + this.sAtkBuff + this.npBuff) / 100) *
-            ((100 + this.sNpAtkBuff) / 100) +
-            this.fixedDamage
+            ((100 + this.sNpAtkBuff) / 100)
         )
       }
     },
@@ -656,7 +673,7 @@ export default {
       this.sAtkBuff = 0
       this.npBuff = 0
       this.sNpAtkBuff = 0
-      this.fixedDamage = 0
+      this.dressAtk = 0
     }
   }
 }
