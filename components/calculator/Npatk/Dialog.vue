@@ -41,8 +41,13 @@
         </ul>
       </v-card-text>
       <v-col style="text-align: right;">
-        <v-btn icon large color="purple lighten-1" @click="isDisplay = false">
-          <v-icon>mdi-close</v-icon>
+        <v-btn
+          color="red"
+          text
+          style="font-size: 16px;"
+          @click="isDisplay = false"
+        >
+          Close
         </v-btn>
       </v-col>
     </v-card>
