@@ -10,6 +10,7 @@
                 outlined
                 small
                 fab
+                class="mr-2"
                 color="purple lighten-1"
                 @click="openDisplay()"
               >
@@ -18,13 +19,13 @@
             </v-flex>
           </v-card-title>
 
-          <!-- ダイアログ(使い方、計算項目の詳細) -->
+          <!-- ダイアログ (使い方、計算項目の詳細) -->
           <Dialog ref="dlg" />
 
           <v-form>
             <v-container>
               <v-row no-gutters>
-                <v-flex xs12 sm3 md4>
+                <v-flex xs9 sm3 md4>
                   <v-select
                     v-model="characterClass"
                     label="クラス"
@@ -34,7 +35,11 @@
                   ></v-select>
                 </v-flex>
 
-                <v-flex xs8 sm3 md6>
+                <v-flex v-if="$vuetify.breakpoint.xs" xs3>
+                  <v-img class="ml-2" :src="image_src" max-width="80px"></v-img>
+                </v-flex>
+
+                <v-flex xs9 sm3 md6>
                   <v-select
                     v-model="characterName"
                     label="サーヴァント"
@@ -47,7 +52,7 @@
                   ></v-select>
                 </v-flex>
 
-                <v-flex xs4 sm2 md2>
+                <v-flex xs3 sm2 md2>
                   <v-text-field
                     v-model="servantNPType"
                     label="宝具タイプ"
@@ -109,9 +114,7 @@
                     @change="onSwitchAtk()"
                   ></v-switch>
                 </v-flex>
-              </v-row>
 
-              <v-row no-gutters>
                 <v-flex xs3 sm3 md3>
                   <validation-provider
                     ref="provider"
@@ -324,121 +327,21 @@
             </v-container>
           </v-form>
         </v-card>
-        <v-card class="col-md-6">
-          <v-card-title class="headline" max-width="550">
-            ダメージ結果
-            <v-flex style="text-align: right;">
-              <v-btn
-                style="text-align: right;"
-                outlined
-                small
-                fab
-                color="purple lighten-1"
-                @click="openResultDisplay()"
-              >
-                <v-icon>mdi-help</v-icon>
-              </v-btn>
-            </v-flex>
-          </v-card-title>
-          <v-card-subtitle class="mt-1">
-            宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する
-            周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
-          </v-card-subtitle>
-
-          <!-- ダイアログ(計算方法) -->
-          <ResultDialog ref="rstDlg" />
-
-          <v-container>
-            <v-row no-gutters>
-              <v-flex xs6 sm6 md6>
-                <!-- イラストと吹き出しを差し込む -->
-                <SpeechBubble
-                  :character-name="characterName"
-                  :average-damage="averageDamage"
-                />
-              </v-flex>
-
-              <v-flex xs6 sm6 md6>
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-subtitle>TOTAL(最小)</v-list-item-subtitle>
-                    <v-list-item-title class="headline">{{
-                      minimumDamage
-                    }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-subtitle>TOTAL(平均)</v-list-item-subtitle>
-                    <v-list-item-title class="headline">{{
-                      averageDamage.toLocaleString()
-                    }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-subtitle>TOTAL(最大)</v-list-item-subtitle>
-                    <v-list-item-title class="headline">{{
-                      maximumDamage
-                    }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-flex>
-
-              <v-flex xs6 sm4 md4>
-                <v-select
-                  v-model="classCompatibility"
-                  label="クラス相性"
-                  :items="selectClassCompatibility"
-                  class="ml-2 mr-5"
-                  color="teal accent-4"
-                ></v-select>
-              </v-flex>
-
-              <v-flex xs6 sm4 md4>
-                <v-select
-                  v-model="attributeCompatibility"
-                  label="属性相性"
-                  :items="selectAttributeCompatibility"
-                  class="ml-2 mr-5"
-                  color="teal accent-4"
-                ></v-select>
-              </v-flex>
-
-              <v-flex xs12 sm4 md4>
-                <v-btn
-                  color="error"
-                  :block="$vuetify.breakpoint.xs"
-                  class="mt-3"
-                  outlined
-                  @click="reset()"
-                  >計算リセット</v-btn
-                >
-              </v-flex>
-            </v-row>
-          </v-container>
-        </v-card>
-        <!-- スマホの場合だけ、固定フッターを用意 -->
-        <v-footer
-          v-if="$vuetify.breakpoint.xs"
-          :fixed="$vuetify.breakpoint.xs"
-          app
-        >
-          <v-progress-linear
-            height="40"
-            color="purple accent-3"
-            style="color: white;"
-            reactive
-          >
-            <v-flex xs12 sm12>
-              <v-row algin="center">
-                <v-col style="text-align: center; font-size: 1.2rem;">
-                  <strong>TOTAL {{ averageDamage.toLocaleString() }}</strong>
-                </v-col>
-              </v-row>
-            </v-flex>
-          </v-progress-linear>
-        </v-footer>
+        <ResultCard
+          :character-class="characterClass"
+          :character-name="characterName"
+          :character-atk="characterAtk"
+          :np-charge-lv="npChargeLv"
+          :character-npmultiplier="characterNpmultiplier"
+          :servant-n-p-type="servantNPType"
+          :atk-buff="atkBuff"
+          :card-buff="cardBuff"
+          :s-atk-buff="sAtkBuff"
+          :np-buff="npBuff"
+          :s-np-atk-buff="sNpAtkBuff"
+          :dress-atk="dressAtk"
+          @reset-val="resetCalculation"
+        />
       </v-row>
     </v-flex>
   </v-layout>
@@ -447,17 +350,15 @@
 <script>
 import { ValidationProvider } from 'vee-validate'
 import Dialog from '@/components/calculator/Npatk/Dialog'
-import ResultDialog from '@/components/calculator/Npatk/ResultDialog'
 import PlusMinusButton from '@/components/calculator/Npatk/PlusMinusButton'
-import SpeechBubble from '@/components/calculator/Npatk/SpeechBubble'
+import ResultCard from '@/components/calculator/Npatk/ResultCard'
 
 export default {
   components: {
     ValidationProvider,
     Dialog,
-    ResultDialog,
     PlusMinusButton,
-    SpeechBubble
+    ResultCard
   },
   data() {
     return {
@@ -487,25 +388,13 @@ export default {
         npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
       },
       npChargeLv: '', // 選択された宝具レベル
-      selectClassCompatibility: [
-        { text: '等倍', value: 1.0 },
-        { text: '有利', value: 2.0 },
-        { text: '不利', value: 0.5 },
-        { text: '狂・分 有利', value: 1.5 }
-      ],
-      classCompatibility: 1.0, // クラス相性補正 デフォルトでselectClassCompatibilityを'等倍'にする
-      selectAttributeCompatibility: [
-        { text: '等倍', value: 1.0 },
-        { text: '有利', value: 1.1 },
-        { text: '不利', value: 0.9 }
-      ],
-      attributeCompatibility: 1.0, // 属性相性補正。デフォルトでselectAttributeCompatibilityを'等倍'にする
       atkBuff: 0, // 攻撃力バフ倍率
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
       sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
-      dressAtk: 0 // 概念礼装のATK
+      dressAtk: 0, // 概念礼装のATK
+      image_src: require('assets/altria.png')
     }
   },
   computed: {
@@ -523,84 +412,6 @@ export default {
         }
       }
       return filteredCharacters
-    },
-    // 宝具の平均ダメージ 乱数調整1.0倍 (100で割ってる箇所は数値を％として扱っているから)
-    // 0.23はFGOのダメージ処理で必ず入る固定補正値
-    averageDamage: {
-      get() {
-        return Math.floor(
-          (this.characterAtk + this.dressAtk) *
-            (this.characterNpmultiplier / 100) *
-            0.23 *
-            (this.cardVal * ((100 + this.cardBuff) / 100)) *
-            this.classCompatibility *
-            this.attributeCompatibility *
-            this.classCorrection *
-            ((100 + this.atkBuff) / 100) *
-            ((100 + this.sAtkBuff + this.npBuff) / 100) *
-            ((100 + this.sNpAtkBuff) / 100)
-        )
-      }
-    },
-    // 宝具の最低ダメージ 乱数調整0.9倍
-    minimumDamage: {
-      get() {
-        return Math.floor(this.averageDamage * 0.9).toLocaleString()
-      }
-    },
-    // 宝具の最高ダメージ 乱数調整1.1倍
-    maximumDamage: {
-      get() {
-        return Math.floor(this.averageDamage * 1.1).toLocaleString()
-      }
-    },
-    // クラス補正値
-    classCorrection: {
-      get() {
-        switch (this.characterClass) {
-          case 'セイバー':
-            return 1.0
-          case 'ライダー':
-            return 1.0
-          case 'ムーンキャンサー':
-            return 1.0
-          case 'アルターエゴ':
-            return 1.0
-          case 'フォーリナー':
-            return 1.0
-          case 'アーチャー':
-            return 0.95
-          case 'ランサー':
-            return 1.05
-          case 'キャスター':
-            return 0.9
-          case 'アサシン':
-            return 0.9
-          case 'バーサーカー':
-            return 1.1
-          case 'ルーラー':
-            return 1.1
-          case 'アヴェンジャー':
-            return 1.1
-          default:
-            return 0
-        }
-      }
-    },
-    // 宝具タイプ補正値
-    cardVal: {
-      get() {
-        switch (this.servantNPType) {
-          case 'Buster':
-            return 1.5
-          case 'Arts':
-            return 1.0
-          case 'Quick':
-            return 0.8
-          default:
-            return 0
-        }
-      }
     }
   },
   // データの初期化 Vuex
@@ -619,8 +430,7 @@ export default {
           this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
           this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
           this.setNpType(character)
-          this.setClassCompatibility(character)
-          this.attributeCompatibility = 1 // 等倍
+          this.switchAtk = false
         }
       }
     },
@@ -635,20 +445,6 @@ export default {
           break
         case 'Q':
           this.servantNPType = 'Quick'
-          break
-      }
-    },
-    // クラス相性はdefaultで有利にする(数値が大きくなるからUX向上)
-    setClassCompatibility(character) {
-      switch (character.class) {
-        case 'バーサーカー':
-          this.classCompatibility = 1.5
-          break
-        case 'アルターエゴ':
-          this.classCompatibility = 1.5
-          break
-        default:
-          this.classCompatibility = 2.0
           break
       }
     },
@@ -685,20 +481,14 @@ export default {
     openDisplay() {
       this.$refs.dlg.isDisplay = true
     },
-    openResultDisplay() {
-      this.$refs.rstDlg.isResultDisplay = true
-    },
-    reset() {
+    resetCalculation() {
       this.characterClass = ''
       this.characterName = ''
-      this.atk = []
+      this.switchAtk = false
       this.characterAtk = ''
       this.npChargeLv = ''
-      this.npmultiplier = []
       this.characterNpmultiplier = ''
       this.servantNPType = ''
-      this.classCompatibility = 1.0 // 等倍
-      this.attributeCompatibility = 1.0 // 等倍
       this.atkBuff = 0
       this.cardBuff = 0
       this.sAtkBuff = 0

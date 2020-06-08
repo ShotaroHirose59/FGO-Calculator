@@ -24,10 +24,12 @@ export default {
   props: {
     onClickMinusButton: {
       type: Function,
+      required: true,
       default: () => {}
     },
     onClickPlusButton: {
       type: Function,
+      required: true,
       default: () => {}
     }
   }
