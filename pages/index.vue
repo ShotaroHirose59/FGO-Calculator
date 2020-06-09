@@ -2,8 +2,8 @@
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
       <v-row dense="">
-        <v-col v-for="card in cards" :key="card.title" cols="12" sm="6" md="4">
-          <v-card class="mx-auto" max-width="250">
+        <v-col v-for="card in cards" :key="card.title" cols="6" sm="6" md="4">
+          <v-card class="mx-auto" max-width="200">
             <v-img
               :src="card.src"
               height="150px"
@@ -43,14 +43,12 @@ export default {
         },
         {
           title: 'サーヴァント一覧',
-          src:
-            'https://lh3.googleusercontent.com/53arAy1IbhiGBcfAJ7pi4r-FKOm8AbSVFoe8TF2-gbPNmgE8t9CF8mmfBYZ_c-jMqDqQwtTKzA-gcrNN-eCgNplTVnQF__Igkpx3mrnsVGRXQQ',
+          src: 'https://i.gyazo.com/576414755bc22031931048be972714b3.jpg',
           subtitle: 'Servant List'
         },
         {
           title: '天地人(獣星)LINE Bot',
-          src:
-            'https://appmedia.jp/wp-content/uploads/2016/03/4f0948b9cb8eb33e1534df2351822e37.jpg',
+          src: 'https://i.gyazo.com/a8ce934e888b8fff92cc23c9cdb7961f.jpg',
           subtitle: 'LINE Bot'
         }
       ]

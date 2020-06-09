@@ -19,6 +19,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "firebase": "^7.14.4",
     "nuxt": "^2.0.0",
+    "vee-validate": "^3.3.1",
     "vuexfire": "^3.1.0"
   },
   "devDependencies": {

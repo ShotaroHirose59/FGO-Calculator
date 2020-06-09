@@ -31,7 +31,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/vee-validate'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -88,6 +88,7 @@ export default {
       new webpack.ProvidePlugin({
         _: 'lodash'
       })
-    ]
+    ],
+    transpile: ['vee-validate/dist/rules']
   }
 }
