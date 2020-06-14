@@ -30,7 +30,7 @@
       <v-toolbar-title v-text="title" />
     </v-app-bar>
     <v-content>
-      <v-container fill-height>
+      <v-container fluid fill-height>
         <nuxt />
       </v-container>
     </v-content>
@@ -60,14 +60,9 @@ export default {
           to: '/npatk-calculation'
         },
         {
-          icon: 'mdi-sword-cross',
-          title: '宝具NP獲得計算',
-          to: ''
-        },
-        {
           icon: 'mdi-sword',
-          title: '通常ダメージ計算',
-          to: '/dc/normalatk'
+          title: '宝具NP獲得計算',
+          to: 'npaquisition-calculation'
         },
         {
           icon: 'mdi-database',

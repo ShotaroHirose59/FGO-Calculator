@@ -21,5 +21,13 @@ export const getters = {
   orderdCharacters: (state) => {
     /* global _ */
     return _.sortBy(state.characters, 'number')
+  },
+  artsQuickCahracters: (state) => {
+    return _.sortBy(
+      state.characters.filter(
+        (character) => character.card === 'A' || character.card === 'Q'
+      ),
+      'number'
+    )
   }
 }
