@@ -10,13 +10,16 @@
             fab
             class="mr-2"
             color="purple lighten-1"
-            @click="openDisplay()"
+            @click="openResultDisplay()"
           >
             <v-icon>mdi-help</v-icon>
           </v-btn>
         </v-col>
       </v-row>
     </v-card-title>
+
+    <!-- ダイアログ(計算方法) -->
+    <ResultDialog ref="rstDlg" />
 
     <v-card-text>
       <v-row no-gutters>
@@ -58,10 +61,12 @@
 </template>
 
 <script>
+import ResultDialog from '@/components/calculator/NpAcquisition/ResultDialog'
 import SpeechBubble from '@/components/calculator/NpAcquisition/SpeechBubble'
 
 export default {
   components: {
+    ResultDialog,
     SpeechBubble
   },
   props: {
@@ -173,6 +178,9 @@ export default {
     }
   },
   methods: {
+    openResultDisplay() {
+      this.$refs.rstDlg.isResultDisplay = true
+    },
     reset() {
       this.$emit('reset-val')
     }
