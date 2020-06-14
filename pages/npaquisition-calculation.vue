@@ -212,8 +212,9 @@
         </v-row>
       </v-card-text>
     </v-card>
-    <!-- 結果のカード -->
+    <!-- 結果のカード スマホの場合は表示しない -->
     <ResultCard
+      v-if="!$vuetify.breakpoint.xs"
       :character-name="characterName"
       :servant-n-p-type="servantNPType"
       :card-buff="cardBuff"

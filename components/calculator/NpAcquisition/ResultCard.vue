@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="!$vuetify.breakpoint.xs" class="col-md-12 mt-6">
+  <v-card class="col-md-12 mt-6">
     <v-card-title class="headline">
       NP獲得結果
       <v-row no-gutters>
