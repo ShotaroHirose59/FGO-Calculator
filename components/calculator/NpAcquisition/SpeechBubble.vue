@@ -83,8 +83,8 @@ export default {
 .balloon {
   position: relative; /* 三角の位置を固定するために設定 */
   display: inline-block;
-  max-width: 200px;
-  max-height: 60px;
+  max-width: 180px;
+  max-height: 80px;
   margin: 10px 20px 20px; /* 上 左右 下のマージン */
   padding: 8px 15px; /* ふきだし内の余白 */
   color: #555;
