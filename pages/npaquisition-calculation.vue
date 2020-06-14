@@ -204,13 +204,14 @@
             cols="12"
             style="text-align: center;"
           >
-            <v-btn color="error" class="mt-5" outlined @click="reset()"
+            <v-btn color="error" class="mt-5" outlined @click="resetAll()"
               >計算リセット</v-btn
             >
           </v-col>
         </v-row>
       </v-card-text>
     </v-card>
+    <!-- 結果のカード -->
     <ResultCard
       :character-name="characterName"
       :servant-n-p-type="servantNPType"
@@ -224,24 +225,19 @@
       @reset-val="resetAll"
     />
     <!-- スマホの場合だけ、固定フッターにする -->
-    <v-footer
+    <FixedFooter
       v-if="$vuetify.breakpoint.xs"
-      style="text-align: right;"
-      app
-      color="grey darken-4"
-      width="100%"
-    >
-      <v-col cols="12" sm="12" md="12">
-        <strong>NP {{ totalAcquisitionAmount }}％</strong>
-        <v-progress-linear
-          v-model="totalAcquisitionAmount"
-          rounded
-          color="amber"
-          height="10"
-          reactive
-        ></v-progress-linear>
-      </v-col>
-    </v-footer>
+      :character-name="characterName"
+      :servant-n-p-type="servantNPType"
+      :card-buff="cardBuff"
+      :np-charge-amount="npChargeAmount"
+      :np-hits="npHits"
+      :overkill-hits="overkillHits"
+      :enemy-class="enemyClass"
+      :enemy-count="enemyCount"
+      :np-acquisition-buff="npAcquisitionBuff"
+      @reset-val="resetAll"
+    />
   </v-row>
 </template>
 
@@ -249,12 +245,14 @@
 import { ValidationProvider } from 'vee-validate'
 import PlusMinusButton from '@/components/calculator/Npatk/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
+import FixedFooter from '@/components/calculator/NpAcquisition/FixedFooter'
 
 export default {
   components: {
     ValidationProvider,
     PlusMinusButton,
-    ResultCard
+    ResultCard,
+    FixedFooter
   },
   data() {
     return {
