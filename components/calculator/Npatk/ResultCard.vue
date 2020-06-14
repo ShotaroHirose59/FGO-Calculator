@@ -125,7 +125,7 @@ export default {
       type: [String, Number],
       required: true
     },
-    servantNPType: {
+    servantNpType: {
       type: String,
       required: true
     },
@@ -229,7 +229,7 @@ export default {
     },
     // 宝具タイプ補正値
     cardVal() {
-      switch (this.servantNPType) {
+      switch (this.servantNpType) {
         case 'Buster':
           return 1.5
         case 'Arts':

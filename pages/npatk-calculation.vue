@@ -53,7 +53,7 @@
 
               <v-flex xs3 sm2 md2>
                 <v-text-field
-                  v-model="servantNPType"
+                  v-model="servantNpType"
                   label="宝具タイプ"
                   disabled
                   placeholder="自動"
@@ -331,7 +331,7 @@
           :character-atk="characterAtk"
           :np-charge-lv="npChargeLv"
           :character-npmultiplier="characterNpmultiplier"
-          :servant-n-p-type="servantNPType"
+          :servant-np-type="servantNpType"
           :atk-buff="atkBuff"
           :card-buff="cardBuff"
           :s-atk-buff="sAtkBuff"
@@ -367,7 +367,7 @@ export default {
       characterAtk: '', // 配列から取得したサーヴァントの攻撃力
       npmultiplier: [], // キャラクターの宝具倍率の配列
       characterNpmultiplier: '', // 配列から取り出したサーヴァントの宝具倍率
-      servantNPType: '', // キャラクターの宝具タイプ
+      servantNpType: '', // キャラクターの宝具タイプ
       items: {
         class: [
           'セイバー',
@@ -436,13 +436,13 @@ export default {
     setNpType(character) {
       switch (character.card) {
         case 'B':
-          this.servantNPType = 'Buster'
+          this.servantNpType = 'Buster'
           break
         case 'A':
-          this.servantNPType = 'Arts'
+          this.servantNpType = 'Arts'
           break
         case 'Q':
-          this.servantNPType = 'Quick'
+          this.servantNpType = 'Quick'
           break
       }
     },
@@ -486,7 +486,7 @@ export default {
       this.characterAtk = ''
       this.npChargeLv = ''
       this.characterNpmultiplier = ''
-      this.servantNPType = ''
+      this.servantNpType = ''
       this.atkBuff = 0
       this.cardBuff = 0
       this.sAtkBuff = 0

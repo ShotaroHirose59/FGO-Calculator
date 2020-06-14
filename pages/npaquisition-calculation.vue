@@ -50,7 +50,7 @@
 
           <v-col cols="4" sm="3" md="2">
             <v-text-field
-              v-model.number="npChargeAmount"
+              v-model.number="npRate"
               label="NPレート"
               disabled
               placeholder="自動"
@@ -71,7 +71,7 @@
 
           <v-col cols="4" sm="3" md="2">
             <v-text-field
-              v-model="servantNPType"
+              v-model="servantNpType"
               label="宝具タイプ"
               disabled
               placeholder="自動"
@@ -216,9 +216,9 @@
     <ResultCard
       v-if="!$vuetify.breakpoint.xs"
       :character-name="characterName"
-      :servant-n-p-type="servantNPType"
+      :servant-np-type="servantNpType"
       :card-buff="cardBuff"
-      :np-charge-amount="npChargeAmount"
+      :np-rate="npRate"
       :np-hits="npHits"
       :overkill-hits="overkillHits"
       :enemy-class="enemyClass"
@@ -230,9 +230,9 @@
     <FixedFooter
       v-if="$vuetify.breakpoint.xs"
       :character-name="characterName"
-      :servant-n-p-type="servantNPType"
+      :servant-np-type="servantNpType"
       :card-buff="cardBuff"
-      :np-charge-amount="npChargeAmount"
+      :np-rate="npRate"
       :np-hits="npHits"
       :overkill-hits="overkillHits"
       :enemy-class="enemyClass"
@@ -262,8 +262,8 @@ export default {
     return {
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
-      servantNPType: '', // キャラクターの宝具タイプ
-      npChargeAmount: '', // NPレート
+      servantNpType: '', // キャラクターの宝具タイプ
+      npRate: '', // NPレート
       npHits: 0, // 宝具ヒット回数
       overkillHits: 0,
       items: {
@@ -328,7 +328,7 @@ export default {
       for (let i = 0; i < this.characters.length; i++) {
         const character = this.characters[i]
         if (character.name === characterName) {
-          this.npChargeAmount = character.npchargeatk
+          this.npRate = character.npchargeatk
           this.npHits = character.nphitcount
           this.setNpType(character)
           this.setEnemyCount(character)
@@ -339,13 +339,13 @@ export default {
     setNpType(character) {
       switch (character.card) {
         case 'B':
-          this.servantNPType = 'Buster'
+          this.servantNpType = 'Buster'
           break
         case 'A':
-          this.servantNPType = 'Arts'
+          this.servantNpType = 'Arts'
           break
         case 'Q':
-          this.servantNPType = 'Quick'
+          this.servantNpType = 'Quick'
           break
       }
     },
@@ -363,8 +363,8 @@ export default {
     resetAll() {
       this.characterClass = ''
       this.characterName = ''
-      this.servantNPType = ''
-      this.npChargeAmount = ''
+      this.servantNpType = ''
+      this.npRate = ''
       this.npHits = 0
       this.overkillHits = 0
       this.enemyClass = 'セイバー (1.0)'

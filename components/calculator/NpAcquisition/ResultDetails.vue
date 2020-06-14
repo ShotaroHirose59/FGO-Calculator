@@ -18,7 +18,7 @@
               reactive
             ></v-progress-linear>
             <div class="float-left mt-2">
-              {{ characterName }} {{ servantNPType }}
+              {{ characterName }} {{ servantNpType }}
             </div>
           </v-col>
 
@@ -64,7 +64,7 @@ export default {
       type: Number,
       required: true
     },
-    servantNPType: {
+    servantNpType: {
       type: [String, Number],
       required: true
     }

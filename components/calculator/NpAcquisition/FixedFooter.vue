@@ -11,7 +11,7 @@
           reactive
         ></v-progress-linear>
         <div class="float-left mt-2">
-          {{ characterName }} {{ servantNPType }}
+          {{ characterName }} {{ servantNpType }}
         </div>
       </v-col>
 
@@ -23,7 +23,7 @@
       <ResultDetails
         ref="Details"
         :character-name="characterName"
-        :servant-n-p-type="servantNPType"
+        :servant-np-type="servantNpType"
         :total-acquisition-amount="totalAcquisitionAmount"
       />
     </v-row>
@@ -41,7 +41,7 @@ export default {
       type: String,
       required: true
     },
-    servantNPType: {
+    servantNpType: {
       type: [String, Number],
       required: true
     },
@@ -49,7 +49,7 @@ export default {
       type: Number,
       required: true
     },
-    npChargeAmount: {
+    npRate: {
       type: [String, Number],
       required: true
     },
@@ -85,7 +85,7 @@ export default {
     },
     normalAcquisitionAmount() {
       return Math.floor(
-        this.npChargeAmount *
+        this.npRate *
           (this.cardVal * ((100 + this.cardBuff) / 100)) *
           (this.npHits - this.overkillHits) *
           ((100 + this.npAcquisitionBuff) / 100) *
@@ -95,7 +95,7 @@ export default {
     },
     overAcquisitionAmount() {
       return Math.floor(
-        this.npChargeAmount *
+        this.npRate *
           (this.cardVal * ((100 + this.cardBuff) / 100)) *
           ((1 * (this.overkillHits * 1.5)) / 1) *
           ((100 + this.npAcquisitionBuff) / 100) *
@@ -105,7 +105,7 @@ export default {
     },
     // 宝具タイプ補正値
     cardVal() {
-      switch (this.servantNPType) {
+      switch (this.servantNpType) {
         case 'Arts':
           return 3.0
         case 'Quick':
