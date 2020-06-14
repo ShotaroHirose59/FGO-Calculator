@@ -51,7 +51,7 @@ export default {
             return '自身のNPを20~100リチャージだ'
         }
         if (this.totalAcquisitionAmount >= 100) {
-          return '褒めてやる。 まるで映画の私だな'
+          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！」'
         } else if (this.totalAcquisitionAmount >= 70) {
           return 'なかなかやるな。 誉れにするがいい'
         } else if (this.totalAcquisitionAmount >= 50) {
