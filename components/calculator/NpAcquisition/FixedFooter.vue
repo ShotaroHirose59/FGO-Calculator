@@ -1,5 +1,5 @@
 <template>
-  <v-footer app color="grey darken-4" elevation="24">
+  <v-footer app fixed color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="9">
         <strong>NP {{ totalAcquisitionAmount }}％</strong>
@@ -14,15 +14,28 @@
           {{ characterName }} {{ servantNPType }}
         </div>
       </v-col>
-      <v-col cols="2" class="ml-4">
-        <v-img :src="image_src" width="65"></v-img>
+
+      <v-col cols="3">
+        <v-img :src="image_src" width="65" @click="displayDetails()"></v-img>
       </v-col>
+
+      <!-- 結果の詳細 -->
+      <ResultDetails
+        ref="Details"
+        :character-name="characterName"
+        :servant-n-p-type="servantNPType"
+        :total-acquisition-amount="totalAcquisitionAmount"
+      />
     </v-row>
   </v-footer>
 </template>
 
 <script>
+import ResultDetails from '@/components/calculator/NpAcquisition/ResultDetails'
 export default {
+  components: {
+    ResultDetails
+  },
   props: {
     characterName: {
       type: String,
@@ -134,8 +147,8 @@ export default {
     }
   },
   methods: {
-    reset() {
-      this.$emit('reset-val')
+    displayDetails() {
+      this.$refs.Details.isResultDetails = true
     }
   }
 }

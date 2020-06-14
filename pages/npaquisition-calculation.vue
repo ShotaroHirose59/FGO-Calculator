@@ -204,7 +204,7 @@
             cols="12"
             style="text-align: center;"
           >
-            <v-btn color="error" class="mt-4" outlined @click="resetAll()"
+            <v-btn color="error" class="mt-3" outlined @click="resetAll()"
               >計算リセット</v-btn
             >
           </v-col>
