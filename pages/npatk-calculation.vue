@@ -348,7 +348,7 @@
 <script>
 import { ValidationProvider } from 'vee-validate'
 import Dialog from '@/components/calculator/Npatk/Dialog'
-import PlusMinusButton from '@/components/calculator/Npatk/PlusMinusButton'
+import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
 
 export default {

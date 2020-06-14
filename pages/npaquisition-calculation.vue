@@ -243,7 +243,7 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
-import PlusMinusButton from '@/components/calculator/Npatk/PlusMinusButton'
+import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
 import FixedFooter from '@/components/calculator/NpAcquisition/FixedFooter'
 
