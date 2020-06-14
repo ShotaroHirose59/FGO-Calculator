@@ -1,15 +1,21 @@
 <template>
-  <v-footer style="text-align: right;" app color="grey darken-4" width="100%">
-    <v-row dense>
-      <v-col cols="12" sm="12" md="12">
+  <v-footer app color="grey darken-4" elevation="24">
+    <v-row no-gutters>
+      <v-col cols="9">
         <strong>NP {{ totalAcquisitionAmount }}％</strong>
         <v-progress-linear
           v-model="totalAcquisitionAmount"
           rounded
-          color="amber"
+          color="yellow darken-2"
           height="10"
           reactive
         ></v-progress-linear>
+        <div class="float-left mt-2">
+          {{ characterName }} {{ servantNPType }}
+        </div>
+      </v-col>
+      <v-col cols="2" class="ml-4">
+        <v-img :src="image_src" width="65"></v-img>
       </v-col>
     </v-row>
   </v-footer>
@@ -56,7 +62,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      image_src: require('assets/altria.png')
+    }
   },
   computed: {
     totalAcquisitionAmount() {
