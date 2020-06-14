@@ -21,7 +21,8 @@
       </v-card-subtitle>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
-      <!-- <Dialog ref="dlg" />-->
+      <Dialog ref="dlg" />
+
       <v-card-text>
         <v-row no-gutters>
           <v-col cols="12" sm="4" md="3">
@@ -243,6 +244,7 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
+import Dialog from '@/components/calculator/NpAcquisition/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
 import FixedFooter from '@/components/calculator/NpAcquisition/FixedFooter'
@@ -250,6 +252,7 @@ import FixedFooter from '@/components/calculator/NpAcquisition/FixedFooter'
 export default {
   components: {
     ValidationProvider,
+    Dialog,
     PlusMinusButton,
     ResultCard,
     FixedFooter
@@ -352,6 +355,9 @@ export default {
       } else {
         this.enemyCount = 3
       }
+    },
+    openDisplay() {
+      this.$refs.dlg.isDisplay = true
     },
     resetAll() {
       this.characterClass = ''
