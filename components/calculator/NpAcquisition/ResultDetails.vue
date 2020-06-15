@@ -8,7 +8,7 @@
       <v-card-text class="mt-2">
         <v-row no-gutters class="mt-2">
           <v-col cols="12" style="text-align: right;">
-            <strong>NP {{ totalAcquisitionAmount }}％</strong>
+            <strong class="title">NP {{ totalAcquisitionAmount }}％</strong>
             <v-progress-linear
               :value="totalAcquisitionAmount"
               rounded
