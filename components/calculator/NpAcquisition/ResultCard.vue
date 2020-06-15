@@ -28,6 +28,7 @@
           <v-progress-linear
             :value="totalAcquisitionAmount"
             rounded
+            class="mt-2"
             color="amber"
             height="10"
             reactive

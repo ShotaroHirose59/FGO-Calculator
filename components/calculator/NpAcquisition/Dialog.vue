@@ -7,6 +7,9 @@
       </v-toolbar>
       <v-card-text>
         <h3 class="mt-3 mb-1">
+          単体 or 全体宝具を持つArts Quickのサーヴァントが対象
+        </h3>
+        <h3 class="mt-5 mb-1">
           使い方
         </h3>
         <p>

@@ -18,8 +18,9 @@
           </v-col>
         </v-row>
       </v-toolbar>
+      <!-- スマホだと幅取るからいらない -->
       <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-        単体宝具、全体宝具を持つサーヴァントが対象
+        単体 or 全体宝具を持つ全てのサーヴァントが対象
       </v-card-subtitle>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->

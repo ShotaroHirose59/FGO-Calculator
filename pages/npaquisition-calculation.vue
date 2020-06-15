@@ -18,8 +18,9 @@
           </v-col>
         </v-row>
       </v-toolbar>
+      <!-- スマホだと幅取るからいらない -->
       <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-        Arts Quick宝具のサーヴァントのみ
+        単体 or 全体宝具を持つArts Quickのサーヴァントが対象
       </v-card-subtitle>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
