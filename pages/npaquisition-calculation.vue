@@ -18,7 +18,7 @@
           </v-col>
         </v-row>
       </v-toolbar>
-      <v-card-subtitle>
+      <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
         Arts Quick宝具のサーヴァントのみ
       </v-card-subtitle>
 
@@ -381,9 +381,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.v-card {
-  border: solid teal 1px;
-}
-</style>

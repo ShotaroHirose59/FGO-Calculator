@@ -18,7 +18,7 @@
           </v-col>
         </v-row>
       </v-toolbar>
-      <v-card-subtitle>
+      <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
         単体宝具、全体宝具を持つサーヴァントが対象
       </v-card-subtitle>
 
@@ -496,7 +496,6 @@ export default {
 
 <style scoped>
 .v-card {
-  border: solid teal 1px;
   margin: 5px 0px;
 }
 </style>
