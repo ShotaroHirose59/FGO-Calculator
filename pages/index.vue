@@ -2,7 +2,7 @@
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
       <v-row dense="">
-        <v-col v-for="card in cards" :key="card.title" cols="6" sm="6" md="4">
+        <v-col v-for="card in cards" :key="card.title" cols="12" sm="6" md="6">
           <v-card class="mx-auto" max-width="200">
             <v-img
               :src="card.src"
@@ -34,11 +34,6 @@ export default {
           title: '宝具NP獲得計算',
           src:
             'https://lh3.googleusercontent.com/pVUgU0YBmqVTQenHldH5_OtWSmAq9WCMclhjeIFNEttou0Aa3swJBlB7lTREKwNOfc8rB67cNOUtsCPHX_aEBlbl0YzGYwuhcRksmaTxzSOI',
-          subtitle: 'Damage calculation'
-        },
-        {
-          title: '通常ダメージ計算',
-          src: 'https://pbs.twimg.com/media/EOShV4iUYAEAq3s.jpg',
           subtitle: 'Damage calculation'
         },
         {
