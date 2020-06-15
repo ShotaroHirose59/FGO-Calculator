@@ -22,7 +22,7 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="9" sm="4" md="4">
+          <v-col cols="12" sm="4" md="4">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -31,10 +31,6 @@
               color="teal accent-4"
             ></v-select>
           </v-col>
-
-          <v-flex v-if="$vuetify.breakpoint.xs" xs3>
-            <v-img class="ml-2" :src="image_src" max-width="80px"></v-img>
-          </v-flex>
 
           <v-col cols="9" sm="6" md="6">
             <v-select
@@ -386,8 +382,7 @@ export default {
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
       sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
-      dressAtk: 0, // 概念礼装のATK
-      image_src: require('assets/altria.png')
+      dressAtk: 0 // 概念礼装のATK
     }
   },
   computed: {
