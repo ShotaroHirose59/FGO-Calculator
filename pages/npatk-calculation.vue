@@ -1,21 +1,26 @@
 <template>
-  <v-row dense>
+  <v-row no-gutters>
     <v-card class="col-md-6">
-      <v-card-title class="headline">
+      <v-toolbar class="title" elevation="4">
         宝具ダメージ 計算
-        <v-flex style="text-align: right;">
-          <v-btn
-            outlined
-            small
-            fab
-            class="mr-2"
-            color="purple lighten-1"
-            @click="openDisplay()"
-          >
-            <v-icon>mdi-help</v-icon>
-          </v-btn>
-        </v-flex>
-      </v-card-title>
+        <v-row no-gutters>
+          <v-col style="text-align: right;">
+            <v-btn
+              outlined
+              small
+              fab
+              class="mr-2"
+              color="purple lighten-1"
+              @click="openDisplay()"
+            >
+              <v-icon>mdi-help</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-toolbar>
+      <v-card-subtitle>
+        単体宝具、全体宝具を持つサーヴァントが対象
+      </v-card-subtitle>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
@@ -492,5 +497,6 @@ export default {
 <style scoped>
 .v-card {
   border: solid teal 1px;
+  margin: 5px 0px;
 }
 </style>

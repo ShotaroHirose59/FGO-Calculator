@@ -1,21 +1,23 @@
 <template>
-  <v-row dense>
+  <v-row no-gutters>
     <v-card class="col-md-12">
-      <v-card-title class="headline">
+      <v-toolbar class="title" elevation="4">
         宝具NP獲得 計算
-        <v-flex style="text-align: right;">
-          <v-btn
-            outlined
-            small
-            fab
-            class="mr-3"
-            color="purple lighten-1"
-            @click="openDisplay()"
-          >
-            <v-icon>mdi-help</v-icon>
-          </v-btn>
-        </v-flex>
-      </v-card-title>
+        <v-row no-gutters>
+          <v-col style="text-align: right;">
+            <v-btn
+              outlined
+              small
+              fab
+              class="mr-3"
+              color="purple lighten-1"
+              @click="openDisplay()"
+            >
+              <v-icon>mdi-help</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-toolbar>
       <v-card-subtitle>
         Arts Quick宝具のサーヴァントのみ
       </v-card-subtitle>

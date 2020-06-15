@@ -1,6 +1,6 @@
 <template>
   <v-card class="col-md-12 mt-6">
-    <v-card-title class="headline">
+    <v-toolbar class="title" elevation="4">
       宝具NP獲得 結果
       <v-row no-gutters>
         <v-col style="text-align: right;">
@@ -16,7 +16,7 @@
           </v-btn>
         </v-col>
       </v-row>
-    </v-card-title>
+    </v-toolbar>
 
     <!-- ダイアログ(計算方法) -->
     <ResultDialog ref="rstDlg" />
