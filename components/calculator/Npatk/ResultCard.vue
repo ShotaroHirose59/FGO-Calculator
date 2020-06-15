@@ -1,6 +1,6 @@
 <template>
-  <v-card class="col-md-6">
-    <v-card-title class="headline" max-width="550">
+  <v-card class="col-md-6" max-width="550">
+    <v-card-title class="headline">
       ダメージ結果
       <v-flex style="text-align: right;">
         <v-btn
@@ -16,7 +16,7 @@
       </v-flex>
     </v-card-title>
     <v-card-subtitle class="mt-1">
-      宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する
+      宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する。
       周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
     </v-card-subtitle>
 
@@ -125,7 +125,7 @@ export default {
       type: [String, Number],
       required: true
     },
-    servantNPType: {
+    servantNpType: {
       type: String,
       required: true
     },
@@ -229,7 +229,7 @@ export default {
     },
     // 宝具タイプ補正値
     cardVal() {
-      switch (this.servantNPType) {
+      switch (this.servantNpType) {
         case 'Buster':
           return 1.5
         case 'Arts':
@@ -254,9 +254,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.v-card {
-  border: solid teal 1px;
-  margin: 5px 10px;
-}
-</style>
+<style scoped></style>
