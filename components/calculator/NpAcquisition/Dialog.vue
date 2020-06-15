@@ -1,12 +1,10 @@
 <template>
   <v-dialog v-model="isDisplay" scrollable max-width="800px">
     <v-card>
-      <v-card-title class="headline">
-        <v-img :src="image_src" max-width="80px" class="mr-5"></v-img>
-        使い方と詳細
-        <v-spacer />
-      </v-card-title>
-      <v-divider />
+      <v-toolbar>
+        <v-img :src="image_src" max-width="60px" class="mr-5"></v-img>
+        <v-toolbar-title>使い方と詳細</v-toolbar-title>
+      </v-toolbar>
       <v-card-text>
         <h3 class="mt-3 mb-1">
           使い方

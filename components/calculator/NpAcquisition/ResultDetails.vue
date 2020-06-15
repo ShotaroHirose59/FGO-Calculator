@@ -1,11 +1,10 @@
 <template>
   <v-dialog v-model="isResultDetails" scrollable>
     <v-card>
-      <v-card-title class="headline">
-        漆黒の騎士王からの助言
-        <v-spacer />
-      </v-card-title>
-      <v-divider />
+      <v-toolbar>
+        <v-toolbar-title>漆黒の騎士王からの助言</v-toolbar-title>
+      </v-toolbar>
+
       <v-card-text>
         <v-row no-gutters class="mt-2">
           <v-col cols="12" style="text-align: right;">
@@ -63,19 +62,18 @@
               キャスターなら1.2と高くバーサーカーは0.8と低い。
             </li>
           </ul>
-
-          <v-col style="text-align: right;">
-            <v-btn
-              color="red"
-              text
-              style="font-size: 18px;"
-              @click="isResultDetails = false"
-            >
-              Close
-            </v-btn>
-          </v-col>
         </v-row>
       </v-card-text>
+      <v-col style="text-align: right;">
+        <v-btn
+          color="red"
+          text
+          style="font-size: 18px;"
+          @click="isResultDetails = false"
+        >
+          Close
+        </v-btn>
+      </v-col>
     </v-card>
   </v-dialog>
 </template>
