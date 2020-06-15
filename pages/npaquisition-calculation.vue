@@ -115,7 +115,11 @@
           </v-col>
 
           <v-col cols="8" sm="2" md="2">
-            <validation-provider ref="provider" v-slot="{ errors }">
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required|numeric|maxNumericalValue"
+            >
               <v-text-field
                 v-model.number="npAcquisitionBuff"
                 label="NP獲得量UP"
