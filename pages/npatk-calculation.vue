@@ -60,6 +60,7 @@
               v-model="npChargeLv"
               label="宝具レベル"
               :items="items.npChargeLevel"
+              :disabled="!characterName"
               class="mr-3"
               color="teal accent-4"
               @change="onChangeNpmultiplier(npChargeLv)"
@@ -99,7 +100,7 @@
             <v-switch
               v-model="atk"
               label="Lv.100"
-              :disabled="!characterAtk"
+              :disabled="!characterName"
               hide-details
               class="mr-3"
               color="teal accent-4"
