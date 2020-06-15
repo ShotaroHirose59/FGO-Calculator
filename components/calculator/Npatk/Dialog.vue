@@ -1,7 +1,8 @@
 <template>
-  <v-dialog v-model="isDisplay" scrollable max-width="700px">
+  <v-dialog v-model="isDisplay" scrollable max-width="800px">
     <v-card>
       <v-card-title class="headline">
+        <v-img :src="image_src" max-width="80px" class="mr-5"></v-img>
         使い方と詳細
         <v-spacer />
       </v-card-title>
@@ -43,7 +44,7 @@
         <v-btn
           color="red"
           text
-          style="font-size: 16px;"
+          style="font-size: 18px;"
           @click="isDisplay = false"
         >
           Close
@@ -57,6 +58,7 @@
 export default {
   data() {
     return {
+      image_src: require('assets/altria.png'),
       isDisplay: false
     }
   }

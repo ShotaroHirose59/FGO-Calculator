@@ -1,7 +1,8 @@
 <template>
-  <v-dialog v-model="isResultDisplay" scrollable max-width="700px">
+  <v-dialog v-model="isResultDisplay" scrollable max-width="800px">
     <v-card>
       <v-card-title class="headline">
+        <v-img :src="image_src" max-width="80px" class="mr-5"></v-img>
         計算方法
         <v-spacer />
       </v-card-title>
@@ -48,7 +49,7 @@
         <v-btn
           color="red"
           text
-          style="font-size: 16px;"
+          style="font-size: 18px;"
           @click="isResultDisplay = false"
         >
           Close
@@ -62,6 +63,7 @@
 export default {
   data() {
     return {
+      image_src: require('assets/altria.png'),
       isResultDisplay: false
     }
   }
