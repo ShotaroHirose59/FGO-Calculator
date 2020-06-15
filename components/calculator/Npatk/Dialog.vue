@@ -20,23 +20,23 @@
         <h3 class="mt-5 mb-1">
           入力項目の詳細
         </h3>
-        <ul class="mb-3">
-          <li>
+        <ul>
+          <li class="mb-1">
             攻撃力UP ・・・ 攻撃力UPバフ
           </li>
-          <li>
+          <li class="mb-1">
             カードUP ・・・ カード性能UPバフ
           </li>
-          <li>
+          <li class="mb-1">
             特攻バフ ・・・ 特攻付与スキル (例 スカサハの〔神性〕特攻を付与)
           </li>
-          <li>
+          <li class="mb-1">
             宝具威力UP ・・・ 宝具威力UPバフ
           </li>
-          <li>
+          <li class="mb-1">
             特攻宝具 ・・・ 宝具時に乗る特攻バフ (例 ギルのサーヴァント特攻)
           </li>
-          <li>
+          <li class="mb-1">
             礼装ATK ・・・ 概念礼装のATK
           </li>
         </ul>
