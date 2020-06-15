@@ -23,7 +23,7 @@
 
     <v-card-text>
       <v-row no-gutters>
-        <v-col cols="6" sm="6" md="5">
+        <v-col cols="6" sm="12" md="5">
           <strong class="title">NP {{ totalAcquisitionAmount }}％</strong>
           <v-progress-linear
             v-model.number="totalAcquisitionAmount"
@@ -43,14 +43,14 @@
           </v-list-item>
         </v-col>
 
-        <v-col class="ml-5" md="5">
+        <v-col class="ml-5" sm="9" md="5">
           <SpeechBubble
             :character-name="characterName"
             :total-acquisition-amount="totalAcquisitionAmount"
           />
         </v-col>
 
-        <v-col class="mt-10" style="text-align: right;" md="1">
+        <v-col class="mt-10" style="text-align: right;" sm="2" md="1">
           <v-btn color="error" class="mt-10" outlined @click="reset()"
             >計算リセット</v-btn
           >

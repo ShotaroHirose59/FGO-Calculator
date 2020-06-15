@@ -27,7 +27,7 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="4" md="3">
+          <v-col cols="12" sm="6" md="3">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -50,7 +50,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="3" md="2">
+          <v-col cols="4" sm="4" md="2">
             <v-text-field
               v-model.number="npRate"
               label="NPレート"
@@ -60,7 +60,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="4" sm="3" md="2">
+          <v-col cols="4" sm="4" md="2">
             <v-text-field
               v-model.number="npHits"
               label="宝具ヒット数"
@@ -71,7 +71,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="4" sm="3" md="2">
+          <v-col cols="4" sm="4" md="2">
             <v-text-field
               v-model="servantNpType"
               label="宝具タイプ"
@@ -81,7 +81,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -116,7 +116,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -151,7 +151,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -186,7 +186,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="3" md="2">
             <v-select
               v-model="enemyClass"
               label="敵クラス"
@@ -196,7 +196,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="1">
+          <v-col cols="4" sm="3" md="1">
             <v-select
               v-model.number="enemyCount"
               label="敵の数"
