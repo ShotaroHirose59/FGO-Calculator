@@ -2,7 +2,7 @@
   <v-row dense>
     <v-card class="col-md-12">
       <v-card-title class="headline">
-        宝具NP獲得計算
+        宝具NP獲得 計算
         <v-flex style="text-align: right;">
           <v-btn
             outlined
@@ -153,7 +153,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxOverkillHits"
+              rules="required|numeric"
             >
               <v-text-field
                 v-model.number="overkillHits"

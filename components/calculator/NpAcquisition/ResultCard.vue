@@ -1,7 +1,7 @@
 <template>
   <v-card class="col-md-12 mt-6">
     <v-card-title class="headline">
-      NP獲得結果
+      宝具NP獲得 結果
       <v-row no-gutters>
         <v-col style="text-align: right;">
           <v-btn
