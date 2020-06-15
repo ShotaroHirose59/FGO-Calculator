@@ -10,7 +10,7 @@
           <v-col cols="12" style="text-align: right;">
             <strong>NP {{ totalAcquisitionAmount }}％</strong>
             <v-progress-linear
-              v-model="totalAcquisitionAmount"
+              :value="totalAcquisitionAmount"
               rounded
               color="yellow darken-2"
               height="10"
