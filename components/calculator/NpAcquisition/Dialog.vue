@@ -1,8 +1,8 @@
 <template>
   <v-dialog v-model="isDisplay" scrollable max-width="800px">
     <v-card>
-      <v-toolbar>
-        <v-img :src="image_src" max-width="60px" class="mr-5"></v-img>
+      <v-toolbar height="75px">
+        <v-img :src="image_src" max-width="70px" class="mr-5"></v-img>
         <v-toolbar-title>使い方と詳細</v-toolbar-title>
       </v-toolbar>
       <v-card-text>

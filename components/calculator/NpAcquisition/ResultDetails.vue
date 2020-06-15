@@ -5,7 +5,7 @@
         <v-toolbar-title>漆黒の騎士王からの助言</v-toolbar-title>
       </v-toolbar>
 
-      <v-card-text>
+      <v-card-text class="mt-2">
         <v-row no-gutters class="mt-2">
           <v-col cols="12" style="text-align: right;">
             <strong>NP {{ totalAcquisitionAmount }}％</strong>
