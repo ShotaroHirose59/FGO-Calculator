@@ -30,7 +30,7 @@
 
 ### Firebase
 - Firebase 7.14.4 <br/>
-    Cloud FireStore
+    Cloud Firestore
 
 ### インフラストラクチャー
 - CircleCI
