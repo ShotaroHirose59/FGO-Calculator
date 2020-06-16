@@ -11,9 +11,12 @@
 <img width="800" alt="スクリーンショット 2020-06-16 15 09 11" src="https://user-images.githubusercontent.com/55835461/84737843-b4901580-afe3-11ea-91ca-4256d7f10136.png"> 
 
 ##### スマホ画面
-<img width="311" alt="スクリーンショット 2020-06-16 17 13 01" src="https://user-images.githubusercontent.com/55835461/84749921-959a7f00-aff5-11ea-9b10-43c86b07f064.png">
-<img width="311" alt="スクリーンショット 2020-06-16 17 12 50" src="https://user-images.githubusercontent.com/55835461/84750065-c7abe100-aff5-11ea-9cc0-4a26f6e61844.png">
-
+##### スマホ画面
+| 宝具ダメージ 計算 | 宝具ダメージ 結果 |
+| :---: | :---: |
+| <img src="https://gyazo.com/5acf3bd303b157d2f42a877ed9727ad6.png" width="265px"> | <img src="https://gyazo.com/f578b27438c77775a1cd073b0f9d3c64.png" width="265px"> | 
+<br/>
+<br/>
 
 ### ②宝具NP獲得計算
 サーヴァントが宝具を打った時、その宝具だけでどれだけNPを獲得できるかを計算できる。
@@ -21,10 +24,15 @@
 <img width="1440" alt="スクリーンショット 2020-06-16 15 13 37" src="https://user-images.githubusercontent.com/55835461/84738031-1f415100-afe4-11ea-9ff3-94c7d66112ad.png">
 
 ##### スマホ画面
-固定フッターで結果をリアクティブに反映
+固定フッターで結果をリアクティブに反映。<br/>
+結果の数値に応じてセリフを変更。
 
-<img width="310" alt="スクリーンショット 2020-06-16 17 16 03" src="https://user-images.githubusercontent.com/55835461/84750219-f5912580-aff5-11ea-936a-3521ff7dc6b0.png">
-<img width="310" alt="スクリーンショット 2020-06-16 17 16 14" src="https://user-images.githubusercontent.com/55835461/84750240-fd50ca00-aff5-11ea-8c29-fd38f69652f6.png">
+| 宝具NP獲得 計算 | ヘルプ & セリフ画面 | ヘルプ & セリフ画面 |
+| :---: | :---: | :---: |
+| <img src="https://gyazo.com/f1712710db35b8dd1b56cee92d8c3495.png" width="265px"> | <img src="https://gyazo.com/3e5e394bc770c2eebb9b4d7a2a1cf7fe.png" width="265px"> | <img src="https://gyazo.com/86f80e25c36cea86a69abd826c94359b.png" width="265px"> |  
+<br/>
+<br/>
+<br/>
 
 ## 使用技術
 #### Nuxt.js × Firebase
