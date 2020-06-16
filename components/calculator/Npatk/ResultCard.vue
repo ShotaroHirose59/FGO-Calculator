@@ -1,7 +1,7 @@
 <template>
   <v-card class="col-md-6">
     <v-toolbar class="title" elevation="4">
-      ダメージ 結果
+      宝具ダメージ 結果
       <v-row no-gutters>
         <v-col style="text-align: right;">
           <v-btn
