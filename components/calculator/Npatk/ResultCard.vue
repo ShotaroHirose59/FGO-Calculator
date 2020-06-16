@@ -1,39 +1,41 @@
 <template>
-  <v-card class="col-md-6" max-width="550">
-    <v-card-title class="headline">
-      ダメージ結果
-      <v-flex style="text-align: right;">
-        <v-btn
-          style="text-align: right;"
-          outlined
-          small
-          fab
-          color="purple lighten-1"
-          @click="openResultDisplay()"
-        >
-          <v-icon>mdi-help</v-icon>
-        </v-btn>
-      </v-flex>
-    </v-card-title>
-    <v-card-subtitle class="mt-1">
-      宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する。
+  <v-card class="col-md-6">
+    <v-toolbar class="title" elevation="4">
+      宝具ダメージ 結果
+      <v-row no-gutters>
+        <v-col style="text-align: right;">
+          <v-btn
+            style="text-align: right;"
+            outlined
+            small
+            fab
+            color="purple lighten-1"
+            @click="openResultDisplay()"
+          >
+            <v-icon>mdi-help</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-toolbar>
+    <v-card-subtitle>
+      宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する。<br />
       周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
     </v-card-subtitle>
 
     <!-- ダイアログ(計算方法) -->
     <ResultDialog ref="rstDlg" />
 
-    <v-container>
+    <v-card-text>
       <v-row no-gutters>
-        <v-flex xs6 sm6 md6>
+        <v-col cols="6" sm="6" md="6">
           <!-- イラストと吹き出しを差し込む -->
           <SpeechBubble
             :character-name="characterName"
             :average-damage="averageDamage"
           />
-        </v-flex>
+        </v-col>
 
-        <v-flex xs6 sm6 md6>
+        <v-col cols="6" sm="6" md="6">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-subtitle>TOTAL(最小)</v-list-item-subtitle>
@@ -58,9 +60,9 @@
               }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </v-flex>
+        </v-col>
 
-        <v-flex xs6 sm4 md4>
+        <v-col cols="6" sm="4" md="4">
           <v-select
             v-model="classCompatibility"
             label="クラス相性"
@@ -68,9 +70,9 @@
             class="ml-2 mr-5"
             color="teal accent-4"
           ></v-select>
-        </v-flex>
+        </v-col>
 
-        <v-flex xs6 sm4 md4>
+        <v-col cols="6" sm="4" md="4">
           <v-select
             v-model="attributeCompatibility"
             label="属性相性"
@@ -78,20 +80,15 @@
             class="ml-2 mr-5"
             color="teal accent-4"
           ></v-select>
-        </v-flex>
+        </v-col>
 
-        <v-flex xs12 sm4 md4>
-          <v-btn
-            color="error"
-            :block="$vuetify.breakpoint.xs"
-            class="mt-3"
-            outlined
-            @click="reset()"
+        <v-col cols="12" sm="4" md="4" style="text-align: center;">
+          <v-btn color="error" class="mt-3" outlined @click="reset()"
             >計算リセット</v-btn
           >
-        </v-flex>
+        </v-col>
       </v-row>
-    </v-container>
+    </v-card-text>
   </v-card>
 </template>
 

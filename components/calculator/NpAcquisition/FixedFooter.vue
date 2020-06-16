@@ -1,10 +1,10 @@
 <template>
-  <v-footer app fixed color="grey darken-4" elevation="24">
+  <v-footer app fixed width="100%" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="9">
         <strong>NP {{ totalAcquisitionAmount }}％</strong>
         <v-progress-linear
-          v-model="totalAcquisitionAmount"
+          :value="totalAcquisitionAmount"
           rounded
           color="yellow darken-2"
           height="10"
@@ -16,7 +16,7 @@
       </v-col>
 
       <v-col cols="3">
-        <v-img :src="image_src" width="65" @click="displayDetails()"></v-img>
+        <v-img :src="image_src" width="60" @click="displayDetails()"></v-img>
       </v-col>
 
       <!-- 結果の詳細 -->

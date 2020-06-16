@@ -1,14 +1,15 @@
 <template>
   <v-dialog v-model="isDisplay" scrollable max-width="800px">
     <v-card>
-      <v-card-title class="headline">
-        <v-img :src="image_src" max-width="80px" class="mr-5"></v-img>
-        使い方と詳細
-        <v-spacer />
-      </v-card-title>
-      <v-divider />
+      <v-toolbar height="75px">
+        <v-img :src="image_src" max-width="70px" class="mr-5"></v-img>
+        <v-toolbar-title>使い方と詳細</v-toolbar-title>
+      </v-toolbar>
       <v-card-text>
         <h3 class="mt-3 mb-1">
+          単体 or 全体宝具を持つArts Quickのサーヴァントが対象
+        </h3>
+        <h3 class="mt-5 mb-1">
           使い方
         </h3>
         <p>
@@ -19,20 +20,20 @@
         <h3 class="mt-5 mb-1">
           入力項目の詳細
         </h3>
-        <ul class="mb-3">
-          <li>
+        <ul>
+          <li class="mb-1">
             カード性能UP ・・・ カード性能UPバフ
           </li>
-          <li>
+          <li class="mb-1">
             NP獲得量UP ・・・ NP獲得量UPバフ
           </li>
-          <li>
+          <li class="mb-1">
             敵クラス ・・・ 敵のクラスによって獲得できるNP量に変化が生じる。
           </li>
-          <li>
+          <li class="mb-1">
             敵の数 ・・・ 敵の数によって獲得できるNP量に変化が生じる。
           </li>
-          <li>
+          <li class="mb-1">
             オーバーキルHit数 ・・・
             オーバーキルHit数は敵を倒しきったタイミングを指す。
             (例）3Hitする宝具で2Hit目に敵を倒しきれば2Hitオーバーキルと表現し、数値も上昇する。
