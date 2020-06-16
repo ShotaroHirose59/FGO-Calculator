@@ -14,6 +14,8 @@
 <img width="800" alt="スクリーンショット 2020-06-16 15 13 37" src="https://user-images.githubusercontent.com/55835461/84738031-1f415100-afe4-11ea-9ff3-94c7d66112ad.png">
 
 ## 使用技術
+#### Nuxt.js × Firebase
+
 ### フロントエンド
 - Nuxt 2.12.2
 - Vue 2.6.11
