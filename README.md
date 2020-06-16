@@ -13,8 +13,25 @@
 サーヴァントが宝具を打った時、その宝具だけでどれだけNPを獲得できるかを計算できる。
 <img width="800" alt="スクリーンショット 2020-06-16 15 13 37" src="https://user-images.githubusercontent.com/55835461/84738031-1f415100-afe4-11ea-9ff3-94c7d66112ad.png">
 
+## 使用技術
+### フロントエンド
+- Nuxt 2.12.2
+- Vue 2.6.11
+- Vuex 3.3.0
+- VuexFire 3.10
+- vee-validate 3.3.1
+- Vuetify 2.2.27
+- PWA 3.00
+- dotenv 1.40
+- eslint 6.8.0
+- prettier 1.19.1
 
-> My fantabulous Nuxt.js project
+### Firebase
+- Firebase 7.14.4 <br/>
+    Cloud FireStore
+
+### インフラストラクチャー
+- CircleCI
 
 ## Build Setup
 
