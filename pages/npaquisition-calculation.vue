@@ -1,23 +1,26 @@
 <template>
-  <v-row dense>
+  <v-row no-gutters>
     <v-card class="col-md-12">
-      <v-card-title class="headline">
-        宝具NP獲得計算
-        <v-flex style="text-align: right;">
-          <v-btn
-            outlined
-            small
-            fab
-            class="mr-3"
-            color="purple lighten-1"
-            @click="openDisplay()"
-          >
-            <v-icon>mdi-help</v-icon>
-          </v-btn>
-        </v-flex>
-      </v-card-title>
-      <v-card-subtitle>
-        Arts Quick宝具のサーヴァントのみ
+      <v-toolbar class="title" elevation="4">
+        宝具NP獲得 計算
+        <v-row no-gutters>
+          <v-col style="text-align: right;">
+            <v-btn
+              outlined
+              small
+              fab
+              class="mr-3"
+              color="purple lighten-1"
+              @click="openDisplay()"
+            >
+              <v-icon>mdi-help</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-toolbar>
+      <!-- スマホだと幅取るからいらない -->
+      <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
+        単体 or 全体宝具を持つArts Quickのサーヴァントが対象
       </v-card-subtitle>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
@@ -25,7 +28,7 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="4" md="3">
+          <v-col cols="12" sm="6" md="3">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -48,7 +51,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="3" md="2">
+          <v-col cols="4" sm="4" md="2">
             <v-text-field
               v-model.number="npRate"
               label="NPレート"
@@ -58,7 +61,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="4" sm="3" md="2">
+          <v-col cols="4" sm="4" md="2">
             <v-text-field
               v-model.number="npHits"
               label="宝具ヒット数"
@@ -69,7 +72,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="4" sm="3" md="2">
+          <v-col cols="4" sm="4" md="2">
             <v-text-field
               v-model="servantNpType"
               label="宝具タイプ"
@@ -79,7 +82,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -114,7 +117,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -149,11 +152,11 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxOverkillHits"
+              rules="required|numeric"
             >
               <v-text-field
                 v-model.number="overkillHits"
@@ -184,7 +187,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="2" md="2">
+          <v-col cols="8" sm="3" md="2">
             <v-select
               v-model="enemyClass"
               label="敵クラス"
@@ -194,7 +197,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="1">
+          <v-col cols="4" sm="3" md="1">
             <v-select
               v-model.number="enemyCount"
               label="敵の数"
@@ -379,9 +382,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.v-card {
-  border: solid teal 1px;
-}
-</style>

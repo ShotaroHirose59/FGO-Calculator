@@ -1,17 +1,16 @@
 <template>
   <v-dialog v-model="isResultDetails" scrollable>
     <v-card>
-      <v-card-title class="headline">
-        漆黒の騎士王からの助言
-        <v-spacer />
-      </v-card-title>
-      <v-divider />
-      <v-card-text>
+      <v-toolbar>
+        <v-toolbar-title>漆黒の騎士王からの助言</v-toolbar-title>
+      </v-toolbar>
+
+      <v-card-text class="mt-2">
         <v-row no-gutters class="mt-2">
           <v-col cols="12" style="text-align: right;">
-            <strong>NP {{ totalAcquisitionAmount }}％</strong>
+            <strong class="title">NP {{ totalAcquisitionAmount }}％</strong>
             <v-progress-linear
-              v-model="totalAcquisitionAmount"
+              :value="totalAcquisitionAmount"
               rounded
               color="yellow darken-2"
               height="10"
@@ -41,12 +40,12 @@
           <h3 class="mt-5 mb-1">
             計算項目の説明
           </h3>
-          <ul class="mb-3">
+          <ul>
             <li class="mb-1">
-              NPレート ・・・ 個々のサーヴァントに設定されている数値
+              NPレート ・・・ 個々のサーヴァントに設定されている数値。
             </li>
             <li class="mb-1">
-              カード補正 ・・・ 宝具タイプで数値が決まる (Arts 3、Quick
+              カード補正 ・・・ 宝具タイプで数値が決まる。(Arts 3、Quick
               1、Buster 0)
             </li>
             <li class="mb-1">
@@ -54,28 +53,27 @@
               ・・・Arts性能〜%UPなど。同系統のバフは全て加算。<br />
               (例) Arts性能30%UP、Arts性能50%UPを使用した場合は80%UPとなる。
             </li>
-            <li>
+            <li class="mb-1">
               NP獲得量バフ補正 ・・・
               NP獲得量〜%UPなど。同系統のバフは全て加算。
             </li>
-            <li>
+            <li class="mb-1">
               敵クラス補正 ・・・ 敵のクラス別に入る補正値。<br />
               キャスターなら1.2と高くバーサーカーは0.8と低い。
             </li>
           </ul>
-
-          <v-col style="text-align: right;">
-            <v-btn
-              color="red"
-              text
-              style="font-size: 18px;"
-              @click="isResultDetails = false"
-            >
-              Close
-            </v-btn>
-          </v-col>
         </v-row>
       </v-card-text>
+      <v-col style="text-align: right;">
+        <v-btn
+          color="red"
+          text
+          style="font-size: 18px;"
+          @click="isResultDetails = false"
+        >
+          Close
+        </v-btn>
+      </v-col>
     </v-card>
   </v-dialog>
 </template>
