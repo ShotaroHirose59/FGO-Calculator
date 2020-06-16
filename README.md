@@ -11,7 +11,7 @@
 <img width="800" alt="スクリーンショット 2020-06-16 15 09 11" src="https://user-images.githubusercontent.com/55835461/84737843-b4901580-afe3-11ea-91ca-4256d7f10136.png"> 
 
 ##### スマホ画面
-##### スマホ画面
+
 | 宝具ダメージ 計算 | 宝具ダメージ 結果 |
 | :---: | :---: |
 | <img src="https://gyazo.com/5acf3bd303b157d2f42a877ed9727ad6.png" width="265px"> | <img src="https://gyazo.com/f578b27438c77775a1cd073b0f9d3c64.png" width="265px"> | 
@@ -51,7 +51,7 @@
 
 ### Firebase
 - Firebase 7.14.4 <br/>
-    Cloud Firestore
+  - Cloud Firestore
 
 ### インフラストラクチャー
 - CircleCI
