@@ -1,4 +1,5 @@
-# FGO-Calculator (Wオルタと計算)
+# FGO-Calculator (Wオルタと一緒に計算)
+開発中。。。
 
 ## サービス概要
 スマホアプリ 「Fate/Grand Order」で使える計算アプリです。<br/>
