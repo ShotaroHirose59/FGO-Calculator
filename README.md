@@ -53,6 +53,7 @@
 ### Firebase
 - Firebase 7.14.4 <br/>
   - Cloud Firestore
+  - Hosting
 
 ### インフラストラクチャー
 - CircleCI
