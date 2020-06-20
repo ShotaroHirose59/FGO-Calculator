@@ -67,7 +67,7 @@ export default {
         } else if (this.averageDamage >= 10000) {
           return 'スキルを使ってダメージを伸ばせ'
         } else {
-          return '計算してみなさいよ' // default
+          return '計算し時だ、マスター' // default
         }
       }
     }
