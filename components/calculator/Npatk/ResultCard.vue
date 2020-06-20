@@ -94,7 +94,7 @@
 
 <script>
 import ResultDialog from '@/components/calculator/Npatk/ResultDialog'
-import SpeechBubble from '@/components/calculator/Npatk/SpeechBubble'
+import SpeechBubble from '@/components/calculator/Npatk/JeanneSpeechBubble'
 
 export default {
   components: {

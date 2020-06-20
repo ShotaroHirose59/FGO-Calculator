@@ -1,47 +1,68 @@
 <template>
   <v-row no-gutters>
     <v-card class="col-md-12">
-      <v-toolbar class="title" elevation="8">
+      <v-toolbar class="title" elevation="4">
         サーヴァント一覧
-        <v-row no-gutters>
-          <v-col style="text-align: right;">
-            <v-btn
-              outlined
-              small
-              fab
-              class="mr-3"
-              color="purple lighten-1"
-              @click="openDisplay()"
-            >
-              <v-icon>mdi-help</v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
       </v-toolbar>
-      <v-card-subtitle>
-        単体宝具、全体宝具を持つサーヴァントのみ
-      </v-card-subtitle>
-      <v-card-text v-for="character in characters" :key="character.id">
-        <v-row no-gutters>
-          <div>
-            <div class="subtitle-1">{{ character.name }}</div>
-            <span class="caption">
-              ★{{ character.rarity }} / {{ character.class }} /
-              {{ character.card }}宝具
-            </span>
-          </div>
-          <v-spacer />
-          No. {{ character.number }}
-        </v-row>
-      </v-card-text>
+      <v-list>
+        <v-subheader>単体宝具、全体宝具を持つサーヴァントのみ</v-subheader>
+        <v-list-item-group
+          v-for="character in characters"
+          :key="character.id"
+          color="primary"
+        >
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>{{ character.name }}</v-list-item-title>
+              <span class="caption">
+                ★{{ character.rarity }} / {{ character.class }} /
+                {{ character.card }}宝具 / {{ character.attribute }}
+              </span>
+            </v-list-item-content>
+            No. {{ character.number }}
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
     </v-card>
+
+    <v-bottom-navigation
+      v-if="$vuetify.breakpoint.xs"
+      app
+      fixed
+      color="purple lighten-1"
+    >
+      <!-- ボトムナビゲーション -->
+      <v-btn v-for="menu in menus" :key="menu.title" :to="menu.to">
+        <span>{{ menu.title }}</span>
+        <v-icon>{{ menu.icon }}</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
   </v-row>
 </template>
 
 <script>
 export default {
   data() {
-    return {}
+    return {
+      menus: [
+        { title: 'ホーム', icon: 'mdi-home', to: '/' },
+        {
+          title: '宝具ダメ計算',
+          icon: 'mdi-sword-cross',
+          to: '/npatk-calculation'
+        },
+        {
+          title: '宝具NP計算',
+          icon: 'mdi-sword',
+          to: '/npaquisition-calculation'
+        },
+        {
+          title: '霊基一覧',
+          icon: 'mdi-file-document-outline',
+          to: '/characters'
+        }
+      ]
+    }
   },
   computed: {
     characters() {

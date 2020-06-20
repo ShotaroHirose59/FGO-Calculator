@@ -31,14 +31,14 @@ export default {
     speechBubble: {
       get() {
         switch (this.characterName) {
+          case '水着アルトリア（オルタ）':
+            return '食べたアイスの数など覚えてはいない'
           case '水着アルトリア':
             return 'ところでマスター、あの英霊はどこのどなた様だ'
           case 'アタランテ（オルタ）':
             return 'ギリシャの狩人がまっくろけ、…あ、いや。'
           case 'エミヤ（オルタ）':
             return '私のジャンクフードロードに付いて来られるか？'
-          case '水着アルトリア（オルタ）':
-            return 'エンジンを回せ。処刑の時間だ'
           case 'ダヴィンチ（ライダー）':
             return '味方全体のNPを+20だ'
           case '両儀式（セイバー）':
@@ -51,9 +51,9 @@ export default {
             return '自身のNPを20~100リチャージだ'
         }
         if (this.totalAcquisitionAmount >= 100) {
-          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！」'
+          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！'
         } else if (this.totalAcquisitionAmount >= 70) {
-          return 'なかなかやるな。 誉れにするがいい'
+          return '褒めてやる。良い数値だ'
         } else if (this.totalAcquisitionAmount >= 50) {
           return '連発できそうだな。'
         } else if (this.totalAcquisitionAmount >= 30) {

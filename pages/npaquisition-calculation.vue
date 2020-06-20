@@ -33,7 +33,7 @@
               v-model="characterClass"
               label="クラス"
               :items="items.class"
-              class="mr-3"
+              class="mr-5"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -45,7 +45,7 @@
               :items="filteredCharacters"
               :disabled="!characterClass"
               placeholder="先にクラス選択"
-              class="mr-3"
+              class="mr-5"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
             ></v-select>
@@ -53,11 +53,11 @@
 
           <v-col cols="4" sm="4" md="2">
             <v-text-field
-              v-model.number="npRate"
-              label="NPレート"
+              v-model="servantNpType"
+              label="宝具タイプ"
               disabled
               placeholder="自動"
-              class="mr-3"
+              class="mr-5"
             ></v-text-field>
           </v-col>
 
@@ -68,17 +68,17 @@
               disabled
               placeholder="自動"
               suffix="hit"
-              class="mr-3"
+              class="mr-5"
             ></v-text-field>
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
             <v-text-field
-              v-model="servantNpType"
-              label="宝具タイプ"
+              v-model.number="npRate"
+              label="NPレート"
               disabled
               placeholder="自動"
-              class="mr-3"
+              class="mr-5"
             ></v-text-field>
           </v-col>
 
@@ -93,7 +93,7 @@
                 label="カード性能UP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-5"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -128,7 +128,7 @@
                 label="NP獲得量UP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-5"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -163,7 +163,7 @@
                 label="オーバーキルヒット数"
                 suffix="hit"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-5"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -192,7 +192,7 @@
               v-model="enemyClass"
               label="敵クラス"
               :items="items.selectEnemyClass"
-              class="mr-3"
+              class="mr-5"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -202,7 +202,7 @@
               v-model.number="enemyCount"
               label="敵の数"
               :items="items.selectEnemyCount"
-              class="mr-3"
+              class="mr-5"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -219,7 +219,7 @@
         </v-row>
       </v-card-text>
     </v-card>
-    <!-- 結果のカード スマホの場合は表示しない -->
+    <!-- 結果カード スマホの場合は表示しない -->
     <ResultCard
       v-if="!$vuetify.breakpoint.xs"
       :character-name="characterName"
@@ -233,7 +233,7 @@
       :np-acquisition-buff="npAcquisitionBuff"
       @reset-val="resetAll"
     />
-    <!-- スマホの場合だけ、固定フッターにする -->
+    <!-- スマホの場合、固定フッター用意 -->
     <FixedFooter
       v-if="$vuetify.breakpoint.xs"
       :character-name="characterName"

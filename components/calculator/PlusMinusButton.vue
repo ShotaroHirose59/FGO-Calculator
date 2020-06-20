@@ -10,7 +10,7 @@
     </v-icon>
     <v-icon
       color="rgba(255, 255, 255, 0.7)"
-      class="mt-5"
+      class="mt-5 ml-1"
       style="font-size: 32px"
       @click="onClickMinusButton()"
     >

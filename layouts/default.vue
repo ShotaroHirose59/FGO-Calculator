@@ -62,18 +62,12 @@ export default {
         {
           icon: 'mdi-sword',
           title: '宝具NP獲得計算',
-          to: 'npaquisition-calculation'
+          to: '/npaquisition-calculation'
         },
         {
-          icon: 'mdi-database',
-          title: 'サーヴァント一覧',
+          icon: 'mdi-file-document-outline',
+          title: '霊基一覧',
           to: '/characters'
-        },
-        {
-          icon: 'fab fa-line',
-          title: 'LINE Bot',
-          color: 'teal accent-1',
-          to: ''
         },
         {
           icon: 'mdi-information-outline',
