@@ -9,7 +9,7 @@
               outlined
               small
               fab
-              class="mr-3"
+              class="mr-4"
               color="purple lighten-1"
               @click="openDisplay()"
             >
@@ -33,7 +33,7 @@
               v-model="characterClass"
               label="クラス"
               :items="items.class"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -45,7 +45,7 @@
               :items="filteredCharacters"
               :disabled="!characterClass"
               placeholder="先にクラス選択"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
             ></v-select>
@@ -57,7 +57,7 @@
               label="宝具タイプ"
               disabled
               placeholder="自動"
-              class="mr-5"
+              class="mr-4"
             ></v-text-field>
           </v-col>
 
@@ -68,7 +68,7 @@
               disabled
               placeholder="自動"
               suffix="hit"
-              class="mr-5"
+              class="mr-4"
             ></v-text-field>
           </v-col>
 
@@ -78,7 +78,7 @@
               label="NPレート"
               disabled
               placeholder="自動"
-              class="mr-5"
+              class="mr-4"
             ></v-text-field>
           </v-col>
 
@@ -93,7 +93,7 @@
                 label="カード性能UP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-5"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -128,7 +128,7 @@
                 label="NP獲得量UP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-5"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -163,7 +163,7 @@
                 label="オーバーキルヒット数"
                 suffix="hit"
                 :error-messages="errors"
-                class="mr-5"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -192,7 +192,7 @@
               v-model="enemyClass"
               label="敵クラス"
               :items="items.selectEnemyClass"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -202,7 +202,7 @@
               v-model.number="enemyCount"
               label="敵の数"
               :items="items.selectEnemyCount"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>

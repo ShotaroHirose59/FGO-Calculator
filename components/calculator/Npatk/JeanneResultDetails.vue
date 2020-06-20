@@ -42,11 +42,13 @@
             </v-list-item>
           </v-col>
         </v-row>
+
         <v-divider class="mt-8"></v-divider>
-        <h3 class="mt-4 mb-1">
+
+        <h3 class="mt-4 mb-2">
           ダメージについて
         </h3>
-        <p class="mt-1">
+        <p class="mt-2">
           宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する。<br />
           周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
         </p>

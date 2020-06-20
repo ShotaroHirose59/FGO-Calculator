@@ -9,7 +9,7 @@
               outlined
               small
               fab
-              class="mr-3"
+              class="mr-4"
               color="purple lighten-1"
               @click="openDisplay()"
             >
@@ -33,7 +33,7 @@
               v-model="characterClass"
               label="クラス"
               :items="items.class"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -45,7 +45,7 @@
               :items="filteredCharacters"
               :disabled="!characterClass"
               placeholder="先にクラス選択"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
             ></v-select>
@@ -57,7 +57,7 @@
               label="宝具タイプ"
               disabled
               placeholder="自動"
-              class="mr-5"
+              class="mr-4"
             ></v-text-field>
           </v-col>
 
@@ -67,7 +67,7 @@
               label="宝具Lv."
               :items="items.npChargeLevel"
               :disabled="!characterName"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
               @change="onChangeNpmultiplier(npChargeLv)"
             ></v-select>
@@ -80,7 +80,7 @@
               :disabled="!characterName"
               suffix="％"
               placeholder="自動"
-              class="mr-5"
+              class="mr-4"
               color="teal accent-4"
             ></v-text-field>
           </v-col>
@@ -96,7 +96,7 @@
                 label="ATK"
                 :error-messages="errors"
                 placeholder="自動"
-                class="mr-5"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -108,7 +108,7 @@
               label="Lv.100"
               :disabled="!characterName"
               hide-details
-              class="ml-3"
+              class="ml-4"
               color="teal accent-4"
               @change="onSwitchAtk()"
             ></v-switch>
@@ -328,7 +328,7 @@
               v-model="classCompatibility"
               label="クラス相性"
               :items="selectClassCompatibility"
-              class="mr-3"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>
@@ -338,7 +338,7 @@
               v-model="attributeCompatibility"
               label="属性相性"
               :items="selectAttributeCompatibility"
-              class="mr-3"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>

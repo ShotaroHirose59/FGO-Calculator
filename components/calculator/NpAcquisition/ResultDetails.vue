@@ -22,10 +22,10 @@
           </v-col>
 
           <v-col cols="12" class="mt-4">
-            <div class="balloon1 ml-8 mr-2">
+            <div class="balloon1 ml-8">
               <p>{{ speechBubble }}</p>
             </div>
-            <v-img :src="image_src" max-width="220px" class="ml-5"></v-img>
+            <v-img :src="image_src" max-width="220px" class="ml-4"></v-img>
           </v-col>
         </v-row>
 
@@ -46,21 +46,21 @@
           計算項目の説明
         </h3>
         <ul>
-          <li class="mb-1">
+          <li class="mb-2">
             NPレート ・・・ 個々のサーヴァントに設定されている数値。
           </li>
-          <li class="mb-1">
+          <li class="mb-2">
             カード補正 ・・・ 宝具タイプで数値が決まる。(Arts 3、Quick 1、Buster
             0)
           </li>
-          <li class="mb-1">
+          <li class="mb-2">
             カードバフ補正 ・・・Arts性能〜%UPなど。同系統のバフは全て加算。<br />
             (例) Arts性能30%UP、Arts性能50%UPを使用した場合は80%UPとなる。
           </li>
-          <li class="mb-1">
+          <li class="mb-2">
             NP獲得量バフ補正 ・・・ NP獲得量〜%UPなど。同系統のバフは全て加算。
           </li>
-          <li class="mb-1">
+          <li class="mb-2">
             敵クラス補正 ・・・ 敵のクラス別に入る補正値。<br />
             キャスターなら1.2と高くバーサーカーは0.8と低い。
           </li>
