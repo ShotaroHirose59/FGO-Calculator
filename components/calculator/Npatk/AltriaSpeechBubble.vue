@@ -29,6 +29,8 @@ export default {
     speechBubble: {
       get() {
         switch (this.characterName) {
+          case 'アルトリア':
+            return '……'
           case 'アルトリア (オルタ)':
             return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！'
           case 'アルトリア（サンタオルタ）':
@@ -57,7 +59,7 @@ export default {
         if (this.averageDamage >= 1000000) {
           return '火力こそ正義。蹂躙してやれ'
         } else if (this.averageDamage >= 500000) {
-          return '良い数値だ 褒めてやる。 誉にするが良い'
+          return '良い数値だ 褒めてやる。'
         } else if (this.averageDamage >= 300000) {
           return 'よし。上等だ'
         } else if (this.averageDamage >= 200000) {
@@ -67,7 +69,7 @@ export default {
         } else if (this.averageDamage >= 10000) {
           return 'スキルを使ってダメージを伸ばせ'
         } else {
-          return '計算し時だ、マスター' // default
+          return '計算するぞ、マスター' // default
         }
       }
     }
