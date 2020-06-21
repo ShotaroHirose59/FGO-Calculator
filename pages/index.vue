@@ -20,7 +20,13 @@
         color="purple lighten-1"
       >
         <!-- ボトムナビゲーション -->
-        <v-btn v-for="menu in menus" :key="menu.title" :to="menu.to">
+        <v-btn
+          v-for="menu in menus"
+          :key="menu.title"
+          :to="menu.to"
+          width="100%"
+          color="grey darken-4"
+        >
           <span>{{ menu.title }}</span>
           <v-icon>{{ menu.icon }}</v-icon>
         </v-btn>
