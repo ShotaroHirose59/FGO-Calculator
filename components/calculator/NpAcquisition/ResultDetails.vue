@@ -22,47 +22,49 @@
           </v-col>
 
           <v-col cols="12" class="mt-4">
-            <div class="balloon1 ml-10">
+            <div class="balloon1 ml-8">
               <p>{{ speechBubble }}</p>
             </div>
-            <v-img :src="image_src" max-width="220px" class="ml-8"></v-img>
+            <v-img :src="image_src" max-width="220px" class="ml-4"></v-img>
           </v-col>
-
-          <h3 class="mt-3 mb-1">
-            計算式
-          </h3>
-          <p>
-            獲得できるNP量 ＝ <br />
-            NPレート × (カード補正 × カードバフ補正) × 宝具のHit数 ×
-            NP獲得量バフ補正 × オーバーキルボーナス(1.5倍) × 敵クラス補正 ×
-            敵の数
-          </p>
-          <h3 class="mt-5 mb-1">
-            計算項目の説明
-          </h3>
-          <ul>
-            <li class="mb-1">
-              NPレート ・・・ 個々のサーヴァントに設定されている数値。
-            </li>
-            <li class="mb-1">
-              カード補正 ・・・ 宝具タイプで数値が決まる。(Arts 3、Quick
-              1、Buster 0)
-            </li>
-            <li class="mb-1">
-              カードバフ補正
-              ・・・Arts性能〜%UPなど。同系統のバフは全て加算。<br />
-              (例) Arts性能30%UP、Arts性能50%UPを使用した場合は80%UPとなる。
-            </li>
-            <li class="mb-1">
-              NP獲得量バフ補正 ・・・
-              NP獲得量〜%UPなど。同系統のバフは全て加算。
-            </li>
-            <li class="mb-1">
-              敵クラス補正 ・・・ 敵のクラス別に入る補正値。<br />
-              キャスターなら1.2と高くバーサーカーは0.8と低い。
-            </li>
-          </ul>
         </v-row>
+
+        <v-divider class="mt-8"></v-divider>
+
+        <h3 class="mt-4 mb-1">
+          計算式
+        </h3>
+        <p>
+          獲得できるNP量 ＝ <br />
+          NPレート × (カード補正 × カードバフ補正) × 宝具のHit数 ×
+          NP獲得量バフ補正 × オーバーキルボーナス(1.5倍) × 敵クラス補正 × 敵の数
+        </p>
+
+        <v-divider class="mt-8"></v-divider>
+
+        <h3 class="mt-4 mb-1">
+          計算項目の説明
+        </h3>
+        <ul>
+          <li class="mb-2">
+            NPレート ・・・ 個々のサーヴァントに設定されている数値。
+          </li>
+          <li class="mb-2">
+            カード補正 ・・・ 宝具タイプで数値が決まる。(Arts 3、Quick 1、Buster
+            0)
+          </li>
+          <li class="mb-2">
+            カードバフ補正 ・・・Arts性能〜%UPなど。同系統のバフは全て加算。<br />
+            (例) Arts性能30%UP、Arts性能50%UPを使用した場合は80%UPとなる。
+          </li>
+          <li class="mb-2">
+            NP獲得量バフ補正 ・・・ NP獲得量〜%UPなど。同系統のバフは全て加算。
+          </li>
+          <li class="mb-2">
+            敵クラス補正 ・・・ 敵のクラス別に入る補正値。<br />
+            キャスターなら1.2と高くバーサーカーは0.8と低い。
+          </li>
+        </ul>
       </v-card-text>
       <v-col style="text-align: right;">
         <v-btn
@@ -105,14 +107,14 @@ export default {
     speechBubble: {
       get() {
         switch (this.characterName) {
+          case '水着アルトリア（オルタ）':
+            return '食べたアイスの数など覚えてはいない'
           case '水着アルトリア':
             return 'ところでマスター、あの英霊はどこのどなた様だ'
           case 'アタランテ（オルタ）':
             return 'ギリシャの狩人がまっくろけ、…あ、いや。'
           case 'エミヤ（オルタ）':
             return '私のジャンクフードロードに付いて来られるか？'
-          case '水着アルトリア（オルタ）':
-            return 'エンジンを回せ。処刑の時間だ'
           case 'ダヴィンチ（ライダー）':
             return '味方全体のNPを+20だ'
           case '両儀式（セイバー）':
@@ -125,9 +127,9 @@ export default {
             return '自身のNPを20~100リチャージだ'
         }
         if (this.totalAcquisitionAmount >= 100) {
-          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！」'
+          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！'
         } else if (this.totalAcquisitionAmount >= 70) {
-          return 'なかなかやるな。 誉れにするがいい'
+          return '褒めてやる。良い数値だ'
         } else if (this.totalAcquisitionAmount >= 50) {
           return '連発できそうだな。'
         } else if (this.totalAcquisitionAmount >= 30) {
@@ -162,7 +164,7 @@ export default {
 .balloon1:before {
   content: '';
   position: absolute;
-  top: 100%;
+  top: 95%;
   left: 30%;
   margin-left: -15px;
   border: 15px solid transparent;

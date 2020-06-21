@@ -6,6 +6,8 @@
       :clipped="clipped"
       fixed
       app
+      :right="$vuetify.breakpoint.xs"
+      color="grey darken-4"
     >
       <v-list>
         <v-list-item
@@ -16,7 +18,7 @@
           exact
         >
           <v-list-item-action>
-            <v-icon large>{{ item.icon }}</v-icon>
+            <v-icon large color="purple lighten-1">{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -50,7 +52,7 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-home-circle',
+          icon: 'mdi-home',
           title: 'ホーム',
           to: '/'
         },
@@ -62,18 +64,12 @@ export default {
         {
           icon: 'mdi-sword',
           title: '宝具NP獲得計算',
-          to: 'npaquisition-calculation'
+          to: '/npaquisition-calculation'
         },
         {
-          icon: 'mdi-database',
-          title: 'サーヴァント一覧',
+          icon: 'mdi-file-document-outline',
+          title: '霊基一覧',
           to: '/characters'
-        },
-        {
-          icon: 'fab fa-line',
-          title: 'LINE Bot',
-          color: 'teal accent-1',
-          to: ''
         },
         {
           icon: 'mdi-information-outline',

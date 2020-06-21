@@ -30,23 +30,29 @@ export default {
       get() {
         switch (this.characterName) {
           case 'ジャンヌ（オルタ）':
-            return '全ての邪悪をここに……！'
+            return '『吼え立てよ、我が憤怒(ラ・グロンドメント・デュ・ヘイン)』！'
           case '水着ジャンヌ（オルタ）':
-            return '三つ首の黒竜よ、世界を喰らい尽くせ！'
+            return '『焼却天理・鏖殺竜フェルカーモルト・フォイアドラッヘ』！！'
           case '水着ジャンヌ':
             return 'ちっ……アンタも水着なのね'
           case 'ジャンヌサンタリリィ':
             return 'アンタは冬までおとなしくしてなさい。'
           case 'アルトリア (オルタ)':
-            return 'げぇ、世界最高にいけ好かないわね'
+            return 'げぇ、世界最高にいけ好かないわね。選んだアンタもよ'
           case 'アルトリア（サンタオルタ）':
             return 'ちょっ……なんでサンタの格好なのよ！'
           case '水着アルトリア（オルタ）':
-            return 'このメイドより私の方が火力出せるわよ'
+            return 'メイドは部屋の掃除でもしてくれる？'
           case 'ジル・ド・レェ（キャスター）':
             return 'あら、ジルもいたのね。'
         }
-        if (this.averageDamage >= 200000) {
+        if (this.averageDamage >= 1000000) {
+          return 'ちょ、それ本当！？'
+        } else if (this.averageDamage >= 500000) {
+          return 'これは相当ね…！'
+        } else if (this.averageDamage >= 300000) {
+          return '上等ね！ブッ込むわよ！'
+        } else if (this.averageDamage >= 200000) {
           return 'なかなかやるじゃない'
         } else if (this.averageDamage >= 100000) {
           return 'まあまあね'
@@ -78,7 +84,7 @@ export default {
 .balloon1:before {
   content: '';
   position: absolute;
-  top: 100%;
+  top: 95%;
   left: 30%;
   margin-left: -15px;
   border: 15px solid transparent;
