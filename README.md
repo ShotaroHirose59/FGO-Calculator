@@ -13,9 +13,10 @@
 
 ##### スマホ画面
 
-| 宝具ダメージ 計算 | 宝具ダメージ 結果 |
-| :---: | :---: |
-| <img src="https://gyazo.com/5acf3bd303b157d2f42a877ed9727ad6.png" width="265px"> | <img src="https://gyazo.com/f578b27438c77775a1cd073b0f9d3c64.png" width="265px"> | 
+| 宝具ダメージ 計算 | 結果 & セリフ画面① | 結果 & セリフ画面② |
+| :---: | :---: | :---: |
+| <img src="https://gyazo.com/52f764e058ccb42a5bbcd5b3b30995c3.png" width="265px"> | <img src="https://gyazo.com/9fd7211b5916d8113f564e26780be865.png" width="265px"> | <img src="https://gyazo.com/2180fc29eec2864ee070586fca3f407b.png" width="265px"> |  
+<br/>
 <br/>
 <br/>
 
