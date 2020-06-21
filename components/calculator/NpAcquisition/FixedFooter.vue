@@ -1,5 +1,5 @@
 <template>
-  <v-footer app fixed height="80" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="75" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="9">
         <strong>NP {{ totalAcquisitionAmount }}％</strong>

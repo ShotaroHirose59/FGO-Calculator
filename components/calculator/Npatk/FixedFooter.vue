@@ -1,5 +1,5 @@
 <template>
-  <v-footer app fixed height="80" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="75" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="3">
         <v-img
@@ -8,7 +8,7 @@
           @click="displayJeanneDetails()"
         ></v-img>
       </v-col>
-      <v-col cols="6" style="text-align: center; font-size: 1.2rem;">
+      <v-col cols="6" style="text-align: center;">
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>TOTAL</v-list-item-subtitle>
