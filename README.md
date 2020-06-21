@@ -31,7 +31,7 @@
 
 | 宝具NP獲得 計算 | ヘルプ & セリフ画面 | ヘルプ & セリフ画面 |
 | :---: | :---: | :---: |
-| <img src="https://gyazo.com/3ce847e31036b7b722f0a70014933ab4.png" width="265px"> | <img src="https://gyazo.com/a96ac00e54669184d35782cb6995ccda.png" width="265px"> | <img src="https://gyazo.com/a5a3ccae92a12ed2567a44786b58e382.png" width="265px"> |  
+| <img src="https://gyazo.com/3ce847e31036b7b722f0a70014933ab4.png" width="265px"> | <img src="https://gyazo.com/a96ac00e54669184d35782cb6995ccda.png" width="265px"> | <img src="https://gyazo.com/64f9356a6da77934da030404fa7757b5.png" width="265px"> |  
 <br/>
 <br/>
 <br/>
