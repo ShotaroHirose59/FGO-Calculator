@@ -8,7 +8,7 @@
             outlined
             small
             fab
-            class="mr-2"
+            class="mr-4"
             color="purple lighten-1"
             @click="openResultDisplay()"
           >
@@ -44,15 +44,15 @@
           </v-list-item>
         </v-col>
 
-        <v-col class="ml-5" sm="9" md="4">
+        <v-col class="ml-4" sm="9" md="4">
           <SpeechBubble
             :character-name="characterName"
             :total-acquisition-amount="totalAcquisitionAmount"
           />
         </v-col>
 
-        <v-col class="mt-10" style="text-align: right;" sm="2" md="1">
-          <v-btn color="error" class="mt-10" outlined @click="reset()"
+        <v-col class="mt-12" style="text-align: right;" sm="2" md="1">
+          <v-btn color="error" class="mt-12" outlined @click="reset()"
             >計算リセット</v-btn
           >
         </v-col>

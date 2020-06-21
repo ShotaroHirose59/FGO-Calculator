@@ -9,6 +9,7 @@
             outlined
             small
             fab
+            class="mr-4"
             color="purple lighten-1"
             @click="openResultDisplay()"
           >
@@ -67,7 +68,7 @@
             v-model="classCompatibility"
             label="クラス相性"
             :items="selectClassCompatibility"
-            class="ml-2 mr-5"
+            class="mr-4"
             color="teal accent-4"
           ></v-select>
         </v-col>
@@ -77,13 +78,13 @@
             v-model="attributeCompatibility"
             label="属性相性"
             :items="selectAttributeCompatibility"
-            class="ml-2 mr-5"
+            class="mr-4"
             color="teal accent-4"
           ></v-select>
         </v-col>
 
         <v-col cols="12" sm="4" md="4" style="text-align: center;">
-          <v-btn color="error" class="mt-3" outlined @click="reset()"
+          <v-btn color="error" class="mt-4" outlined @click="reset()"
             >計算リセット</v-btn
           >
         </v-col>
@@ -94,7 +95,7 @@
 
 <script>
 import ResultDialog from '@/components/calculator/Npatk/ResultDialog'
-import SpeechBubble from '@/components/calculator/Npatk/SpeechBubble'
+import SpeechBubble from '@/components/calculator/Npatk/JeanneSpeechBubble'
 
 export default {
   components: {

@@ -9,7 +9,7 @@
               outlined
               small
               fab
-              class="mr-2"
+              class="mr-4"
               color="purple lighten-1"
               @click="openDisplay()"
             >
@@ -33,59 +33,59 @@
               v-model="characterClass"
               label="クラス"
               :items="items.class"
-              class="mr-3"
+              class="mr-4"
               color="teal accent-4"
             ></v-select>
           </v-col>
 
-          <v-col cols="9" sm="6" md="6">
+          <v-col cols="12" sm="6" md="6">
             <v-select
               v-model="characterName"
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
               placeholder="先にクラス選択"
-              class="mr-3"
+              class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
             ></v-select>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <v-text-field
               v-model="servantNpType"
               label="宝具タイプ"
               disabled
               placeholder="自動"
-              class="mr-3"
+              class="mr-4"
             ></v-text-field>
           </v-col>
 
-          <v-col cols="6" sm="3" md="3">
+          <v-col cols="4" sm="3" md="3">
             <v-select
               v-model="npChargeLv"
-              label="宝具レベル"
+              label="宝具Lv."
               :items="items.npChargeLevel"
               :disabled="!characterName"
-              class="mr-3"
+              class="mr-4"
               color="teal accent-4"
               @change="onChangeNpmultiplier(npChargeLv)"
             ></v-select>
           </v-col>
 
-          <v-col cols="6" sm="3" md="3">
+          <v-col cols="4" sm="3" md="3">
             <v-text-field
               v-model.number="characterNpmultiplier"
               label="宝具倍率"
-              disabled
+              :disabled="!characterName"
               suffix="％"
               placeholder="自動"
-              class="mr-3"
+              class="mr-4"
               color="teal accent-4"
             ></v-text-field>
           </v-col>
 
-          <v-col cols="6" sm="3" md="3">
+          <v-col cols="8" sm="3" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -96,19 +96,19 @@
                 label="ATK"
                 :error-messages="errors"
                 placeholder="自動"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
           </v-col>
 
-          <v-col cols="6" sm="3" md="3">
+          <v-col cols="4" sm="3" md="3">
             <v-switch
               v-model="atk"
               label="Lv.100"
               :disabled="!characterName"
               hide-details
-              class="mr-3"
+              class="ml-4"
               color="teal accent-4"
               @change="onSwitchAtk()"
             ></v-switch>
@@ -125,7 +125,7 @@
                 label="攻撃力UP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -160,7 +160,7 @@
                 label="カードUP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -195,7 +195,7 @@
                 label="特攻バフ"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -230,7 +230,7 @@
                 label="宝具威力UP"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -265,7 +265,7 @@
                 label="特攻宝具"
                 suffix="％"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -299,7 +299,7 @@
                 v-model.number="dressAtk"
                 label="礼装ATK"
                 :error-messages="errors"
-                class="mr-3"
+                class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
             </validation-provider>
@@ -322,10 +322,42 @@
               "
             />
           </v-col>
+
+          <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+            <v-select
+              v-model="classCompatibility"
+              label="クラス相性"
+              :items="selectClassCompatibility"
+              class="mr-4"
+              color="teal accent-4"
+            ></v-select>
+          </v-col>
+
+          <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+            <v-select
+              v-model="attributeCompatibility"
+              label="属性相性"
+              :items="selectAttributeCompatibility"
+              class="mr-4"
+              color="teal accent-4"
+            ></v-select>
+          </v-col>
+
+          <v-col
+            v-if="$vuetify.breakpoint.xs"
+            cols="12"
+            style="text-align: center;"
+          >
+            <v-btn color="error" class="mt-3" outlined @click="resetAll()"
+              >計算リセット</v-btn
+            >
+          </v-col>
         </v-row>
       </v-card-text>
     </v-card>
+    <!-- 結果カード スマホの場合は表示しない -->
     <ResultCard
+      v-if="!$vuetify.breakpoint.xs"
       :character-class="characterClass"
       :character-name="characterName"
       :character-atk="characterAtk"
@@ -338,7 +370,26 @@
       :np-buff="npBuff"
       :s-np-atk-buff="sNpAtkBuff"
       :dress-atk="dressAtk"
-      @reset-val="resetCalculation"
+      @reset-val="resetAll"
+    />
+    <!-- スマホの場合のみ、固定フッター用意 -->
+    <FixedFooter
+      v-if="$vuetify.breakpoint.xs"
+      :character-class="characterClass"
+      :character-name="characterName"
+      :character-atk="characterAtk"
+      :np-charge-lv="npChargeLv"
+      :character-npmultiplier="characterNpmultiplier"
+      :servant-np-type="servantNpType"
+      :atk-buff="atkBuff"
+      :card-buff="cardBuff"
+      :s-atk-buff="sAtkBuff"
+      :np-buff="npBuff"
+      :s-np-atk-buff="sNpAtkBuff"
+      :dress-atk="dressAtk"
+      :class-compatibility="classCompatibility"
+      :attribute-compatibility="attributeCompatibility"
+      @reset-val="resetAll"
     />
   </v-row>
 </template>
@@ -348,13 +399,15 @@ import { ValidationProvider } from 'vee-validate'
 import Dialog from '@/components/calculator/Npatk/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
+import FixedFooter from '@/components/calculator/Npatk/FixedFooter'
 
 export default {
   components: {
     ValidationProvider,
     Dialog,
     PlusMinusButton,
-    ResultCard
+    ResultCard,
+    FixedFooter
   },
   data() {
     return {
@@ -383,6 +436,19 @@ export default {
         ],
         npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
       },
+      classCompatibility: 2.0, // クラス相性補正 デフォルトでselectClassCompatibilityを'有利'にする
+      selectClassCompatibility: [
+        { text: '等倍', value: 1.0 },
+        { text: '有利', value: 2.0 },
+        { text: '不利', value: 0.5 },
+        { text: '狂・分 有利', value: 1.5 }
+      ],
+      attributeCompatibility: 1.0, // 属性相性補正デフォルトでselectAttributeCompatibilityを'等倍'にする
+      selectAttributeCompatibility: [
+        { text: '等倍', value: 1.0 },
+        { text: '有利', value: 1.1 },
+        { text: '不利', value: 0.9 }
+      ],
       npChargeLv: '', // 選択された宝具レベル
       atkBuff: 0, // 攻撃力バフ倍率
       cardBuff: 0, // カードバフ倍率
@@ -425,6 +491,7 @@ export default {
           this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
           this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
           this.setNpType(character)
+          this.setClassCompatibility(character)
           this.switchAtk = false
         }
       }
@@ -440,6 +507,20 @@ export default {
           break
         case 'Q':
           this.servantNpType = 'Quick'
+          break
+      }
+    },
+    // クラス相性はdefaultで有利にする(数値が大きくなるからUX向上)
+    setClassCompatibility(character) {
+      switch (character.class) {
+        case 'バーサーカー':
+          this.classCompatibility = 1.5
+          break
+        case 'アルターエゴ':
+          this.classCompatibility = 1.5
+          break
+        default:
+          this.classCompatibility = 2.0
           break
       }
     },
@@ -476,9 +557,10 @@ export default {
     openDisplay() {
       this.$refs.dlg.isDisplay = true
     },
-    resetCalculation() {
+    resetAll() {
       this.characterClass = ''
       this.characterName = ''
+      this.atk = []
       this.switchAtk = false
       this.characterAtk = ''
       this.npChargeLv = ''
@@ -490,13 +572,9 @@ export default {
       this.npBuff = 0
       this.sNpAtkBuff = 0
       this.dressAtk = 0
+      this.classCompatibility = 2.0
+      this.attributeCompatibility = 1.0
     }
   }
 }
 </script>
-
-<style scoped>
-.v-card {
-  margin: 5px 0px;
-}
-</style>
