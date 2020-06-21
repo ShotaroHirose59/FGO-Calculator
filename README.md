@@ -30,7 +30,7 @@
 
 | 宝具NP獲得 計算 | ヘルプ & セリフ画面 | ヘルプ & セリフ画面 |
 | :---: | :---: | :---: |
-| <img src="https://gyazo.com/f1712710db35b8dd1b56cee92d8c3495.png" width="265px"> | <img src="https://gyazo.com/3e5e394bc770c2eebb9b4d7a2a1cf7fe.png" width="265px"> | <img src="https://gyazo.com/86f80e25c36cea86a69abd826c94359b.png" width="265px"> |  
+| <img src="https://gyazo.com/3ce847e31036b7b722f0a70014933ab4.png" width="265px"> | <img src="https://gyazo.com/a96ac00e54669184d35782cb6995ccda.png" width="265px"> | <img src="https://gyazo.com/a5a3ccae92a12ed2567a44786b58e382.png" width="265px"> |  
 <br/>
 <br/>
 <br/>
@@ -53,6 +53,7 @@
 ### Firebase
 - Firebase 7.14.4 <br/>
   - Cloud Firestore
+  - Hosting
 
 ### インフラストラクチャー
 - CircleCI
