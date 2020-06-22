@@ -16,7 +16,7 @@
     </v-col>
 
     <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
-      <v-img :src="image_src" max-width="480"></v-img>
+      <v-img :src="image_src" max-width="448"></v-img>
     </v-col>
 
     <v-col
@@ -31,7 +31,7 @@
     </v-col>
 
     <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
-      <v-img :src="image_src2" max-width="480"></v-img>
+      <v-img :src="image_src2" max-width="448"></v-img>
     </v-col>
 
     <v-col cols="12" sm="12" md="4">
