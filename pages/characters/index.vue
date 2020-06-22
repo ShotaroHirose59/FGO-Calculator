@@ -25,29 +25,18 @@
       </v-list>
     </v-card>
 
-    <v-bottom-navigation
-      v-if="$vuetify.breakpoint.xs"
-      app
-      fixed
-      color="purple lighten-1"
-    >
-      <!-- ボトムナビゲーション -->
-      <v-btn
-        v-for="menu in menus"
-        :key="menu.title"
-        :to="menu.to"
-        width="100%"
-        color="grey darken-4"
-      >
-        <span>{{ menu.title }}</span>
-        <v-icon>{{ menu.icon }}</v-icon>
-      </v-btn>
-    </v-bottom-navigation>
+    <!-- ボトムナビゲーション -->
+    <BottomNavigation />
   </v-row>
 </template>
 
 <script>
+import BottomNavigation from '@/components/shared/BottomNavigation'
+
 export default {
+  components: {
+    BottomNavigation
+  },
   data() {
     return {
       menus: [
