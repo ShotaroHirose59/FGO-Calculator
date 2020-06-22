@@ -1,25 +1,26 @@
 <template>
-  <v-row no-gutters>
-    <v-col
-      v-if="$vuetify.breakpoint.xs"
-      cols="12"
-      sm="12"
-      md="12"
-      class="city mb-8"
-    >
+  <v-row no-gutters scrollable>
+    <v-col v-if="$vuetify.breakpoint.xs" cols="6" class="city mb-8">
       <h1 style="font-size: 56px">
         FGO<br />
         Calculator
       </h1>
     </v-col>
 
-    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="4" md="4">
+    <v-col v-if="$vuetify.breakpoint.xs" cols="3">
+      <v-img :src="image_src" max-width="88"></v-img>
+    </v-col>
+
+    <v-col v-if="$vuetify.breakpoint.xs" cols="3">
+      <v-img :src="image_src2" max-width="88"></v-img>
+    </v-col>
+
+    <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
       <v-img :src="image_src" max-width="480"></v-img>
     </v-col>
 
     <v-col
       v-if="!$vuetify.breakpoint.xs"
-      cols="12"
       sm="4"
       md="4"
       class="text-center align-self-center city"
@@ -29,7 +30,7 @@
       </h1>
     </v-col>
 
-    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="4" md="4">
+    <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
       <v-img :src="image_src2" max-width="480"></v-img>
     </v-col>
 
@@ -51,7 +52,7 @@
               >mdi-sword-cross</v-icon
             >
           </v-card-title>
-          <v-card-subtitle>宝具ダメージの計算をします。</v-card-subtitle>
+          <v-card-subtitle>宝具ダメージを計算します。</v-card-subtitle>
         </v-card>
       </v-hover>
     </v-col>
@@ -75,7 +76,7 @@
             >
           </v-card-title>
           <v-card-subtitle>
-            宝具のみでどれだけNPを獲得できるか計算します。
+            宝具のNP獲得量を計算します。
           </v-card-subtitle>
         </v-card>
       </v-hover>
