@@ -124,7 +124,7 @@ export default {
         },
         {
           title: '宝具NP計算',
-          icon: 'mdi-sword',
+          icon: 'mdi-gauge-full',
           to: '/npaquisition-calculation'
         },
         {
