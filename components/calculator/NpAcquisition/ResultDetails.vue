@@ -25,7 +25,7 @@
             <div class="balloon1 ml-8">
               <p>{{ speechBubble }}</p>
             </div>
-            <v-img :src="image_src" max-width="220px" class="ml-4"></v-img>
+            <v-img :src="image_src" max-width="224px" class="ml-4"></v-img>
           </v-col>
         </v-row>
 
