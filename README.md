@@ -6,10 +6,17 @@
 宝具ダメージ計算、宝具NP獲得計算がメインの機能です。
 
 ## 使用画面
-### ① 宝具ダメージ計算
+### トップページ
+#### PC画面
+<img width="1440" alt="スクリーンショット 2020-06-23 7 49 54" src="https://user-images.githubusercontent.com/55835461/85342693-2c02ff00-b526-11ea-9d55-3c1cedb273a4.png">
+
+#### スマホ画面
+<img width="312" alt="スクリーンショット 2020-06-23 7 11 02" src="https://user-images.githubusercontent.com/55835461/85340380-f6a7e280-b520-11ea-86aa-dcc03b84bfb0.png">
+
+### ② 宝具ダメージ計算
 サーヴァントの宝具ダメージを計算できる。
 ##### PC画面
-<img width="800" alt="スクリーンショット 2020-06-16 15 09 11" src="https://user-images.githubusercontent.com/55835461/84737843-b4901580-afe3-11ea-91ca-4256d7f10136.png"> 
+<img width="1440" alt="スクリーンショット 2020-06-16 15 09 11" src="https://user-images.githubusercontent.com/55835461/84737843-b4901580-afe3-11ea-91ca-4256d7f10136.png"> 
 
 ##### スマホ画面
 
@@ -20,7 +27,7 @@
 <br/>
 <br/>
 
-### ②宝具NP獲得計算
+### ③ 宝具NP獲得計算
 サーヴァントが宝具を打った時、その宝具だけでどれだけNPを獲得できるかを計算できる。
 ##### PC画面
 <img width="1440" alt="スクリーンショット 2020-06-16 15 13 37" src="https://user-images.githubusercontent.com/55835461/84738031-1f415100-afe4-11ea-9ff3-94c7d66112ad.png">
