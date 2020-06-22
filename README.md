@@ -14,7 +14,7 @@
 <img width="312" alt="スクリーンショット 2020-06-23 7 11 02" src="https://user-images.githubusercontent.com/55835461/85340380-f6a7e280-b520-11ea-86aa-dcc03b84bfb0.png">
 
 ### ② 宝具ダメージ計算
-サーヴァントの宝具ダメージを計算できる。
+サーヴァントの宝具ダメージを計算
 ##### PC画面
 <img width="1440" alt="スクリーンショット 2020-06-16 15 09 11" src="https://user-images.githubusercontent.com/55835461/84737843-b4901580-afe3-11ea-91ca-4256d7f10136.png"> 
 
@@ -28,7 +28,7 @@
 <br/>
 
 ### ③ 宝具NP獲得計算
-サーヴァントが宝具を打った時、その宝具だけでどれだけNPを獲得できるかを計算できる。
+宝具のNP獲得量を計算
 ##### PC画面
 <img width="1440" alt="スクリーンショット 2020-06-16 15 13 37" src="https://user-images.githubusercontent.com/55835461/84738031-1f415100-afe4-11ea-9ff3-94c7d66112ad.png">
 
