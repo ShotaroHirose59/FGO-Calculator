@@ -134,6 +134,6 @@ export default {
   opacity: 0.9;
 }
 .v-card {
-  margin: 12px;
+  margin: 16px;
 }
 </style>

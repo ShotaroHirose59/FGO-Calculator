@@ -190,9 +190,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.v-footer {
-  border: solid purple 3px;
-}
-</style>
