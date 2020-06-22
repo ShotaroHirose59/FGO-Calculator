@@ -62,7 +62,7 @@ export default {
           to: '/npatk-calculation'
         },
         {
-          icon: 'mdi-sword',
+          icon: 'mdi-gauge-full',
           title: '宝具NP獲得計算',
           to: '/npaquisition-calculation'
         },

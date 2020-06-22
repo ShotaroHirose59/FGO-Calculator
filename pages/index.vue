@@ -1,38 +1,87 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <v-row dense="">
-        <v-col v-for="card in cards" :key="card.title" cols="12" sm="6" md="6">
-          <v-card class="mx-auto" max-width="200">
-            <v-img
-              :src="card.src"
-              height="150px"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            ></v-img>
-            <v-card-title v-text="card.title"></v-card-title>
-            <v-card-subtitle v-text="card.subtitle"></v-card-subtitle>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-bottom-navigation
-        v-if="$vuetify.breakpoint.xs"
-        fixed
-        color="purple lighten-1"
-      >
-        <!-- ボトムナビゲーション -->
-        <v-btn
-          v-for="menu in menus"
-          :key="menu.title"
-          :to="menu.to"
-          width="100%"
-          color="grey darken-4"
+  <v-row no-gutters>
+    <v-col
+      v-if="$vuetify.breakpoint.xs"
+      cols="12"
+      sm="12"
+      md="12"
+      class="city mb-8"
+    >
+      <h1 style="font-size: 56px">
+        FGO<br />
+        Calculator
+      </h1>
+    </v-col>
+
+    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="4">
+      <v-img :src="image_src" max-width="440"></v-img>
+    </v-col>
+
+    <v-col
+      v-if="!$vuetify.breakpoint.xs"
+      cols="12"
+      sm="12"
+      md="4"
+      class="text-center align-self-center city"
+    >
+      <h1 style="font-size: 72px">
+        FGO Calculator
+      </h1>
+    </v-col>
+
+    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="4">
+      <v-img :src="image_src2" max-width="440"></v-img>
+    </v-col>
+
+    <v-col cols="12" sm="4" md="4">
+      <v-card>
+        <v-card-title class="mb-4">
+          宝具ダメージ計算
+          <v-spacer />
+          <v-icon color="purple lighten-1" style="font-size: 32px"
+            >mdi-calculator</v-icon
+          >
+          <v-icon large color="purple lighten-1" style="font-size: 32px"
+            >mdi-sword-cross</v-icon
+          >
+        </v-card-title>
+        <v-card-subtitle>宝具ダメージの計算をします。</v-card-subtitle>
+      </v-card>
+    </v-col>
+
+    <v-col cols="12" sm="4" md="4">
+      <v-card>
+        <v-card-title class="mb-4">
+          宝具NP獲得計算
+          <v-spacer />
+          <v-icon color="purple lighten-1" style="font-size: 32px"
+            >mdi-calculator</v-icon
+          >
+          <v-icon large color="purple lighten-1" style="font-size: 32px"
+            >mdi-gauge-full</v-icon
+          >
+        </v-card-title>
+        <v-card-subtitle>
+          宝具のみでどれだけNPを獲得できるか計算します。
+        </v-card-subtitle>
+      </v-card>
+    </v-col>
+
+    <v-col cols="12" sm="4" md="4">
+      <v-card>
+        <v-card-title class="mb-4">
+          霊基一覧
+          <v-spacer />
+          <v-icon color="purple lighten-1" style="font-size: 32px"
+            >mdi-file-document-outline</v-icon
+          >
+        </v-card-title>
+        <v-card-subtitle
+          >サーヴァントの一覧、詳細が確認できます。</v-card-subtitle
         >
-          <span>{{ menu.title }}</span>
-          <v-icon>{{ menu.icon }}</v-icon>
-        </v-btn>
-      </v-bottom-navigation>
-    </v-flex>
-  </v-layout>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -40,55 +89,18 @@ export default {
   components: {},
   data() {
     return {
-      cards: [
-        {
-          title: '宝具ダメージ計算',
-          src:
-            'https://lh3.googleusercontent.com/5YtcXbdVt_LIkPquejWquEIll5eY_3197_M1wR-17SkO9lFTbvbZM2PaSlhyfGrM7mcn3NjdHVLzeW7NFxXmMKuhM56GNYttwK0n26Hw-ohH',
-          subtitle: 'Damage calculation'
-        },
-        {
-          title: '宝具NP獲得計算',
-          src:
-            'https://lh3.googleusercontent.com/pVUgU0YBmqVTQenHldH5_OtWSmAq9WCMclhjeIFNEttou0Aa3swJBlB7lTREKwNOfc8rB67cNOUtsCPHX_aEBlbl0YzGYwuhcRksmaTxzSOI',
-          subtitle: 'Damage calculation'
-        },
-        {
-          title: 'サーヴァント一覧',
-          src: 'https://i.gyazo.com/576414755bc22031931048be972714b3.jpg',
-          subtitle: 'Servant List'
-        },
-        {
-          title: '天地人(獣星)LINE Bot',
-          src: 'https://i.gyazo.com/a8ce934e888b8fff92cc23c9cdb7961f.jpg',
-          subtitle: 'LINE Bot'
-        }
-      ],
-      menus: [
-        { title: 'ホーム', icon: 'mdi-home', to: '/' },
-        {
-          title: '宝具ダメ計算',
-          icon: 'mdi-sword-cross',
-          to: '/npatk-calculation'
-        },
-        {
-          title: '宝具NP計算',
-          icon: 'mdi-sword',
-          to: '/npaquisition-calculation'
-        },
-        {
-          title: '霊基一覧',
-          icon: 'mdi-file-document-outline',
-          to: '/characters'
-        }
-      ]
+      image_src: require('assets/jeannearuta.png'),
+      image_src2: require('assets/altria.png')
     }
   }
 }
 </script>
 
 <style scoped>
+.city {
+  opacity: 0.9;
+}
 .v-card {
-  margin: 15px;
+  margin: 12px;
 }
 </style>
