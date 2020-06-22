@@ -43,7 +43,7 @@
           to="/npatk-calculation"
         >
           <v-card-title class="mb-4">
-            宝具ダメージ計算
+            宝具ダメージ 計算
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
               >mdi-calculator</v-icon
@@ -66,7 +66,7 @@
           to="/npaquisition-calculation"
         >
           <v-card-title class="mb-4">
-            宝具NP獲得計算
+            宝具NP獲得 計算
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
               >mdi-calculator</v-icon
