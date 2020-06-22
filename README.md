@@ -13,9 +13,10 @@
 
 ##### スマホ画面
 
-| 宝具ダメージ 計算 | 宝具ダメージ 結果 |
-| :---: | :---: |
-| <img src="https://gyazo.com/5acf3bd303b157d2f42a877ed9727ad6.png" width="265px"> | <img src="https://gyazo.com/f578b27438c77775a1cd073b0f9d3c64.png" width="265px"> | 
+| 宝具ダメージ 計算 | 結果 & セリフ画面① | 結果 & セリフ画面② |
+| :---: | :---: | :---: |
+| <img src="https://gyazo.com/52f764e058ccb42a5bbcd5b3b30995c3.png" width="265px"> | <img src="https://gyazo.com/9fd7211b5916d8113f564e26780be865.png" width="265px"> | <img src="https://gyazo.com/2180fc29eec2864ee070586fca3f407b.png" width="265px"> |  
+<br/>
 <br/>
 <br/>
 
@@ -30,7 +31,7 @@
 
 | 宝具NP獲得 計算 | ヘルプ & セリフ画面 | ヘルプ & セリフ画面 |
 | :---: | :---: | :---: |
-| <img src="https://gyazo.com/3ce847e31036b7b722f0a70014933ab4.png" width="265px"> | <img src="https://gyazo.com/a96ac00e54669184d35782cb6995ccda.png" width="265px"> | <img src="https://gyazo.com/a5a3ccae92a12ed2567a44786b58e382.png" width="265px"> |  
+| <img src="https://gyazo.com/3ce847e31036b7b722f0a70014933ab4.png" width="265px"> | <img src="https://gyazo.com/a96ac00e54669184d35782cb6995ccda.png" width="265px"> | <img src="https://gyazo.com/64f9356a6da77934da030404fa7757b5.png" width="265px"> |  
 <br/>
 <br/>
 <br/>
