@@ -1,7 +1,7 @@
 <template>
   <v-row no-gutters scrollable>
     <v-col v-if="$vuetify.breakpoint.xs" cols="6" class="city mb-8">
-      <h1 style="font-size: 56px">
+      <h1 class="head" style="font-size: 48px">
         FGO<br />
         Calculator
       </h1>
@@ -25,7 +25,7 @@
       md="4"
       class="text-center align-self-center city"
     >
-      <h1 style="font-size: 72px">
+      <h1 class="head" style="font-size: 64px">
         FGO Calculator
       </h1>
     </v-col>
@@ -126,6 +126,10 @@ export default {
 </script>
 
 <style scoped>
+.head {
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ',
+    Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
 .city {
   opacity: 0.9;
 }
