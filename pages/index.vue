@@ -13,14 +13,14 @@
       </h1>
     </v-col>
 
-    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="4">
-      <v-img :src="image_src" max-width="440"></v-img>
+    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="4" md="4">
+      <v-img :src="image_src" max-width="480"></v-img>
     </v-col>
 
     <v-col
       v-if="!$vuetify.breakpoint.xs"
       cols="12"
-      sm="12"
+      sm="4"
       md="4"
       class="text-center align-self-center city"
     >
@@ -29,57 +29,63 @@
       </h1>
     </v-col>
 
-    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="4">
-      <v-img :src="image_src2" max-width="440"></v-img>
+    <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="4" md="4">
+      <v-img :src="image_src2" max-width="480"></v-img>
     </v-col>
 
-    <v-col cols="12" sm="4" md="4">
-      <v-card>
-        <v-card-title class="mb-4">
-          宝具ダメージ計算
-          <v-spacer />
-          <v-icon color="purple lighten-1" style="font-size: 32px"
-            >mdi-calculator</v-icon
-          >
-          <v-icon large color="purple lighten-1" style="font-size: 32px"
-            >mdi-sword-cross</v-icon
-          >
-        </v-card-title>
-        <v-card-subtitle>宝具ダメージの計算をします。</v-card-subtitle>
-      </v-card>
+    <v-col cols="12" sm="12" md="4">
+      <v-hover v-slot:default="{ hover }">
+        <v-card v-ripple="{ center: true }" :elevation="hover ? 24 : 4">
+          <v-card-title class="mb-4">
+            宝具ダメージ計算
+            <v-spacer />
+            <v-icon color="purple lighten-1" style="font-size: 32px"
+              >mdi-calculator</v-icon
+            >
+            <v-icon large color="purple lighten-1" style="font-size: 32px"
+              >mdi-sword-cross</v-icon
+            >
+          </v-card-title>
+          <v-card-subtitle>宝具ダメージの計算をします。</v-card-subtitle>
+        </v-card>
+      </v-hover>
     </v-col>
 
-    <v-col cols="12" sm="4" md="4">
-      <v-card>
-        <v-card-title class="mb-4">
-          宝具NP獲得計算
-          <v-spacer />
-          <v-icon color="purple lighten-1" style="font-size: 32px"
-            >mdi-calculator</v-icon
-          >
-          <v-icon large color="purple lighten-1" style="font-size: 32px"
-            >mdi-gauge-full</v-icon
-          >
-        </v-card-title>
-        <v-card-subtitle>
-          宝具のみでどれだけNPを獲得できるか計算します。
-        </v-card-subtitle>
-      </v-card>
+    <v-col cols="12" sm="12" md="4">
+      <v-hover v-slot:default="{ hover }">
+        <v-card v-ripple="{ center: true }" :elevation="hover ? 24 : 4">
+          <v-card-title class="mb-4">
+            宝具NP獲得計算
+            <v-spacer />
+            <v-icon color="purple lighten-1" style="font-size: 32px"
+              >mdi-calculator</v-icon
+            >
+            <v-icon large color="purple lighten-1" style="font-size: 32px"
+              >mdi-gauge-full</v-icon
+            >
+          </v-card-title>
+          <v-card-subtitle>
+            宝具のみでどれだけNPを獲得できるか計算します。
+          </v-card-subtitle>
+        </v-card>
+      </v-hover>
     </v-col>
 
-    <v-col cols="12" sm="4" md="4">
-      <v-card>
-        <v-card-title class="mb-4">
-          霊基一覧
-          <v-spacer />
-          <v-icon color="purple lighten-1" style="font-size: 32px"
-            >mdi-file-document-outline</v-icon
+    <v-col cols="12" sm="12" md="4">
+      <v-hover v-slot:default="{ hover }">
+        <v-card v-ripple="{ center: true }" :elevation="hover ? 24 : 4">
+          <v-card-title class="mb-4">
+            霊基一覧
+            <v-spacer />
+            <v-icon color="purple lighten-1" style="font-size: 32px"
+              >mdi-file-document-outline</v-icon
+            >
+          </v-card-title>
+          <v-card-subtitle
+            >サーヴァントの一覧、詳細が確認できます。</v-card-subtitle
           >
-        </v-card-title>
-        <v-card-subtitle
-          >サーヴァントの一覧、詳細が確認できます。</v-card-subtitle
-        >
-      </v-card>
+        </v-card>
+      </v-hover>
     </v-col>
   </v-row>
 </template>
