@@ -6,7 +6,7 @@
 宝具ダメージ計算、宝具NP獲得計算がメインの機能
 
 ## 使用画面
-### トップページ
+### ① トップページ
 #### PC画面
 <img width="1440" alt="スクリーンショット 2020-06-23 7 49 54" src="https://user-images.githubusercontent.com/55835461/85342693-2c02ff00-b526-11ea-9d55-3c1cedb273a4.png">
 
