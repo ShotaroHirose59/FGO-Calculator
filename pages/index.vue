@@ -35,7 +35,12 @@
 
     <v-col cols="12" sm="12" md="4">
       <v-hover v-slot:default="{ hover }">
-        <v-card v-ripple="{ center: true }" :elevation="hover ? 24 : 4">
+        <v-card
+          v-ripple="{ center: true }"
+          :elevation="hover ? 24 : 4"
+          router
+          to="/npatk-calculation"
+        >
           <v-card-title class="mb-4">
             宝具ダメージ計算
             <v-spacer />
@@ -53,7 +58,12 @@
 
     <v-col cols="12" sm="12" md="4">
       <v-hover v-slot:default="{ hover }">
-        <v-card v-ripple="{ center: true }" :elevation="hover ? 24 : 4">
+        <v-card
+          v-ripple="{ center: true }"
+          :elevation="hover ? 24 : 4"
+          router
+          to="/npaquisition-calculation"
+        >
           <v-card-title class="mb-4">
             宝具NP獲得計算
             <v-spacer />
@@ -73,7 +83,12 @@
 
     <v-col cols="12" sm="12" md="4">
       <v-hover v-slot:default="{ hover }">
-        <v-card v-ripple="{ center: true }" :elevation="hover ? 24 : 4">
+        <v-card
+          v-ripple="{ center: true }"
+          :elevation="hover ? 24 : 4"
+          router
+          to="/characters"
+        >
           <v-card-title class="mb-4">
             霊基一覧
             <v-spacer />
