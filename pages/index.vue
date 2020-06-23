@@ -39,8 +39,7 @@
         <v-card
           v-ripple="{ center: true }"
           :elevation="hover ? 24 : 4"
-          router
-          to="/npatk-calculation"
+          :to="{ name: 'npatk-calculation' }"
         >
           <v-card-title class="mb-4">
             宝具ダメージ 計算
@@ -62,8 +61,7 @@
         <v-card
           v-ripple="{ center: true }"
           :elevation="hover ? 24 : 4"
-          router
-          to="/npaquisition-calculation"
+          :to="{ name: 'npaquisition-calculation' }"
         >
           <v-card-title class="mb-4">
             宝具NP獲得 計算
@@ -87,8 +85,7 @@
         <v-card
           v-ripple="{ center: true }"
           :elevation="hover ? 24 : 4"
-          router
-          to="/characters"
+          :to="{ name: 'characters' }"
         >
           <v-card-title class="mb-4">
             霊基一覧
