@@ -6,7 +6,6 @@
       :clipped="clipped"
       fixed
       app
-      :right="$vuetify.breakpoint.xs"
       color="grey darken-4"
     >
       <v-list>
@@ -28,8 +27,16 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon
+        v-if="!$vuetify.breakpoint.xs"
+        @click.stop="drawer = !drawer"
+      />
       <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <v-app-bar-nav-icon
+        v-if="$vuetify.breakpoint.xs"
+        @click.stop="drawer = !drawer"
+      />
     </v-app-bar>
     <v-content>
       <v-container fluid fill-height>
