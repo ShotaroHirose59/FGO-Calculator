@@ -1,11 +1,16 @@
 <template>
   <v-dialog v-model="isDisplay" scrollable max-width="800">
     <v-card>
-      <v-toolbar height="56" class="mb-8">
+      <v-toolbar v-if="!$vuetify.breakpoint.xs" height="56" class="mb-8">
+        <v-toolbar-title>運営とWオルタからお礼</v-toolbar-title>
+      </v-toolbar>
+
+      <v-toolbar v-if="$vuetify.breakpoint.xs" height="56" class="mb-8">
         <v-toolbar-title>運営と邪ンヌからお礼</v-toolbar-title>
       </v-toolbar>
+
       <v-row no-gutters>
-        <v-col cols="12" sm="6" md="12" class="text-center">
+        <v-col cols="12" sm="12" md="12" class="text-center">
           <h2 class="mb-4">
             フィードバックの送信 <br />
             誠にありがとうございます。
@@ -16,12 +21,20 @@
             >トップページに戻る
           </v-btn>
         </v-col>
-        <v-col cols="12" sm="3" md="12">
+        <v-col cols="12" sm="6" md="6">
           <div class="balloon-set-box ml-8">
-            <div class="balloon1 ml-8">
-              <p>感謝するわ マスター</p>
+            <div class="balloon1">
+              <p>お礼を言わなくてはいけませんね</p>
             </div>
             <v-img :src="image_src" max-width="200px" class="ml-8"></v-img>
+          </div>
+        </v-col>
+        <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="6">
+          <div class="balloon-set-box ml-12">
+            <div class="balloon1 ml-12">
+              <p>感謝するぞ マスター</p>
+            </div>
+            <v-img :src="image_src2" max-width="200px" class="ml-12"></v-img>
           </div>
         </v-col>
       </v-row>
@@ -34,6 +47,7 @@ export default {
   data() {
     return {
       image_src: require('assets/jeannearuta.png'),
+      image_src2: require('assets/altria.png'),
       isDisplay: false
     }
   }
