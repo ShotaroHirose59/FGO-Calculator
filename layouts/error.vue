@@ -6,20 +6,21 @@
       </h1>
       <p class="mt-2">お探しのページが見つかりませんでした。</p>
       <p>URLにお間違いがないか再度ご確認ください。</p>
-      <v-btn color="mt-8 mb-8" :to="{ name: 'top' }">
-        <v-icon color="purple lighten-1">mdi-exit-run</v-icon>トップページに戻る
+      <v-btn color="mt-8 mb-8" :to="{ name: 'index' }">
+        <v-icon color="purple lighten-1">mdi-arrow-left</v-icon
+        >トップページに戻る
       </v-btn>
     </v-col>
 
-    <v-col cols="12" sm="3" md="6">
-      <div class="balloon-set-box left">
-        <div class="balloon1 ml-12">
+    <v-col cols="12" sm="6" md="6">
+      <div class="balloon-set-box ml-8">
+        <div class="balloon1 ml-2">
           <p>
             すまないマスター。<br />
             一度トップページに戻って欲しい。
           </p>
         </div>
-        <v-img :src="image_src" max-width="280px" class="ml-8"></v-img>
+        <v-img :src="image_src" max-width="224px" class="ml-8"></v-img>
       </div>
     </v-col>
   </v-row>

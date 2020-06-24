@@ -79,7 +79,7 @@ export default {
         {
           icon: 'mdi-message-alert',
           title: 'フィードバック送信',
-          to: ''
+          to: '/feedback'
         }
       ],
       miniVariant: false,
