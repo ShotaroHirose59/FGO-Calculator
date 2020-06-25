@@ -11,7 +11,7 @@
               class="mr-4"
               color="primary"
               large
-              :disabled="!user.opinion || user.opinion.length >= 180"
+              :disabled="!user.opinion || user.opinion.length >= 300"
               @click.prevent="add"
               >mdi-send</v-icon
             >
@@ -65,7 +65,7 @@ export default {
         opinion: '',
         terminal: 'スマートフォン'
       },
-      rules: [(v) => v.length <= 180 || '180文字以内でお願いします。']
+      rules: [(v) => v.length <= 300 || '300文字以内でお願いします。']
     }
   },
   created() {
