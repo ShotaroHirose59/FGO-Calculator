@@ -70,7 +70,7 @@
 - ジャンヌ ・ ダルク (オルタ)
 - アルトリア ・ ペンドラゴン (オルタ)
 
-## Build Setup
+## セットアップ
 
 ```bash
 # install dependencies
