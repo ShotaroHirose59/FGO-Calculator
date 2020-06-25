@@ -2,7 +2,7 @@
   <v-dialog v-model="isResultDetails" scrollable>
     <v-card>
       <v-toolbar>
-        <v-toolbar-title>漆黒の騎士王からの助言</v-toolbar-title>
+        <v-toolbar-title height="56px">漆黒の騎士王からの助言</v-toolbar-title>
       </v-toolbar>
 
       <v-card-text class="mt-2">
