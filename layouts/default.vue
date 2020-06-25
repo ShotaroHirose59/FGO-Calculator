@@ -31,7 +31,9 @@
           <nuxt-link to="/terms">
             <p class="terms" style="font-size: 12px;">利用規約</p>
           </nuxt-link>
-          <p style="font-size: 12px;">プライバシーポリシー</p>
+          <nuxt-link to="/privacy">
+            <p class="terms" style="font-size: 12px;">プライバシーポリシー</p>
+          </nuxt-link>
         </div>
       </div>
     </v-navigation-drawer>
@@ -55,12 +57,26 @@
     <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
       <v-spacer />
-      <nuxt-link v-if="$route.path === '/'" :to="{ name: 'terms' }">
+      <nuxt-link
+        v-if="
+          $route.path === '/' ||
+            $route.path === '/terms' ||
+            $route.path === '/privacy'
+        "
+        :to="{ name: 'terms' }"
+      >
         <span class="terms mr-8">利用規約</span>
       </nuxt-link>
-      <span v-if="$route.path === '/' || $route.path === '/terms'"
-        >プライバシーポリシー</span
+      <nuxt-link
+        v-if="
+          $route.path === '/' ||
+            $route.path === '/terms' ||
+            $route.path === '/privacy'
+        "
+        :to="{ name: 'privacy' }"
       >
+        <span class="terms">プライバシーポリシー</span>
+      </nuxt-link>
     </v-footer>
   </v-app>
 </template>
