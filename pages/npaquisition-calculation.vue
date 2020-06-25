@@ -382,6 +382,11 @@ export default {
       this.cardBuff = 0
       this.npAcquisitionBuff = 0
     }
+  },
+  head() {
+    return {
+      title: '宝具NP獲得計算'
+    }
   }
 }
 </script>

@@ -28,6 +28,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: 'プライバシーポリシー'
+    }
+  }
+}
+</script>
+
 <style scoped>
 h1 {
   margin-top: 20px;

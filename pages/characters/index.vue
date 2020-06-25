@@ -66,6 +66,11 @@ export default {
   },
   created() {
     this.$store.dispatch('characters/init')
+  },
+  head() {
+    return {
+      title: '霊基一覧'
+    }
   }
 }
 </script>

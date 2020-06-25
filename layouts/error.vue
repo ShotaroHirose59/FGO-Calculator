@@ -32,6 +32,11 @@ export default {
     return {
       image_src: require('assets/altria.png')
     }
+  },
+  head() {
+    return {
+      title: 'ページが見つかりません'
+    }
   }
 }
 </script>

@@ -575,6 +575,11 @@ export default {
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
     }
+  },
+  head() {
+    return {
+      title: '宝具ダメージ計算'
+    }
   }
 }
 </script>
