@@ -41,7 +41,7 @@
           :elevation="hover ? 24 : 4"
           :to="{ name: 'npatk-calculation' }"
         >
-          <v-card-title class="mb-4">
+          <v-card-title class="mb-2">
             宝具ダメージ 計算
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
@@ -63,7 +63,7 @@
           :elevation="hover ? 24 : 4"
           :to="{ name: 'npaquisition-calculation' }"
         >
-          <v-card-title class="mb-4">
+          <v-card-title class="mb-2">
             宝具NP獲得 計算
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
@@ -87,7 +87,7 @@
           :elevation="hover ? 24 : 4"
           :to="{ name: 'characters' }"
         >
-          <v-card-title class="mb-4">
+          <v-card-title class="mb-2">
             霊基一覧
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
