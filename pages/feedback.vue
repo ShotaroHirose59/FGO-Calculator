@@ -78,6 +78,11 @@ export default {
       this.user.terminal = 'スマートフォン'
       this.$refs.dlg.isDisplay = true // ダイアログ表示
     }
+  },
+  head() {
+    return {
+      title: 'フィードバック'
+    }
   }
 }
 </script>

@@ -147,6 +147,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: '利用規約'
+    }
+  }
+}
+</script>
+
 <style scoped>
 h1 {
   margin-top: 20px;
