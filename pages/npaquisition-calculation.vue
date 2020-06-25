@@ -93,6 +93,7 @@
                 label="カード性能UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -131,6 +132,7 @@
                 label="NP獲得量UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -169,6 +171,7 @@
                 label="オーバーキルヒット数"
                 suffix="hit"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>

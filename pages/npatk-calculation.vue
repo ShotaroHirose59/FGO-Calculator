@@ -80,6 +80,7 @@
               :disabled="!characterName"
               suffix="％"
               placeholder="自動"
+              type="number"
               class="mr-4"
               color="teal accent-4"
             ></v-text-field>
@@ -96,6 +97,7 @@
                 label="ATK"
                 :error-messages="errors"
                 placeholder="自動"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -125,6 +127,7 @@
                 label="攻撃力UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -160,6 +163,7 @@
                 label="カードUP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -198,6 +202,7 @@
                 label="特攻バフ"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -236,6 +241,7 @@
                 label="宝具威力UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -274,6 +280,7 @@
                 label="特攻宝具"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -308,6 +315,7 @@
                 v-model.number="dressAtk"
                 label="礼装ATK"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
