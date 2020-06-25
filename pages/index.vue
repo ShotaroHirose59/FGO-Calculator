@@ -94,9 +94,7 @@
               >mdi-file-document-outline</v-icon
             >
           </v-card-title>
-          <v-card-subtitle
-            >サーヴァントの一覧、詳細が確認できます。</v-card-subtitle
-          >
+          <v-card-subtitle>サーヴァント一覧を確認できます。</v-card-subtitle>
         </v-card>
       </v-hover>
     </v-col>
