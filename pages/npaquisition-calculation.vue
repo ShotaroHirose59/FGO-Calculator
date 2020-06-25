@@ -141,6 +141,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (npAcquisitionBuff >= 400) {
+                    return false
+                  }
                   npAcquisitionBuff += 10
                 }
               "

@@ -170,6 +170,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (cardBuff >= 400) {
+                    return false
+                  }
                   cardBuff += 10
                 }
               "
@@ -205,6 +208,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (sAtkBuff >= 400) {
+                    return false
+                  }
                   sAtkBuff += 10
                 }
               "
@@ -240,6 +246,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (npBuff >= 400) {
+                    return false
+                  }
                   npBuff += 10
                 }
               "
