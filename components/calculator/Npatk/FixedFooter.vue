@@ -1,10 +1,10 @@
 <template>
-  <v-footer app fixed height="80" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="3">
         <v-img
           :src="image_src"
-          width="72"
+          width="64"
           @click="displayJeanneDetails()"
         ></v-img>
       </v-col>
@@ -21,7 +21,7 @@
       <v-col cols="3">
         <v-img
           :src="image_src2"
-          width="72"
+          width="64"
           @click="displayAltriaDetails()"
         ></v-img>
       </v-col>
