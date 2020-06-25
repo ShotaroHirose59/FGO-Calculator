@@ -25,6 +25,15 @@
         </v-list-item>
         <v-divider></v-divider>
       </v-list>
+
+      <div v-if="$vuetify.breakpoint.xs" class="drawer-footer mt-4 ml-4">
+        <div class="drawer-footer-terms">
+          <nuxt-link to="/terms">
+            <p class="terms" style="font-size: 12px;">利用規約</p>
+          </nuxt-link>
+          <p style="font-size: 12px;">プライバシーポリシー</p>
+        </div>
+      </div>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon
@@ -45,6 +54,13 @@
     </v-content>
     <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
+      <v-spacer />
+      <nuxt-link v-if="$route.path === '/'" :to="{ name: 'terms' }">
+        <span class="terms mr-8">利用規約</span>
+      </nuxt-link>
+      <span v-if="$route.path === '/' || $route.path === '/terms'"
+        >プライバシーポリシー</span
+      >
     </v-footer>
   </v-app>
 </template>
@@ -95,3 +111,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+a {
+  text-decoration: none;
+}
+.terms {
+  color: white;
+}
+</style>
