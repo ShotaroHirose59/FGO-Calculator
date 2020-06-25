@@ -128,27 +128,27 @@ export default {
       required: true
     },
     atkBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     cardBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     sAtkBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     npBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     sNpAtkBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     dressAtk: {
-      type: Number,
+      type: [String, Number],
       required: true
     }
   },

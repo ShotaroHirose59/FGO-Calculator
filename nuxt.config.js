@@ -51,17 +51,17 @@ export default {
     '@nuxtjs/dotenv'
   ],
   manifest: {
-    name: "FGO Calculator",
-    title: "FGO Calculator(Wオルタと一緒に計算)",
+    name: 'FGO Calculator',
+    title: 'FGO Calculator(Wオルタと一緒に計算)',
     'og:title': 'FGO Calculator',
     description: 'Wオルタと一緒に計算をしよう！',
     'og:description': 'Wオルタと一緒に計算をしよう！',
     lang: 'ja',
-    theme_color: "#529b58",
-    background_color: "#bde0c0",
-    display: "standalone",
-    scope: "/",
-    start_url: "/"
+    theme_color: '#529b58',
+    background_color: '#bde0c0',
+    display: 'standalone',
+    scope: '/',
+    start_url: '/'
   },
   /*
    ** Axios module configuration

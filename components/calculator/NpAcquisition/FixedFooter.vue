@@ -46,7 +46,7 @@ export default {
       required: true
     },
     cardBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     npRate: {
@@ -58,7 +58,7 @@ export default {
       required: true
     },
     overkillHits: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     enemyClass: {
@@ -70,7 +70,7 @@ export default {
       required: true
     },
     npAcquisitionBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     }
   },

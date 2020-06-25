@@ -103,6 +103,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (cardBuff >= 400) {
+                    return false
+                  }
                   cardBuff += 10
                 }
               "
