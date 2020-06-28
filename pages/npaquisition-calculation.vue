@@ -44,7 +44,7 @@
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
-              placeholder="先にクラス選択"
+              placeholder="先にクラスを選択してください"
               class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
