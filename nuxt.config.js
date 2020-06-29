@@ -8,14 +8,50 @@ export default {
    */
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    title: 'FGO Calculator',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
+        name: 'keywords',
+        content: 'FGO,邪ンヌ,アルトリア,オルタ,Wオルタ,計算,宝具,NP'
+      },
+      {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'Wオルタと一緒に計算！ FGO Calculator by @destino591211'
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary'
+      },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@destino591211' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'FGO Calculator'
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://fgo-damage-calculation.web.app/'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'Wオルタと一緒に計算！ FGO Calculator by @destino591211'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://fgo-damage-calculation.web.app/favicon.ico'
+      },
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: 'FGO Calculator Wオルタと一緒に計算！'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -52,16 +88,18 @@ export default {
   ],
   manifest: {
     name: 'FGO Calculator',
+    short_name: 'Wオルタと計算',
     title: 'FGO Calculator(Wオルタと一緒に計算)',
     'og:title': 'FGO Calculator',
     description: 'Wオルタと一緒に計算をしよう！',
     'og:description': 'Wオルタと一緒に計算をしよう！',
     lang: 'ja',
-    theme_color: '#529b58',
-    background_color: '#bde0c0',
+    background_color: '#ffffff',
+    theme_color: '#ffffff',
     display: 'standalone',
     scope: '/',
-    start_url: '/'
+    start_url: '/',
+    orientation: 'portrait'
   },
   /*
    ** Axios module configuration
