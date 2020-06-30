@@ -46,15 +46,104 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://fgo-damage-calculation.web.app/favicon.ico'
+        content: 'https://fgo-damage-calculation.web.app/icon.png'
       },
       {
         hid: 'og:site_name',
         name: 'og:site_name',
         content: 'FGO Calculator Wオルタと一緒に計算！'
+      },
+      // pwa iOS
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      {
+        name: 'apple-mobile-web-app-status-bar-style',
+        content: 'black-translucent'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // pwa splash screens
+      // Doc: https://appsco.pe/developer/splash-screens
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'iphone5_splash.png',
+        media:
+          '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'iphone6_splash.png',
+        media:
+          '(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'iphoneplus_splash.png',
+        media:
+          '(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'iphonex_splash.png',
+        media:
+          '(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'iphonexr_splash.png',
+        media:
+          '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'iphonexsmax_splash.png',
+        media:
+          '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' + 'ipad_splash.png',
+        media:
+          '(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'ipadpro1_splash.png',
+        media:
+          '(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'ipadpro3_splash.png',
+        media:
+          '(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      },
+      {
+        href:
+          'https://fgo-damage-calculation.web.app/icon.png' +
+          'ipadpro2_splash.png',
+        media:
+          '(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)',
+        rel: 'apple-touch-startup-image'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -94,8 +183,8 @@ export default {
     description: 'Wオルタと一緒に計算をしよう！',
     'og:description': 'Wオルタと一緒に計算をしよう！',
     lang: 'ja',
+    theme_color: '#000000',
     background_color: '#ffffff',
-    theme_color: '#ffffff',
     display: 'standalone',
     scope: '/',
     start_url: '/',
