@@ -11,7 +11,7 @@
               class="mr-4"
               color="primary"
               large
-              :disabled="!user.opinion || user.opinion.length >= 300"
+              :disabled="!feedback.opinion || feedback.opinion.length >= 300"
               @click.prevent="add"
               >mdi-send</v-icon
             >
@@ -31,7 +31,7 @@
         <v-form>
           <p>内容（必須）</p>
           <v-textarea
-            v-model="user.opinion"
+            v-model="feedback.opinion"
             counter
             label="機能追加の要望 バグ報告 感想など"
             :rules="rules"
@@ -39,7 +39,7 @@
           ></v-textarea>
           <p>ご利用の端末種別をご選択ください。</p>
           <v-select
-            v-model="user.terminal"
+            v-model="feedback.terminal"
             label="使用端末"
             :items="selectTerminal"
             dense
@@ -61,7 +61,7 @@ export default {
   data() {
     return {
       selectTerminal: ['スマートフォン', 'パソコン', 'タブレット'],
-      user: {
+      feedback: {
         opinion: '',
         terminal: 'スマートフォン'
       },
@@ -73,9 +73,9 @@ export default {
   },
   methods: {
     add() {
-      this.$store.dispatch('feedback/add', this.user)
-      this.user.opinion = ''
-      this.user.terminal = 'スマートフォン'
+      this.$store.dispatch('feedback/add', this.feedback)
+      this.feedback.opinion = ''
+      this.feedback.terminal = 'スマートフォン'
       this.$refs.dlg.isDisplay = true // ダイアログ表示
     }
   },
