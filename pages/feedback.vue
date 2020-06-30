@@ -30,13 +30,19 @@
       <v-card-text class="mt-8">
         <v-form>
           <p>内容（必須）</p>
-          <v-textarea
-            v-model="feedback.opinion"
-            counter
-            label="機能追加の要望 バグ報告 感想など"
-            :rules="rules"
-            outlined
-          ></v-textarea>
+          <validation-provider
+            ref="provider"
+            v-slot="{ errors }"
+            rules="maxWordCount"
+          >
+            <v-textarea
+              v-model="feedback.opinion"
+              counter
+              :error-messages="errors"
+              label="機能追加の要望 バグ報告 感想など"
+              outlined
+            ></v-textarea>
+          </validation-provider>
           <p>ご利用の端末種別をご選択ください。</p>
           <v-select
             v-model="feedback.terminal"
@@ -52,10 +58,12 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import ThanksDialog from '@/components/ThanksDialog'
 
 export default {
   components: {
+    ValidationProvider,
     ThanksDialog
   },
   data() {
@@ -64,8 +72,7 @@ export default {
       feedback: {
         opinion: '',
         terminal: 'スマートフォン'
-      },
-      rules: [(v) => v.length <= 300 || '300文字以内でお願いします。']
+      }
     }
   },
   created() {

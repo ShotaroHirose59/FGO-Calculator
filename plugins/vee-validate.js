@@ -22,6 +22,16 @@ extend('maxNumericalValue', {
   message: '400以下で設定してください'
 })
 
+extend('maxWordCount', {
+  validate(value) {
+    if (value.length > 300) {
+      return false
+    }
+    return true
+  },
+  message: '300文字以内でお願いします'
+})
+
 export default {
   components: {
     ValidationProvider
