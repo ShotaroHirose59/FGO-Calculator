@@ -2,7 +2,7 @@
   <v-dialog v-model="isJeanneResultDetails" scrollable>
     <v-card>
       <v-toolbar>
-        <v-toolbar-title>ダメージ結果 ＆ 邪ンヌ</v-toolbar-title>
+        <v-toolbar-title height="56px">ダメージ結果 ＆ 邪ンヌ</v-toolbar-title>
       </v-toolbar>
 
       <v-card-text>

@@ -44,7 +44,7 @@
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
-              placeholder="先にクラス選択"
+              placeholder="先にクラスを選択してください"
               class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
@@ -93,6 +93,7 @@
                 label="カード性能UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -103,6 +104,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (cardBuff >= 400) {
+                    return false
+                  }
                   cardBuff += 10
                 }
               "
@@ -128,6 +132,7 @@
                 label="NP獲得量UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -138,6 +143,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (npAcquisitionBuff >= 400) {
+                    return false
+                  }
                   npAcquisitionBuff += 10
                 }
               "
@@ -163,6 +171,7 @@
                 label="オーバーキルヒット数"
                 suffix="hit"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -390,3 +399,11 @@ export default {
   }
 }
 </script>
+
+<style>
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>

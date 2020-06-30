@@ -11,7 +11,7 @@
               class="mr-4"
               color="primary"
               large
-              :disabled="!user.opinion || user.opinion.length >= 300"
+              :disabled="!feedback.opinion || feedback.opinion.length >= 300"
               @click.prevent="add"
               >mdi-send</v-icon
             >
@@ -30,16 +30,22 @@
       <v-card-text class="mt-8">
         <v-form>
           <p>内容（必須）</p>
-          <v-textarea
-            v-model="user.opinion"
-            counter
-            label="機能追加の要望 バグ報告 感想など"
-            :rules="rules"
-            outlined
-          ></v-textarea>
+          <validation-provider
+            ref="provider"
+            v-slot="{ errors }"
+            rules="maxWordCount"
+          >
+            <v-textarea
+              v-model="feedback.opinion"
+              counter
+              :error-messages="errors"
+              label="機能追加の要望 バグ報告 感想など"
+              outlined
+            ></v-textarea>
+          </validation-provider>
           <p>ご利用の端末種別をご選択ください。</p>
           <v-select
-            v-model="user.terminal"
+            v-model="feedback.terminal"
             label="使用端末"
             :items="selectTerminal"
             dense
@@ -52,20 +58,21 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate'
 import ThanksDialog from '@/components/ThanksDialog'
 
 export default {
   components: {
+    ValidationProvider,
     ThanksDialog
   },
   data() {
     return {
       selectTerminal: ['スマートフォン', 'パソコン', 'タブレット'],
-      user: {
+      feedback: {
         opinion: '',
         terminal: 'スマートフォン'
-      },
-      rules: [(v) => v.length <= 300 || '300文字以内でお願いします。']
+      }
     }
   },
   created() {
@@ -73,9 +80,9 @@ export default {
   },
   methods: {
     add() {
-      this.$store.dispatch('feedback/add', this.user)
-      this.user.opinion = ''
-      this.user.terminal = 'スマートフォン'
+      this.$store.dispatch('feedback/add', this.feedback)
+      this.feedback.opinion = ''
+      this.feedback.terminal = 'スマートフォン'
       this.$refs.dlg.isDisplay = true // ダイアログ表示
     }
   },

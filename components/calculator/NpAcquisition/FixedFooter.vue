@@ -1,5 +1,5 @@
 <template>
-  <v-footer app fixed height="80" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="9">
         <strong>NP {{ totalAcquisitionAmount }}％</strong>
@@ -16,7 +16,7 @@
       </v-col>
 
       <v-col cols="3">
-        <v-img :src="image_src" width="72" @click="displayDetails()"></v-img>
+        <v-img :src="image_src" width="64" @click="displayDetails()"></v-img>
       </v-col>
 
       <!-- 結果の詳細 -->
@@ -46,7 +46,7 @@ export default {
       required: true
     },
     cardBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     npRate: {
@@ -58,7 +58,7 @@ export default {
       required: true
     },
     overkillHits: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     enemyClass: {
@@ -70,7 +70,7 @@ export default {
       required: true
     },
     npAcquisitionBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     }
   },

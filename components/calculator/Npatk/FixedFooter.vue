@@ -1,10 +1,10 @@
 <template>
-  <v-footer app fixed height="80" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="3">
         <v-img
           :src="image_src"
-          width="72"
+          width="64"
           @click="displayJeanneDetails()"
         ></v-img>
       </v-col>
@@ -21,7 +21,7 @@
       <v-col cols="3">
         <v-img
           :src="image_src2"
-          width="72"
+          width="64"
           @click="displayAltriaDetails()"
         ></v-img>
       </v-col>
@@ -80,27 +80,27 @@ export default {
       required: true
     },
     atkBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     cardBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     sAtkBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     npBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     sNpAtkBuff: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     dressAtk: {
-      type: Number,
+      type: [String, Number],
       required: true
     },
     classCompatibility: {

@@ -1,8 +1,8 @@
 <template>
   <v-dialog v-model="isResultDisplay" scrollable max-width="800px">
     <v-card>
-      <v-toolbar height="80px">
-        <v-img :src="image_src" max-width="72px" class="mr-4"></v-img>
+      <v-toolbar height="64px">
+        <v-img :src="image_src" max-width="56px" class="mr-4"></v-img>
         <v-toolbar-title>計算方法</v-toolbar-title>
       </v-toolbar>
       <v-card-text>

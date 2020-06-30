@@ -13,10 +13,11 @@ export const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('feedback', feedbackRef)
   }),
-  add: firestoreAction((context, user) => {
-    if (user) {
+  add: firestoreAction((context, feedback) => {
+    if (feedback) {
       feedbackRef.add({
-        user
+        feedback,
+        created: firebase.firestore.FieldValue.serverTimestamp()
       })
     }
   })
