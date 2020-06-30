@@ -2,7 +2,9 @@
   <v-dialog v-model="isAltriaResultDetails" scrollable>
     <v-card>
       <v-toolbar>
-        <v-toolbar-title>ダメージ結果 ＆ 漆黒の騎士王</v-toolbar-title>
+        <v-toolbar-title height="56px"
+          >ダメージ結果 ＆ 漆黒の騎士王</v-toolbar-title
+        >
       </v-toolbar>
 
       <v-card-text>

@@ -44,7 +44,7 @@
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
-              placeholder="先にクラス選択"
+              placeholder="先にクラスを選択してください"
               class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
@@ -80,6 +80,7 @@
               :disabled="!characterName"
               suffix="％"
               placeholder="自動"
+              type="number"
               class="mr-4"
               color="teal accent-4"
             ></v-text-field>
@@ -96,6 +97,7 @@
                 label="ATK"
                 :error-messages="errors"
                 placeholder="自動"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -125,6 +127,7 @@
                 label="攻撃力UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -160,6 +163,7 @@
                 label="カードUP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -170,6 +174,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (cardBuff >= 400) {
+                    return false
+                  }
                   cardBuff += 10
                 }
               "
@@ -195,6 +202,7 @@
                 label="特攻バフ"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -205,6 +213,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (sAtkBuff >= 400) {
+                    return false
+                  }
                   sAtkBuff += 10
                 }
               "
@@ -230,6 +241,7 @@
                 label="宝具威力UP"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -240,6 +252,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (npBuff >= 400) {
+                    return false
+                  }
                   npBuff += 10
                 }
               "
@@ -265,6 +280,7 @@
                 label="特攻宝具"
                 suffix="％"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -299,6 +315,7 @@
                 v-model.number="dressAtk"
                 label="礼装ATK"
                 :error-messages="errors"
+                type="number"
                 class="mr-4"
                 color="teal accent-4"
               ></v-text-field>
@@ -583,3 +600,11 @@ export default {
   }
 }
 </script>
+
+<style>
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
