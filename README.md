@@ -1,5 +1,5 @@
 # FGO-Calculator (Wオルタと一緒に計算)
-開発中。。。 https://fgo-damage-calculation.web.app
+土曜にリリース https://fgo-damage-calculation.web.app
 
 ## サービス概要
 スマホアプリ 「Fate/Grand Order」で使える計算アプリ<br/>
