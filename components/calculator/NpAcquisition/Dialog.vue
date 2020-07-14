@@ -12,10 +12,17 @@
         <h3 class="mt-4 mb-2">
           使い方
         </h3>
-        <p>
+        <p v-if="!$vuetify.breakpoint.xs">
           ①クラスを選択するとサーヴァントが選択可能になります。<br />
           ②サーヴァントを選択するとNPレート、宝具ヒット数、宝具タイプが自動入力され「NP獲得結果」が表示されます。<br />
           ③お好みで入力値を変更すると「NP獲得結果」に反映されます。
+        </p>
+
+        <p v-if="$vuetify.breakpoint.xs">
+          ①クラスを選択するとサーヴァントが選択可能になります。<br />
+          ②サーヴァントを選択するとNPレート、宝具ヒット数、宝具タイプが自動入力され「NP獲得結果」が表示されます。<br />
+          ③お好みで入力値を変更すると「NP獲得結果」に反映されます。<br />
+          ④アルトリア・オルタをタッチするとさらに楽しめます。
         </p>
 
         <v-divider class="mt-8"></v-divider>
@@ -47,7 +54,7 @@
         <v-btn
           color="red"
           text
-          style="font-size: 18px;"
+          style="font-size: 16px;"
           @click="isDisplay = false"
         >
           Close
