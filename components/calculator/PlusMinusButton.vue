@@ -35,3 +35,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-icon {
+  touch-action: none;
+}
+</style>
