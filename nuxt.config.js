@@ -54,9 +54,7 @@ export default {
         content: 'FGO Calculator Wオルタと一緒に計算！'
       }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -86,7 +84,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv' ,
+    '@nuxtjs/dotenv',
     '@nuxtjs/google-analytics'
   ],
   googleAnalytics: {
