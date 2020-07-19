@@ -57,7 +57,7 @@
         <v-btn
           color="red"
           text
-          style="font-size: 18px;"
+          style="font-size: 16px;"
           @click="isJeanneResultDetails = false"
         >
           Close
