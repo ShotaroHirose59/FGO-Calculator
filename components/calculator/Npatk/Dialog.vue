@@ -12,10 +12,17 @@
         <h3 class="mt-4 mb-2">
           使い方
         </h3>
-        <p>
+        <p v-if="!$vuetify.breakpoint.xs">
           ①クラスを選択するとサーヴァントが選択可能になります。<br />
           ②サーヴァントを選択するとATK、宝具レベル、宝具倍率、そしてダメージ結果が自動入力されます。<br />
           ③お好みで入力値を変更するとダメージ結果に反映されます。
+        </p>
+
+        <p v-if="$vuetify.breakpoint.xs">
+          ①クラスを選択するとサーヴァントが選択可能になります。<br />
+          ②サーヴァントを選択するとATK、宝具レベル、宝具倍率、そしてダメージ結果が自動入力されます。<br />
+          ③お好みで入力値を変更するとダメージ結果に反映されます。<br />
+          ④邪ンヌ、アルトリア・オルタをタッチするとさらに楽しめます。
         </p>
 
         <v-divider class="mt-8"></v-divider>
@@ -48,7 +55,7 @@
         <v-btn
           color="red"
           text
-          style="font-size: 18px;"
+          style="font-size: 16px;"
           @click="isDisplay = false"
         >
           Close
