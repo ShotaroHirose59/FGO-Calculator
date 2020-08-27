@@ -113,7 +113,7 @@ export default {
         {
           icon: 'mdi-information-outline',
           title: 'お知らせ',
-          to: ''
+          to: '/info'
         },
         {
           icon: 'mdi-message-alert',
