@@ -19,7 +19,7 @@
             <tbody>
               <tr v-for="info in information" :key="info.id">
                 <td>{{ info.created }}</td>
-                <td>{{ info.information }}</td>
+                <td>{{ info.content }}</td>
               </tr>
             </tbody>
           </template>
