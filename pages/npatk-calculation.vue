@@ -44,7 +44,7 @@
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
-              placeholder="先にクラスを選択してください"
+              placeholder="先にクラスを選択"
               class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
@@ -52,13 +52,13 @@
           </v-col>
 
           <v-col cols="4" sm="2" md="2">
-            <v-text-field
+            <v-select
               v-model="servantNpType"
-              label="宝具タイプ"
-              disabled
-              placeholder="自動"
-              class="mr-4"
-            ></v-text-field>
+              label="宝具"
+              :items="selectServantNpType"
+              class="mr-3"
+              color="teal accent-4"
+            ></v-select>
           </v-col>
 
           <v-col cols="4" sm="3" md="3">
@@ -67,7 +67,7 @@
               label="宝具Lv."
               :items="items.npChargeLevel"
               :disabled="!characterName"
-              class="mr-4"
+              class="mr-3"
               color="teal accent-4"
               @change="onChangeNpmultiplier(npChargeLv)"
             ></v-select>
@@ -436,6 +436,7 @@ export default {
       npmultiplier: [], // キャラクターの宝具倍率の配列
       characterNpmultiplier: '', // 配列から取り出したサーヴァントの宝具倍率
       servantNpType: '', // キャラクターの宝具タイプ
+      selectServantNpType: ['Buster', 'Arts', 'Quick'],
       items: {
         class: [
           'セイバー',

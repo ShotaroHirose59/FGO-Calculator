@@ -44,7 +44,7 @@
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
-              placeholder="先にクラスを選択してください"
+              placeholder="先にクラスを選択"
               class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
@@ -52,13 +52,13 @@
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
-            <v-text-field
+            <v-select
               v-model="servantNpType"
-              label="宝具タイプ"
-              disabled
-              placeholder="自動"
+              label="宝具"
+              :items="selectServantNpType"
               class="mr-4"
-            ></v-text-field>
+              color="teal accent-4"
+            ></v-select>
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
@@ -282,6 +282,7 @@ export default {
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
       servantNpType: '', // キャラクターの宝具タイプ
+      selectServantNpType: ['Arts', 'Quick', 'Buster'],
       npRate: '', // NPレート
       npHits: 0, // 宝具ヒット回数
       overkillHits: 0,
