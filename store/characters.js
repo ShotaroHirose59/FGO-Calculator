@@ -25,7 +25,10 @@ export const getters = {
   artsQuickCahracters: (state) => {
     return _.sortBy(
       state.characters.filter(
-        (character) => character.card === 'A' || character.card === 'Q'
+        (character) =>
+          character.card === 'A' ||
+          character.card === 'Q' ||
+          character.name === 'エミヤ'
       ),
       'number'
     )
