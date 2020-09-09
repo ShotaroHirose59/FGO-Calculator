@@ -43,7 +43,9 @@
               outlined
             ></v-textarea>
           </validation-provider>
-          <p>ご利用の端末種別をご選択ください。</p>
+          <p>
+            ご利用の端末種別をご選択ください。(端末によりレイアウトが異なるためです)
+          </p>
           <v-select
             v-model="feedback.terminal"
             label="使用端末"
