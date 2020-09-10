@@ -85,11 +85,13 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/google-analytics'
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-165731113-1'
+      }
+    ]
   ],
-  googleAnalytics: {
-    id: 'UA-233031531'
-  },
   manifest: {
     name: 'FGO Calculator',
     short_name: 'Wオルタと計算',
