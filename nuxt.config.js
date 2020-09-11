@@ -74,12 +74,8 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/vuetify'
   ],
-  googleAnalytics: {
-    id: 'UA-165731113-1' // 自身のアナリティクスコード
-  },
   /*
    ** Nuxt.js modules
    */
@@ -88,8 +84,12 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/google-analytics'
   ],
+  googleAnalytics: {
+    id: 'UA-165731113-1'
+  },
   manifest: {
     name: 'FGO Calculator',
     short_name: 'Wオルタと計算',
