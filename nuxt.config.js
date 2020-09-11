@@ -74,8 +74,12 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics'
   ],
+  googleAnalytics: {
+    id: 'UA-165731113-1' // 自身のアナリティクスコード
+  },
   /*
    ** Nuxt.js modules
    */
@@ -84,13 +88,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    [
-      '@nuxtjs/google-analytics',
-      {
-        id: 'UA-165731113-1'
-      }
-    ]
+    '@nuxtjs/dotenv'
   ],
   manifest: {
     name: 'FGO Calculator',
