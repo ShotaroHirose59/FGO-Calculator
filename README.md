@@ -70,6 +70,7 @@ https://fgo-damage-calculation.web.app
 - ジャンヌ ・ ダルク (オルタ)
 - アルトリア ・ ペンドラゴン (オルタ)
 
+
 ## セットアップ
 
 ```bash
