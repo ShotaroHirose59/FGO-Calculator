@@ -88,7 +88,7 @@ export default {
     '@nuxtjs/google-analytics'
   ],
   googleAnalytics: {
-    id: 'UA-233031531'
+    id: 'UA-165731113-1'
   },
   manifest: {
     name: 'FGO Calculator',

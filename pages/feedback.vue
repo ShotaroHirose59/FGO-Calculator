@@ -29,7 +29,7 @@
       </v-card-subtitle>
       <v-card-text class="mt-8">
         <v-form>
-          <p>内容(300文字以内)</p>
+          <p>内容 (300文字以内)</p>
           <validation-provider
             ref="provider"
             v-slot="{ errors }"

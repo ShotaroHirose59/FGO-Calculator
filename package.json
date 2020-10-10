@@ -14,29 +14,30 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/dotenv": "^1.4.0",
-    "@nuxtjs/google-analytics": "^2.3.0",
-    "@nuxtjs/pwa": "^3.0.0-0",
-    "firebase": "^7.14.4",
-    "nuxt": "^2.0.0",
-    "vee-validate": "^3.3.1",
-    "vuexfire": "^3.1.0"
+    "@nuxtjs/google-analytics": "^2.4.0",
+    "@nuxtjs/pwa": "^3.0.2",
+    "firebase": "^7.19.1",
+    "nuxt": "^2.14.4",
+    "vee-validate": "^3.3.9",
+    "vue": "^2.6.12",
+    "vuexfire": "^3.2.4"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/vuetify": "^1.0.0",
-    "@vue/test-utils": "^1.0.0-beta.27",
+    "@vue/test-utils": "^1.1.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^24.1.0",
     "prettier": "^1.19.1",
-    "vue-jest": "^4.0.0-beta.3"
+    "vue-jest": "^4.0.0-beta.6"
   }
 }
