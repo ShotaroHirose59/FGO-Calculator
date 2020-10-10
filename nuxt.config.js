@@ -31,12 +31,12 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'FGO Calculator'
+        content: 'FGO Calculator -Wオルタと一緒に計算-'
       },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://fgo-damage-calculation.web.app/'
+        content: 'https://fgo-damage-calculation.web.app'
       },
       {
         hid: 'og:description',
@@ -48,6 +48,7 @@ export default {
         property: 'og:image',
         content: 'https://fgo-damage-calculation.web.app/icon.png'
       },
+      { name: 'twitter:card', content: 'summary_large_image' }, // twitterの画像サイズ
       {
         hid: 'og:site_name',
         name: 'og:site_name',
