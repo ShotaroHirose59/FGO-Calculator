@@ -64,7 +64,7 @@
           :to="{ name: 'npaquisition-calculation' }"
         >
           <v-card-title class="mb-2">
-            宝具NP獲得 計算
+            宝具NP 計算
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
               >mdi-calculator</v-icon
@@ -115,11 +115,6 @@ export default {
     return {
       image_src: require('assets/jeannearuta.png'),
       image_src2: require('assets/altria.png')
-    }
-  },
-  head() {
-    return {
-      title: 'トップ'
     }
   }
 }
