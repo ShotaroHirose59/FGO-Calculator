@@ -25,7 +25,7 @@
       md="4"
       class="text-center align-self-center city"
     >
-      <h1 class="top-title" style="font-size: 64px">
+      <h1 class="top-title" style="font-size: 72px">
         FGO Calculator
       </h1>
     </v-col>
@@ -64,7 +64,7 @@
           :to="{ name: 'npaquisition-calculation' }"
         >
           <v-card-title class="mb-2">
-            宝具NP 計算
+            宝具NP獲得 計算
             <v-spacer />
             <v-icon color="purple lighten-1" style="font-size: 32px"
               >mdi-calculator</v-icon
