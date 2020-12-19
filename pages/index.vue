@@ -51,7 +51,7 @@
               >mdi-sword-cross</v-icon
             >
           </v-card-title>
-          <v-card-subtitle>宝具ダメージが計算できます。</v-card-subtitle>
+          <v-card-subtitle>宝具ダメージを計算できます。</v-card-subtitle>
         </v-card>
       </v-hover>
     </v-col>
@@ -74,7 +74,7 @@
             >
           </v-card-title>
           <v-card-subtitle>
-            宝具のNP獲得量が計算できます。
+            宝具のNP獲得量を計算できます。
           </v-card-subtitle>
         </v-card>
       </v-hover>
@@ -94,7 +94,7 @@
               >mdi-file-document-outline</v-icon
             >
           </v-card-title>
-          <v-card-subtitle>サーヴァント一覧が確認できます。</v-card-subtitle>
+          <v-card-subtitle>サーヴァント一覧を確認できます。</v-card-subtitle>
         </v-card>
       </v-hover>
     </v-col>
