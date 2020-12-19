@@ -1,22 +1,20 @@
 <template>
-  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="64" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="9">
-        <strong>NP {{ totalAcquisitionAmount }}％</strong>
         <v-progress-linear
           :value="totalAcquisitionAmount"
           rounded
           color="yellow darken-2"
           height="10"
           reactive
+          class="mt-4"
         ></v-progress-linear>
-        <div class="float-left mt-2">
-          {{ characterName }} {{ servantNpType }}
-        </div>
+        <strong>NP {{ totalAcquisitionAmount }}％</strong>
       </v-col>
 
       <v-col cols="3">
-        <v-img :src="image_src" width="64" @click="displayDetails()"></v-img>
+        <v-img :src="image_src" width="56" @click="displayDetails()"></v-img>
       </v-col>
 
       <!-- 結果の詳細 -->

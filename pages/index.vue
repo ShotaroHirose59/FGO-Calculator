@@ -25,7 +25,7 @@
       md="4"
       class="text-center align-self-center city"
     >
-      <h1 class="top-title" style="font-size: 64px">
+      <h1 class="top-title" style="font-size: 72px">
         FGO Calculator
       </h1>
     </v-col>
@@ -51,7 +51,7 @@
               >mdi-sword-cross</v-icon
             >
           </v-card-title>
-          <v-card-subtitle>宝具ダメージが計算できます。</v-card-subtitle>
+          <v-card-subtitle>宝具ダメージを計算できます。</v-card-subtitle>
         </v-card>
       </v-hover>
     </v-col>
@@ -74,7 +74,7 @@
             >
           </v-card-title>
           <v-card-subtitle>
-            宝具のNP獲得量が計算できます。
+            宝具のNP獲得量を計算できます。
           </v-card-subtitle>
         </v-card>
       </v-hover>
@@ -94,7 +94,7 @@
               >mdi-file-document-outline</v-icon
             >
           </v-card-title>
-          <v-card-subtitle>サーヴァント一覧が確認できます。</v-card-subtitle>
+          <v-card-subtitle>サーヴァント一覧を確認できます。</v-card-subtitle>
         </v-card>
       </v-hover>
     </v-col>
@@ -115,11 +115,6 @@ export default {
     return {
       image_src: require('assets/jeannearuta.png'),
       image_src2: require('assets/altria.png')
-    }
-  },
-  head() {
-    return {
-      title: 'トップ'
     }
   }
 }
