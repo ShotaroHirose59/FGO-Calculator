@@ -375,6 +375,9 @@ export default {
           this.servantNpType = 'Quick'
           break
       }
+      if (character.name === 'エミヤ') {
+        this.servantNpType = 'Arts'
+      }
     },
     // 単体宝具のキャラは敵の数を１に設定
     setEnemyCount(character) {
