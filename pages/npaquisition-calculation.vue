@@ -44,7 +44,7 @@
               label="サーヴァント"
               :items="filteredCharacters"
               :disabled="!characterClass"
-              placeholder="先にクラスを選択"
+              :placeholder="placeholder"
               class="mr-4"
               color="teal accent-4"
               @input="onChangeVal(characterName)"
@@ -337,6 +337,13 @@ export default {
         }
       }
       return filteredCharacters
+    },
+    placeholder() {
+      if (this.characterClass === '') {
+        return '先にクラスを選択'
+      } else {
+        return 'サーヴァントを選択'
+      }
     }
   },
   created() {
@@ -395,7 +402,15 @@ export default {
   },
   head() {
     return {
-      title: '宝具NP獲得計算'
+      title: 'FGO 宝具NP計算',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'FGOの計算アプリです。このページでは宝具のNP獲得計算ができます。'
+        }
+      ]
     }
   }
 }
