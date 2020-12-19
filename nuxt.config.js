@@ -7,19 +7,20 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    // titleTemplate: '%s - ' + process.env.npm_package_name,
+    titleTemplate: '%s - ' + 'Wオルタと計算',
     title: 'FGO Calculator',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         name: 'keywords',
-        content: 'FGO,邪ンヌ,アルトリア,オルタ,Wオルタ,計算,宝具,NP'
+        content: 'FGO,Wオルタ,計算,宝具,NP,ダメージ,回収,獲得'
       },
       {
         hid: 'description',
         name: 'description',
-        content: 'Wオルタと一緒に計算！ FGO Calculator by @destino591211'
+        content: 'Wオルタと一緒に計算 FGO Calculator by @destino591211'
       },
       {
         hid: 'twitter:card',
