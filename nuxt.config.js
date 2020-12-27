@@ -11,6 +11,10 @@ export default {
     titleTemplate: '%s - ' + 'Wオルタと計算',
     title: 'FGO Calculator',
     meta: [
+      {
+        name: 'google-site-verification',
+        content: 'YErJ_L6Y37Gp2VHGitsOCjVgi50WYGrOr31AZnl8q-s'
+      },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
