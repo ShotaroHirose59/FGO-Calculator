@@ -3,7 +3,7 @@ import firebase from '~/plugins/firebase'
 
 // Firestoreのデータベースを定義
 const db = firebase.firestore()
-const infoRef = db.collection('info').orderBy('created', 'desc')
+const infoRef = db.collection('info').orderBy('createdAt', 'desc')
 
 export const state = () => ({
   info: []
