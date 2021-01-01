@@ -19,9 +19,11 @@
         </v-row>
       </v-toolbar>
       <!-- スマホだと幅取るからいらない -->
-      <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-        単体 or 全体宝具を持つArts Quickのサーヴァントが対象
-      </v-card-subtitle>
+      <client-only>
+        <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
+          単体 or 全体宝具を持つArts Quickのサーヴァントが対象
+        </v-card-subtitle>
+      </client-only>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
@@ -219,46 +221,50 @@
             ></v-select>
           </v-col>
 
-          <v-col
-            v-if="$vuetify.breakpoint.xs"
-            cols="12"
-            style="text-align: center;"
-          >
-            <v-btn color="error" class="mt-3" outlined @click="resetAll()"
-              >計算リセット</v-btn
+          <client-only>
+            <v-col
+              v-if="$vuetify.breakpoint.xs"
+              cols="12"
+              style="text-align: center;"
             >
-          </v-col>
+              <v-btn color="error" class="mt-3" outlined @click="resetAll()"
+                >計算リセット</v-btn
+              >
+            </v-col>
+          </client-only>
         </v-row>
       </v-card-text>
     </v-card>
     <!-- 結果カード スマホの場合は表示しない -->
-    <ResultCard
-      v-if="!$vuetify.breakpoint.xs"
-      :character-name="characterName"
-      :servant-np-type="servantNpType"
-      :card-buff="cardBuff"
-      :np-rate="npRate"
-      :np-hits="npHits"
-      :overkill-hits="overkillHits"
-      :enemy-class="enemyClass"
-      :enemy-count="enemyCount"
-      :np-acquisition-buff="npAcquisitionBuff"
-      @reset-val="resetAll"
-    />
-    <!-- スマホの場合、固定フッター用意 -->
-    <FixedFooter
-      v-if="$vuetify.breakpoint.xs"
-      :character-name="characterName"
-      :servant-np-type="servantNpType"
-      :card-buff="cardBuff"
-      :np-rate="npRate"
-      :np-hits="npHits"
-      :overkill-hits="overkillHits"
-      :enemy-class="enemyClass"
-      :enemy-count="enemyCount"
-      :np-acquisition-buff="npAcquisitionBuff"
-      @reset-val="resetAll"
-    />
+    <client-only>
+      <ResultCard
+        v-if="!$vuetify.breakpoint.xs"
+        :character-name="characterName"
+        :servant-np-type="servantNpType"
+        :card-buff="cardBuff"
+        :np-rate="npRate"
+        :np-hits="npHits"
+        :overkill-hits="overkillHits"
+        :enemy-class="enemyClass"
+        :enemy-count="enemyCount"
+        :np-acquisition-buff="npAcquisitionBuff"
+        @reset-val="resetAll"
+      />
+      <!-- スマホの場合、固定フッター用意 -->
+      <FixedFooter
+        v-if="$vuetify.breakpoint.xs"
+        :character-name="characterName"
+        :servant-np-type="servantNpType"
+        :card-buff="cardBuff"
+        :np-rate="npRate"
+        :np-hits="npHits"
+        :overkill-hits="overkillHits"
+        :enemy-class="enemyClass"
+        :enemy-count="enemyCount"
+        :np-acquisition-buff="npAcquisitionBuff"
+        @reset-val="resetAll"
+      />
+    </client-only>
   </v-row>
 </template>
 

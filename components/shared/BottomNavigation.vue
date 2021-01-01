@@ -1,10 +1,5 @@
 <template>
-  <v-bottom-navigation
-    v-if="$vuetify.breakpoint.xs"
-    app
-    fixed
-    color="purple lighten-1"
-  >
+  <v-bottom-navigation app fixed color="purple lighten-1">
     <v-btn
       v-for="menu in menus"
       :key="menu.title"

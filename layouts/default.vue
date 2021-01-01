@@ -26,58 +26,64 @@
         <v-divider></v-divider>
       </v-list>
 
-      <div v-if="$vuetify.breakpoint.xs" class="drawer-footer mt-4 ml-4">
-        <div class="drawer-footer-terms">
-          <nuxt-link to="/terms">
-            <p class="terms" style="font-size: 12px;">利用規約</p>
-          </nuxt-link>
-          <nuxt-link to="/privacy">
-            <p class="terms" style="font-size: 12px;">プライバシーポリシー</p>
-          </nuxt-link>
+      <client-only>
+        <div v-if="$vuetify.breakpoint.xs" class="drawer-footer mt-4 ml-4">
+          <div class="drawer-footer-terms">
+            <nuxt-link to="/terms">
+              <p class="terms" style="font-size: 12px;">利用規約</p>
+            </nuxt-link>
+            <nuxt-link to="/privacy">
+              <p class="terms" style="font-size: 12px;">プライバシーポリシー</p>
+            </nuxt-link>
+          </div>
         </div>
-      </div>
+      </client-only>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon
-        v-if="!$vuetify.breakpoint.xs"
-        @click.stop="drawer = !drawer"
-      />
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-app-bar-nav-icon
-        v-if="$vuetify.breakpoint.xs"
-        @click.stop="drawer = !drawer"
-      />
+      <client-only>
+        <v-app-bar-nav-icon
+          v-if="!$vuetify.breakpoint.xs"
+          @click.stop="drawer = !drawer"
+        />
+        <v-toolbar-title v-text="title" />
+        <v-spacer />
+        <v-app-bar-nav-icon
+          v-if="$vuetify.breakpoint.xs"
+          @click.stop="drawer = !drawer"
+        />
+      </client-only>
     </v-app-bar>
     <v-content>
       <v-container fluid fill-height>
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
-      <v-spacer />
-      <nuxt-link
-        v-if="
-          $route.path === '/' ||
-            $route.path === '/terms' ||
-            $route.path === '/privacy'
-        "
-        :to="{ name: 'terms' }"
-      >
-        <span class="terms mr-8">利用規約</span>
-      </nuxt-link>
-      <nuxt-link
-        v-if="
-          $route.path === '/' ||
-            $route.path === '/terms' ||
-            $route.path === '/privacy'
-        "
-        :to="{ name: 'privacy' }"
-      >
-        <span class="terms">プライバシーポリシー</span>
-      </nuxt-link>
-    </v-footer>
+    <client-only>
+      <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
+        <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
+        <v-spacer />
+        <nuxt-link
+          v-if="
+            $route.path === '/' ||
+              $route.path === '/terms' ||
+              $route.path === '/privacy'
+          "
+          :to="{ name: 'terms' }"
+        >
+          <span class="terms mr-8">利用規約</span>
+        </nuxt-link>
+        <nuxt-link
+          v-if="
+            $route.path === '/' ||
+              $route.path === '/terms' ||
+              $route.path === '/privacy'
+          "
+          :to="{ name: 'privacy' }"
+        >
+          <span class="terms">プライバシーポリシー</span>
+        </nuxt-link>
+      </v-footer>
+    </client-only>
   </v-app>
 </template>
 

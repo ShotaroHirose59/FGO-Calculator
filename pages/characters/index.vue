@@ -51,7 +51,9 @@
       </div>
     </v-card>
     <!-- ボトムナビゲーション -->
-    <BottomNavigation />
+    <client-only>
+      <BottomNavigation v-if="$vuetify.breakpoint.xs" />
+    </client-only>
   </v-row>
 </template>
 <script>

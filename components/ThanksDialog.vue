@@ -1,13 +1,15 @@
 <template>
   <v-dialog v-model="isDisplay" scrollable max-width="800">
     <v-card>
-      <v-toolbar v-if="!$vuetify.breakpoint.xs" height="56" class="mb-8">
-        <v-toolbar-title>運営とWオルタからお礼</v-toolbar-title>
-      </v-toolbar>
+      <client-only>
+        <v-toolbar v-if="!$vuetify.breakpoint.xs" height="56" class="mb-8">
+          <v-toolbar-title>運営とWオルタからお礼</v-toolbar-title>
+        </v-toolbar>
 
-      <v-toolbar v-if="$vuetify.breakpoint.xs" height="56" class="mb-8">
-        <v-toolbar-title>運営と邪ンヌからお礼</v-toolbar-title>
-      </v-toolbar>
+        <v-toolbar v-if="$vuetify.breakpoint.xs" height="56" class="mb-8">
+          <v-toolbar-title>運営と邪ンヌからお礼</v-toolbar-title>
+        </v-toolbar>
+      </client-only>
 
       <v-row no-gutters>
         <v-col cols="12" sm="12" md="12" class="text-center">
@@ -29,14 +31,16 @@
             <v-img :src="image_src" max-width="200px" class="ml-8"></v-img>
           </div>
         </v-col>
-        <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="6">
-          <div class="balloon-set-box ml-12">
-            <div class="balloon1 ml-12">
-              <p>感謝するぞ マスター</p>
+        <client-only>
+          <v-col v-if="!$vuetify.breakpoint.xs" cols="12" sm="6" md="6">
+            <div class="balloon-set-box ml-12">
+              <div class="balloon1 ml-12">
+                <p>感謝するぞ マスター</p>
+              </div>
+              <v-img :src="image_src2" max-width="200px" class="ml-12"></v-img>
             </div>
-            <v-img :src="image_src2" max-width="200px" class="ml-12"></v-img>
-          </div>
-        </v-col>
+          </v-col>
+        </client-only>
       </v-row>
     </v-card>
   </v-dialog>

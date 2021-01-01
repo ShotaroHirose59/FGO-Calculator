@@ -1,38 +1,40 @@
 <template>
   <v-row no-gutters scrollable>
-    <v-col v-if="$vuetify.breakpoint.xs" cols="6" class="city mb-8">
-      <h1 class="top-title" style="font-size: 48px">
-        FGO<br />
-        Calculator
-      </h1>
-    </v-col>
+    <client-only>
+      <v-col v-if="$vuetify.breakpoint.xs" cols="6" class="city mb-8">
+        <h1 class="top-title" style="font-size: 48px">
+          FGO<br />
+          Calculator
+        </h1>
+      </v-col>
 
-    <v-col v-if="$vuetify.breakpoint.xs" cols="3">
-      <v-img :src="image_src" max-width="88"></v-img>
-    </v-col>
+      <v-col v-if="$vuetify.breakpoint.xs" cols="3">
+        <v-img :src="image_src" max-width="88"></v-img>
+      </v-col>
 
-    <v-col v-if="$vuetify.breakpoint.xs" cols="3">
-      <v-img :src="image_src2" max-width="88"></v-img>
-    </v-col>
+      <v-col v-if="$vuetify.breakpoint.xs" cols="3">
+        <v-img :src="image_src2" max-width="88"></v-img>
+      </v-col>
 
-    <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
-      <v-img :src="image_src" max-width="448"></v-img>
-    </v-col>
+      <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
+        <v-img :src="image_src" max-width="448"></v-img>
+      </v-col>
 
-    <v-col
-      v-if="!$vuetify.breakpoint.xs"
-      sm="4"
-      md="4"
-      class="text-center align-self-center city"
-    >
-      <h1 class="top-title" style="font-size: 72px">
-        FGO Calculator
-      </h1>
-    </v-col>
+      <v-col
+        v-if="!$vuetify.breakpoint.xs"
+        sm="4"
+        md="4"
+        class="text-center align-self-center city"
+      >
+        <h1 class="top-title" style="font-size: 72px">
+          FGO Calculator
+        </h1>
+      </v-col>
 
-    <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
-      <v-img :src="image_src2" max-width="448"></v-img>
-    </v-col>
+      <v-col v-if="!$vuetify.breakpoint.xs" sm="4" md="4">
+        <v-img :src="image_src2" max-width="448"></v-img>
+      </v-col>
+    </client-only>
 
     <v-col cols="12" sm="12" md="4">
       <v-hover v-slot:default="{ hover }">
@@ -100,7 +102,9 @@
     </v-col>
 
     <!-- ボトムナビゲーション -->
-    <BottomNavigation />
+    <client-only>
+      <BottomNavigation v-if="$vuetify.breakpoint.xs" />
+    </client-only>
   </v-row>
 </template>
 
