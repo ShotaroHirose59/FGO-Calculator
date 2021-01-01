@@ -1,10 +1,15 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+  "functions": {
+    "source": "functions",
+    "predeploy": [
+      "npm --prefix run build && rm -rf functions/nuxt && cp -r .nuxt/ functions/nuxt/"
+    ]
   },
   "hosting": {
-    "public": "dist",
+    "predeploy": [
+      "rm -rf public/* && mkdir -p public/_nuxt && cp -r .nuxt/dist/client/ public/_nuxt && cp -a static/. public/"
+    ],
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -13,11 +18,8 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "ssr"
       }
     ]
-  },
-  "storage": {
-    "rules": "storage.rules"
   }
 }

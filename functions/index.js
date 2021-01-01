@@ -1,8 +1,11 @@
-// const functions = require('firebase-functions')
+const functions = require('firebase-functions');
+const { Nuxt } = require('nuxt');
+const nuxt = new Nuxt({
+  buildDir: 'ssr',
+  dev: false
+});
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+exports.ssr = functions.https.onRequest(async (req, res) => {
+    await nuxt.ready()
+    return nuxt.render(req, res)
+})
