@@ -36,7 +36,7 @@
               label="クラス"
               :items="items.class"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -48,7 +48,7 @@
               :disabled="!characterClass"
               :placeholder="placeholder"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
               @input="onChangeVal(characterName)"
             ></v-select>
           </v-col>
@@ -59,7 +59,7 @@
               label="宝具"
               :items="selectServantNpType"
               class="mr-3"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -70,7 +70,7 @@
               :items="items.npChargeLevel"
               :disabled="!characterName"
               class="mr-3"
-              color="teal accent-4"
+              color="teal"
               @change="onChangeNpmultiplier(npChargeLv)"
             ></v-select>
           </v-col>
@@ -84,7 +84,7 @@
               placeholder="自動"
               type="number"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-text-field>
           </v-col>
 
@@ -101,7 +101,7 @@
                 placeholder="自動"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -113,7 +113,7 @@
               :disabled="!characterName"
               hide-details
               class="ml-4"
-              color="teal accent-4"
+              color="teal"
               @change="onSwitchAtk()"
             ></v-switch>
           </v-col>
@@ -131,7 +131,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -167,7 +167,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -206,7 +206,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -245,7 +245,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -284,7 +284,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -319,7 +319,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -349,7 +349,7 @@
                 label="クラス相性"
                 :items="selectClassCompatibility"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-select>
             </v-col>
 
@@ -359,7 +359,7 @@
                 label="属性相性"
                 :items="selectAttributeCompatibility"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-select>
             </v-col>
 

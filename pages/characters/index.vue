@@ -15,7 +15,7 @@
             class="ml-4 mr-4"
             prepend-inner-icon="mdi-magnify"
             type="text"
-            color="teal accent-4"
+            color="teal"
           ></v-text-field>
         </v-col>
       </v-row>

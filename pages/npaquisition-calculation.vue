@@ -36,7 +36,7 @@
               label="クラス"
               :items="items.class"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -48,7 +48,7 @@
               :disabled="!characterClass"
               :placeholder="placeholder"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
               @input="onChangeVal(characterName)"
             ></v-select>
           </v-col>
@@ -59,7 +59,7 @@
               label="宝具"
               :items="selectServantNpType"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -97,7 +97,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -136,7 +136,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -175,7 +175,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -207,7 +207,7 @@
               label="敵クラス"
               :items="items.selectEnemyClass"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -217,7 +217,7 @@
               label="敵の数"
               :items="items.selectEnemyCount"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
