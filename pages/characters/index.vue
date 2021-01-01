@@ -15,7 +15,7 @@
             class="ml-4 mr-4"
             prepend-inner-icon="mdi-magnify"
             type="text"
-            color="teal accent-4"
+            color="teal"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -51,7 +51,9 @@
       </div>
     </v-card>
     <!-- ボトムナビゲーション -->
-    <BottomNavigation />
+    <client-only>
+      <BottomNavigation v-if="$vuetify.breakpoint.xs" />
+    </client-only>
   </v-row>
 </template>
 <script>

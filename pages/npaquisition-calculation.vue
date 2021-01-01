@@ -19,9 +19,11 @@
         </v-row>
       </v-toolbar>
       <!-- スマホだと幅取るからいらない -->
-      <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-        単体 or 全体宝具を持つArts Quickのサーヴァントが対象
-      </v-card-subtitle>
+      <client-only>
+        <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
+          単体 or 全体宝具を持つArts Quickのサーヴァントが対象
+        </v-card-subtitle>
+      </client-only>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
@@ -34,7 +36,7 @@
               label="クラス"
               :items="items.class"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -46,7 +48,7 @@
               :disabled="!characterClass"
               :placeholder="placeholder"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
               @input="onChangeVal(characterName)"
             ></v-select>
           </v-col>
@@ -57,7 +59,7 @@
               label="宝具"
               :items="selectServantNpType"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -65,10 +67,10 @@
             <v-text-field
               v-model.number="npHits"
               label="宝具ヒット数"
-              disabled
               placeholder="自動"
               suffix="hit"
               class="mr-4"
+              color="teal"
             ></v-text-field>
           </v-col>
 
@@ -76,9 +78,9 @@
             <v-text-field
               v-model.number="npRate"
               label="NPレート"
-              disabled
               placeholder="自動"
               class="mr-4"
+              color="teal"
             ></v-text-field>
           </v-col>
 
@@ -95,7 +97,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -134,7 +136,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -173,7 +175,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -205,7 +207,7 @@
               label="敵クラス"
               :items="items.selectEnemyClass"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -215,50 +217,54 @@
               label="敵の数"
               :items="items.selectEnemyCount"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
-          <v-col
-            v-if="$vuetify.breakpoint.xs"
-            cols="12"
-            style="text-align: center;"
-          >
-            <v-btn color="error" class="mt-3" outlined @click="resetAll()"
-              >計算リセット</v-btn
+          <client-only>
+            <v-col
+              v-if="$vuetify.breakpoint.xs"
+              cols="12"
+              style="text-align: center;"
             >
-          </v-col>
+              <v-btn color="error" class="mt-3" outlined @click="resetAll()"
+                >計算リセット</v-btn
+              >
+            </v-col>
+          </client-only>
         </v-row>
       </v-card-text>
     </v-card>
     <!-- 結果カード スマホの場合は表示しない -->
-    <ResultCard
-      v-if="!$vuetify.breakpoint.xs"
-      :character-name="characterName"
-      :servant-np-type="servantNpType"
-      :card-buff="cardBuff"
-      :np-rate="npRate"
-      :np-hits="npHits"
-      :overkill-hits="overkillHits"
-      :enemy-class="enemyClass"
-      :enemy-count="enemyCount"
-      :np-acquisition-buff="npAcquisitionBuff"
-      @reset-val="resetAll"
-    />
-    <!-- スマホの場合、固定フッター用意 -->
-    <FixedFooter
-      v-if="$vuetify.breakpoint.xs"
-      :character-name="characterName"
-      :servant-np-type="servantNpType"
-      :card-buff="cardBuff"
-      :np-rate="npRate"
-      :np-hits="npHits"
-      :overkill-hits="overkillHits"
-      :enemy-class="enemyClass"
-      :enemy-count="enemyCount"
-      :np-acquisition-buff="npAcquisitionBuff"
-      @reset-val="resetAll"
-    />
+    <client-only>
+      <ResultCard
+        v-if="!$vuetify.breakpoint.xs"
+        :character-name="characterName"
+        :servant-np-type="servantNpType"
+        :card-buff="cardBuff"
+        :np-rate="npRate"
+        :np-hits="npHits"
+        :overkill-hits="overkillHits"
+        :enemy-class="enemyClass"
+        :enemy-count="enemyCount"
+        :np-acquisition-buff="npAcquisitionBuff"
+        @reset-val="resetAll"
+      />
+      <!-- スマホの場合、固定フッター用意 -->
+      <FixedFooter
+        v-if="$vuetify.breakpoint.xs"
+        :character-name="characterName"
+        :servant-np-type="servantNpType"
+        :card-buff="cardBuff"
+        :np-rate="npRate"
+        :np-hits="npHits"
+        :overkill-hits="overkillHits"
+        :enemy-class="enemyClass"
+        :enemy-count="enemyCount"
+        :np-acquisition-buff="npAcquisitionBuff"
+        @reset-val="resetAll"
+      />
+    </client-only>
   </v-row>
 </template>
 

@@ -69,7 +69,7 @@
             label="クラス相性"
             :items="selectClassCompatibility"
             class="mr-4"
-            color="teal accent-4"
+            color="teal"
           ></v-select>
         </v-col>
 
@@ -79,7 +79,7 @@
             label="属性相性"
             :items="selectAttributeCompatibility"
             class="mr-4"
-            color="teal accent-4"
+            color="teal"
           ></v-select>
         </v-col>
 

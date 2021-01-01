@@ -92,3 +92,6 @@ sw.*
 storage.rules
 .firebase
 firestore.rules
+
+# SSR deploy
+public

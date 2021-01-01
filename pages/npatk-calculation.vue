@@ -19,9 +19,11 @@
         </v-row>
       </v-toolbar>
       <!-- スマホだと幅取るからいらない -->
-      <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-        単体 or 全体宝具を持つ全てのサーヴァントが対象
-      </v-card-subtitle>
+      <client-only>
+        <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
+          単体 or 全体宝具を持つ全てのサーヴァントが対象
+        </v-card-subtitle>
+      </client-only>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
@@ -34,7 +36,7 @@
               label="クラス"
               :items="items.class"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -46,7 +48,7 @@
               :disabled="!characterClass"
               :placeholder="placeholder"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
               @input="onChangeVal(characterName)"
             ></v-select>
           </v-col>
@@ -57,7 +59,7 @@
               label="宝具"
               :items="selectServantNpType"
               class="mr-3"
-              color="teal accent-4"
+              color="teal"
             ></v-select>
           </v-col>
 
@@ -68,7 +70,7 @@
               :items="items.npChargeLevel"
               :disabled="!characterName"
               class="mr-3"
-              color="teal accent-4"
+              color="teal"
               @change="onChangeNpmultiplier(npChargeLv)"
             ></v-select>
           </v-col>
@@ -82,7 +84,7 @@
               placeholder="自動"
               type="number"
               class="mr-4"
-              color="teal accent-4"
+              color="teal"
             ></v-text-field>
           </v-col>
 
@@ -99,7 +101,7 @@
                 placeholder="自動"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -111,7 +113,7 @@
               :disabled="!characterName"
               hide-details
               class="ml-4"
-              color="teal accent-4"
+              color="teal"
               @change="onSwitchAtk()"
             ></v-switch>
           </v-col>
@@ -129,7 +131,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -165,7 +167,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -204,7 +206,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -243,7 +245,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -282,7 +284,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -317,7 +319,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
-                color="teal accent-4"
+                color="teal"
               ></v-text-field>
             </validation-provider>
           </v-col>
@@ -340,74 +342,78 @@
             />
           </v-col>
 
-          <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
-            <v-select
-              v-model="classCompatibility"
-              label="クラス相性"
-              :items="selectClassCompatibility"
-              class="mr-4"
-              color="teal accent-4"
-            ></v-select>
-          </v-col>
+          <client-only>
+            <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+              <v-select
+                v-model="classCompatibility"
+                label="クラス相性"
+                :items="selectClassCompatibility"
+                class="mr-4"
+                color="teal"
+              ></v-select>
+            </v-col>
 
-          <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
-            <v-select
-              v-model="attributeCompatibility"
-              label="属性相性"
-              :items="selectAttributeCompatibility"
-              class="mr-4"
-              color="teal accent-4"
-            ></v-select>
-          </v-col>
+            <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+              <v-select
+                v-model="attributeCompatibility"
+                label="属性相性"
+                :items="selectAttributeCompatibility"
+                class="mr-4"
+                color="teal"
+              ></v-select>
+            </v-col>
 
-          <v-col
-            v-if="$vuetify.breakpoint.xs"
-            cols="12"
-            style="text-align: center;"
-          >
-            <v-btn color="error" class="mt-3" outlined @click="resetAll()"
-              >計算リセット</v-btn
+            <v-col
+              v-if="$vuetify.breakpoint.xs"
+              cols="12"
+              style="text-align: center;"
             >
-          </v-col>
+              <v-btn color="error" class="mt-3" outlined @click="resetAll()"
+                >計算リセット</v-btn
+              >
+            </v-col>
+          </client-only>
         </v-row>
       </v-card-text>
     </v-card>
     <!-- 結果カード スマホの場合は表示しない -->
-    <ResultCard
-      v-if="!$vuetify.breakpoint.xs"
-      :character-class="characterClass"
-      :character-name="characterName"
-      :character-atk="characterAtk"
-      :np-charge-lv="npChargeLv"
-      :character-npmultiplier="characterNpmultiplier"
-      :servant-np-type="servantNpType"
-      :atk-buff="atkBuff"
-      :card-buff="cardBuff"
-      :s-atk-buff="sAtkBuff"
-      :np-buff="npBuff"
-      :s-np-atk-buff="sNpAtkBuff"
-      :dress-atk="dressAtk"
-      @reset-val="resetAll"
-    />
-    <!-- スマホの場合のみ、固定フッター用意 -->
-    <FixedFooter
-      v-if="$vuetify.breakpoint.xs"
-      :character-class="characterClass"
-      :character-name="characterName"
-      :character-atk="characterAtk"
-      :np-charge-lv="npChargeLv"
-      :character-npmultiplier="characterNpmultiplier"
-      :servant-np-type="servantNpType"
-      :atk-buff="atkBuff"
-      :card-buff="cardBuff"
-      :s-atk-buff="sAtkBuff"
-      :np-buff="npBuff"
-      :s-np-atk-buff="sNpAtkBuff"
-      :dress-atk="dressAtk"
-      :class-compatibility="classCompatibility"
-      :attribute-compatibility="attributeCompatibility"
-      @reset-val="resetAll"
-    />
+    <client-only>
+      <ResultCard
+        v-if="!$vuetify.breakpoint.xs"
+        :character-class="characterClass"
+        :character-name="characterName"
+        :character-atk="characterAtk"
+        :np-charge-lv="npChargeLv"
+        :character-npmultiplier="characterNpmultiplier"
+        :servant-np-type="servantNpType"
+        :atk-buff="atkBuff"
+        :card-buff="cardBuff"
+        :s-atk-buff="sAtkBuff"
+        :np-buff="npBuff"
+        :s-np-atk-buff="sNpAtkBuff"
+        :dress-atk="dressAtk"
+        @reset-val="resetAll"
+      />
+      <!-- スマホの場合のみ、固定フッター用意 -->
+      <FixedFooter
+        v-if="$vuetify.breakpoint.xs"
+        :character-class="characterClass"
+        :character-name="characterName"
+        :character-atk="characterAtk"
+        :np-charge-lv="npChargeLv"
+        :character-npmultiplier="characterNpmultiplier"
+        :servant-np-type="servantNpType"
+        :atk-buff="atkBuff"
+        :card-buff="cardBuff"
+        :s-atk-buff="sAtkBuff"
+        :np-buff="npBuff"
+        :s-np-atk-buff="sNpAtkBuff"
+        :dress-atk="dressAtk"
+        :class-compatibility="classCompatibility"
+        :attribute-compatibility="attributeCompatibility"
+        @reset-val="resetAll"
+      />
+    </client-only>
   </v-row>
 </template>
 

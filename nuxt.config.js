@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 import webpack from 'webpack'
 
 export default {
-  mode: 'spa',
+  ssr: true,
   /*
    ** Headers of the page
    */
@@ -51,7 +51,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://fgo-damage-calculation.web.app/icon.png'
+        content: 'https://fgo-damage-calculation.web.app/ogp.png'
       },
       { name: 'twitter:card', content: 'summary_large_image' }, // twitterの画像サイズ
       {
