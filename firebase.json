@@ -1,15 +1,11 @@
 {
   "functions": {
-    "source": "functions",
-    "predeploy": [
-      "npm --prefix run build && rm -rf functions/nuxt && cp -r .nuxt/ functions/nuxt/"
-    ]
+    "functions": {
+      "source": "functions"
+    }
   },
   "hosting": {
-    "predeploy": [
-      "rm -rf public/* && mkdir -p public/_nuxt && cp -r .nuxt/dist/client/ public/_nuxt && cp -a static/. public/"
-    ],
-    "public": "public",
+    "public": "static",
     "ignore": [
       "firebase.json",
       "**/.*",
