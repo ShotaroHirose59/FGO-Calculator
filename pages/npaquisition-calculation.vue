@@ -70,6 +70,7 @@
               placeholder="自動"
               suffix="hit"
               class="mr-4"
+              color="teal"
             ></v-text-field>
           </v-col>
 
@@ -79,6 +80,7 @@
               label="NPレート"
               placeholder="自動"
               class="mr-4"
+              color="teal"
             ></v-text-field>
           </v-col>
 
