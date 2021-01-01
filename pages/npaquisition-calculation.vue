@@ -67,7 +67,6 @@
             <v-text-field
               v-model.number="npHits"
               label="宝具ヒット数"
-              disabled
               placeholder="自動"
               suffix="hit"
               class="mr-4"
@@ -78,7 +77,6 @@
             <v-text-field
               v-model.number="npRate"
               label="NPレート"
-              disabled
               placeholder="自動"
               class="mr-4"
             ></v-text-field>
