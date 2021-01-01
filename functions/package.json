@@ -20,7 +20,7 @@
     "fibers": "^5.0.0",
     "firebase": "^7.19.1",
     "firebase-admin": "^9.4.2",
-    "firebase-functions": "^3.6.1",
+    "firebase-functions": "^3.13.0",
     "nuxt": "^2.14.4",
     "nuxt-start": "^2.3.4",
     "vee-validate": "^3.3.9",
