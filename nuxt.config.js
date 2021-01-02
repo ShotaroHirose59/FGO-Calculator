@@ -8,7 +8,7 @@ export default {
    */
   head: {
     // titleTemplate: '%s - ' + process.env.npm_package_name,
-    titleTemplate: '%s - Wオルタと計算',
+    titleTemplate: '%s ~Wオルタと計算~',
     meta: [
       {
         name: 'google-site-verification',
@@ -35,7 +35,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'FGO Calculator -Wオルタと一緒に計算-'
+        content: 'FGO Calculator ~Wオルタと一緒に計算~'
       },
       {
         hid: 'og:url',
