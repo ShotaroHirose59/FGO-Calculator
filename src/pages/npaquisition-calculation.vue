@@ -412,13 +412,13 @@ export default {
   head() {
     return {
       titleTemplate: null,
-      title: '[FGO] 宝具NP獲得計算 ~Wオルタと計算~',
+      title: '【FGO】宝具NP計算 ~Wオルタと計算~',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content:
-            'FGOの計算アプリです。このページでは宝具でのNP獲得計算ができます。単体または全体宝具を持つArts Quickのサーヴァントが対象です'
+            'FGOの計算アプリです。このページでは宝具のNP獲得計算ができます。単体または全体宝具を持つArts Quickのサーヴァントが対象です。'
         }
       ]
     }
