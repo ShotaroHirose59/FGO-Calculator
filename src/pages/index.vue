@@ -120,6 +120,12 @@ export default {
       image_src: require('assets/jeannearuta.png'),
       image_src2: require('assets/altria.png')
     }
+  },
+  head() {
+    return {
+      titleTemplate: null,
+      title: 'FGO Calculator ~Wオルタと計算~'
+    }
   }
 }
 </script>
