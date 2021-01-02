@@ -17,7 +17,7 @@
           exact
         >
           <v-list-item-action>
-            <v-icon large color="purple lighten-1">{{ item.icon }}</v-icon>
+            <v-icon large color="#dc5eba">{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -43,12 +43,14 @@
       <client-only>
         <v-app-bar-nav-icon
           v-if="!$vuetify.breakpoint.xs"
+          style="color: #dc5eba"
           @click.stop="drawer = !drawer"
         />
         <v-toolbar-title v-text="title" />
         <v-spacer />
         <v-app-bar-nav-icon
           v-if="$vuetify.breakpoint.xs"
+          style="color: #dc5eba"
           @click.stop="drawer = !drawer"
         />
       </client-only>

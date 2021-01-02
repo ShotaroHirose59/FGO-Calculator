@@ -19,8 +19,7 @@
           </h2>
           <p class="mt-4">今後ともよろしくお願い致します。</p>
           <v-btn color="mt-4 mb-8" :to="{ name: 'index' }">
-            <v-icon color="purple lighten-1">mdi-arrow-left</v-icon
-            >トップページに戻る
+            <v-icon color="#dc5eba">mdi-arrow-left</v-icon>トップページに戻る
           </v-btn>
         </v-col>
         <v-col cols="12" sm="6" md="6">

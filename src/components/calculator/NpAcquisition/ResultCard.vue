@@ -9,7 +9,7 @@
             small
             fab
             class="mr-4"
-            color="purple lighten-1"
+            color="#dc5eba"
             @click="openResultDisplay()"
           >
             <v-icon>mdi-help</v-icon>
