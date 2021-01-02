@@ -8,8 +8,7 @@ export default {
    */
   head: {
     // titleTemplate: '%s - ' + process.env.npm_package_name,
-    titleTemplate: '%s - ' + 'Wオルタと計算',
-    title: 'FGO Calculator',
+    titleTemplate: '%s - Wオルタと計算',
     meta: [
       {
         name: 'google-site-verification',
