@@ -23,7 +23,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Wオルタと一緒に計算 FGO Calculator by @destino591211'
+        content: 'FGOの計算アプリです。ジャンヌ〔オルタ〕とアルトリア〔オルタ〕と宝具ダメージ計算、宝具NP獲得計算ができます。'
       },
       {
         hid: 'twitter:card',
