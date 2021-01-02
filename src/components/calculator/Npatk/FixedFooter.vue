@@ -1,10 +1,10 @@
 <template>
-  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="68" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="3">
         <v-img
           :src="image_src"
-          width="64"
+          width="56"
           @click="displayJeanneDetails()"
         ></v-img>
       </v-col>
@@ -12,16 +12,15 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>TOTAL</v-list-item-subtitle>
-            <v-list-item-title class="headline">{{
-              averageDamage.toLocaleString()
-            }}</v-list-item-title>
+            <h2>{{ averageDamage.toLocaleString() }}</h2>
           </v-list-item-content>
         </v-list-item>
       </v-col>
       <v-col cols="3">
         <v-img
           :src="image_src2"
-          width="64"
+          width="56"
+          class="ml-8"
           @click="displayAltriaDetails()"
         ></v-img>
       </v-col>

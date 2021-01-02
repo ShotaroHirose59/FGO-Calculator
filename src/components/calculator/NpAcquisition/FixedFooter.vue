@@ -14,7 +14,12 @@
       </v-col>
 
       <v-col cols="3">
-        <v-img :src="image_src" width="56" @click="displayDetails()"></v-img>
+        <v-img
+          :src="image_src"
+          width="56"
+          class="ml-4"
+          @click="displayDetails()"
+        ></v-img>
       </v-col>
 
       <!-- 結果の詳細 -->
