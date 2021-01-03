@@ -113,7 +113,7 @@
               :disabled="!characterName"
               hide-details
               class="ml-4"
-              color="teal"
+              color="yellow darken-2"
               @change="onSwitchAtk()"
             ></v-switch>
           </v-col>
