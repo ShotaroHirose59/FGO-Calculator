@@ -26,7 +26,7 @@
         md="4"
         class="text-center align-self-center city"
       >
-        <h1 class="top-title text-gradient" style="font-size: 72px">
+        <h1 class="top-title text-gradient" style="font-size: 70px">
           FGO Calculator
         </h1>
       </v-col>
