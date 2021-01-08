@@ -7,8 +7,7 @@
       <p class="mt-2">お探しのページが見つかりませんでした。</p>
       <p>URLにお間違いがないか再度ご確認ください。</p>
       <v-btn color="mt-8 mb-8" :to="{ name: 'index' }">
-        <v-icon color="purple lighten-1">mdi-arrow-left</v-icon
-        >トップページに戻る
+        <v-icon color="#dc5eba">mdi-arrow-left</v-icon>トップページに戻る
       </v-btn>
     </v-col>
 

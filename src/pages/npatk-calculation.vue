@@ -113,7 +113,7 @@
               :disabled="!characterName"
               hide-details
               class="ml-4"
-              color="teal"
+              color="yellow darken-2"
               @change="onSwitchAtk()"
             ></v-switch>
           </v-col>
@@ -609,7 +609,16 @@ export default {
   },
   head() {
     return {
-      title: 'FGO 宝具ダメージ計算'
+      titleTemplate: null,
+      title: '【FGO】宝具ダメージ計算 ~Wオルタと計算~',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'FGOの計算アプリです。このページでは宝具のダメージ計算ができます。単体または全体宝具を持つ全てのサーヴァントが対象です。'
+        }
+      ]
     }
   }
 }
