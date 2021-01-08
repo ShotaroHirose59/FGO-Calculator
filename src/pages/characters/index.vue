@@ -127,7 +127,16 @@ export default {
   },
   head() {
     return {
-      title: '霊基一覧'
+      titleTemplate: null,
+      title: '【FGO】霊基一覧 ~Wオルタと計算~',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'FGOの計算アプリです。このページではサーヴァントの一覧と「天地人」属性を確認することがきます。'
+        }
+      ]
     }
   }
 }

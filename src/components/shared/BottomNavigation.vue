@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation app fixed color="purple lighten-1">
+  <v-bottom-navigation app fixed color="#dc5eba">
     <v-btn
       v-for="menu in menus"
       :key="menu.title"

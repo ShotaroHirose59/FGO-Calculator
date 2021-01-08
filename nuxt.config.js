@@ -8,8 +8,7 @@ export default {
    */
   head: {
     // titleTemplate: '%s - ' + process.env.npm_package_name,
-    titleTemplate: '%s - ' + 'Wオルタと計算',
-    title: 'FGO Calculator',
+    titleTemplate: '%s ~Wオルタと計算~',
     meta: [
       {
         name: 'google-site-verification',
@@ -24,7 +23,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Wオルタと一緒に計算 FGO Calculator by @destino591211'
+        content:
+          'FGOの計算アプリです。ジャンヌ〔オルタ〕とアルトリア〔オルタ〕と宝具ダメージ計算、宝具NP獲得計算ができます。'
       },
       {
         hid: 'twitter:card',
@@ -36,7 +36,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'FGO Calculator -Wオルタと一緒に計算-'
+        content: 'FGO Calculator ~Wオルタと一緒に計算~'
       },
       {
         hid: 'og:url',
