@@ -1,7 +1,6 @@
 import { ValidationProvider, extend } from 'vee-validate'
 import { required, numeric } from 'vee-validate/dist/rules'
 
-// install the 'required' rule.
 extend('required', {
   ...required,
   message: '数値を入力してください'
@@ -12,7 +11,7 @@ extend('numeric', {
   message: '半角数値のみ入力可能です'
 })
 
-extend('maxNumericalValue', {
+extend('maxCardBuff', {
   validate(value) {
     if (value > 400) {
       return false
@@ -20,6 +19,26 @@ extend('maxNumericalValue', {
     return true
   },
   message: '400以下で設定してください'
+})
+
+extend('maxNpBuff', {
+  validate(value) {
+    if (value > 500) {
+      return false
+    }
+    return true
+  },
+  message: '500以下で設定してください'
+})
+
+extend('maxDressAtk', {
+  validate(value) {
+    if (value > 3000) {
+      return false
+    }
+    return true
+  },
+  message: '3000以下で設定してください'
 })
 
 extend('maxWordCount', {
