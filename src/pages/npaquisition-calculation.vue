@@ -64,24 +64,40 @@
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
-            <v-text-field
-              v-model.number="npHits"
-              label="宝具ヒット数"
-              placeholder="自動"
-              suffix="hit"
-              class="mr-4"
-              color="teal"
-            ></v-text-field>
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required|numeric"
+            >
+              <v-text-field
+                v-model.number="npHits"
+                label="宝具ヒット数"
+                placeholder="自動"
+                suffix="hit"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
-            <v-text-field
-              v-model.number="npRate"
-              label="NPレート"
-              placeholder="自動"
-              class="mr-4"
-              color="teal"
-            ></v-text-field>
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required|numeric"
+            >
+              <v-text-field
+                v-model.number="npRate"
+                label="NPレート"
+                placeholder="自動"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
           </v-col>
 
           <v-col cols="8" sm="4" md="2">
