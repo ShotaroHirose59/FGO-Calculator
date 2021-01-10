@@ -200,7 +200,7 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (overkillHits === npHits) {
+                  if (overkillHits === npHits * 3) {
                     return false
                   }
                   overkillHits += 1
