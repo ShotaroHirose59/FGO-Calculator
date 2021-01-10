@@ -104,7 +104,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxCardBuff"
             >
               <v-text-field
                 v-model.number="cardBuff"
@@ -143,7 +143,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxCardBuff"
             >
               <v-text-field
                 v-model.number="npAcquisitionBuff"

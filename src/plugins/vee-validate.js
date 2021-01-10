@@ -11,7 +11,7 @@ extend('numeric', {
   message: '半角数値のみ入力可能です'
 })
 
-extend('maxNumericalValue', {
+extend('maxCardBuff', {
   validate(value) {
     if (value > 400) {
       return false
