@@ -64,31 +64,47 @@
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
-            <v-text-field
-              v-model.number="npHits"
-              label="宝具ヒット数"
-              placeholder="自動"
-              suffix="hit"
-              class="mr-4"
-              color="teal"
-            ></v-text-field>
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required|numeric"
+            >
+              <v-text-field
+                v-model.number="npHits"
+                label="宝具ヒット数"
+                placeholder="自動"
+                suffix="hit"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
           </v-col>
 
           <v-col cols="4" sm="4" md="2">
-            <v-text-field
-              v-model.number="npRate"
-              label="NPレート"
-              placeholder="自動"
-              class="mr-4"
-              color="teal"
-            ></v-text-field>
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required"
+            >
+              <v-text-field
+                v-model.number="npRate"
+                label="NPレート"
+                placeholder="自動"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
           </v-col>
 
           <v-col cols="8" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxCardBuff"
             >
               <v-text-field
                 v-model.number="cardBuff"
@@ -127,7 +143,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxCardBuff"
             >
               <v-text-field
                 v-model.number="npAcquisitionBuff"
@@ -184,7 +200,7 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (overkillHits === npHits) {
+                  if (overkillHits === npHits * 3) {
                     return false
                   }
                   overkillHits += 1
@@ -289,7 +305,7 @@ export default {
       characterName: '', // 選択されたキャラクター
       servantNpType: '', // キャラクターの宝具タイプ
       selectServantNpType: ['Arts', 'Quick', 'Buster'],
-      npRate: '', // NPレート
+      npRate: 0, // NPレート
       npHits: 0, // 宝具ヒット回数
       overkillHits: 0,
       items: {
@@ -363,6 +379,7 @@ export default {
         if (character.name === characterName) {
           this.npRate = character.npchargeatk
           this.npHits = character.nphitcount
+          this.overkillHits = 0 // オーバーキルヒット数を0に
           this.setNpType(character)
           this.setEnemyCount(character)
         }
@@ -400,7 +417,7 @@ export default {
       this.characterClass = ''
       this.characterName = ''
       this.servantNpType = ''
-      this.npRate = ''
+      this.npRate = 0
       this.npHits = 0
       this.overkillHits = 0
       this.enemyClass = 'セイバー (1.0)'

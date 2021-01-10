@@ -68,7 +68,6 @@
               v-model="npChargeLv"
               label="宝具Lv."
               :items="items.npChargeLevel"
-              :disabled="!characterName"
               class="mr-3"
               color="teal"
               @change="onChangeNpmultiplier(npChargeLv)"
@@ -76,29 +75,33 @@
           </v-col>
 
           <v-col cols="4" sm="3" md="3">
-            <v-text-field
-              v-model.number="characterNpmultiplier"
-              label="宝具倍率"
-              :disabled="!characterName"
-              suffix="％"
-              placeholder="自動"
-              type="number"
-              class="mr-4"
-              color="teal"
-            ></v-text-field>
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required"
+            >
+              <v-text-field
+                v-model.number="characterNpmultiplier"
+                label="宝具倍率"
+                suffix="％"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
           </v-col>
 
           <v-col cols="8" sm="3" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="numeric"
+              rules="required|numeric"
             >
               <v-text-field
                 v-model.number="characterAtk"
                 label="ATK"
                 :error-messages="errors"
-                placeholder="自動"
                 type="number"
                 class="mr-4"
                 color="teal"
@@ -158,7 +161,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxCardBuff"
             >
               <v-text-field
                 v-model.number="cardBuff"
@@ -197,7 +200,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxNpBuff"
             >
               <v-text-field
                 v-model.number="sAtkBuff"
@@ -215,7 +218,7 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (sAtkBuff >= 400) {
+                  if (sAtkBuff >= 500) {
                     return false
                   }
                   sAtkBuff += 10
@@ -236,7 +239,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxNpBuff"
             >
               <v-text-field
                 v-model.number="npBuff"
@@ -254,7 +257,7 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (npBuff >= 400) {
+                  if (npBuff >= 500) {
                     return false
                   }
                   npBuff += 10
@@ -311,7 +314,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required|numeric|maxDressAtk"
             >
               <v-text-field
                 v-model.number="dressAtk"
@@ -328,6 +331,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (dressAtk >= 3000) {
+                    return false
+                  }
                   dressAtk += 100
                 }
               "
@@ -438,9 +444,9 @@ export default {
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
       switchAtk: false, // 真偽で攻撃力を変更
-      characterAtk: '', // 配列から取得したサーヴァントの攻撃力
+      characterAtk: 0, // 配列から取得したサーヴァントの攻撃力
       npmultiplier: [], // キャラクターの宝具倍率の配列
-      characterNpmultiplier: '', // 配列から取り出したサーヴァントの宝具倍率
+      characterNpmultiplier: 0, // 配列から取り出したサーヴァントの宝具倍率
       servantNpType: '', // キャラクターの宝具タイプ
       selectServantNpType: ['Buster', 'Arts', 'Quick'],
       items: {
@@ -593,9 +599,9 @@ export default {
       this.characterName = ''
       this.atk = []
       this.switchAtk = false
-      this.characterAtk = ''
+      this.characterAtk = 0
       this.npChargeLv = ''
-      this.characterNpmultiplier = ''
+      this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
       this.cardBuff = 0
