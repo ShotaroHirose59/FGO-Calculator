@@ -68,7 +68,6 @@
               v-model="npChargeLv"
               label="宝具Lv."
               :items="items.npChargeLevel"
-              :disabled="!characterName"
               class="mr-3"
               color="teal"
               @change="onChangeNpmultiplier(npChargeLv)"
@@ -79,7 +78,6 @@
             <v-text-field
               v-model.number="characterNpmultiplier"
               label="宝具倍率"
-              :disabled="!characterName"
               suffix="％"
               placeholder="自動"
               type="number"
