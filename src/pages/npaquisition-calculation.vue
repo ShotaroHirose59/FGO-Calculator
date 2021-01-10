@@ -86,7 +86,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required"
             >
               <v-text-field
                 v-model.number="npRate"
