@@ -31,7 +31,7 @@ extend('maxNpBuff', {
   message: '500以下で設定してください'
 })
 
-extend('maxNumericalDressAtk', {
+extend('maxDressAtk', {
   validate(value) {
     if (value > 3000) {
       return false

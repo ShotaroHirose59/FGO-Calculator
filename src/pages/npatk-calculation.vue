@@ -314,7 +314,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalDressAtk"
+              rules="required|numeric|maxDressAtk"
             >
               <v-text-field
                 v-model.number="dressAtk"
