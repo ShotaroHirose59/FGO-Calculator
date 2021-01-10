@@ -29,6 +29,14 @@
       <client-only>
         <div v-if="$vuetify.breakpoint.xs" class="drawer-footer mt-4 ml-4">
           <div class="drawer-footer-terms">
+            <a
+              rel="noopener"
+              href="https://twitter.com/CalculatorFgo"
+              target="_blank"
+              class="aioseop-link"
+            >
+              <p class="terms" style="font-size: 12px;">公式Twitter</p>
+            </a>
             <nuxt-link to="/terms">
               <p class="terms" style="font-size: 12px;">利用規約</p>
             </nuxt-link>
@@ -62,8 +70,21 @@
     </v-content>
     <client-only>
       <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
-        <span>&copy; {{ new Date().getFullYear() }} FGO Calculator</span>
+        <span>&copy; {{ new Date().getFullYear() }} Wオルタと計算</span>
         <v-spacer />
+        <a
+          v-if="
+            $route.path === '/' ||
+              $route.path === '/terms' ||
+              $route.path === '/privacy'
+          "
+          rel="noopener"
+          href="https://twitter.com/CalculatorFgo"
+          target="_blank"
+          class="aioseop-link"
+        >
+          <span class="terms mr-8">公式Twitter</span>
+        </a>
         <nuxt-link
           v-if="
             $route.path === '/' ||
