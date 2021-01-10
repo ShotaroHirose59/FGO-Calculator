@@ -1,7 +1,6 @@
 import { ValidationProvider, extend } from 'vee-validate'
 import { required, numeric } from 'vee-validate/dist/rules'
 
-// install the 'required' rule.
 extend('required', {
   ...required,
   message: '数値を入力してください'
