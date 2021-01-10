@@ -75,21 +75,28 @@
           </v-col>
 
           <v-col cols="4" sm="3" md="3">
-            <v-text-field
-              v-model.number="characterNpmultiplier"
-              label="宝具倍率"
-              suffix="％"
-              type="number"
-              class="mr-4"
-              color="teal"
-            ></v-text-field>
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required"
+            >
+              <v-text-field
+                v-model.number="characterNpmultiplier"
+                label="宝具倍率"
+                suffix="％"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
           </v-col>
 
           <v-col cols="8" sm="3" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="numeric"
+              rules="required|numeric"
             >
               <v-text-field
                 v-model.number="characterAtk"
