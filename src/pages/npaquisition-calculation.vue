@@ -379,6 +379,7 @@ export default {
         if (character.name === characterName) {
           this.npRate = character.npchargeatk
           this.npHits = character.nphitcount
+          this.overkillHits = 0 // オーバーキルヒット数を0に
           this.setNpType(character)
           this.setEnemyCount(character)
         }
