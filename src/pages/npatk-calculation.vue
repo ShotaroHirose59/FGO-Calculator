@@ -200,7 +200,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxNpBuff"
             >
               <v-text-field
                 v-model.number="sAtkBuff"
@@ -218,7 +218,7 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (sAtkBuff >= 400) {
+                  if (sAtkBuff >= 500) {
                     return false
                   }
                   sAtkBuff += 10
@@ -257,7 +257,7 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (npBuff >= 400) {
+                  if (npBuff >= 500) {
                     return false
                   }
                   npBuff += 10
