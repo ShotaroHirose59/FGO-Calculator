@@ -305,7 +305,7 @@ export default {
       characterName: '', // 選択されたキャラクター
       servantNpType: '', // キャラクターの宝具タイプ
       selectServantNpType: ['Arts', 'Quick', 'Buster'],
-      npRate: '', // NPレート
+      npRate: 0, // NPレート
       npHits: 0, // 宝具ヒット回数
       overkillHits: 0,
       items: {
@@ -416,7 +416,7 @@ export default {
       this.characterClass = ''
       this.characterName = ''
       this.servantNpType = ''
-      this.npRate = ''
+      this.npRate = 0
       this.npHits = 0
       this.overkillHits = 0
       this.enemyClass = 'セイバー (1.0)'
