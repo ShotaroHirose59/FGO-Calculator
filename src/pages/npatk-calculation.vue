@@ -79,7 +79,6 @@
               v-model.number="characterNpmultiplier"
               label="宝具倍率"
               suffix="％"
-              placeholder="自動"
               type="number"
               class="mr-4"
               color="teal"
@@ -96,7 +95,6 @@
                 v-model.number="characterAtk"
                 label="ATK"
                 :error-messages="errors"
-                placeholder="自動"
                 type="number"
                 class="mr-4"
                 color="teal"
@@ -436,9 +434,9 @@ export default {
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
       switchAtk: false, // 真偽で攻撃力を変更
-      characterAtk: '', // 配列から取得したサーヴァントの攻撃力
+      characterAtk: 0, // 配列から取得したサーヴァントの攻撃力
       npmultiplier: [], // キャラクターの宝具倍率の配列
-      characterNpmultiplier: '', // 配列から取り出したサーヴァントの宝具倍率
+      characterNpmultiplier: 0, // 配列から取り出したサーヴァントの宝具倍率
       servantNpType: '', // キャラクターの宝具タイプ
       selectServantNpType: ['Buster', 'Arts', 'Quick'],
       items: {
@@ -591,9 +589,9 @@ export default {
       this.characterName = ''
       this.atk = []
       this.switchAtk = false
-      this.characterAtk = ''
+      this.characterAtk = 0
       this.npChargeLv = ''
-      this.characterNpmultiplier = ''
+      this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
       this.cardBuff = 0
