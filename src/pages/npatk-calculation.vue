@@ -314,7 +314,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required|numeric|maxNumericalDressAtk"
             >
               <v-text-field
                 v-model.number="dressAtk"
@@ -331,6 +331,9 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
+                  if (dressAtk >= 3000) {
+                    return false
+                  }
                   dressAtk += 100
                 }
               "

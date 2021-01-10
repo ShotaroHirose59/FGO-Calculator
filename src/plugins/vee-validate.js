@@ -21,6 +21,16 @@ extend('maxNumericalValue', {
   message: '400以下で設定してください'
 })
 
+extend('maxNumericalDressAtk', {
+  validate(value) {
+    if (value > 3000) {
+      return false
+    }
+    return true
+  },
+  message: '3000以下で設定してください'
+})
+
 extend('maxWordCount', {
   validate(value) {
     if (value.length > 300) {
