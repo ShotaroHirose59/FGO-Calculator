@@ -21,6 +21,16 @@ extend('maxCardBuff', {
   message: '400以下で設定してください'
 })
 
+extend('maxNpBuff', {
+  validate(value) {
+    if (value > 500) {
+      return false
+    }
+    return true
+  },
+  message: '500以下で設定してください'
+})
+
 extend('maxNumericalDressAtk', {
   validate(value) {
     if (value > 3000) {

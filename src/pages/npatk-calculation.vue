@@ -239,7 +239,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNumericalValue"
+              rules="required|numeric|maxNpBuff"
             >
               <v-text-field
                 v-model.number="npBuff"
