@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="balloon1">
+    <div class="balloon1 ml-4">
       <p>{{ speechBubble }}</p>
     </div>
-    <v-img :src="image_src" max-width="176px"></v-img>
+    <v-img :src="image_src" max-width="180px" class="ml-4"></v-img>
   </div>
 </template>
 

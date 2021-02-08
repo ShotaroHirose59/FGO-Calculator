@@ -36,7 +36,7 @@
           />
         </v-col>
 
-        <v-col cols="6" sm="6" md="6">
+        <v-col cols="6" sm="6" md="6" class="mt-8">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-subtitle>TOTAL(最小)</v-list-item-subtitle>
