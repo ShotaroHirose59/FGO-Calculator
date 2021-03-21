@@ -110,11 +110,13 @@ export default {
           case '水着アルトリア（オルタ）':
             return '食べたアイスの数など覚えてはいない'
           case '水着アルトリア':
-            return 'ところでマスター、あの英霊はどこのどなた様だ'
+            return 'あの英霊はどこのどなた様だ'
           case 'アタランテ（オルタ）':
             return 'ギリシャの狩人がまっくろけ、…あ、いや。'
+          case 'エミヤ':
+            return 'ついて来れるか？'
           case 'エミヤ（オルタ）':
-            return '私のジャンクフードロードに付いて来られるか？'
+            return '私のジャンクフードロードについて来れるか？'
           case 'ダヴィンチ（ライダー）':
             return '味方全体のNPを+20だ'
           case '両儀式（セイバー）':
@@ -127,7 +129,7 @@ export default {
             return '自身のNPを20~100リチャージだ'
         }
         if (this.totalAcquisitionAmount >= 100) {
-          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！'
+          return '『約束された勝利の剣』！！'
         } else if (this.totalAcquisitionAmount >= 70) {
           return '褒めてやる。良い数値だ'
         } else if (this.totalAcquisitionAmount >= 50) {
@@ -153,8 +155,8 @@ export default {
   display: inline-block;
   margin-bottom: 1.5em;
   padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
+  min-width: 100px;
+  max-width: 72%;
   color: #555;
   font-size: 16px;
   background: #e0edff;

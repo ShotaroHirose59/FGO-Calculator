@@ -30,17 +30,17 @@ export default {
       get() {
         switch (this.characterName) {
           case 'ジャンヌ（オルタ）':
-            return '『吼え立てよ、我が憤怒(ラ・グロンドメント・デュ・ヘイン)』！'
+            return '『吼え立てよ、我が憤怒』！'
           case '水着ジャンヌ（オルタ）':
-            return '『焼却天理・鏖殺竜フェルカーモルト・フォイアドラッヘ』！！'
+            return '『焼却天理・鏖殺竜』！'
           case '水着ジャンヌ':
-            return 'ちっ……アンタも水着なのね'
+            return 'ちっ…アンタも水着なのね'
           case 'ジャンヌサンタリリィ':
-            return 'アンタは冬までおとなしくしてなさい。'
+            return 'アンタは冬までおとなしくしてなさい'
           case 'アルトリア (オルタ)':
-            return 'げぇ、世界最高にいけ好かないわね。選んだアンタもよ'
+            return '世界最高にいけ好かないわね'
           case 'アルトリア（サンタオルタ）':
-            return 'ちょっ……なんでサンタの格好なのよ！'
+            return 'なんでサンタの格好なのよ！'
           case '水着アルトリア（オルタ）':
             return 'メイドは部屋の掃除でもしてくれる？'
           case 'ジル・ド・レェ（キャスター）':
@@ -72,13 +72,17 @@ export default {
   position: relative;
   display: inline-block;
   margin-bottom: 1.5em;
-  padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
+  padding: 7px 14px;
+  max-width: 72%;
   color: #555;
   font-size: 16px;
   background: #e0edff;
   border-radius: 15px;
+}
+@media screen and (max-width: 768px) {
+  .balloon1 {
+    max-width: 96%;
+  }
 }
 
 .balloon1:before {

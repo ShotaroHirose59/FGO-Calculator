@@ -32,13 +32,13 @@ export default {
       get() {
         switch (this.characterName) {
           case '水着アルトリア（オルタ）':
-            return '食べたアイスの数など覚えてはいない'
+            return '食べたアイスの数など覚えていない'
           case '水着アルトリア':
-            return 'ところでマスター、あの英霊はどこのどなた様だ'
+            return 'あの英霊はどこのどなた様だ'
           case 'アタランテ（オルタ）':
-            return 'ギリシャの狩人がまっくろけ、…あ、いや。'
-          case 'エミヤ（オルタ）':
-            return '私のジャンクフードロードに付いて来られるか？'
+            return 'ギリシャの狩人がまっくろけ、…あ'
+          case 'エミヤ':
+            return 'ついて来れるか？'
           case 'ダヴィンチ（ライダー）':
             return '味方全体のNPを+20だ'
           case '両儀式（セイバー）':
@@ -51,7 +51,7 @@ export default {
             return '自身のNPを20~100リチャージだ'
         }
         if (this.totalAcquisitionAmount >= 100) {
-          return '『約束された勝利の剣(エクスカリバー・モルガーン)』！！'
+          return '『約束された勝利の剣』！！'
         } else if (this.totalAcquisitionAmount >= 70) {
           return '褒めてやる。良い数値だ'
         } else if (this.totalAcquisitionAmount >= 50) {
@@ -83,9 +83,9 @@ export default {
 .balloon {
   position: relative; /* 三角の位置を固定するために設定 */
   display: inline-block;
-  max-width: 180px;
-  max-height: 80px;
-  margin: 10px 20px 20px; /* 上 左右 下のマージン */
+  max-width: 160px;
+  max-height: 64px;
+  margin: 16px; /* 上 左右 下のマージン */
   padding: 8px 15px; /* ふきだし内の余白 */
   color: #555;
   font-size: 16px;
