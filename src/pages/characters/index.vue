@@ -22,32 +22,23 @@
       <div>
         <v-list disabled>
           <v-list-item-group
-            v-for="character in characterLists"
+            v-for="character in searchCharacters"
             :key="character.id"
             color="primary"
           >
-            <v-list-item>
+            <v-list-item two-line>
               <v-list-item-content>
                 <v-list-item-title>{{ character.name }}</v-list-item-title>
-                <span class="caption">
+                <v-list-item-subtitle class="caption">
                   ★{{ character.rarity }} / {{ character.class }} /
                   {{ character.attribute }}
-                </span>
+                </v-list-item-subtitle>
               </v-list-item-content>
-              No. {{ character.number }}
+              <div>No. {{ character.number }}</div>
             </v-list-item>
             <v-divider />
           </v-list-item-group>
         </v-list>
-        <div class="text-center">
-          <v-pagination
-            v-model="page"
-            :length="length"
-            color="purple lighten-1"
-            class="mt-4"
-            @input="pageChange"
-          ></v-pagination>
-        </div>
       </div>
     </v-card>
   </v-row>
@@ -75,9 +66,7 @@ export default {
           'ムーンキャンサー',
           'フォーリナー'
         ]
-      },
-      page: 1,
-      pageSize: 60
+      }
     }
   },
   computed: {
@@ -93,31 +82,12 @@ export default {
         }
       }
       return searchCharacters
-    },
-    characterLists: {
-      get() {
-        return this.searchCharacters.slice(
-          this.pageSize * (this.page - 1),
-          this.pageSize * this.page
-        )
-      },
-      set(value) {}
-    },
-    length() {
-      return Math.ceil(this.searchCharacters.length / this.pageSize)
     }
   },
   created() {
     this.$store.dispatch('characters/init')
   },
-  methods: {
-    pageChange(pageNumber) {
-      this.characterLists = this.searchCharacters.slice(
-        this.pageSize * (pageNumber - 1),
-        this.pageSize * pageNumber
-      )
-    }
-  },
+  methods: {},
   head() {
     return {
       titleTemplate: null,
@@ -134,6 +104,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 a {
   text-decoration: none;
