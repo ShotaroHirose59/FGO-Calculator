@@ -8,7 +8,7 @@ https://fgo-damage-calculation.web.app
 ## 使用画面
 ### ① トップページ
 #### PC画面
-<img width="1440" alt="スクリーンショット 2020-06-23 7 49 54" src="https://user-images.githubusercontent.com/55835461/85342693-2c02ff00-b526-11ea-9d55-3c1cedb273a4.png">
+<img width="1439" alt="スクリーンショット 2021-05-05 20 00 20" src="https://user-images.githubusercontent.com/55835461/117131611-9b02e280-addc-11eb-93bf-c2587cd4614e.png">
 
 #### スマホ画面
 <img width="312" alt="スクリーンショット 2020-06-23 7 11 02" src="https://user-images.githubusercontent.com/55835461/85340380-f6a7e280-b520-11ea-86aa-dcc03b84bfb0.png">
