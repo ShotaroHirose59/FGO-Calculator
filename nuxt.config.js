@@ -152,6 +152,12 @@ export default {
         _: 'lodash'
       })
     ],
-    transpile: ['vee-validate/dist/rules']
+    transpile: ['vee-validate/dist/rules'],
+    // Though the "loose" option was set to "false"...の暫定対応
+    babel: {
+      presets({ isServer }, [ preset, options ]) {
+        options.loose = true;
+      }
+    }
   }
 }
