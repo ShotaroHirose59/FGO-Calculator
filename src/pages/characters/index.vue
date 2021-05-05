@@ -50,18 +50,11 @@
         </div>
       </div>
     </v-card>
-    <!-- ボトムナビゲーション -->
-    <client-only>
-      <BottomNavigation v-if="$vuetify.breakpoint.xs" />
-    </client-only>
   </v-row>
 </template>
+
 <script>
-import BottomNavigation from '@/components/shared/BottomNavigation'
 export default {
-  components: {
-    BottomNavigation
-  },
   data() {
     return {
       search: '',

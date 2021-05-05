@@ -72,21 +72,11 @@
         <v-card-subtitle>サーヴァント一覧を確認できます。</v-card-subtitle>
       </v-card>
     </v-col>
-
-    <!-- ボトムナビゲーション -->
-    <client-only>
-      <BottomNavigation v-if="$vuetify.breakpoint.xs" />
-    </client-only>
   </v-row>
 </template>
 
 <script>
-import BottomNavigation from '@/components/shared/BottomNavigation'
-
 export default {
-  components: {
-    BottomNavigation
-  },
   data() {
     return {
       image_src: require('assets/jeannearuta.png'),
