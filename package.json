@@ -22,6 +22,7 @@
     "fibers": "^5.0.0",
     "firebase": "^7.19.1",
     "nuxt": "^2.14.4",
+    "nuxt-logrocket": "^1.5.2",
     "vee-validate": "^3.3.9",
     "vue": "^2.6.12",
     "vuexfire": "^3.2.4"
