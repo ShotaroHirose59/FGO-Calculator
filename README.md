@@ -11,7 +11,7 @@ https://fgo-damage-calculation.web.app
 <img width="1439" alt="スクリーンショット 2021-05-05 20 00 20" src="https://user-images.githubusercontent.com/55835461/117131611-9b02e280-addc-11eb-93bf-c2587cd4614e.png">
 
 #### スマホ画面
-<img width="312" alt="スクリーンショット 2020-06-23 7 11 02" src="https://user-images.githubusercontent.com/55835461/85340380-f6a7e280-b520-11ea-86aa-dcc03b84bfb0.png">
+<img width="305" alt="スクリーンショット 2021-05-07 17 51 28" src="https://user-images.githubusercontent.com/55835461/117424631-f1972a80-af5c-11eb-8594-c35e42e722cf.png">
 
 ### ② 宝具ダメージ計算
 サーヴァントの宝具ダメージを計算
