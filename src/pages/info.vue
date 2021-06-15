@@ -80,3 +80,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-pagination {
+  margin-bottom: 16px;
+}
+</style>
