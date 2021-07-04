@@ -127,6 +127,11 @@ export default {
           icon: 'mdi-message-alert',
           title: 'フィードバック送信',
           to: '/feedback'
+        },
+        {
+          icon: 'mdi-clipboard-text-search-outline',
+          title: '1周年アンケート',
+          to: '/questionnaire'
         }
       ],
       miniVariant: false,
