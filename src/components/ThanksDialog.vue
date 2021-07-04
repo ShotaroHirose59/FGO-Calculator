@@ -14,10 +14,9 @@
       <v-row no-gutters>
         <v-col cols="12" sm="12" md="12" class="text-center">
           <h2 class="mb-4">
-            フィードバックの送信 <br />
-            誠にありがとうございます。
+            ご回答ありがとうございます。
           </h2>
-          <p class="mt-4">今後ともよろしくお願い致します。</p>
+          <p class="mt-4">今後ともよろしくお願いいたします。</p>
           <v-btn color="mt-4 mb-8" :to="{ name: 'index' }">
             <v-icon color="#dc5eba">mdi-arrow-left</v-icon>トップページに戻る
           </v-btn>
