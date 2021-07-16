@@ -512,6 +512,25 @@ export default {
       }
     }
   },
+  watch: {
+    servantNpType() {
+      if (
+        this.characterName === '妖精騎士ランスロット' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [300, 400, 450, 475, 500]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      } else if (
+        this.characterName === '妖精騎士ランスロット' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [900, 1200, 1350, 1425, 1500]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+    }
+  },
   // データの初期化 Vuex
   created() {
     this.$store.dispatch('characters/init')
