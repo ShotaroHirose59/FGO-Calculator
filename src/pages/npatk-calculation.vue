@@ -512,6 +512,60 @@ export default {
       }
     }
   },
+  watch: {
+    servantNpType() {
+      if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
+        this.npmultiplier = [600, 750, 825, 862, 900]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+      if (this.characterName === 'エミヤ' && this.servantNpType === 'Buster') {
+        this.npmultiplier = [400, 500, 550, 575, 600]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+      if (
+        this.characterName === '妖精騎士ランスロット' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [300, 400, 450, 475, 500]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+      if (
+        this.characterName === '妖精騎士ランスロット' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [900, 1200, 1350, 1425, 1500]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+      if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [300, 400, 450, 475, 500]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+      if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Quick'
+      ) {
+        this.npmultiplier = [600, 800, 900, 950, 1000]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+      if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [450, 600, 675, 712, 750]
+        this.characterNpmultiplier = this.npmultiplier[0]
+        this.npChargeLv = 1
+      }
+    }
+  },
   // データの初期化 Vuex
   created() {
     this.$store.dispatch('characters/init')
