@@ -55,11 +55,11 @@
         />
       </client-only>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container fluid fill-height>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
     <client-only>
       <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
         <span>&copy; {{ new Date().getFullYear() }} Wオルタと計算</span>
