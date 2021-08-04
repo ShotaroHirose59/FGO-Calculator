@@ -337,7 +337,7 @@ export default {
           'アルターエゴ (1.0)',
           'フォーリナー (1.0)'
         ],
-        selectEnemyCount: [1, 2, 3] // 敵の数
+        selectEnemyCount: [1, 2, 3, 4, 5, 6] // 敵の数
       },
       enemyClass: 'セイバー (1.0)',
       enemyCount: 3,
