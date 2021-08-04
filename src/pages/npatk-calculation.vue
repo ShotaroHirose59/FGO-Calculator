@@ -40,7 +40,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="12" sm="6" md="6">
+          <v-col cols="12" sm="8" md="8">
             <v-select
               v-model="characterName"
               label="サーヴァント"
@@ -53,7 +53,46 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="2">
+          <v-col cols="4" sm="4" md="4">
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required|numeric"
+            >
+              <v-text-field
+                v-model.number="characterAtk"
+                label="ATK"
+                :error-messages="errors"
+                type="number"
+                class="mr-4"
+                color="teal"
+              ></v-text-field>
+            </validation-provider>
+          </v-col>
+
+          <v-col cols="4" sm="4" md="4">
+            <v-select
+              v-model="fou"
+              label="フォウくん"
+              :items="selectFou"
+              class="mr-3"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="4" sm="4" md="4">
+            <v-switch
+              v-model="atk"
+              label="Lv.100"
+              :disabled="!characterName"
+              hide-details
+              class="ml-4"
+              color="yellow darken-2"
+              @change="onSwitchAtk()"
+            ></v-switch>
+          </v-col>
+
+          <v-col cols="4" sm="4" md="4">
             <v-select
               v-model="servantNpType"
               label="宝具"
@@ -63,7 +102,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="3" md="3">
+          <v-col cols="4" sm="4" md="4">
             <v-select
               v-model="npChargeLv"
               label="宝具Lv."
@@ -74,7 +113,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="3" md="3">
+          <v-col cols="4" sm="4" md="4">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -92,36 +131,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="8" sm="3" md="3">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required|numeric"
-            >
-              <v-text-field
-                v-model.number="characterAtk"
-                label="ATK"
-                :error-messages="errors"
-                type="number"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="3" md="3">
-            <v-switch
-              v-model="atk"
-              label="Lv.100"
-              :disabled="!characterName"
-              hide-details
-              class="ml-4"
-              color="yellow darken-2"
-              @change="onSwitchAtk()"
-            ></v-switch>
-          </v-col>
-
-          <v-col cols="3" sm="4" md="4">
+          <v-col cols="3" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -157,7 +167,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="4" md="4">
+          <v-col cols="3" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -196,7 +206,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="4" md="4">
+          <v-col cols="3" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -235,7 +245,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="4" md="4">
+          <v-col cols="3" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -274,7 +284,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="4" md="4">
+          <v-col cols="3" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -310,7 +320,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="4" md="4">
+          <v-col cols="3" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -389,6 +399,7 @@
         :character-class="characterClass"
         :character-name="characterName"
         :character-atk="characterAtk"
+        :fou="fou"
         :np-charge-lv="npChargeLv"
         :character-npmultiplier="characterNpmultiplier"
         :servant-np-type="servantNpType"
@@ -406,6 +417,7 @@
         :character-class="characterClass"
         :character-name="characterName"
         :character-atk="characterAtk"
+        :fou="fou"
         :np-charge-lv="npChargeLv"
         :character-npmultiplier="characterNpmultiplier"
         :servant-np-type="servantNpType"
@@ -478,6 +490,12 @@ export default {
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 1.1 },
         { text: '不利', value: 0.9 }
+      ],
+      fou: 1000, //  フォウくんの値
+      selectFou: [
+        { text: '+1000', value: 1000 },
+        { text: '+2000', value: 2000 },
+        { text: 'なし', value: 0 }
       ],
       npChargeLv: '', // 選択された宝具レベル
       atkBuff: 0, // 攻撃力バフ倍率
@@ -652,6 +670,7 @@ export default {
       this.characterClass = ''
       this.characterName = ''
       this.atk = []
+      this.fou = 1000
       this.switchAtk = false
       this.characterAtk = 0
       this.npChargeLv = ''
