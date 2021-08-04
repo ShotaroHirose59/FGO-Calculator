@@ -66,6 +66,10 @@ export default {
       type: [String, Number],
       required: true
     },
+    fou: {
+      type: Number,
+      required: true
+    },
     npChargeLv: {
       type: [String, Number],
       required: true
@@ -122,7 +126,7 @@ export default {
     // 0.23はFGOのダメージ処理で必ず入る固定補正値
     averageDamage() {
       return Math.floor(
-        (this.characterAtk + this.dressAtk) *
+        (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
           0.23 *
           (this.cardVal * ((100 + this.cardBuff) / 100)) *
