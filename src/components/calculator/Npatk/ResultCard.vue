@@ -163,7 +163,7 @@ export default {
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 2.0 },
         { text: '不利', value: 0.5 },
-        { text: '狂・分 有利', value: 1.5 }
+        { text: '狂・分・羽 有利', value: 1.5 }
       ],
       attributeCompatibility: 1.0, // 属性相性補正デフォルトでselectAttributeCompatibilityを'等倍'にする
       selectAttributeCompatibility: [
@@ -210,6 +210,8 @@ export default {
         case 'アルターエゴ':
           return 1.0
         case 'フォーリナー':
+          return 1.0
+        case 'プリテンダー':
           return 1.0
         case 'アーチャー':
           return 0.95
