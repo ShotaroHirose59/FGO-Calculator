@@ -474,7 +474,8 @@ export default {
           'アヴェンジャー',
           'アルターエゴ',
           'ムーンキャンサー',
-          'フォーリナー'
+          'フォーリナー',
+          'プリテンダー'
         ],
         npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
       },
@@ -483,7 +484,7 @@ export default {
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 2.0 },
         { text: '不利', value: 0.5 },
-        { text: '狂・分 有利', value: 1.5 }
+        { text: '狂・分・羽 有利', value: 1.5 }
       ],
       attributeCompatibility: 1.0, // 属性相性補正デフォルトでselectAttributeCompatibilityを'等倍'にする
       selectAttributeCompatibility: [
@@ -626,6 +627,9 @@ export default {
           this.classCompatibility = 1.5
           break
         case 'アルターエゴ':
+          this.classCompatibility = 1.5
+          break
+        case 'プリテンダー':
           this.classCompatibility = 1.5
           break
         default:

@@ -151,6 +151,8 @@ export default {
           return 1.0
         case 'フォーリナー':
           return 1.0
+        case 'プリテンダー':
+          return 1.0
         case 'アーチャー':
           return 0.95
         case 'ランサー':
