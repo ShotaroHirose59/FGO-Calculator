@@ -457,7 +457,7 @@ export default {
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
       selectLv: [90, 100, 110, 120],
-      selectedLv: '',
+      selectedLv: 0,
       characterAtk: 0, // 配列から取得したサーヴァントの攻撃力
       npmultiplier: [], // キャラクターの宝具倍率の配列
       characterNpmultiplier: 0, // 配列から取り出したサーヴァントの宝具倍率
@@ -500,7 +500,7 @@ export default {
         { text: '+2000', value: 2000 },
         { text: 'なし', value: 0 }
       ],
-      npChargeLv: '', // 選択された宝具レベル
+      npChargeLv: 0, // 選択された宝具レベル
       atkBuff: 0, // 攻撃力バフ倍率
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
@@ -609,7 +609,7 @@ export default {
       }
     },
     setSelectLv(character) {
-      this.selectedLv = ''
+      this.selectedLv = 0
       switch (character.rarity) {
         case 1:
           this.selectLv = [60, 100, 110, 120]
@@ -709,9 +709,9 @@ export default {
       this.characterName = ''
       this.atk = []
       this.fou = 1000
-      this.selectedLv = ''
+      this.selectedLv = 0
       this.characterAtk = 0
-      this.npChargeLv = ''
+      this.npChargeLv = 0
       this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
