@@ -81,15 +81,15 @@
           </v-col>
 
           <v-col cols="4" sm="4" md="4">
-            <v-switch
-              v-model="atk"
-              label="Lv.100"
+            <v-select
+              v-model="selectedLv"
+              label="Lv."
+              :items="selectLv"
               :disabled="!characterName"
-              hide-details
-              class="ml-4"
-              color="yellow darken-2"
-              @change="onSwitchAtk()"
-            ></v-switch>
+              class="mr-3"
+              color="teal"
+              @change="onChangeLv(selectedLv)"
+            ></v-select>
           </v-col>
 
           <v-col cols="4" sm="4" md="4">
@@ -107,6 +107,7 @@
               v-model="npChargeLv"
               label="宝具Lv."
               :items="items.npChargeLevel"
+              :disabled="!characterName"
               class="mr-3"
               color="teal"
               @change="onChangeNpmultiplier(npChargeLv)"
@@ -455,7 +456,8 @@ export default {
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
-      switchAtk: false, // 真偽で攻撃力を変更
+      selectLv: [90, 100, 110, 120],
+      selectedLv: 0,
       characterAtk: 0, // 配列から取得したサーヴァントの攻撃力
       npmultiplier: [], // キャラクターの宝具倍率の配列
       characterNpmultiplier: 0, // 配列から取り出したサーヴァントの宝具倍率
@@ -498,7 +500,7 @@ export default {
         { text: '+2000', value: 2000 },
         { text: 'なし', value: 0 }
       ],
-      npChargeLv: '', // 選択された宝具レベル
+      npChargeLv: 0, // 選択された宝具レベル
       atkBuff: 0, // 攻撃力バフ倍率
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
@@ -600,11 +602,32 @@ export default {
           this.npChargeLv = 1 // 「宝具レベル」を１にする
           this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
           this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
+          this.setSelectLv(character)
           this.setNpType(character)
           this.setClassCompatibility(character)
-          this.switchAtk = false
         }
       }
+    },
+    setSelectLv(character) {
+      this.selectedLv = 0
+      switch (character.rarity) {
+        case 1:
+          this.selectLv = [60, 100, 110, 120]
+          break
+        case 2:
+          this.selectLv = [65, 100, 110, 120]
+          break
+        case 3:
+          this.selectLv = [70, 100, 110, 120]
+          break
+        case 4:
+          this.selectLv = [80, 100, 110, 120]
+          break
+        case 5:
+          this.selectLv = [90, 100, 110, 120]
+          break
+      }
+      this.selectedLv = this.selectLv[0]
     },
     // 選択されたキャラクターの「宝具タイプ」を返す。
     setNpType(character) {
@@ -637,14 +660,21 @@ export default {
           break
       }
     },
-    // キャラクターはデフォルト時([0])とLv.100時([1])の「攻撃力」を持つ。Switchすると値を変更
-    onSwitchAtk() {
-      if (this.switchAtk === false) {
-        this.switchAtk = true
-        this.characterAtk = this.atk[1]
-      } else {
-        this.switchAtk = false
+    onChangeLv(selectedLv) {
+      if (
+        selectedLv === 60 ||
+        selectedLv === 65 ||
+        selectedLv === 70 ||
+        selectedLv === 80 ||
+        selectedLv === 90
+      ) {
         this.characterAtk = this.atk[0]
+      } else if (selectedLv === 100) {
+        this.characterAtk = this.atk[1]
+      } else if (selectedLv === 110) {
+        this.characterAtk = this.atk[2]
+      } else if (selectedLv === 120) {
+        this.characterAtk = this.atk[3]
       }
     },
     // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
@@ -675,9 +705,9 @@ export default {
       this.characterName = ''
       this.atk = []
       this.fou = 1000
-      this.switchAtk = false
+      this.selectedLv = 0
       this.characterAtk = 0
-      this.npChargeLv = ''
+      this.npChargeLv = 0
       this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
