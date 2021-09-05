@@ -669,16 +669,12 @@ export default {
         selectedLv === 90
       ) {
         this.characterAtk = this.atk[0]
-        console.log(this.characterAtk)
       } else if (selectedLv === 100) {
         this.characterAtk = this.atk[1]
-        console.log(this.characterAtk)
       } else if (selectedLv === 110) {
         this.characterAtk = this.atk[2]
-        console.log(this.characterAtk)
       } else if (selectedLv === 120) {
         this.characterAtk = this.atk[3]
-        console.log(this.characterAtk)
       }
     },
     // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
