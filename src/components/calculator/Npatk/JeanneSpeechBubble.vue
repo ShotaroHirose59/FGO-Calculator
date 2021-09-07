@@ -29,19 +29,19 @@ export default {
     speechBubble: {
       get() {
         switch (this.characterName) {
-          case 'ジャンヌ（オルタ）':
+          case 'ジャンヌ〔オルタ〕':
             return '『吼え立てよ、我が憤怒』！'
-          case '水着ジャンヌ（オルタ）':
+          case '水着ジャンヌ〔オルタ〕':
             return '『焼却天理・鏖殺竜』！'
           case '水着ジャンヌ':
             return 'ちっ…アンタも水着なのね'
           case 'ジャンヌサンタリリィ':
             return 'アンタは冬までおとなしくしてなさい'
-          case 'アルトリア (オルタ)':
+          case 'アルトリア〔オルタ〕':
             return '世界最高にいけ好かないわね'
-          case 'アルトリア（サンタオルタ）':
+          case 'アルトリア〔サンタオルタ〕':
             return 'なんでサンタの格好なのよ！'
-          case '水着アルトリア（オルタ）':
+          case '水着アルトリア〔オルタ〕':
             return 'メイドは部屋の掃除でもしてくれる？'
           case 'ジル・ド・レェ（キャスター）':
             return 'あら、ジルもいたのね。'

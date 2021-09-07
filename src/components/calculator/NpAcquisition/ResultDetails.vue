@@ -107,15 +107,15 @@ export default {
     speechBubble: {
       get() {
         switch (this.characterName) {
-          case '水着アルトリア（オルタ）':
+          case '水着アルトリア〔オルタ〕':
             return '食べたアイスの数など覚えてはいない'
           case '水着アルトリア':
             return 'あの英霊はどこのどなた様だ'
-          case 'アタランテ（オルタ）':
+          case 'アタランテ〔オルタ〕':
             return 'ギリシャの狩人がまっくろけ、…あ、いや。'
           case 'エミヤ':
             return 'ついて来れるか？'
-          case 'エミヤ（オルタ）':
+          case 'エミヤ〔オルタ〕':
             return '私のジャンクフードロードについて来れるか？'
           case 'ダヴィンチ（ライダー）':
             return '味方全体のNPを+20だ'
