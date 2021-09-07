@@ -49,7 +49,7 @@ export default {
             return '私のジャンクフードロードに付いて来れるか？'
           case '沖田総司〔オルタ〕':
             return 'オルタとは…一体…'
-          case '新宿のアーチャー':
+          case 'モリアーティ':
             return '近頃のイギリス紳士は棺桶を背負っているのか'
           case '水着ネロ':
             return '劇場女か。'
