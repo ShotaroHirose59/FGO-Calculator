@@ -63,15 +63,13 @@
     </v-col>
 
     <v-col cols="12" sm="12" md="4">
-      <v-card :to="{ name: 'questionnaire' }">
+      <v-card :to="{ name: 'characters' }">
         <v-card-title class="mb-2">
-          1周年アンケート
+          霊基一覧
           <v-spacer />
           <v-icon>mdi-clipboard-text-search-outline</v-icon>
         </v-card-title>
-        <v-card-subtitle
-          >アンケートにご協力をお願いいたします。</v-card-subtitle
-        >
+        <v-card-subtitle>サーヴァントの属性を確認できます。</v-card-subtitle>
       </v-card>
     </v-col>
   </v-row>
