@@ -4,8 +4,8 @@
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
-      fixed
       app
+      temporary
       color="grey darken-4"
     >
       <v-list>
@@ -55,11 +55,11 @@
         />
       </client-only>
     </v-app-bar>
-    <v-main>
+    <v-content>
       <v-container fluid fill-height>
         <nuxt />
       </v-container>
-    </v-main>
+    </v-content>
     <client-only>
       <v-footer v-if="!$vuetify.breakpoint.xs" :fixed="fixed" app>
         <span>&copy; {{ new Date().getFullYear() }} Wオルタと計算</span>
