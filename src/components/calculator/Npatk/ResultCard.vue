@@ -162,7 +162,7 @@ export default {
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 2.0 },
         { text: '不利', value: 0.5 },
-        { text: '狂・分・羽 有利', value: 1.5 }
+        { text: '狂・分・詐 有利', value: 1.5 }
       ],
       attributeCompatibility: 1.0, // 属性相性補正デフォルトでselectAttributeCompatibilityを'等倍'にする
       selectAttributeCompatibility: [
