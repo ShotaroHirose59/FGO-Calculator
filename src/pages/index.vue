@@ -122,8 +122,4 @@ export default {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
-.v-card:hover {
-  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
-  border-style: outset;
-}
 </style>
