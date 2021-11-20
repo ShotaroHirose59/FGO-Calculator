@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       page: 1,
-      pageSize: 7
+      pageSize: 10
     }
   },
   computed: {
