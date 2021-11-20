@@ -37,7 +37,7 @@
           >
             <v-textarea
               v-model="feedback.opinion"
-              counter
+              counter="300"
               :error-messages="errors"
               label="機能追加の要望 バグ報告 感想など"
               outlined
