@@ -38,14 +38,6 @@ export default {
   created() {
     this.$store.dispatch('info/init')
   },
-  methods: {
-    pageChange(pageNumber) {
-      this.infoLists = this.information.slice(
-        this.pageSize * (pageNumber - 1),
-        this.pageSize * pageNumber
-      )
-    }
-  },
   head() {
     return {
       title: 'お知らせ'
