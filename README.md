@@ -3,7 +3,6 @@ https://fgo-damage-calculation.web.app
 
 ## サービス概要
 スマホアプリ 「Fate/Grand Order」で使える計算アプリ<br/>
-宝具ダメージ計算、宝具NP獲得計算がメインの機能
 
 ## 使用画面
 ### ① トップページ
