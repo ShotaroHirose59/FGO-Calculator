@@ -286,6 +286,9 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
+import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
+import db from '../plugins/firebase'
+
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
@@ -301,6 +304,7 @@ export default {
   },
   data() {
     return {
+      characters: [],
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
       servantNpType: '', // キャラクターの宝具タイプ
@@ -346,9 +350,6 @@ export default {
     }
   },
   computed: {
-    characters() {
-      return this.$store.getters['characters/artsQuickCahracters']
-    },
     // クラスが選択されたら「そのクラスの値を持つキャラクターのみ」をセレクトボックスに表示
     filteredCharacters() {
       const filteredCharacters = []
@@ -368,8 +369,22 @@ export default {
       }
     }
   },
-  created() {
-    this.$store.dispatch('characters/init')
+  async created() {
+    if (!db) {
+      return
+    }
+    const q = query(collection(db, 'characters'), orderBy('number', 'asc'))
+    await getDocs(q).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        if (
+          doc.data().card === 'A' ||
+          doc.data().card === 'Q' ||
+          doc.data().name === 'エミヤ'
+        ) {
+          this.characters.push(doc.data())
+        }
+      })
+    })
   },
   methods: {
     // 選択されたキャラクターが持つ値を取得

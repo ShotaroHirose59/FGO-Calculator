@@ -45,9 +45,12 @@
 </template>
 
 <script>
+import { getDocs, collection, query, orderBy } from 'firebase/firestore/lite'
+import db from '../../plugins/firebase'
 export default {
   data() {
     return {
+      characters: [],
       search: '',
       selectedClass: '',
       items: {
@@ -70,9 +73,6 @@ export default {
     }
   },
   computed: {
-    characters() {
-      return this.$store.getters['characters/orderdCharacters']
-    },
     searchCharacters() {
       const searchCharacters = []
       for (let i = 0; i < this.characters.length; i++) {
@@ -84,8 +84,16 @@ export default {
       return searchCharacters
     }
   },
-  created() {
-    this.$store.dispatch('characters/init')
+  async created() {
+    if (!db) {
+      return
+    }
+    const q = query(collection(db, 'characters'), orderBy('number', 'asc'))
+    await getDocs(q).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.characters.push(doc.data())
+      })
+    })
   },
   methods: {},
   head() {

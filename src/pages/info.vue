@@ -17,9 +17,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="info in information" :key="info.id">
-                <td>{{ info.created }}</td>
-                <td>{{ info.content }}</td>
+              <tr v-for="i in info" :key="i.id">
+                <td>{{ i.created }}</td>
+                <td>{{ i.content }}</td>
               </tr>
             </tbody>
           </template>
@@ -29,14 +29,34 @@
   </v-row>
 </template>
 <script>
+import { getDocs, collection, query, orderBy } from 'firebase/firestore/lite'
+import db from '../plugins/firebase'
+
 export default {
-  computed: {
-    information() {
-      return this.$store.state.info.info
+  data() {
+    return {
+      info: [
+        {
+          content: '',
+          created: ''
+        }
+      ]
     }
   },
-  created() {
-    this.$store.dispatch('info/init')
+  async created() {
+    if (!db) {
+      return
+    }
+    const q = query(collection(db, 'info'), orderBy('createdAt', 'desc'))
+    await getDocs(q).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.info.push({
+          content: doc.data().content,
+          created: doc.data().created
+        })
+      })
+    })
+    this.info.splice(0, 1)
   },
   head() {
     return {

@@ -75,7 +75,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/vee-validate'],
+  plugins: [
+    '~/plugins/vee-validate',
+    { src: '~/plugins/firebase.js', mode: 'client' }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -89,7 +92,6 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
