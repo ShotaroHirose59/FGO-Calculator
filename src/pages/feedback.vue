@@ -12,7 +12,7 @@
               color="primary"
               large
               :disabled="!feedback.opinion || feedback.opinion.length >= 300"
-              @click.prevent="add"
+              @click.prevent="addFeedback()"
               >mdi-send</v-icon
             >
           </v-col>
@@ -61,6 +61,9 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore/lite'
+import db from '../plugins/firebase'
+
 import ThanksDialog from '@/components/ThanksDialog'
 
 export default {
@@ -77,12 +80,12 @@ export default {
       }
     }
   },
-  created() {
-    this.$store.dispatch('feedback/init')
-  },
   methods: {
-    add() {
-      this.$store.dispatch('feedback/add', this.feedback)
+    async addFeedback() {
+      await addDoc(collection(db, 'feedback'), {
+        feedback: this.feedback,
+        created: serverTimestamp()
+      })
       this.feedback.opinion = ''
       this.feedback.terminal = 'スマートフォン'
       this.$refs.dlg.isDisplay = true // ダイアログ表示

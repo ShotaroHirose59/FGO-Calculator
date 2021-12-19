@@ -438,6 +438,8 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
+import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
+import db from '../plugins/firebase'
 import Dialog from '@/components/calculator/Npatk/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
@@ -453,6 +455,7 @@ export default {
   },
   data() {
     return {
+      characters: [],
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
@@ -510,10 +513,6 @@ export default {
     }
   },
   computed: {
-    // stateから状態を取得
-    characters() {
-      return this.$store.getters['characters/orderdCharacters']
-    },
     // クラスが選択されたら「そのクラスの値を持つキャラクターのみ」をセレクトボックスに表示
     filteredCharacters() {
       const filteredCharacters = []
@@ -587,9 +586,16 @@ export default {
       }
     }
   },
-  // データの初期化 Vuex
-  created() {
-    this.$store.dispatch('characters/init')
+  async created() {
+    if (!db) {
+      return
+    }
+    const q = query(collection(db, 'characters'), orderBy('number', 'asc'))
+    await getDocs(q).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.characters.push(doc.data())
+      })
+    })
   },
   methods: {
     // 選択されたキャラクターが持つ値を取得
