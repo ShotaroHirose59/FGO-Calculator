@@ -1,12 +1,13 @@
-import firebase from 'firebase'
+import { getApps, getApp, initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore/lite'
 
-// Firebaseの初期化に必要なプロジェクトIDをオブジェクト形式で用意
-const config = {
+const firebaseConfig = {
   projectId: process.env.FIREBASE_PROJECT_ID
 }
 
-// 二重に初期化が行われないようにする
-if (!firebase.apps.length) {
-  firebase.initializeApp(config)
-}
-export default firebase
+// Initialize Firebase
+const firebaseApp = !getApps().length ? initializeApp(firebaseConfig) : getApp()
+
+const db = getFirestore(firebaseApp)
+
+export default db
