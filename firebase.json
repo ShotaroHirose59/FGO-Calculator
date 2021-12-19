@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "functions": {
-      "source": "functions"
-    }
-  },
   "hosting": {
     "public": "dist",
     "ignore": [
@@ -13,9 +8,11 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "function": "ssr"
+        "source": "**"
       }
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules"
   }
 }
