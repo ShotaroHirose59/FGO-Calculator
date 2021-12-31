@@ -132,7 +132,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -150,7 +150,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
@@ -168,7 +168,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -186,7 +186,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
@@ -207,7 +207,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -225,7 +225,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
@@ -246,7 +246,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -264,7 +264,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
@@ -285,7 +285,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -303,7 +303,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
@@ -321,7 +321,7 @@
             />
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -338,7 +338,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="3" sm="2" md="2">
+          <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
