@@ -3,7 +3,7 @@
     <v-icon
       color="teal"
       class="mt-4"
-      style="font-size: 32px"
+      style="font-size: 36px"
       @click="onClickPlusButton()"
     >
       mdi-plus-box-outline
@@ -11,7 +11,7 @@
     <v-icon
       color="rgba(255, 255, 255, 0.7)"
       class="mt-4 ml-1"
-      style="font-size: 32px"
+      style="font-size: 36px"
       @click="onClickMinusButton()"
     >
       mdi-minus-box-outline
