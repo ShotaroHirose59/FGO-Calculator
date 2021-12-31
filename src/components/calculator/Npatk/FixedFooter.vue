@@ -1,10 +1,10 @@
 <template>
-  <v-footer app fixed height="68" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="56" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="3">
         <v-img
           :src="image_src"
-          width="56"
+          width="48"
           @click="displayJeanneDetails()"
         ></v-img>
       </v-col>
@@ -19,7 +19,7 @@
       <v-col cols="3">
         <v-img
           :src="image_src2"
-          width="56"
+          width="48"
           class="ml-8"
           @click="displayAltriaDetails()"
         ></v-img>
@@ -195,3 +195,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-list-item__content {
+  padding: 4px 0;
+}
+</style>

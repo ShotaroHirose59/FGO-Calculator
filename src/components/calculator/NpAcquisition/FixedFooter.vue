@@ -1,5 +1,5 @@
 <template>
-  <v-footer app fixed height="64" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="56" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="9">
         <v-progress-linear
@@ -16,7 +16,7 @@
       <v-col cols="3">
         <v-img
           :src="image_src"
-          width="56"
+          width="48"
           class="ml-4"
           @click="displayDetails()"
         ></v-img>
