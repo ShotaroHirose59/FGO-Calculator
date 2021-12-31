@@ -17,7 +17,7 @@
         <v-img
           :src="image_src"
           width="48"
-          class="ml-4"
+          class="ml-8"
           @click="displayDetails()"
         ></v-img>
       </v-col>
