@@ -95,7 +95,7 @@ export default {
 <style scoped>
 .top-title {
   font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ',
-    Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    Meiryo, 'MS Pゴシック', sans-serif;
 }
 .city {
   opacity: 0.9;
