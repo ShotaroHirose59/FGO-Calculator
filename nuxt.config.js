@@ -4,6 +4,9 @@ import webpack from 'webpack'
 export default {
   ssr: true,
   target: 'static',
+  generate: {
+    fallback: true
+  },
   /*
    ** Headers of the page
    */
