@@ -21,12 +21,23 @@
       </v-col>
 
       <v-col
-        v-if="!$vuetify.breakpoint.xs"
+        v-if="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl"
         sm="4"
         md="4"
         class="text-center align-self-center city"
       >
         <h1 class="top-title text-gradient" style="font-size: 70px">
+          FGO Calculator
+        </h1>
+      </v-col>
+
+      <v-col
+        v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.md"
+        sm="4"
+        md="4"
+        class="text-center align-self-center city"
+      >
+        <h1 class="top-title" style="font-size: 56px">
           FGO Calculator
         </h1>
       </v-col>
