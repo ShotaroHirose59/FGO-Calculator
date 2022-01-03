@@ -152,7 +152,6 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   atkBuff += 10
@@ -189,7 +188,6 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   if (cardBuff >= 400) {
@@ -229,7 +227,6 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   if (sAtkBuff >= 500) {
@@ -269,7 +266,6 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   if (npBuff >= 500) {
@@ -309,7 +305,6 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   sNpAtkBuff += 10
@@ -345,7 +340,6 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :count="100"
               :on-click-plus-button="
                 () => {
                   if (dressAtk >= 3000) {
