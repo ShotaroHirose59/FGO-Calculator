@@ -200,4 +200,7 @@ export default {
 .v-list-item__content {
   padding: 4px 0;
 }
+.v-list-item__subtitle {
+  font-size: 0.7rem;
+}
 </style>
