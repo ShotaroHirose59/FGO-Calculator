@@ -1,33 +1,27 @@
 <template>
   <div>
-    <v-btn
-      outlined
-      small
+    <v-icon
       color="teal"
-      class="mt-6"
+      class="mt-4"
+      style="font-size: 36px"
       @click="onClickPlusButton()"
     >
-      +{{ count }}
-    </v-btn>
-    <v-btn
-      outlined
-      small
+      mdi-plus-box-outline
+    </v-icon>
+    <v-icon
       color="rgba(255, 255, 255, 0.7)"
-      class="mt-6 ml-2"
+      class="mt-4 ml-1"
+      style="font-size: 36px"
       @click="onClickMinusButton()"
     >
-      -{{ count }}
-    </v-btn>
+      mdi-minus-box-outline
+    </v-icon>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    count: {
-      type: Number,
-      required: true
-    },
     onClickMinusButton: {
       type: Function,
       required: true,
@@ -45,9 +39,5 @@ export default {
 <style scoped>
 .v-icon {
   touch-action: none;
-}
-.v-btn:not(.v-btn--round).v-size--small {
-  min-width: 38px;
-  max-width: 38px;
 }
 </style>

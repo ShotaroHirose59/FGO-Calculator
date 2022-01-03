@@ -120,7 +120,6 @@
 
           <v-col cols="4" sm="2" md="1">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   if (cardBuff >= 400) {
@@ -160,7 +159,6 @@
 
           <v-col cols="4" sm="2" md="1">
             <PlusMinusButton
-              :count="10"
               :on-click-plus-button="
                 () => {
                   if (npAcquisitionBuff >= 400) {
@@ -200,7 +198,6 @@
 
           <v-col cols="4" sm="2" md="1">
             <PlusMinusButton
-              :count="1"
               :on-click-plus-button="
                 () => {
                   if (overkillHits === npHits * 3) {
