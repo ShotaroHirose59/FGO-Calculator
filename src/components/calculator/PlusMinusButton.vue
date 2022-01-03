@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style scoped>
+.v-icon {
+  touch-action: none;
+}
 .v-btn:not(.v-btn--round).v-size--small {
   min-width: 38px;
   max-width: 38px;
