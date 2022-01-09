@@ -814,8 +814,8 @@ input[type='number']::-webkit-inner-spin-button {
   margin: 0;
 }
 .event-buff-label {
-  .v-label {
-    color: #ffa726;
+  .theme--dark.v-label {
+    color: orange;
   }
 }
 </style>
