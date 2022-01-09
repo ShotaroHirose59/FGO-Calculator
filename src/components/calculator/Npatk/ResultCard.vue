@@ -253,6 +253,10 @@ export default {
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
       this.$emit('reset-val')
+    },
+    resetCompatibility() {
+      this.classCompatibility = 2.0
+      this.attributeCompatibility = 1.0
     }
   }
 }

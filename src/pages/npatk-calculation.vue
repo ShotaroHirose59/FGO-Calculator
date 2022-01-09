@@ -220,6 +220,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
+                :class="{ 'event-buff-label': isEventCharacter }"
                 color="teal"
               ></v-text-field>
             </validation-provider>
@@ -259,6 +260,7 @@
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
+                :class="{ 'event-buff-label': isNpBuffEventCharacter }"
                 color="teal"
               ></v-text-field>
             </validation-provider>
@@ -397,6 +399,7 @@
     <client-only>
       <ResultCard
         v-if="!$vuetify.breakpoint.xs"
+        ref="child"
         :character-class="characterClass"
         :character-name="characterName"
         :character-atk="characterAtk"
@@ -509,7 +512,9 @@ export default {
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
       sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
-      dressAtk: 0 // 概念礼装のATK
+      dressAtk: 0, // 概念礼装のATK
+      isEventCharacter: false,
+      isNpBuffEventCharacter: false
     }
   },
   computed: {
@@ -603,6 +608,7 @@ export default {
       for (let i = 0; i < this.characters.length; i++) {
         const character = this.characters[i]
         if (character.name === characterName) {
+          this.resetBuffSystem()
           this.atk = character.atk // 「攻撃力」を一旦配列で取得
           this.characterAtk = this.atk[0] // デフォルトの攻撃力
           this.npChargeLv = 1 // 「宝具レベル」を１にする
@@ -611,11 +617,11 @@ export default {
           this.setSelectLv(character)
           this.setNpType(character)
           this.setClassCompatibility(character)
+          this.setEventCharacterBuff(character)
         }
       }
     },
     setSelectLv(character) {
-      this.selectedLv = 0
       switch (character.rarity) {
         case 1:
           this.selectLv = [60, 100, 110, 120]
@@ -666,6 +672,43 @@ export default {
           break
       }
     },
+    setEventCharacterBuff(character) {
+      this.isEventCharacter = false
+      this.isNpBuffEventCharacter = false
+      // 事件簿コラボ
+      // グレイは宝具も50%
+      if (character.name === 'グレイ') {
+        this.isEventCharacter = true
+        this.isNpBuffEventCharacter = true
+        this.sAtkBuff = 100
+        this.npBuff = 50
+      } else if (character.name === 'アストライア') {
+        this.isEventCharacter = true
+        this.sAtkBuff = 100
+      } else if (
+        character.name === 'アルトリア〔オルタ〕' ||
+        character.name === 'モリアーティ' ||
+        character.name === 'イスカンダル' ||
+        character.name === 'アレキサンダー' ||
+        character.name === 'ダヴィンチ（キャスター）' ||
+        character.name === 'バベッジ' ||
+        character.name === 'エミヤ（アサシン）'
+      ) {
+        this.isEventCharacter = true
+        this.sAtkBuff = 50
+      } else if (
+        character.name === 'アルトリア〔ランサーオルタ〕' ||
+        character.name === 'ナーサリー' ||
+        character.name === 'シェイクスピア' ||
+        character.name === 'ジャック' ||
+        character.name === '坂田金時' ||
+        character.name === 'バニヤン' ||
+        character.name === 'サリエリ'
+      ) {
+        this.isEventCharacter = true
+        this.sAtkBuff = 30
+      }
+    },
     onChangeLv(selectedLv) {
       if (
         selectedLv === 60 ||
@@ -706,6 +749,25 @@ export default {
     openDisplay() {
       this.$refs.dlg.isDisplay = true
     },
+    resetBuffSystem() {
+      this.fou = 1000
+      this.characterAtk = 0
+      this.npChargeLv = 0
+      this.characterNpmultiplier = 0
+      this.servantNpType = ''
+      this.atkBuff = 0
+      this.cardBuff = 0
+      this.sAtkBuff = 0
+      this.npBuff = 0
+      this.sNpAtkBuff = 0
+      this.dressAtk = 0
+      if (!this.$vuetify.breakpoint.xs) {
+        this.$refs.child.resetCompatibility()
+      } else {
+        this.classCompatibility = 2.0
+        this.attributeCompatibility = 1.0
+      }
+    },
     resetAll() {
       this.characterClass = ''
       this.characterName = ''
@@ -724,6 +786,8 @@ export default {
       this.dressAtk = 0
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
+      this.isEventCharacter = false
+      this.isNpBuffEventCharacter = false
     }
   },
   head() {
@@ -743,10 +807,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.event-buff-label {
+  .v-label {
+    color: #ffa726;
+  }
 }
 </style>
