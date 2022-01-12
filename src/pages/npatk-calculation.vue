@@ -682,7 +682,10 @@ export default {
         this.isNpBuffEventCharacter = true
         this.sAtkBuff = 100
         this.npBuff = 50
-      } else if (character.name === 'アストライア') {
+      } else if (
+        character.name === 'アストライア' ||
+        character.name === 'ヘファイスティオン'
+      ) {
         this.isEventCharacter = true
         this.sAtkBuff = 100
       } else if (
