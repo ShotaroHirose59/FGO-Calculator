@@ -513,6 +513,7 @@ export default {
       npBuff: 0, // 宝具威力バフ倍率
       sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
       dressAtk: 0, // 概念礼装のATK
+      characterRarity: null,
       isEventCharacter: false,
       isNpBuffEventCharacter: false
     }
@@ -614,26 +615,27 @@ export default {
           this.npChargeLv = 1 // 「宝具レベル」を１にする
           this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
           this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
-          this.setSelectLv(character)
+          this.characterRarity = character.rarity
+          this.setSelectLv(this.characterRarity)
           this.setNpType(character)
           this.setClassCompatibility(character)
-          this.setEventCharacterBuff(character)
+          // this.setEventCharacterBuff(character)
         }
       }
     },
-    setSelectLv(character) {
-      switch (character.rarity) {
+    setSelectLv(characterRarity) {
+      switch (characterRarity) {
         case 1:
-          this.selectLv = [60, 100, 110, 120]
+          this.selectLv = [60, 70, 80, 90, 100, 110, 120]
           break
         case 2:
-          this.selectLv = [65, 100, 110, 120]
+          this.selectLv = [65, 70, 80, 90, 100, 110, 120]
           break
         case 3:
-          this.selectLv = [70, 100, 110, 120]
+          this.selectLv = [70, 80, 90, 100, 110, 120]
           break
         case 4:
-          this.selectLv = [80, 100, 110, 120]
+          this.selectLv = [80, 90, 100, 110, 120]
           break
         case 5:
           this.selectLv = [90, 100, 110, 120]
@@ -713,20 +715,74 @@ export default {
       }
     },
     onChangeLv(selectedLv) {
-      if (
-        selectedLv === 60 ||
-        selectedLv === 65 ||
-        selectedLv === 70 ||
-        selectedLv === 80 ||
-        selectedLv === 90
-      ) {
-        this.characterAtk = this.atk[0]
-      } else if (selectedLv === 100) {
-        this.characterAtk = this.atk[1]
-      } else if (selectedLv === 110) {
-        this.characterAtk = this.atk[2]
-      } else if (selectedLv === 120) {
-        this.characterAtk = this.atk[3]
+      if (this.characterRarity === 5) {
+        if (selectedLv === 90) {
+          this.characterAtk = this.atk[0]
+        } else if (selectedLv === 100) {
+          this.characterAtk = this.atk[1]
+        } else if (selectedLv === 110) {
+          this.characterAtk = this.atk[2]
+        } else if (selectedLv === 120) {
+          this.characterAtk = this.atk[3]
+        }
+      } else if (this.characterRarity === 4) {
+        if (selectedLv === 80) {
+          this.characterAtk = this.atk[0]
+        } else if (selectedLv === 90) {
+          this.characterAtk = this.atk[1]
+        } else if (selectedLv === 100) {
+          this.characterAtk = this.atk[2]
+        } else if (selectedLv === 110) {
+          this.characterAtk = this.atk[3]
+        } else if (selectedLv === 120) {
+          this.characterAtk = this.atk[4]
+        }
+      } else if (this.characterRarity === 3) {
+        if (selectedLv === 70) {
+          this.characterAtk = this.atk[0]
+        } else if (selectedLv === 80) {
+          this.characterAtk = this.atk[1]
+        } else if (selectedLv === 90) {
+          this.characterAtk = this.atk[2]
+        } else if (selectedLv === 100) {
+          this.characterAtk = this.atk[3]
+        } else if (selectedLv === 110) {
+          this.characterAtk = this.atk[4]
+        } else if (selectedLv === 120) {
+          this.characterAtk = this.atk[5]
+        }
+      } else if (this.characterRarity === 2) {
+        if (selectedLv === 65) {
+          this.characterAtk = this.atk[0]
+        } else if (selectedLv === 70) {
+          this.characterAtk = this.atk[1]
+        } else if (selectedLv === 80) {
+          this.characterAtk = this.atk[2]
+        } else if (selectedLv === 90) {
+          this.characterAtk = this.atk[3]
+        } else if (selectedLv === 100) {
+          this.characterAtk = this.atk[4]
+        } else if (selectedLv === 110) {
+          this.characterAtk = this.atk[5]
+        } else if (selectedLv === 120) {
+          this.characterAtk = this.atk[6]
+        }
+      } else if (this.characterRarity === 1) {
+        if (selectedLv === 60) {
+          this.characterAtk = this.atk[0]
+        } else if (selectedLv === 70) {
+          this.characterAtk = this.atk[1]
+        } else if (selectedLv === 80) {
+          this.characterAtk = this.atk[2]
+        } else if (selectedLv === 90) {
+          this.characterAtk = this.atk[3]
+        } else if (selectedLv === 100) {
+          this.characterAtk = this.atk[4]
+        } else if (selectedLv === 110) {
+          this.characterAtk = this.atk[5]
+        } else if (selectedLv === 120) {
+          this.characterAtk = this.atk[6]
+        }
       }
     },
     // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
@@ -764,6 +820,7 @@ export default {
       this.npBuff = 0
       this.sNpAtkBuff = 0
       this.dressAtk = 0
+      this.characterRarity = null
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -789,6 +846,7 @@ export default {
       this.dressAtk = 0
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
+      this.characterRarity = null
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
     }
