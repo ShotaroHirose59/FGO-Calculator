@@ -619,12 +619,15 @@ export default {
           this.setSelectLv(this.characterRarity)
           this.setNpType(character)
           this.setClassCompatibility(character)
-          // this.setEventCharacterBuff(character)
+          this.setEventCharacterBuff(character)
         }
       }
     },
     setSelectLv(characterRarity) {
       switch (characterRarity) {
+        case 0:
+          this.selectLv = [65, 70, 80, 90, 100, 110, 120]
+          break
         case 1:
           this.selectLv = [60, 70, 80, 90, 100, 110, 120]
           break
@@ -677,38 +680,24 @@ export default {
     setEventCharacterBuff(character) {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
-      // 事件簿コラボ
-      // グレイは宝具も50%
-      if (character.name === 'グレイ') {
-        this.isEventCharacter = true
-        this.isNpBuffEventCharacter = true
-        this.sAtkBuff = 100
-        this.npBuff = 50
-      } else if (
-        character.name === 'アストライア' ||
-        character.name === 'ヘファイスティオン'
-      ) {
+      // バレンタイン2022
+      if (character.name === 'バゼット') {
         this.isEventCharacter = true
         this.sAtkBuff = 100
       } else if (
-        character.name === 'アルトリア〔オルタ〕' ||
-        character.name === 'モリアーティ' ||
-        character.name === 'イスカンダル' ||
-        character.name === 'アレキサンダー' ||
-        character.name === 'ダヴィンチ（キャスター）' ||
-        character.name === 'バベッジ' ||
-        character.name === 'エミヤ（アサシン）'
+        character.name === 'メドゥーサ（ランサー）' ||
+        character.name === 'ジャガーマン' ||
+        character.name === 'カレン' ||
+        character.name === 'アストライア'
       ) {
         this.isEventCharacter = true
         this.sAtkBuff = 50
       } else if (
-        character.name === 'アルトリア〔ランサーオルタ〕' ||
-        character.name === 'ナーサリー' ||
-        character.name === 'シェイクスピア' ||
-        character.name === 'ジャック' ||
-        character.name === '坂田金時' ||
-        character.name === 'バニヤン' ||
-        character.name === 'サリエリ'
+        character.name === 'ネロ〔ブライド〕' ||
+        character.name === '清少納言' ||
+        character.name === '紫式部' ||
+        character.name === 'セミラミス' ||
+        character.name === '謎のヒロインX〔オルタ〕'
       ) {
         this.isEventCharacter = true
         this.sAtkBuff = 30
@@ -751,7 +740,7 @@ export default {
         } else if (selectedLv === 120) {
           this.characterAtk = this.atk[5]
         }
-      } else if (this.characterRarity === 2) {
+      } else if (this.characterRarity === 2 || this.characterRarity === 0) {
         if (selectedLv === 65) {
           this.characterAtk = this.atk[0]
         } else if (selectedLv === 70) {
