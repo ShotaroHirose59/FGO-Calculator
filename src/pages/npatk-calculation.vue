@@ -397,7 +397,7 @@
                   <!-- <v-list-item-title style="font-size: 12px;">
                     OC : アーツ耐性をダウン(10%)
                   </v-list-item-title> -->
-                  <v-list-item-title class="mt-1" style="font-size: 12px;">
+                  <v-list-item-title class="class-skill-text-sp">
                     クラススキル : <br />
                     {{ classSkillName }}
                     {{ classSkillDescription }}
@@ -909,6 +909,14 @@ input[type='number']::-webkit-inner-spin-button {
 .event-buff-label {
   .theme--dark.v-label {
     color: orange;
+  }
+}
+.class-skill-text-sp {
+  font-size: 14px;
+}
+@media screen and (max-width: 360px) {
+  .class-skill-text-sp {
+    font-size: 12px;
   }
 }
 </style>
