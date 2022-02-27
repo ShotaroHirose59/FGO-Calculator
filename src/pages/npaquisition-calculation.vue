@@ -495,7 +495,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -503,9 +503,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .class-skill-text-sp {
   font-size: 14px;
-}
-@media screen and (max-width: 360px) {
-  .class-skill-text-sp {
+  @media screen and (max-width: 360px) {
     font-size: 12px;
   }
 }

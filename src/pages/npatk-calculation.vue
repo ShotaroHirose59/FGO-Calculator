@@ -913,9 +913,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .class-skill-text-sp {
   font-size: 14px;
-}
-@media screen and (max-width: 360px) {
-  .class-skill-text-sp {
+  @media screen and (max-width: 360px) {
     font-size: 12px;
   }
 }
