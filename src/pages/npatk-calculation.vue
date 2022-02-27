@@ -21,7 +21,16 @@
       <!-- スマホだと幅取るからいらない -->
       <client-only>
         <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-          単体 or 全体宝具を持つ全てのサーヴァントが対象
+          <!-- <span>
+            OC : アーツ耐性ダウン(10%)
+          </span>
+          <span class="ml-2 mr-2">
+            /
+          </span> -->
+          <span>
+            クラススキル : {{ classSkillName }}
+            {{ classSkillDescription }}
+          </span>
         </v-card-subtitle>
       </client-only>
 
@@ -382,6 +391,21 @@
               ></v-select>
             </v-col>
 
+            <v-col v-if="$vuetify.breakpoint.xs" cols="12">
+              <v-list-item style="padding: 0;">
+                <v-list-item-content>
+                  <!-- <v-list-item-title style="font-size: 12px;">
+                    OC : アーツ耐性をダウン(10%)
+                  </v-list-item-title> -->
+                  <v-list-item-title class="class-skill-text-sp">
+                    クラススキル : <br />
+                    {{ classSkillName }}
+                    {{ classSkillDescription }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+
             <v-col
               v-if="$vuetify.breakpoint.xs"
               cols="12"
@@ -443,6 +467,9 @@
 import { ValidationProvider } from 'vee-validate'
 import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
+import ClassSkillBusterBuff from '../mixins/class-skill/buster-buff'
+import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
+import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import Dialog from '@/components/calculator/Npatk/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
@@ -456,6 +483,7 @@ export default {
     ResultCard,
     FixedFooter
   },
+  mixins: [ClassSkillBusterBuff, ClassSkillArtsBuff, ClassSkillQuickBuff],
   data() {
     return {
       characters: [],
@@ -515,7 +543,9 @@ export default {
       dressAtk: 0, // 概念礼装のATK
       characterRarity: null,
       isEventCharacter: false,
-      isNpBuffEventCharacter: false
+      isNpBuffEventCharacter: false,
+      classSkillName: '',
+      classSkillDescription: ''
     }
   },
   computed: {
@@ -619,7 +649,16 @@ export default {
           this.setSelectLv(this.characterRarity)
           this.setNpType(character)
           this.setClassCompatibility(character)
-          this.setEventCharacterBuff(character)
+          if (character.card === 'B') {
+            this.setClassSkillBusterBuff(character)
+          }
+          if (character.card === 'A') {
+            this.setClassSkillArtsBuff(character)
+          }
+          if (character.card === 'Q') {
+            this.setClassSkillQuickBuff(character)
+          }
+          // this.setEventCharacterBuff(character)
         }
       }
     },
@@ -810,6 +849,8 @@ export default {
       this.sNpAtkBuff = 0
       this.dressAtk = 0
       this.characterRarity = null
+      this.classSkillName = ''
+      this.classSkillDescription = ''
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -835,6 +876,8 @@ export default {
       this.dressAtk = 0
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
+      this.classSkillName = ''
+      this.classSkillDescription = ''
       this.characterRarity = null
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
@@ -866,6 +909,12 @@ input[type='number']::-webkit-inner-spin-button {
 .event-buff-label {
   .theme--dark.v-label {
     color: orange;
+  }
+}
+.class-skill-text-sp {
+  font-size: 14px;
+  @media screen and (max-width: 360px) {
+    font-size: 12px;
   }
 }
 </style>
