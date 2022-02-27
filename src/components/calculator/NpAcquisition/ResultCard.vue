@@ -36,10 +36,14 @@
           <v-list-item class="mt-2">
             <v-list-item-content>
               <v-list-item-title>
-                サーヴァント: {{ characterName }}</v-list-item-title
+                サーヴァント : {{ characterName }}</v-list-item-title
               >
-              <v-list-item-title> 宝具: {{ servantNpType }}</v-list-item-title>
-              <v-list-item-title> 宝具ヒット数: {{ npHits }}</v-list-item-title>
+              <!-- <v-list-item-title class="mt-1">
+                OC : アーツ耐性をダウン(10%)
+              </v-list-item-title> -->
+              <v-list-item-title class="mt-1">
+                クラススキル : {{ classSkillName }} {{ classSkillDescription }}
+              </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-col>
@@ -105,6 +109,14 @@ export default {
     },
     npAcquisitionBuff: {
       type: [String, Number],
+      required: true
+    },
+    classSkillName: {
+      type: String,
+      required: true
+    },
+    classSkillDescription: {
+      type: String,
       required: true
     }
   },

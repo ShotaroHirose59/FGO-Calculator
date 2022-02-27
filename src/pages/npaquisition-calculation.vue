@@ -238,6 +238,22 @@
           </v-col>
 
           <client-only>
+            <v-col v-if="$vuetify.breakpoint.xs" cols="12">
+              <v-list-item style="padding: 0;">
+                <v-list-item-content>
+                  <!-- <v-list-item-title style="font-size: 12px;">
+                    OC : アーツ耐性ダウン(10%)
+                  </v-list-item-title> -->
+                  <v-list-item-title class="mt-1" style="font-size: 12px;">
+                    クラススキル : <br />
+                    {{ classSkillName }} {{ classSkillDescription }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+          </client-only>
+
+          <client-only>
             <v-col
               v-if="$vuetify.breakpoint.xs"
               cols="12"
@@ -264,6 +280,8 @@
         :enemy-class="enemyClass"
         :enemy-count="enemyCount"
         :np-acquisition-buff="npAcquisitionBuff"
+        :class-skill-name="classSkillName"
+        :class-skill-description="classSkillDescription"
         @reset-val="resetAll"
       />
       <!-- スマホの場合、固定フッター用意 -->
@@ -288,7 +306,9 @@
 import { ValidationProvider } from 'vee-validate'
 import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
-
+import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
+import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
+import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
@@ -302,6 +322,7 @@ export default {
     ResultCard,
     FixedFooter
   },
+  mixins: [ClassSkillArtsBuff, ClassSkillQuickBuff, ClassSkillNpBuff],
   data() {
     return {
       characters: [],
@@ -347,7 +368,9 @@ export default {
       enemyClass: 'セイバー (1.0)',
       enemyCount: 3,
       cardBuff: 0, // カード性能UP倍率
-      npAcquisitionBuff: 0 // NP獲得量UP倍率
+      npAcquisitionBuff: 0, // NP獲得量UP倍率
+      classSkillName: '',
+      classSkillDescription: ''
     }
   },
   computed: {
@@ -396,8 +419,19 @@ export default {
           this.npRate = character.npchargeatk
           this.npHits = character.nphitcount
           this.overkillHits = 0 // オーバーキルヒット数を0に
+          this.classSkillName = ''
+          this.classSkillDescription = ''
           this.setNpType(character)
           this.setEnemyCount(character)
+          if (character.card === 'A') {
+            this.setClassSkillArtsBuff(character)
+          }
+          if (character.card === 'Q') {
+            this.setClassSkillQuickBuff(character)
+          }
+          if (character.name === 'ディオスクロイ') {
+            this.setClassSkillNpBuff(character)
+          }
         }
       }
     },
@@ -440,6 +474,8 @@ export default {
       this.enemyCount = 3
       this.cardBuff = 0
       this.npAcquisitionBuff = 0
+      this.classSkillName = ''
+      this.classSkillDescription = ''
     }
   },
   head() {
