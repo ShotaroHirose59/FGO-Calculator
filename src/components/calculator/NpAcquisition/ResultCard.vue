@@ -42,7 +42,16 @@
                 OC : アーツ耐性をダウン(10%)
               </v-list-item-title> -->
               <v-list-item-title class="mt-1">
-                クラススキル : {{ classSkillName }} {{ classSkillDescription }}
+                <div>
+                  クラススキル :
+                  <span
+                    v-for="classSkill in classSkills"
+                    :key="classSkill.name"
+                  >
+                    <span>{{ classSkill.name }}</span>
+                    <span>{{ classSkill.description }}</span>
+                  </span>
+                </div>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -111,12 +120,8 @@ export default {
       type: [String, Number],
       required: true
     },
-    classSkillName: {
-      type: String,
-      required: true
-    },
-    classSkillDescription: {
-      type: String,
+    classSkills: {
+      type: Array,
       required: true
     }
   },

@@ -245,8 +245,16 @@
                     OC : アーツ耐性ダウン(10%)
                   </v-list-item-title> -->
                   <v-list-item-title class="class-skill-text-sp">
-                    クラススキル : <br />
-                    {{ classSkillName }} {{ classSkillDescription }}
+                    <div>
+                      クラススキル :
+                      <div
+                        v-for="classSkill in classSkills"
+                        :key="classSkill.name"
+                      >
+                        <span>{{ classSkill.name }}</span>
+                        <span>{{ classSkill.description }}</span>
+                      </div>
+                    </div>
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
@@ -280,8 +288,7 @@
         :enemy-class="enemyClass"
         :enemy-count="enemyCount"
         :np-acquisition-buff="npAcquisitionBuff"
-        :class-skill-name="classSkillName"
-        :class-skill-description="classSkillDescription"
+        :class-skills="classSkills"
         @reset-val="resetAll"
       />
       <!-- スマホの場合、固定フッター用意 -->
@@ -308,7 +315,7 @@ import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
-import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
+import ClassSkillNpAcquisitionBuff from '../mixins/class-skill/np-acquisition-buff'
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
@@ -322,7 +329,11 @@ export default {
     ResultCard,
     FixedFooter
   },
-  mixins: [ClassSkillArtsBuff, ClassSkillQuickBuff, ClassSkillNpBuff],
+  mixins: [
+    ClassSkillArtsBuff,
+    ClassSkillQuickBuff,
+    ClassSkillNpAcquisitionBuff
+  ],
   data() {
     return {
       characters: [],
@@ -369,8 +380,12 @@ export default {
       enemyCount: 3,
       cardBuff: 0, // カード性能UP倍率
       npAcquisitionBuff: 0, // NP獲得量UP倍率
-      classSkillName: '',
-      classSkillDescription: ''
+      classSkills: [
+        {
+          name: '',
+          description: ''
+        }
+      ]
     }
   },
   computed: {
@@ -419,8 +434,7 @@ export default {
           this.npRate = character.npchargeatk
           this.npHits = character.nphitcount
           this.overkillHits = 0 // オーバーキルヒット数を0に
-          this.classSkillName = ''
-          this.classSkillDescription = ''
+          this.classSkills = []
           this.setNpType(character)
           this.setEnemyCount(character)
           if (character.card === 'A') {
@@ -430,7 +444,7 @@ export default {
             this.setClassSkillQuickBuff(character)
           }
           if (character.name === 'ディオスクロイ') {
-            this.setClassSkillNpBuff(character)
+            this.setClassSkillNpAcquisitionBuff(character)
           }
         }
       }
@@ -474,8 +488,7 @@ export default {
       this.enemyCount = 3
       this.cardBuff = 0
       this.npAcquisitionBuff = 0
-      this.classSkillName = ''
-      this.classSkillDescription = ''
+      this.classSkills = []
     }
   },
   head() {
