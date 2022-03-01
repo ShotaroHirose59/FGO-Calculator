@@ -27,10 +27,17 @@
           <span class="ml-2 mr-2">
             /
           </span> -->
-          <span>
-            クラススキル : {{ classSkillName }}
-            {{ classSkillDescription }}
-          </span>
+          <div>
+            クラススキル :
+            <span
+              v-for="(classSkill, index) in classSkills"
+              :key="classSkill.name"
+            >
+              <span>{{ classSkill.name }}</span>
+              <span>{{ classSkill.description }}</span>
+              <span v-if="classSkills.length >= 2 && index == 0"> / </span>
+            </span>
+          </div>
         </v-card-subtitle>
       </client-only>
 
@@ -398,9 +405,16 @@
                     OC : アーツ耐性をダウン(10%)
                   </v-list-item-title> -->
                   <v-list-item-title class="class-skill-text-sp">
-                    クラススキル : <br />
-                    {{ classSkillName }}
-                    {{ classSkillDescription }}
+                    <div>
+                      クラススキル : <br />
+                      <div
+                        v-for="classSkill in classSkills"
+                        :key="classSkill.name"
+                      >
+                        <span>{{ classSkill.name }}</span>
+                        <span>{{ classSkill.description }}</span>
+                      </div>
+                    </div>
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
@@ -467,9 +481,12 @@
 import { ValidationProvider } from 'vee-validate'
 import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
+import ClassSkillAtkBuff from '../mixins/class-skill/atk-buff'
+import ClassSkillSAtkBuff from '../mixins/class-skill/s-atk-buff'
 import ClassSkillBusterBuff from '../mixins/class-skill/buster-buff'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
+import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
 import Dialog from '@/components/calculator/Npatk/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
@@ -483,7 +500,14 @@ export default {
     ResultCard,
     FixedFooter
   },
-  mixins: [ClassSkillBusterBuff, ClassSkillArtsBuff, ClassSkillQuickBuff],
+  mixins: [
+    ClassSkillAtkBuff,
+    ClassSkillSAtkBuff,
+    ClassSkillBusterBuff,
+    ClassSkillArtsBuff,
+    ClassSkillQuickBuff,
+    ClassSkillNpBuff
+  ],
   data() {
     return {
       characters: [],
@@ -544,8 +568,12 @@ export default {
       characterRarity: null,
       isEventCharacter: false,
       isNpBuffEventCharacter: false,
-      classSkillName: '',
-      classSkillDescription: ''
+      classSkills: [
+        {
+          name: '',
+          description: ''
+        }
+      ]
     }
   },
   computed: {
@@ -657,6 +685,22 @@ export default {
           }
           if (character.card === 'Q') {
             this.setClassSkillQuickBuff(character)
+          }
+          if (
+            character.name === '光のコヤンスカヤ' ||
+            character.name === '水着殺生院キアラ' ||
+            character.name === 'ヘファイスティオン'
+          ) {
+            this.setClassSkillNpBuff(character)
+          }
+          if (character.name === 'カレン') {
+            this.setClassSkillAtkBuff(character)
+          }
+          if (
+            character.name === '千子村正' ||
+            character.name === '闇のコヤンスカヤ'
+          ) {
+            this.setClassSkillSAtkBuff(character)
           }
           // this.setEventCharacterBuff(character)
         }
@@ -849,8 +893,7 @@ export default {
       this.sNpAtkBuff = 0
       this.dressAtk = 0
       this.characterRarity = null
-      this.classSkillName = ''
-      this.classSkillDescription = ''
+      this.classSkills = []
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -876,8 +919,7 @@ export default {
       this.dressAtk = 0
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
-      this.classSkillName = ''
-      this.classSkillDescription = ''
+      this.classSkills = []
       this.characterRarity = null
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
