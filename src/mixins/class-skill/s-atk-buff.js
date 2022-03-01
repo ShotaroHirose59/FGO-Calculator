@@ -8,7 +8,7 @@ export default {
           description: '(王)特攻状態を付与(20%)'
         })
       } else if (character.name === '闇のコヤンスカヤ') {
-        this.npBuff = 12
+        this.npBuff = 20
         this.classSkills.push({
           name: '[NFFサービス]',
           description: '(猛獣)特攻状態を付与(20%)'
