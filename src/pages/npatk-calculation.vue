@@ -487,6 +487,7 @@ import ClassSkillBusterBuff from '../mixins/class-skill/buster-buff'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
+import EventCharacterBuff from '../mixins/event-buff'
 import Dialog from '@/components/calculator/Npatk/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
@@ -506,7 +507,8 @@ export default {
     ClassSkillBusterBuff,
     ClassSkillArtsBuff,
     ClassSkillQuickBuff,
-    ClassSkillNpBuff
+    ClassSkillNpBuff,
+    EventCharacterBuff
   ],
   data() {
     return {
@@ -702,7 +704,7 @@ export default {
           ) {
             this.setClassSkillSAtkBuff(character)
           }
-          // this.setEventCharacterBuff(character)
+          this.setEventCharacterBuff(character)
         }
       }
     },
@@ -758,32 +760,6 @@ export default {
         default:
           this.classCompatibility = 2.0
           break
-      }
-    },
-    setEventCharacterBuff(character) {
-      this.isEventCharacter = false
-      this.isNpBuffEventCharacter = false
-      // バレンタイン2022
-      if (character.name === 'バゼット') {
-        this.isEventCharacter = true
-        this.sAtkBuff = 100
-      } else if (
-        character.name === 'メドゥーサ（ランサー）' ||
-        character.name === 'ジャガーマン' ||
-        character.name === 'カレン' ||
-        character.name === 'アストライア'
-      ) {
-        this.isEventCharacter = true
-        this.sAtkBuff = 50
-      } else if (
-        character.name === 'ネロ〔ブライド〕' ||
-        character.name === '清少納言' ||
-        character.name === '紫式部' ||
-        character.name === 'セミラミス' ||
-        character.name === '謎のヒロインX〔オルタ〕'
-      ) {
-        this.isEventCharacter = true
-        this.sAtkBuff = 30
       }
     },
     onChangeLv(selectedLv) {
