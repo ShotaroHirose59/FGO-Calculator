@@ -10,7 +10,7 @@
         </v-tab>
       </v-tabs>
       <v-simple-table class="mt-5">
-        <template v-slot:default>
+        <template>
           <thead>
             <tr>
               <th class="text-left">更新日</th>
