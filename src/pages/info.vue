@@ -14,7 +14,7 @@
           <thead>
             <tr>
               <th class="text-left">更新日</th>
-              <th class="text-left">アップデート情報</th>
+              <th class="text-left">情報</th>
             </tr>
           </thead>
           <tbody v-if="tabTitle === 0">
