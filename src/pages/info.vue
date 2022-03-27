@@ -18,13 +18,47 @@
             </tr>
           </thead>
           <tbody v-if="tabTitle === 0">
-            <tr v-for="i in normalInfo" :key="i.id">
+            <v-subheader>
+              2022
+            </v-subheader>
+            <tr v-for="i in normalInfo2022" :key="i.id">
+              <td>{{ i.created }}</td>
+              <td>{{ i.content }}</td>
+            </tr>
+            <v-subheader>
+              2021
+            </v-subheader>
+            <tr v-for="i in normalInfo2021" :key="i.id">
+              <td>{{ i.created }}</td>
+              <td>{{ i.content }}</td>
+            </tr>
+            <v-subheader>
+              2020
+            </v-subheader>
+            <tr v-for="i in normalInfo2020" :key="i.id">
               <td>{{ i.created }}</td>
               <td>{{ i.content }}</td>
             </tr>
           </tbody>
           <tbody v-if="tabTitle === 1">
-            <tr v-for="i in updateInfo" :key="i.id">
+            <v-subheader>
+              2022
+            </v-subheader>
+            <tr v-for="i in updateInfo2022" :key="i.id">
+              <td>{{ i.created }}</td>
+              <td>{{ i.content }}</td>
+            </tr>
+            <v-subheader>
+              2021
+            </v-subheader>
+            <tr v-for="i in updateInfo2021" :key="i.id">
+              <td>{{ i.created }}</td>
+              <td>{{ i.content }}</td>
+            </tr>
+            <v-subheader>
+              2020
+            </v-subheader>
+            <tr v-for="i in updateInfo2020" :key="i.id">
               <td>{{ i.created }}</td>
               <td>{{ i.content }}</td>
             </tr>
@@ -37,17 +71,24 @@
 <script>
 import { getDocs, collection, query, orderBy } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
+// import NormalInfo from '@/components/info/normalInfo'
+// import UpdateInfo from '@/components/info/updateInfo'
 
 export default {
+  // components: {
+  //   NormalInfo,
+  //   UpdateInfo
+  // },
   data() {
     return {
       tabTitle: null,
       tabItems: ['お知らせ', 'アップデート'],
       info: [
         {
+          category: '',
           content: '',
           created: '',
-          category: ''
+          createdAt: ''
         }
       ]
     }
@@ -56,8 +97,26 @@ export default {
     normalInfo() {
       return this.info.filter((i) => i.category === 'normal')
     },
+    normalInfo2022() {
+      return this.normalInfo.filter((i) => i.createdAt.includes('2022'))
+    },
+    normalInfo2021() {
+      return this.normalInfo.filter((i) => i.createdAt.includes('2021'))
+    },
+    normalInfo2020() {
+      return this.normalInfo.filter((i) => i.createdAt.includes('2020'))
+    },
     updateInfo() {
       return this.info.filter((i) => i.category === 'update')
+    },
+    updateInfo2022() {
+      return this.updateInfo.filter((i) => i.createdAt.includes('2022'))
+    },
+    updateInfo2021() {
+      return this.updateInfo.filter((i) => i.createdAt.includes('2021'))
+    },
+    updateInfo2020() {
+      return this.updateInfo.filter((i) => i.createdAt.includes('2020'))
     }
   },
   async created() {
@@ -68,9 +127,10 @@ export default {
     await getDocs(q).then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         this.info.push({
+          category: doc.data().category,
           content: doc.data().content,
           created: doc.data().created,
-          category: doc.data().category
+          createdAt: doc.data().createdAt
         })
       })
     })
@@ -83,3 +143,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.theme--dark.v-subheader {
+  color: #ab47bc;
+}
+</style>
