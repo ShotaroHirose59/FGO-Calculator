@@ -4,7 +4,7 @@ export default {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
       // 水怪クライシス
-      if (character.name === '徴姉妹') {
+      if (character.name === '徴姉妹' || character.name === '太歳星君') {
         this.isEventCharacter = true
         this.sAtkBuff = 100
       } else if (
