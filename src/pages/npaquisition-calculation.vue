@@ -468,7 +468,9 @@ export default {
     },
     // 単体宝具のキャラは敵の数を１に設定
     setEnemyCount(character) {
-      if (character.npmultiplier[0] >= 900) {
+      if (character.name === '陳宮') {
+        this.enemyCount = 3
+      } else if (character.npmultiplier[0] >= 900) {
         this.enemyCount = 1
       } else {
         this.enemyCount = 3
