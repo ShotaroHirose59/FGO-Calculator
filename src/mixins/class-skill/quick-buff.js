@@ -32,7 +32,7 @@ export default {
         })
       } else if (
         character.name === 'アストルフォ（セイバー）' ||
-        character.name === 'カラミティジェーン' ||
+        character.name === 'カラミティ・ジェーン' ||
         character.name === 'バーヴァンシー' ||
         character.name === 'カーマ'
       ) {
