@@ -21,12 +21,10 @@
       <!-- スマホだと幅取るからいらない -->
       <client-only>
         <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-          <!-- <span>
-            OC : アーツ耐性ダウン(10%)
-          </span>
+          <span>OC : {{ ocBuff.description }}</span>
           <span class="ml-2 mr-2">
             /
-          </span> -->
+          </span>
           <div>
             クラススキル :
             <span
@@ -69,7 +67,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="6" sm="4" md="4">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -86,17 +84,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
-            <v-select
-              v-model="fou"
-              label="フォウくん"
-              :items="selectFou"
-              class="mr-3"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="6" sm="4" md="4">
             <v-select
               v-model="selectedLv"
               label="Lv."
@@ -108,7 +96,17 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="6" sm="4" md="4">
+            <v-select
+              v-model="fou"
+              label="フォウくん"
+              :items="selectFou"
+              class="mr-3"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="6" sm="4" md="3">
             <v-select
               v-model="servantNpType"
               label="宝具"
@@ -118,7 +116,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="4" sm="4" md="3">
             <v-select
               v-model="npChargeLv"
               label="宝具Lv."
@@ -130,7 +128,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="4" sm="4" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -142,9 +140,27 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
-                class="mr-4"
+                class="mr-3"
                 color="teal"
               ></v-text-field>
+            </validation-provider>
+          </v-col>
+
+          <v-col cols="4" sm="4" md="3">
+            <validation-provider
+              ref="provider"
+              v-slot="{ errors }"
+              rules="required"
+            >
+              <v-select
+                v-model.number="selectedOcBuffNumber"
+                label="OC"
+                :items="selectableOcBuffNumbers"
+                :error-messages="errors"
+                type="number"
+                class="mr-3"
+                color="teal"
+              ></v-select>
             </validation-provider>
           </v-col>
 
@@ -575,7 +591,14 @@ export default {
           name: '',
           description: ''
         }
-      ]
+      ],
+      selectedOcBuffNumber: 1,
+      selectableOcBuffNumbers: [1, 2, 3, 4, 5],
+      ocBuff: {
+        numbers: [], // 5つの数値が入る
+        target: 'cardBuff', // バフの対象が入る
+        description: 'アーツ耐性ダウン(10%)' // 説明が入る
+      }
     }
   },
   computed: {
