@@ -88,15 +88,15 @@
               v-slot="{ errors }"
               rules="required"
             >
-              <v-text-field
-                v-model.number="npRate"
-                label="NPレート"
-                placeholder="自動"
+              <v-select
+                v-model.number="selectedOcBuffNumber"
+                label="OC"
+                :items="selectableOcBuffNumbers"
                 :error-messages="errors"
                 type="number"
                 class="mr-4"
                 color="teal"
-              ></v-text-field>
+              ></v-select>
             </validation-provider>
           </v-col>
 
@@ -241,10 +241,13 @@
             <v-col v-if="$vuetify.breakpoint.xs" cols="12">
               <v-list-item style="padding: 0;">
                 <v-list-item-content>
-                  <!-- <v-list-item-title style="font-size: 12px;">
-                    OC : アーツ耐性ダウン(10%)
-                  </v-list-item-title> -->
                   <v-list-item-title class="class-skill-text-sp">
+                    NPレート : {{ npRate }}
+                  </v-list-item-title>
+                  <v-list-item-title class="mt-1 class-skill-text-sp">
+                    OC : {{ ocBuff.description }}
+                  </v-list-item-title>
+                  <v-list-item-title class="mt-1 class-skill-text-sp">
                     <div>
                       クラススキル :
                       <div
@@ -289,6 +292,7 @@
         :enemy-count="enemyCount"
         :np-acquisition-buff="npAcquisitionBuff"
         :class-skills="classSkills"
+        :oc-buff="ocBuff"
         @reset-val="resetAll"
       />
       <!-- スマホの場合、固定フッター用意 -->
@@ -385,7 +389,14 @@ export default {
           name: '',
           description: ''
         }
-      ]
+      ],
+      selectedOcBuffNumber: 1,
+      selectableOcBuffNumbers: [1, 2, 3, 4, 5],
+      ocBuff: {
+        numbers: [], // 5つの数値が入る
+        target: 'cardBuff', // バフの対象が入る
+        description: 'アーツ耐性ダウン(10%)' // 説明が入る
+      }
     }
   },
   computed: {
