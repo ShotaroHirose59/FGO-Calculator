@@ -99,7 +99,14 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/google-analytics',
-    'nuxt-logrocket'
+    'nuxt-logrocket',
+    [
+      '@nuxtjs/google-gtag',
+      {
+        id: 'G-RDRGKX0PM0',
+        debug: false
+      }
+    ]
   ],
   googleAnalytics: {
     id: 'UA-165731113-1'
