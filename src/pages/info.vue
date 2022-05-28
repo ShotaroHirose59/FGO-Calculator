@@ -83,14 +83,7 @@ export default {
     return {
       tabTitle: null,
       tabItems: ['お知らせ', 'アップデート'],
-      info: [
-        {
-          category: '',
-          content: '',
-          created: '',
-          createdAt: ''
-        }
-      ]
+      info: []
     }
   },
   computed: {
@@ -120,21 +113,13 @@ export default {
     }
   },
   async created() {
-    if (!db) {
-      return
-    }
+    if (!db) return
+
     const q = query(collection(db, 'info'), orderBy('createdAt', 'desc'))
-    await getDocs(q).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        this.info.push({
-          category: doc.data().category,
-          content: doc.data().content,
-          created: doc.data().created,
-          createdAt: doc.data().createdAt
-        })
-      })
+    const querySnapshot = await getDocs(q)
+    this.info = querySnapshot.docs.map((doc) => {
+      return { ...doc.data() }
     })
-    this.info.splice(0, 1)
   },
   head() {
     return {

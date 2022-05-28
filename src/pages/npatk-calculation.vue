@@ -60,9 +60,9 @@
             <v-select
               v-model="characterName"
               label="サーヴァント"
-              :items="filteredCharacters"
+              :items="$_filteredCharacters"
               :disabled="!characterClass"
-              :placeholder="placeholder"
+              :placeholder="$_placeholder"
               class="mr-4"
               color="teal"
               @input="onChangeVal(characterName)"
@@ -168,16 +168,10 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  atkBuff += 10
-                }
-              "
+              :on-click-plus-button="() => (atkBuff += 10)"
               :on-click-minus-button="
                 () => {
-                  if (atkBuff === 0) {
-                    return false
-                  }
+                  if (atkBuff === 0) return false
                   atkBuff -= 10
                 }
               "
@@ -206,17 +200,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (cardBuff >= 400) {
-                    return false
-                  }
+                  if (cardBuff >= 400) return false
                   cardBuff += 10
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (cardBuff === 0) {
-                    return false
-                  }
+                  if (cardBuff === 0) return false
                   cardBuff -= 10
                 }
               "
@@ -246,17 +236,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (sAtkBuff >= 500) {
-                    return false
-                  }
+                  if (sAtkBuff >= 500) return false
                   sAtkBuff += 10
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (sAtkBuff === 0) {
-                    return false
-                  }
+                  if (sAtkBuff === 0) return false
                   sAtkBuff -= 10
                 }
               "
@@ -286,17 +272,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (npBuff >= 500) {
-                    return false
-                  }
+                  if (npBuff >= 500) return false
                   npBuff += 10
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (npBuff === 0) {
-                    return false
-                  }
+                  if (npBuff === 0) return false
                   npBuff -= 10
                 }
               "
@@ -323,16 +305,10 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  sNpAtkBuff += 10
-                }
-              "
+              :on-click-plus-button="() => (sNpAtkBuff += 10)"
               :on-click-minus-button="
                 () => {
-                  if (sNpAtkBuff === 0) {
-                    return false
-                  }
+                  if (sNpAtkBuff === 0) return false
                   sNpAtkBuff -= 10
                 }
               "
@@ -360,17 +336,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (dressAtk >= 3000) {
-                    return false
-                  }
+                  if (dressAtk >= 3000) return false
                   dressAtk += 100
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (dressAtk === 0) {
-                    return false
-                  }
+                  if (dressAtk === 0) return false
                   dressAtk -= 100
                 }
               "
@@ -488,6 +460,7 @@ import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
 import EventCharacterBuff from '../mixins/event-buff'
+import SelectClass from '../mixins/select-class'
 import Dialog from '@/components/calculator/Npatk/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
@@ -508,7 +481,8 @@ export default {
     ClassSkillArtsBuff,
     ClassSkillQuickBuff,
     ClassSkillNpBuff,
-    EventCharacterBuff
+    EventCharacterBuff,
+    SelectClass
   ],
   data() {
     return {
@@ -578,71 +552,49 @@ export default {
       ]
     }
   },
-  computed: {
-    // クラスが選択されたら「そのクラスの値を持つキャラクターのみ」をセレクトボックスに表示
-    filteredCharacters() {
-      const filteredCharacters = []
-      for (let i = 0; i < this.characters.length; i++) {
-        const character = this.characters[i]
-        if (character.class === this.characterClass) {
-          filteredCharacters.push(character.name)
-        }
-      }
-      return filteredCharacters
-    },
-    placeholder() {
-      if (this.characterClass === '') {
-        return '先にクラスを選択'
-      } else {
-        return 'サーヴァントを選択'
-      }
-    }
-  },
+  computed: {},
   watch: {
     servantNpType() {
       if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
         this.npmultiplier = [600, 750, 825, 862, 900]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
-      }
-      if (this.characterName === 'エミヤ' && this.servantNpType === 'Buster') {
+      } else if (
+        this.characterName === 'エミヤ' &&
+        this.servantNpType === 'Buster'
+      ) {
         this.npmultiplier = [400, 500, 550, 575, 600]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
-      }
-      if (
+      } else if (
         this.characterName === 'メリュジーヌ' &&
         this.servantNpType === 'Buster'
       ) {
         this.npmultiplier = [300, 400, 450, 475, 500]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
-      }
-      if (
+      } else if (
         this.characterName === 'メリュジーヌ' &&
         this.servantNpType === 'Arts'
       ) {
         this.npmultiplier = [900, 1200, 1350, 1425, 1500]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
-      }
-      if (
+      } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Buster'
       ) {
         this.npmultiplier = [300, 400, 450, 475, 500]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
-      }
-      if (
+      } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Quick'
       ) {
         this.npmultiplier = [600, 800, 900, 950, 1000]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
-      }
-      if (
+      } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Arts'
       ) {
@@ -653,60 +605,52 @@ export default {
     }
   },
   async created() {
-    if (!db) {
-      return
-    }
+    if (!db) return
+
     const q = query(collection(db, 'characters'), orderBy('number', 'asc'))
-    await getDocs(q).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        this.characters.push(doc.data())
-      })
+    const querySnapshot = await getDocs(q)
+    this.characters = querySnapshot.docs.map((doc) => {
+      return { ...doc.data() }
     })
   },
   methods: {
-    // 選択されたキャラクターが持つ値を取得
+    // 選択されたキャラクターが持つ値を代入
     onChangeVal(characterName) {
-      for (let i = 0; i < this.characters.length; i++) {
-        const character = this.characters[i]
-        if (character.name === characterName) {
-          this.resetBuffSystem()
-          this.atk = character.atk // 「攻撃力」を一旦配列で取得
-          this.characterAtk = this.atk[0] // デフォルトの攻撃力
-          this.npChargeLv = 1 // 「宝具レベル」を１にする
-          this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で取得
-          this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を取得
-          this.characterRarity = character.rarity
-          this.setSelectLv(this.characterRarity)
-          this.setNpType(character)
-          this.setClassCompatibility(character)
-          if (character.card === 'B') {
-            this.setClassSkillBusterBuff(character)
-          }
-          if (character.card === 'A') {
-            this.setClassSkillArtsBuff(character)
-          }
-          if (character.card === 'Q') {
-            this.setClassSkillQuickBuff(character)
-          }
-          if (
-            character.name === '光のコヤンスカヤ' ||
-            character.name === '水着殺生院キアラ' ||
-            character.name === 'ヘファイスティオン'
-          ) {
-            this.setClassSkillNpBuff(character)
-          }
-          if (character.name === 'カレン') {
-            this.setClassSkillAtkBuff(character)
-          }
-          if (
-            character.name === '千子村正' ||
-            character.name === '闇のコヤンスカヤ'
-          ) {
-            this.setClassSkillSAtkBuff(character)
-          }
-          this.setEventCharacterBuff(character)
-        }
+      const character = this.characters.find(
+        (character) => character.name === characterName
+      )
+      this.resetBuffSystem()
+      this.atk = character.atk // 「攻撃力」を一旦配列で取得
+      this.characterAtk = this.atk[0] // デフォルトの攻撃力
+      this.npChargeLv = 1 // 「宝具レベル」を１にする
+      this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で代入
+      this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を代入
+      this.characterRarity = character.rarity
+      this.setSelectLv(this.characterRarity)
+      this.setNpType(character)
+      this.setClassCompatibility(character)
+      if (character.card === 'B') {
+        this.setClassSkillBusterBuff(character)
+      } else if (character.card === 'A') {
+        this.setClassSkillArtsBuff(character)
+      } else if (character.card === 'Q') {
+        this.setClassSkillQuickBuff(character)
       }
+      if (
+        character.name === '光のコヤンスカヤ' ||
+        character.name === '水着殺生院キアラ' ||
+        character.name === 'ヘファイスティオン'
+      ) {
+        this.setClassSkillNpBuff(character)
+      } else if (character.name === 'カレン') {
+        this.setClassSkillAtkBuff(character)
+      } else if (
+        character.name === '千子村正' ||
+        character.name === '闇のコヤンスカヤ'
+      ) {
+        this.setClassSkillSAtkBuff(character)
+      }
+      // this.setEventCharacterBuff(character)
     },
     setSelectLv(characterRarity) {
       switch (characterRarity) {

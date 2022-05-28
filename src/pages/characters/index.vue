@@ -74,25 +74,18 @@ export default {
   },
   computed: {
     searchCharacters() {
-      const searchCharacters = []
-      for (let i = 0; i < this.characters.length; i++) {
-        const character = this.characters[i]
-        if (character.name.includes(this.search)) {
-          searchCharacters.push(character)
-        }
-      }
-      return searchCharacters
+      return this.characters.filter((character) =>
+        character.name.includes(this.search)
+      )
     }
   },
   async created() {
-    if (!db) {
-      return
-    }
+    if (!db) return
+
     const q = query(collection(db, 'characters'), orderBy('number', 'asc'))
-    await getDocs(q).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        this.characters.push(doc.data())
-      })
+    const querySnapshot = await getDocs(q)
+    this.characters = querySnapshot.docs.map((doc) => {
+      return { ...doc.data() }
     })
   },
   methods: {},

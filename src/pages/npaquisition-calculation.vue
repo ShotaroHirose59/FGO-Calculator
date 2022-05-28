@@ -44,9 +44,9 @@
             <v-select
               v-model="characterName"
               label="サーヴァント"
-              :items="filteredCharacters"
+              :items="$_filteredCharacters"
               :disabled="!characterClass"
-              :placeholder="placeholder"
+              :placeholder="$_placeholder"
               class="mr-4"
               color="teal"
               @input="onChangeVal(characterName)"
@@ -122,17 +122,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (cardBuff >= 400) {
-                    return false
-                  }
+                  if (cardBuff >= 400) return false
                   cardBuff += 10
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (cardBuff === 0) {
-                    return false
-                  }
+                  if (cardBuff === 0) return false
                   cardBuff -= 10
                 }
               "
@@ -161,17 +157,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (npAcquisitionBuff >= 400) {
-                    return false
-                  }
+                  if (npAcquisitionBuff >= 400) return false
                   npAcquisitionBuff += 10
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (npAcquisitionBuff === 0) {
-                    return false
-                  }
+                  if (npAcquisitionBuff === 0) return false
                   npAcquisitionBuff -= 10
                 }
               "
@@ -200,17 +192,13 @@
             <PlusMinusButton
               :on-click-plus-button="
                 () => {
-                  if (overkillHits === npHits * 3) {
-                    return false
-                  }
+                  if (overkillHits === npHits * 3) return false
                   overkillHits += 1
                 }
               "
               :on-click-minus-button="
                 () => {
-                  if (overkillHits === 0) {
-                    return false
-                  }
+                  if (overkillHits === 0) return false
                   overkillHits -= 1
                 }
               "
@@ -316,6 +304,7 @@ import db from '../plugins/firebase'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import ClassSkillNpAcquisitionBuff from '../mixins/class-skill/np-acquisition-buff'
+import SelectClass from '../mixins/select-class'
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
@@ -332,7 +321,8 @@ export default {
   mixins: [
     ClassSkillArtsBuff,
     ClassSkillQuickBuff,
-    ClassSkillNpAcquisitionBuff
+    ClassSkillNpAcquisitionBuff,
+    SelectClass
   ],
   data() {
     return {
@@ -388,65 +378,42 @@ export default {
       ]
     }
   },
-  computed: {
-    // クラスが選択されたら「そのクラスの値を持つキャラクターのみ」をセレクトボックスに表示
-    filteredCharacters() {
-      const filteredCharacters = []
-      for (let i = 0; i < this.characters.length; i++) {
-        const character = this.characters[i]
-        if (character.class === this.characterClass) {
-          filteredCharacters.push(character.name)
-        }
-      }
-      return filteredCharacters
-    },
-    placeholder() {
-      if (this.characterClass === '') {
-        return '先にクラスを選択'
-      } else {
-        return 'サーヴァントを選択'
-      }
-    }
-  },
+  computed: {},
   async created() {
-    if (!db) {
-      return
-    }
+    if (!db) return
+
     const q = query(collection(db, 'characters'), orderBy('number', 'asc'))
-    await getDocs(q).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        if (
+    const querySnapshot = await getDocs(q)
+    this.characters = querySnapshot.docs
+      .filter(
+        (doc) =>
           doc.data().card === 'A' ||
           doc.data().card === 'Q' ||
           doc.data().name === 'エミヤ'
-        ) {
-          this.characters.push(doc.data())
-        }
+      )
+      .map((doc) => {
+        return { ...doc.data() }
       })
-    })
   },
   methods: {
-    // 選択されたキャラクターが持つ値を取得
+    // 選択されたキャラクターが持つ値を代入
     onChangeVal(characterName) {
-      for (let i = 0; i < this.characters.length; i++) {
-        const character = this.characters[i]
-        if (character.name === characterName) {
-          this.npRate = character.npchargeatk
-          this.npHits = character.nphitcount
-          this.overkillHits = 0 // オーバーキルヒット数を0に
-          this.classSkills = []
-          this.setNpType(character)
-          this.setEnemyCount(character)
-          if (character.card === 'A') {
-            this.setClassSkillArtsBuff(character)
-          }
-          if (character.card === 'Q') {
-            this.setClassSkillQuickBuff(character)
-          }
-          if (character.name === 'ディオスクロイ') {
-            this.setClassSkillNpAcquisitionBuff(character)
-          }
-        }
+      const character = this.characters.find(
+        (character) => character.name === characterName
+      )
+      this.npRate = character.npchargeatk
+      this.npHits = character.nphitcount
+      this.overkillHits = 0 // オーバーキルヒット数を0に
+      this.classSkills = []
+      this.setNpType(character)
+      this.setEnemyCount(character)
+      if (character.card === 'A') {
+        this.setClassSkillArtsBuff(character)
+      } else if (character.card === 'Q') {
+        this.setClassSkillQuickBuff(character)
+      }
+      if (character.name === 'ディオスクロイ') {
+        this.setClassSkillNpAcquisitionBuff(character)
       }
     },
     // 選択されたキャラクターの「宝具タイプ」を返す
