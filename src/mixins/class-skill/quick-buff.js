@@ -34,7 +34,8 @@ export default {
         character.name === 'アストルフォ（セイバー）' ||
         character.name === 'カラミティ・ジェーン' ||
         character.name === 'バーヴァンシー' ||
-        character.name === 'カーマ'
+        character.name === 'カーマ' ||
+        character.name === 'シャルルマーニュ'
       ) {
         // 騎乗[A]
         this.cardBuff = 10
@@ -47,8 +48,7 @@ export default {
         character.name === 'ラクシュミー' ||
         character.name === 'カエサル' ||
         character.name === '水着アルトリア〔オルタ〕' ||
-        character.name === 'メルトリリス' ||
-        character.name === 'シャルルマーニュ'
+        character.name === 'メルトリリス'
       ) {
         // 騎乗[B]
         this.cardBuff = 8
