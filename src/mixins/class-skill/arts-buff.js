@@ -4,7 +4,8 @@ export default {
       if (
         character.name === 'アナスタシア' ||
         character.name === '水着殺生院キアラ' ||
-        character.name === 'ヘファイスティオン'
+        character.name === 'ヘファイスティオン' ||
+        character.name === 'モリアーティ（ルーラー）'
       ) {
         // 陣地作成[EX]
         this.cardBuff = 12

@@ -77,7 +77,10 @@ export default {
           name: '騎乗[D]',
           description: 'Quick性能UP(4%)'
         })
-      } else if (character.name === '沖田総司') {
+      } else if (
+        character.name === '沖田総司' ||
+        character.name === 'ドン・キホーテ'
+      ) {
         // 騎乗[E]
         this.cardBuff = 2
         this.classSkills.push({
