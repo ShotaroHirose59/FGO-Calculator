@@ -650,7 +650,7 @@ export default {
       ) {
         this.setClassSkillSAtkBuff(character)
       }
-      // this.setEventCharacterBuff(character)
+      this.setEventCharacterBuff(character)
     },
     setSelectLv(characterRarity) {
       switch (characterRarity) {
