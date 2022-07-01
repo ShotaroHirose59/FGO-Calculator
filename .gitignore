@@ -95,3 +95,5 @@ firestore.rules
 
 # SSR deploy
 public
+
+.node-version
