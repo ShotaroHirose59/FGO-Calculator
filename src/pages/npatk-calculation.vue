@@ -46,7 +46,7 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="4" md="4">
+          <v-col cols="8" sm="3" md="3">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -56,12 +56,23 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="12" sm="8" md="8">
+          <v-col cols="4" sm="2" md="2">
+            <v-select
+              v-model="filterdRarity"
+              label="レアリティ"
+              :items="items.filterableRarities"
+              placeholder="ALL"
+              class="mr-4"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="12" sm="7" md="7">
             <v-select
               v-model="characterName"
               label="サーヴァント"
               :items="$_filteredCharacters"
-              :disabled="!characterClass"
+              :disabled="!characterClass || $_is_empty"
               :placeholder="$_placeholder"
               class="mr-4"
               color="teal"
@@ -513,6 +524,7 @@ export default {
           'フォーリナー',
           'プリテンダー'
         ],
+        filterableRarities: [1, 2, 3, 4, 5],
         npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
       },
       classCompatibility: 2.0, // クラス相性補正 デフォルトでselectClassCompatibilityを'有利'にする
@@ -542,6 +554,7 @@ export default {
       sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
       dressAtk: 0, // 概念礼装のATK
       characterRarity: null,
+      filterdRarity: null,
       isEventCharacter: false,
       isNpBuffEventCharacter: false,
       classSkills: [
@@ -843,6 +856,7 @@ export default {
       this.characterRarity = null
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
+      this.filterdRarity = null
     }
   },
   head() {

@@ -30,11 +30,22 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="6" md="3">
+          <v-col cols="8" sm="4" md="2">
             <v-select
               v-model="characterClass"
               label="クラス"
               :items="items.class"
+              class="mr-4"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="4" sm="2" md="1">
+            <v-select
+              v-model="filterdRarity"
+              label="レアリティ"
+              :items="items.filterableRarities"
+              placeholder="ALL"
               class="mr-4"
               color="teal"
             ></v-select>
@@ -45,7 +56,7 @@
               v-model="characterName"
               label="サーヴァント"
               :items="$_filteredCharacters"
-              :disabled="!characterClass"
+              :disabled="!characterClass || $_is_empty"
               :placeholder="$_placeholder"
               class="mr-4"
               color="teal"
@@ -364,12 +375,14 @@ export default {
           'アルターエゴ (1.0)',
           'フォーリナー (1.0)'
         ],
-        selectEnemyCount: [1, 2, 3, 4, 5, 6] // 敵の数
+        selectEnemyCount: [1, 2, 3, 4, 5, 6], // 敵の数
+        filterableRarities: [1, 2, 3, 4, 5]
       },
       enemyClass: 'セイバー (1.0)',
       enemyCount: 3,
       cardBuff: 0, // カード性能UP倍率
       npAcquisitionBuff: 0, // NP獲得量UP倍率
+      filterdRarity: null,
       classSkills: [
         {
           name: '',
@@ -458,6 +471,7 @@ export default {
       this.cardBuff = 0
       this.npAcquisitionBuff = 0
       this.classSkills = []
+      this.filterdRarity = null
     }
   },
   head() {
