@@ -30,7 +30,7 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="8" sm="4" md="2">
+          <v-col cols="8" sm="3" md="2">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -40,18 +40,40 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="1">
+          <v-col cols="4" sm="3" md="2">
             <v-select
               v-model="filterdRarity"
               label="レアリティ"
               :items="items.filterableRarities"
-              placeholder="ALL"
+              placeholder="指定なし"
               class="mr-4"
               color="teal"
             ></v-select>
           </v-col>
 
-          <v-col cols="12" sm="6" md="3">
+          <v-col cols="6" sm="3" md="2">
+            <v-select
+              v-model="filterdServantNpType"
+              label="宝具タイプ"
+              :items="items.filterableServantNpType"
+              placeholder="指定なし"
+              class="mr-4"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="6" sm="3" md="2">
+            <v-select
+              v-model="filterdServantNpEffect"
+              label="宝具効果"
+              :items="items.filterableServantNpEffect"
+              placeholder="指定なし"
+              class="mr-4"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="12" sm="6" md="4">
             <v-select
               v-model="characterName"
               label="サーヴァント"
@@ -64,7 +86,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="2">
+          <v-col cols="6" sm="3" md="1">
             <v-select
               v-model="servantNpType"
               label="宝具"
@@ -74,7 +96,11 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="2">
+          <v-col cols="6" sm="3" md="1">
+            <v-select label="OC" disabled class="mr-4" color="teal"></v-select>
+          </v-col>
+
+          <!-- <v-col cols="4" sm="4" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -109,9 +135,9 @@
                 color="teal"
               ></v-text-field>
             </validation-provider>
-          </v-col>
+          </v-col> -->
 
-          <v-col cols="8" sm="4" md="2">
+          <v-col cols="8" sm="4" md="1">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -146,7 +172,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="4" md="2">
+          <v-col cols="8" sm="4" md="1">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -181,7 +207,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="4" md="2">
+          <v-col cols="8" sm="4" md="1">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -189,7 +215,7 @@
             >
               <v-text-field
                 v-model.number="overkillHits"
-                label="オーバーキルヒット数"
+                label="オーバーキル"
                 suffix="hit"
                 :error-messages="errors"
                 type="number"
@@ -243,6 +269,12 @@
                   <!-- <v-list-item-title style="font-size: 12px;">
                     OC : アーツ耐性ダウン(10%)
                   </v-list-item-title> -->
+                  <v-list-item-title class="class-skill-text-sp"
+                    >NPレート : {{ npRate }}</v-list-item-title
+                  >
+                  <v-list-item-title class="class-skill-text-sp"
+                    >宝具ヒット数 : {{ npHits }}</v-list-item-title
+                  >
                   <v-list-item-title class="class-skill-text-sp">
                     <div>
                       クラススキル :
@@ -376,13 +408,17 @@ export default {
           'フォーリナー (1.0)'
         ],
         selectEnemyCount: [1, 2, 3, 4, 5, 6], // 敵の数
-        filterableRarities: [1, 2, 3, 4, 5]
+        filterableRarities: [1, 2, 3, 4, 5],
+        filterableServantNpType: ['Arts', 'Quick'],
+        filterableServantNpEffect: ['全体宝具', '単体宝具']
       },
       enemyClass: 'セイバー (1.0)',
       enemyCount: 3,
       cardBuff: 0, // カード性能UP倍率
       npAcquisitionBuff: 0, // NP獲得量UP倍率
       filterdRarity: null,
+      filterdServantNpType: null,
+      filterdServantNpEffect: null,
       classSkills: [
         {
           name: '',
@@ -472,6 +508,8 @@ export default {
       this.npAcquisitionBuff = 0
       this.classSkills = []
       this.filterdRarity = null
+      this.filterdServantNpType = null
+      this.filterdServantNpEffect = null
     }
   },
   head() {

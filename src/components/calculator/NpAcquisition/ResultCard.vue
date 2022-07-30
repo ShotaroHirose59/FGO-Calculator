@@ -35,8 +35,14 @@
           ></v-progress-linear>
           <v-list-item class="mt-2">
             <v-list-item-content>
-              <v-list-item-title>
+              <!-- <v-list-item-title>
                 サーヴァント : {{ characterName }}</v-list-item-title
+              > -->
+              <v-list-item-title class="mt-1"
+                >NPレート : {{ npRate }}</v-list-item-title
+              >
+              <v-list-item-title class="mt-1"
+                >宝具ヒット数 : {{ npHits }}</v-list-item-title
               >
               <!-- <v-list-item-title class="mt-1">
                 OC : アーツ耐性をダウン(10%)

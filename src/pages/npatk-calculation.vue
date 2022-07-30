@@ -56,18 +56,40 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="2">
+          <v-col cols="4" sm="3" md="3">
             <v-select
               v-model="filterdRarity"
               label="レアリティ"
               :items="items.filterableRarities"
-              placeholder="ALL"
+              placeholder="指定なし"
               class="mr-4"
               color="teal"
             ></v-select>
           </v-col>
 
-          <v-col cols="12" sm="7" md="7">
+          <v-col cols="6" sm="3" md="3">
+            <v-select
+              v-model="filterdServantNpType"
+              label="宝具タイプ"
+              :items="items.filterableServantNpType"
+              placeholder="指定なし"
+              class="mr-4"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="6" sm="3" md="3">
+            <v-select
+              v-model="filterdServantNpEffect"
+              label="宝具効果"
+              :items="items.filterableServantNpEffect"
+              placeholder="指定なし"
+              class="mr-4"
+              color="teal"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="12" sm="6" md="6">
             <v-select
               v-model="characterName"
               label="サーヴァント"
@@ -80,7 +102,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="4" sm="2" md="2">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -97,7 +119,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="4" sm="2" md="2">
             <v-select
               v-model="fou"
               label="フォウくん"
@@ -107,7 +129,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="4" sm="2" md="2">
             <v-select
               v-model="selectedLv"
               label="Lv."
@@ -119,7 +141,11 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="6" sm="3" md="3">
+            <v-select label="OC" disabled class="mr-4" color="teal"></v-select>
+          </v-col>
+
+          <v-col cols="6" sm="3" md="3">
             <v-select
               v-model="servantNpType"
               label="宝具"
@@ -129,7 +155,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="6" sm="3" md="3">
             <v-select
               v-model="npChargeLv"
               label="宝具Lv."
@@ -141,7 +167,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="4" md="4">
+          <v-col cols="6" sm="3" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -525,6 +551,8 @@ export default {
           'プリテンダー'
         ],
         filterableRarities: [1, 2, 3, 4, 5],
+        filterableServantNpType: ['Buster', 'Arts', 'Quick'],
+        filterableServantNpEffect: ['全体宝具', '単体宝具'],
         npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
       },
       classCompatibility: 2.0, // クラス相性補正 デフォルトでselectClassCompatibilityを'有利'にする
@@ -555,6 +583,8 @@ export default {
       dressAtk: 0, // 概念礼装のATK
       characterRarity: null,
       filterdRarity: null,
+      filterdServantNpType: null,
+      filterdServantNpEffect: null,
       isEventCharacter: false,
       isNpBuffEventCharacter: false,
       classSkills: [
@@ -663,7 +693,7 @@ export default {
       ) {
         this.setClassSkillSAtkBuff(character)
       }
-      this.setEventCharacterBuff(character)
+      // this.setEventCharacterBuff(character)
     },
     setSelectLv(characterRarity) {
       switch (characterRarity) {
@@ -857,6 +887,8 @@ export default {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
       this.filterdRarity = null
+      this.filterdServantNpType = null
+      this.filterdServantNpEffect = null
     }
   },
   head() {
