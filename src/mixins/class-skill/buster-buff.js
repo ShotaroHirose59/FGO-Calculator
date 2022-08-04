@@ -152,6 +152,13 @@ export default {
           name: '狂化[E-]',
           description: 'Buster性能UP(1%)'
         })
+      } else if (character.name === 'アルクェイド') {
+        // 原初の一[D]
+        this.cardBuff = 30
+        this.classSkills.push({
+          name: '原初の一[D]',
+          description: 'Buster性能UP(30%)'
+        })
       }
     }
   }
