@@ -9,6 +9,7 @@ export default {
         character.name === 'スルーズ' ||
         character.name === 'ヒルド' ||
         character.name === '水着伊吹童子' ||
+        character.name === '水着スカディ' ||
         character.name === 'レディ･アヴァロン'
       ) {
         this.isEventCharacter = true
@@ -18,6 +19,7 @@ export default {
         character.name === '燕青' ||
         character.name === '蘆屋道満' ||
         character.name === '水着宇津見エリセ' ||
+        character.name === '水着武則天' ||
         character.name === 'アルクェイド'
       ) {
         this.isEventCharacter = true
