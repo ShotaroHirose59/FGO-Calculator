@@ -61,7 +61,7 @@ export default {
           name: '陣地作成[B+]',
           description: 'Arts性能UP(9%)'
         })
-      } else if (character.name === 'ジェロニモ') {
+      } else if (character.name === 'ジェロニモ' || character.name === '壱与') {
         // 陣地作成[B]
         this.cardBuff = 8
         this.classSkills.push({

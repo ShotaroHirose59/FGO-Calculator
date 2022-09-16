@@ -461,7 +461,7 @@ export default {
       } else if (character.card === 'Q') {
         this.setClassSkillQuickBuff(character)
       }
-      if (character.name === 'ディオスクロイ') {
+      if (character.name === 'ディオスクロイ' || character.name === '千利休') {
         this.setClassSkillNpAcquisitionBuff(character)
       }
     },
