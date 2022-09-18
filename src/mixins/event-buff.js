@@ -24,7 +24,7 @@ export default {
       } else if (
         character.name === '水着沖田総司〔オルタ〕' ||
         character.name === '織田信長' ||
-        character.name === '坂本龍馬（ライダー）' ||
+        character.name === '坂本龍馬' ||
         character.name === '長尾景虎' ||
         character.name === '坂本龍馬（ランサー）' ||
         character.name === 'メドゥーサ' ||
