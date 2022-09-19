@@ -19,6 +19,12 @@ export default {
           name: '[忘却無効]',
           description: '宝具威力UP(10%)'
         })
+      } else if (character.name === 'モリアーティ（ルーラー）') {
+        this.npBuff = 5
+        this.classSkills.push({
+          name: '陰謀作成[EX]',
+          description: '宝具威力UP(5%)'
+        })
       }
     }
   }

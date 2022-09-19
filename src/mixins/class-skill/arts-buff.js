@@ -4,13 +4,19 @@ export default {
       if (
         character.name === 'アナスタシア' ||
         character.name === '水着殺生院キアラ' ||
-        character.name === 'ヘファイスティオン' ||
-        character.name === 'モリアーティ（ルーラー）'
+        character.name === 'ヘファイスティオン'
       ) {
         // 陣地作成[EX]
         this.cardBuff = 12
         this.classSkills.push({
           name: '陣地作成[EX]',
+          description: 'Arts性能UP(12%)'
+        })
+      } else if (character.name === 'モリアーティ（ルーラー）') {
+        // 陰謀作成[EX]
+        this.cardBuff = 12
+        this.classSkills.push({
+          name: '陰謀作成[EX]',
           description: 'Arts性能UP(12%)'
         })
       } else if (character.name === 'シェヘラザード') {
