@@ -1,10 +1,10 @@
 <template>
-  <v-footer app fixed height="56" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
     <v-row no-gutters>
       <v-col cols="3">
         <v-img
           :src="image_src"
-          width="48"
+          width="56"
           @click="displayJeanneDetails()"
         ></v-img>
       </v-col>
@@ -17,25 +17,12 @@
         </v-list-item>
       </v-col>
       <v-col cols="3">
-        <v-img
-          :src="image_src2"
-          width="48"
-          class="ml-8"
-          @click="displayAltriaDetails()"
-        ></v-img>
+        <v-img :src="image_src2" width="56" class="ml-8"></v-img>
       </v-col>
 
       <!-- 結果の詳細-->
       <JeanneResultDetails
         ref="DetailsJ"
-        :character-name="characterName"
-        :servant-np-type="servantNpType"
-        :average-damage="averageDamage"
-      />
-
-      <!-- 結果の詳細-->
-      <AltriaResultDetails
-        ref="DetailsA"
         :character-name="characterName"
         :servant-np-type="servantNpType"
         :average-damage="averageDamage"
@@ -46,12 +33,10 @@
 
 <script>
 import JeanneResultDetails from '@/components/calculator/Npatk/JeanneResultDetails'
-import AltriaResultDetails from '@/components/calculator/Npatk/AltriaResultDetails'
 
 export default {
   components: {
-    JeanneResultDetails,
-    AltriaResultDetails
+    JeanneResultDetails
   },
   props: {
     characterClass: {
@@ -188,9 +173,6 @@ export default {
   methods: {
     displayJeanneDetails() {
       this.$refs.DetailsJ.isJeanneResultDetails = true
-    },
-    displayAltriaDetails() {
-      this.$refs.DetailsA.isAltriaResultDetails = true
     }
   }
 }

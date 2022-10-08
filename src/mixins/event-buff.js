@@ -10,7 +10,7 @@ export default {
         character.name === '壱与'
       ) {
         this.isEventCharacter = true
-        this.sAtkBuff = 100
+        this.sAtkBuff += 100
       } else if (
         character.name === '沖田総司' ||
         character.name === '斎藤一' ||
@@ -20,7 +20,7 @@ export default {
         character.name === '沖田総司〔オルタ〕'
       ) {
         this.isEventCharacter = true
-        this.sAtkBuff = 50
+        this.sAtkBuff += 50
       } else if (
         character.name === '水着沖田総司〔オルタ〕' ||
         character.name === '織田信長' ||
@@ -38,7 +38,7 @@ export default {
         character.name === '水着織田信長'
       ) {
         this.isEventCharacter = true
-        this.sAtkBuff = 30
+        this.sAtkBuff += 30
       }
     }
   }

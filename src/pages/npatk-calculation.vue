@@ -6,6 +6,7 @@
         <v-row no-gutters>
           <v-col style="text-align: right;">
             <v-btn
+              style="text-align: right;"
               outlined
               small
               fab
@@ -18,35 +19,28 @@
           </v-col>
         </v-row>
       </v-toolbar>
+
       <!-- スマホだと幅取るからいらない -->
       <client-only>
         <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-          <!-- <span>
-            OC : アーツ耐性ダウン(10%)
-          </span>
-          <span class="ml-2 mr-2">
-            /
-          </span> -->
-          <div>
-            クラススキル :
-            <span
-              v-for="(classSkill, index) in classSkills"
-              :key="classSkill.name"
-            >
-              <span>{{ classSkill.name }}</span>
-              <span>{{ classSkill.description }}</span>
-              <span v-if="classSkills.length >= 2 && index == 0"> / </span>
-            </span>
-          </div>
+          単体 or 全体宝具を持つサーヴァントが対象
         </v-card-subtitle>
       </client-only>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
 
+      <SkillDialog
+        ref="skillDlg"
+        :class-skills="classSkills"
+        :possession-skills="possessionSkills"
+        :np-skills="npSkills"
+        :oc-skills="ocSkills"
+      />
+
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="8" sm="3" md="3">
+          <v-col cols="12" sm="4" md="4">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -56,40 +50,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="3" md="3">
-            <v-select
-              v-model="filterdRarity"
-              label="レアリティ"
-              :items="items.filterableRarities"
-              placeholder="指定なし"
-              class="mr-4"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="3" md="3">
-            <v-select
-              v-model="filterdServantNpType"
-              label="宝具タイプ"
-              :items="items.filterableServantNpType"
-              placeholder="指定なし"
-              class="mr-4"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="3" md="3">
-            <v-select
-              v-model="filterdServantNpEffect"
-              label="宝具効果"
-              :items="items.filterableServantNpEffect"
-              placeholder="指定なし"
-              class="mr-4"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="12" sm="6" md="6">
+          <v-col cols="12" sm="6" md="8">
             <v-select
               v-model="characterName"
               label="サーヴァント"
@@ -102,7 +63,19 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="2">
+          <v-col cols="6" sm="2" md="4">
+            <v-select
+              v-model="selectedLv"
+              label="Lv."
+              :items="selectLv"
+              :disabled="!characterName"
+              class="mr-3"
+              color="teal"
+              @change="onChangeLv(selectedLv)"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="6" sm="2" md="4">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -119,55 +92,29 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="4" sm="2" md="2">
+          <v-col cols="4" sm="2" md="4">
             <v-select
               v-model="fou"
               label="フォウくん"
               :items="selectFou"
-              class="mr-3"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="2">
-            <v-select
-              v-model="selectedLv"
-              label="Lv."
-              :items="selectLv"
               :disabled="!characterName"
               class="mr-3"
               color="teal"
-              @change="onChangeLv(selectedLv)"
             ></v-select>
           </v-col>
 
-          <v-col cols="6" sm="3" md="3">
-            <v-select label="OC" disabled class="mr-4" color="teal"></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="3" md="3">
+          <v-col cols="4" sm="2" md="3">
             <v-select
               v-model="servantNpType"
               label="宝具"
               :items="selectServantNpType"
-              class="mr-3"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="3" md="3">
-            <v-select
-              v-model="npChargeLv"
-              label="宝具Lv."
-              :items="items.npChargeLevel"
               :disabled="!characterName"
               class="mr-3"
               color="teal"
-              @change="onChangeNpmultiplier(npChargeLv)"
             ></v-select>
           </v-col>
 
-          <v-col cols="6" sm="3" md="3">
+          <v-col cols="4" sm="2" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -185,6 +132,29 @@
             </validation-provider>
           </v-col>
 
+          <v-col cols="6" sm="2" md="3">
+            <v-select
+              v-model="npChargeLv"
+              label="宝具Lv."
+              :items="items.npChargeLevel"
+              :disabled="!characterName"
+              class="mr-3"
+              color="teal"
+              @change="onChangeNpmultiplier(npChargeLv)"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="6" sm="2" md="3">
+            <v-select
+              v-model="selectingOcUpPrcentage"
+              label="OC"
+              :items="selectableOcUpPrcentages"
+              :disabled="!characterName"
+              class="mr-3"
+              color="teal"
+            ></v-select>
+          </v-col>
+
           <v-col cols="8" sm="2" md="2">
             <validation-provider
               ref="provider"
@@ -193,7 +163,7 @@
             >
               <v-text-field
                 v-model.number="atkBuff"
-                label="攻撃力UP"
+                label="攻撃力バフ"
                 suffix="％"
                 :error-messages="errors"
                 type="number"
@@ -223,7 +193,7 @@
             >
               <v-text-field
                 v-model.number="cardBuff"
-                label="カードUP"
+                label="カードバフ"
                 suffix="％"
                 :error-messages="errors"
                 type="number"
@@ -294,7 +264,7 @@
             >
               <v-text-field
                 v-model.number="npBuff"
-                label="宝具威力UP"
+                label="宝具威力バフ"
                 suffix="％"
                 :error-messages="errors"
                 type="number"
@@ -387,7 +357,7 @@
           </v-col>
 
           <client-only>
-            <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+            <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
               <v-select
                 v-model="classCompatibility"
                 label="クラス相性"
@@ -397,7 +367,7 @@
               ></v-select>
             </v-col>
 
-            <v-col v-if="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+            <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
               <v-select
                 v-model="attributeCompatibility"
                 label="属性相性"
@@ -407,36 +377,24 @@
               ></v-select>
             </v-col>
 
-            <v-col v-if="$vuetify.breakpoint.xs" cols="12">
-              <v-list-item style="padding: 0;">
-                <v-list-item-content>
-                  <!-- <v-list-item-title style="font-size: 12px;">
-                    OC : アーツ耐性をダウン(10%)
-                  </v-list-item-title> -->
-                  <v-list-item-title class="class-skill-text-sp">
-                    <div>
-                      クラススキル : <br />
-                      <div
-                        v-for="classSkill in classSkills"
-                        :key="classSkill.name"
-                      >
-                        <span>{{ classSkill.name }}</span>
-                        <span>{{ classSkill.description }}</span>
-                      </div>
-                    </div>
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
+            <v-col
+              v-show="$vuetify.breakpoint.xs"
+              cols="6"
+              style="text-align: center;"
+            >
+              <v-btn color="teal" outlined @click="openSkillDisplay()"
+                >バフ詳細</v-btn
+              >
             </v-col>
 
             <v-col
-              v-if="$vuetify.breakpoint.xs"
-              cols="12"
+              v-show="$vuetify.breakpoint.xs"
+              cols="6"
               style="text-align: center;"
             >
-              <v-btn color="error" class="mt-3" outlined @click="resetAll()"
-                >計算リセット</v-btn
-              >
+              <v-btn color="error" outlined @click="resetAll()">
+                リセット
+              </v-btn>
             </v-col>
           </client-only>
         </v-row>
@@ -460,6 +418,10 @@
         :np-buff="npBuff"
         :s-np-atk-buff="sNpAtkBuff"
         :dress-atk="dressAtk"
+        :class-skills="classSkills"
+        :possession-skills="possessionSkills"
+        :np-skills="npSkills"
+        :oc-skills="ocSkills"
         @reset-val="resetAll"
       />
       <!-- スマホの場合のみ、固定フッター用意 -->
@@ -490,15 +452,50 @@
 import { ValidationProvider } from 'vee-validate'
 import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
+
 import ClassSkillAtkBuff from '../mixins/class-skill/atk-buff'
-import ClassSkillSAtkBuff from '../mixins/class-skill/s-atk-buff'
+import classSkillsAtkBuff from '../mixins/class-skill/s-atk-buff'
 import ClassSkillBusterBuff from '../mixins/class-skill/buster-buff'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
+
+import PossessionSkillArtsBuff from '../mixins/possession-skill/arts-buff'
+import PossessionSkillArtsDown from '../mixins/possession-skill/arts-down'
+import PossessionSkillAtkBuff from '../mixins/possession-skill/atk-buff'
+import PossessionSkillDefensiveDown from '../mixins/possession-skill/defensive-down'
+import PossessionSkillBusterBuff from '../mixins/possession-skill/buster-buff'
+import PossessionSkillBusterDown from '../mixins/possession-skill/buster-down'
+import PossessionSkillNpBuff from '../mixins/possession-skill/np-buff'
+import PossessionSkillQuickBuff from '../mixins/possession-skill/quick-buff'
+import PossessionSkillQuickDown from '../mixins/possession-skill/quick-down'
+import PossessionSkillsAtkBuff from '../mixins/possession-skill/s-atk-buff'
+
+import NpSkillArtsBuff from '../mixins/np-skill/arts-buff'
+import NpSkillAtkBuff from '../mixins/np-skill/atk-buff'
+import NpSkillDefensiveDown from '../mixins/np-skill/defensive-down'
+import NpSkillBusterBuff from '../mixins/np-skill/buster-buff'
+import NpSkillNpBuff from '../mixins/np-skill/np-buff'
+import NpSkillQuickBuff from '../mixins/np-skill/quick-buff'
+import NpSkillQuickDown from '../mixins/np-skill/quick-down'
+import NpSkillsAtkBuff from '../mixins/np-skill/s-atk-buff'
+
+import OcSkillArtsBuff from '../mixins/oc-skill/arts-buff'
+import OcSkillArtsDown from '../mixins/oc-skill/arts-down'
+import OcSkillAtkBuff from '../mixins/oc-skill/atk-buff'
+import OcSkillDefensiveDown from '../mixins/oc-skill/defensive-down'
+import OcSkillBusterBuff from '../mixins/oc-skill/buster-buff'
+import OcSkillBusterDown from '../mixins/oc-skill/buster-down'
+import OcSkillNpBuff from '../mixins/oc-skill/np-buff'
+import OcSkillQuickBuff from '../mixins/oc-skill/quick-buff'
+import OcSkillQuickDown from '../mixins/oc-skill/quick-down'
+import OcSkillsAtkBuff from '../mixins/oc-skill/s-atk-buff'
+
 import EventCharacterBuff from '../mixins/event-buff'
 import SelectClass from '../mixins/select-class'
+
 import Dialog from '@/components/calculator/Npatk/Dialog'
+import SkillDialog from '@/components/calculator/SkillDialog'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
 import FixedFooter from '@/components/calculator/Npatk/FixedFooter'
@@ -507,17 +504,46 @@ export default {
   components: {
     ValidationProvider,
     Dialog,
+    SkillDialog,
     PlusMinusButton,
     ResultCard,
     FixedFooter
   },
   mixins: [
     ClassSkillAtkBuff,
-    ClassSkillSAtkBuff,
+    classSkillsAtkBuff,
     ClassSkillBusterBuff,
     ClassSkillArtsBuff,
     ClassSkillQuickBuff,
     ClassSkillNpBuff,
+    PossessionSkillArtsBuff,
+    PossessionSkillArtsDown,
+    PossessionSkillAtkBuff,
+    PossessionSkillDefensiveDown,
+    PossessionSkillBusterBuff,
+    PossessionSkillBusterDown,
+    PossessionSkillNpBuff,
+    PossessionSkillQuickBuff,
+    PossessionSkillQuickDown,
+    PossessionSkillsAtkBuff,
+    NpSkillArtsBuff,
+    NpSkillAtkBuff,
+    NpSkillDefensiveDown,
+    NpSkillBusterBuff,
+    NpSkillNpBuff,
+    NpSkillQuickBuff,
+    NpSkillQuickDown,
+    NpSkillsAtkBuff,
+    OcSkillArtsBuff,
+    OcSkillArtsDown,
+    OcSkillAtkBuff,
+    OcSkillDefensiveDown,
+    OcSkillBusterBuff,
+    OcSkillBusterDown,
+    OcSkillNpBuff,
+    OcSkillQuickBuff,
+    OcSkillQuickDown,
+    OcSkillsAtkBuff,
     EventCharacterBuff,
     SelectClass
   ],
@@ -582,17 +608,32 @@ export default {
       sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
       dressAtk: 0, // 概念礼装のATK
       characterRarity: null,
-      filterdRarity: null,
-      filterdServantNpType: null,
-      filterdServantNpEffect: null,
-      isEventCharacter: false,
-      isNpBuffEventCharacter: false,
+      isEventCharacter: false, // イベントで特攻が付与されるサーヴァントかどうか
+      isNpBuffEventCharacter: false, // イベントで宝具威力がバフされるサーヴァントかどうか
       classSkills: [
         {
           name: '',
           description: ''
         }
-      ]
+      ],
+      possessionSkills: [
+        {
+          description: ''
+        }
+      ],
+      npSkills: [
+        {
+          description: ''
+        }
+      ],
+      ocSkills: [
+        {
+          description: ''
+        }
+      ],
+      selectingOcUpPrcentage: 1,
+      hadSelectedOcUpPrcentage: null,
+      selectableOcUpPrcentages: [1, 2, 3, 4, 5]
     }
   },
   computed: {},
@@ -616,6 +657,10 @@ export default {
         this.npmultiplier = [300, 400, 450, 475, 500]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
+        // Note: BusterとArtsでOC効果が違うため
+        this.hadSelectedOcUpPrcentage = null
+        this.cardBuff -= 9
+        this.setOcSkillBusterBuff(this.characterName)
       } else if (
         this.characterName === 'メリュジーヌ' &&
         this.servantNpType === 'Arts'
@@ -623,6 +668,9 @@ export default {
         this.npmultiplier = [900, 1200, 1350, 1425, 1500]
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
+        // Note: BusterとArtsでOC効果が違うため
+        this.ocSkills = []
+        this.cardBuff = 9
       } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Buster'
@@ -645,6 +693,21 @@ export default {
         this.characterNpmultiplier = this.npmultiplier[0]
         this.npChargeLv = 1
       }
+    },
+    selectingOcUpPrcentage() {
+      if (this.servantNpType === 'Buster') {
+        this.setOcSkillBusterBuff(this.characterName)
+        this.setOcSkillBusterDown(this.characterName)
+      } else if (this.servantNpType === 'Arts') {
+        this.setOcSkillArtsBuff(this.characterName)
+        this.setOcSkillArtsDown(this.characterName)
+      } else if (this.servantNpType === 'Quick') {
+        this.setOcSkillQuickBuff(this.characterName)
+        this.setOcSkillQuickDown(this.characterName)
+      }
+      this.setOcSkillAtkBuff(this.characterName)
+      this.setOcSkillDefensiveDown(this.characterName)
+      this.setOcSkillNpBuff(this.characterName)
     }
   },
   async created() {
@@ -672,6 +735,69 @@ export default {
       this.setSelectLv(this.characterRarity)
       this.setNpType(character)
       this.setClassCompatibility(character)
+
+      // スキルバフ
+      // 攻撃力UPバフ
+      this.setPossessionSkillAtkBuff(character)
+      // 防御力ダウン(攻撃力UPバフ)
+      this.setPossessionSkillDefensiveDown(character)
+      // バスター性能UP
+      this.setPossessionSkillBusterBuff(character)
+      // バスター耐性ダウン
+      this.setPossessionSkillBusterDown(character)
+      // アーツ性能UP
+      this.setPossessionSkillArtsBuff(character)
+      // アーツ耐性ダウン
+      this.setPossessionSkillArtsDown(character)
+      // クイック性能UP
+      this.setPossessionSkillQuickBuff(character)
+      // クイック耐性ダウン
+      this.setPossessionSkillQuickDown(character)
+      // 宝具威力UP
+      this.setPossessionSkillNpBuff(character)
+      // 特攻バフ
+      this.setPossessionSkillSAtkBuff(character)
+
+      // 宝具バフ
+      // 攻撃力UPバフ
+      this.setNpSkillAtkBuff(character)
+      // 防御力ダウン(攻撃力UPバフ)
+      this.setNpSkillDefensiveDown(character)
+      // バスター性能UP
+      this.setNpSkillBusterBuff(character)
+      // アーツ性能UP
+      this.setNpSkillArtsBuff(character)
+      // クイック性能UP
+      this.setNpSkillQuickBuff(character)
+      // クイック耐性ダウン
+      this.setNpSkillQuickDown(character)
+      // 宝具威力UP
+      this.setNpSkillNpBuff(character)
+      // 特攻宝具
+      this.setNpSkillSAtkBuff(character)
+
+      // 宝具OC
+      // 攻撃バフ
+      this.setOcSkillAtkBuff(character.name)
+      // 防御ダウン
+      this.setOcSkillDefensiveDown(character.name)
+      // バスターバフ
+      this.setOcSkillBusterBuff(character.name)
+      // バスター耐性ダウン
+      this.setOcSkillBusterDown(character.name)
+      // アーツバフ
+      this.setOcSkillArtsBuff(character.name)
+      // アーツ耐性ダウン
+      this.setOcSkillArtsDown(character.name)
+      // クイックバフ
+      this.setOcSkillQuickBuff(character.name)
+      // クイック耐性ダウン
+      this.setOcSkillQuickDown(character.name)
+      // 宝具威力バフ
+      this.setOcSkillNpBuff(this.characterName)
+      // 特攻
+      this.setOcSkillSAtkBuff(character)
+
       if (character.card === 'B') {
         this.setClassSkillBusterBuff(character)
       } else if (character.card === 'A') {
@@ -682,7 +808,8 @@ export default {
       if (
         character.name === '光のコヤンスカヤ' ||
         character.name === '水着殺生院キアラ' ||
-        character.name === 'ヘファイスティオン'
+        character.name === 'ヘファイスティオン' ||
+        character.name === 'モリアーティ（ルーラー）'
       ) {
         this.setClassSkillNpBuff(character)
       } else if (character.name === 'カレン') {
@@ -843,6 +970,9 @@ export default {
     openDisplay() {
       this.$refs.dlg.isDisplay = true
     },
+    openSkillDisplay() {
+      this.$refs.skillDlg.isOpen = true
+    },
     resetBuffSystem() {
       this.fou = 1000
       this.characterAtk = 0
@@ -857,6 +987,11 @@ export default {
       this.dressAtk = 0
       this.characterRarity = null
       this.classSkills = []
+      this.possessionSkills = []
+      this.npSkills = []
+      this.ocSkills = []
+      this.selectingOcUpPrcentage = 1
+      this.hadSelectedOcUpPrcentage = null
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -883,12 +1018,14 @@ export default {
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
       this.classSkills = []
+      this.possessionSkills = []
+      this.npSkills = []
+      this.ocSkills = []
+      this.selectingOcUpPrcentage = 1
+      this.hadSelectedOcUpPrcentage = null
       this.characterRarity = null
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
-      this.filterdRarity = null
-      this.filterdServantNpType = null
-      this.filterdServantNpEffect = null
     }
   },
   head() {

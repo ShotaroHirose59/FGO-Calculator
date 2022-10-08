@@ -1,44 +1,27 @@
 <template>
-  <v-footer app fixed height="56" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
     <v-row no-gutters>
-      <v-col cols="9">
+      <v-col cols="8">
         <v-progress-linear
           :value="totalAcquisitionAmount"
           rounded
           color="yellow darken-2"
           height="10"
           reactive
-          class="mt-4"
+          class="mt-4 mb-2"
         ></v-progress-linear>
-        <strong>NP {{ totalAcquisitionAmount }}％</strong>
+        <strong class="mt-1">NP {{ totalAcquisitionAmount }}％</strong>
       </v-col>
 
-      <v-col cols="3">
-        <v-img
-          :src="image_src"
-          width="48"
-          class="ml-8"
-          @click="displayDetails()"
-        ></v-img>
+      <v-col cols="4">
+        <v-img :src="image_src" width="56" class="ml-8"></v-img>
       </v-col>
-
-      <!-- 結果の詳細 -->
-      <ResultDetails
-        ref="Details"
-        :character-name="characterName"
-        :servant-np-type="servantNpType"
-        :total-acquisition-amount="totalAcquisitionAmount"
-      />
     </v-row>
   </v-footer>
 </template>
 
 <script>
-import ResultDetails from '@/components/calculator/NpAcquisition/ResultDetails'
 export default {
-  components: {
-    ResultDetails
-  },
   props: {
     characterName: {
       type: String,
@@ -148,13 +131,6 @@ export default {
           return 0
       }
     }
-  },
-  methods: {
-    displayDetails() {
-      this.$refs.Details.isResultDetails = true
-    }
   }
 }
 </script>
-
-<style scoped></style>

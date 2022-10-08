@@ -1,22 +1,7 @@
 <template>
   <v-card class="col-md-6">
     <v-toolbar class="title" elevation="4">
-      宝具ダメージ 結果
-      <v-row no-gutters>
-        <v-col style="text-align: right;">
-          <v-btn
-            style="text-align: right;"
-            outlined
-            small
-            fab
-            class="mr-4"
-            color="purple lighten-1"
-            @click="openResultDisplay()"
-          >
-            <v-icon>mdi-help</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+      結果
     </v-toolbar>
     <v-card-subtitle>
       宝具ダメージには数値が強制的に0.9~1.1倍される乱数調整が発生する。<br />
@@ -25,6 +10,14 @@
 
     <!-- ダイアログ(計算方法) -->
     <ResultDialog ref="rstDlg" />
+
+    <SkillDialog
+      ref="skillDlg"
+      :class-skills="classSkills"
+      :possession-skills="possessionSkills"
+      :np-skills="npSkills"
+      :oc-skills="ocSkills"
+    />
 
     <v-card-text>
       <v-row no-gutters>
@@ -63,7 +56,7 @@
           </v-list-item>
         </v-col>
 
-        <v-col cols="6" sm="4" md="4">
+        <v-col cols="6" sm="3" md="3">
           <v-select
             v-model="classCompatibility"
             label="クラス相性"
@@ -73,7 +66,7 @@
           ></v-select>
         </v-col>
 
-        <v-col cols="6" sm="4" md="4">
+        <v-col cols="6" sm="3" md="3">
           <v-select
             v-model="attributeCompatibility"
             label="属性相性"
@@ -83,9 +76,15 @@
           ></v-select>
         </v-col>
 
-        <v-col cols="12" sm="4" md="4" style="text-align: center;">
+        <v-col cols="12" sm="3" md="3" style="text-align: center;">
+          <v-btn color="teal" class="mt-4" outlined @click="openSkillDisplay()"
+            >バフ詳細</v-btn
+          >
+        </v-col>
+
+        <v-col cols="12" sm="3" md="3">
           <v-btn color="error" class="mt-4" outlined @click="reset()"
-            >計算リセット</v-btn
+            >リセット</v-btn
           >
         </v-col>
       </v-row>
@@ -94,11 +93,13 @@
 </template>
 
 <script>
+import SkillDialog from '@/components/calculator/SkillDialog'
 import ResultDialog from '@/components/calculator/Npatk/ResultDialog'
 import SpeechBubble from '@/components/calculator/Npatk/JeanneSpeechBubble'
 
 export default {
   components: {
+    SkillDialog,
     ResultDialog,
     SpeechBubble
   },
@@ -153,6 +154,22 @@ export default {
     },
     dressAtk: {
       type: [String, Number],
+      required: true
+    },
+    classSkills: {
+      type: Array,
+      required: true
+    },
+    possessionSkills: {
+      type: Array,
+      required: true
+    },
+    npSkills: {
+      type: Array,
+      required: true
+    },
+    ocSkills: {
+      type: Array,
       required: true
     }
   },
@@ -248,6 +265,9 @@ export default {
   methods: {
     openResultDisplay() {
       this.$refs.rstDlg.isResultDisplay = true
+    },
+    openSkillDisplay() {
+      this.$refs.skillDlg.isOpen = true
     },
     reset() {
       this.classCompatibility = 2.0

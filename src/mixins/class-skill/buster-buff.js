@@ -12,51 +12,51 @@ export default {
         character.name === 'スパルタクス'
       ) {
         // 狂化[EX]
-        this.cardBuff = 12
+        this.cardBuff += 12
         this.classSkills.push({
           name: '狂化[EX]',
-          description: 'Buster性能UP(12%)'
+          description: 'Buster性能アップ(12%)'
         })
       } else if (character.name === '伊吹童子') {
         // 竜種[EX]
-        this.cardBuff = 12
+        this.cardBuff += 12
         this.classSkills.push({
           name: '竜種[EX]',
-          description: 'Buster性能UP(12%)'
+          description: 'Buster性能アップ(12%)'
         })
       } else if (
         character.name === 'バーゲスト' ||
         character.name === 'キングプロテア'
       ) {
         // 狂化[A+]
-        this.cardBuff = 11
+        this.cardBuff += 11
         this.classSkills.push({
           name: '狂化[A+]',
-          description: 'Buster性能UP(11%)'
+          description: 'Buster性能アップ(11%)'
         })
       } else if (
         character.name === '鬼女紅葉' ||
         character.name === '呂布奉先'
       ) {
         // 狂化[A]
-        this.cardBuff = 10
+        this.cardBuff += 10
         this.classSkills.push({
           name: '狂化[A]',
-          description: 'Buster性能UP(10%)'
+          description: 'Buster性能アップ(10%)'
         })
       } else if (character.name === 'ロムルス＝クィリヌス') {
         // 主神の神核[B+]
-        this.cardBuff = 9
+        this.cardBuff += 9
         this.classSkills.push({
           name: '主神の神核[B+]',
-          description: 'Buster性能UP(9%)'
+          description: 'Buster性能アップ(9%)'
         })
       } else if (character.name === 'アビゲイル〔夏〕') {
         // 狂気[B+]
-        this.cardBuff = 9
+        this.cardBuff += 9
         this.classSkills.push({
           name: '狂気[B+]',
-          description: 'Buster性能UP(9%)'
+          description: 'Buster性能アップ(9%)'
         })
       } else if (
         character.name === 'モルガン' ||
@@ -66,48 +66,48 @@ export default {
         character.name === 'エイリーク'
       ) {
         // 狂化[B]
-        this.cardBuff = 8
+        this.cardBuff += 8
         this.classSkills.push({
           name: '狂化[B]',
-          description: 'Buster性能UP(8%)'
+          description: 'Buster性能アップ(8%)'
         })
       } else if (character.name === 'アビゲイル') {
         // 狂気[B]
-        this.cardBuff = 8
+        this.cardBuff += 8
         this.classSkills.push({
           name: '狂気[B]',
-          description: 'Buster性能UP(8%)'
+          description: 'Buster性能アップ(8%)'
         })
       } else if (character.name === 'クーフーリン〔オルタ〕') {
         // 狂化[EX] (C相当)
-        this.cardBuff = 6
+        this.cardBuff += 6
         this.classSkills.push({
           name: '狂化[EX] (C相当)',
-          description: 'Buster性能UP(6%)'
+          description: 'Buster性能アップ(6%)'
         })
       } else if (
         character.name === '水着源頼光' ||
         character.name === '水着織田信長'
       ) {
         // 狂化[C]
-        this.cardBuff = 6
+        this.cardBuff += 6
         this.classSkills.push({
           name: '狂化[C]',
-          description: 'Buster性能UP(6%)'
+          description: 'Buster性能アップ(6%)'
         })
       } else if (character.name === '土方歳三') {
         // 狂化[D+]
-        this.cardBuff = 5
+        this.cardBuff += 5
         this.classSkills.push({
           name: '狂化[D+]',
-          description: 'Buster性能UP(5%)'
+          description: 'Buster性能アップ(5%)'
         })
       } else if (character.name === 'アシュヴァッターマン') {
         // 憤怒の化身[EX]
-        this.cardBuff = 5
+        this.cardBuff += 5
         this.classSkills.push({
           name: '憤怒の化身[EX]',
-          description: 'Buster性能UP(5%)'
+          description: 'Buster性能アップ(5%)'
         })
       } else if (
         character.name === '水着茨木童子' ||
@@ -115,24 +115,24 @@ export default {
         character.name === 'バニヤン'
       ) {
         // 狂化[D]
-        this.cardBuff = 4
+        this.cardBuff += 4
         this.classSkills.push({
           name: '狂化[D]',
-          description: 'Buster性能UP(4%)'
+          description: 'Buster性能アップ(4%)'
         })
       } else if (character.name === '水着ブリュンヒルデ') {
         // 狂化[D-]
-        this.cardBuff = 3.5
+        this.cardBuff += 3.5
         this.classSkills.push({
           name: '狂化[D-]',
-          description: 'Buster性能UP(3.5%)'
+          description: 'Buster性能アップ(3.5%)'
         })
       } else if (character.name === '茶々') {
         // 狂化[E+]
-        this.cardBuff = 3
+        this.cardBuff += 3
         this.classSkills.push({
           name: '狂化[E+]',
-          description: 'Buster性能UP(3%)'
+          description: 'Buster性能アップ(3%)'
         })
       } else if (
         character.name === '巴御前' ||
@@ -140,24 +140,24 @@ export default {
         character.name === '坂田金時'
       ) {
         // 狂化[E]
-        this.cardBuff = 2
+        this.cardBuff += 2
         this.classSkills.push({
           name: '狂化[E]',
-          description: 'Buster性能UP(2%)'
+          description: 'Buster性能アップ(2%)'
         })
       } else if (character.name === 'ベオウルフ') {
         // 狂化[E-]
-        this.cardBuff = 1
+        this.cardBuff += 1
         this.classSkills.push({
           name: '狂化[E-]',
-          description: 'Buster性能UP(1%)'
+          description: 'Buster性能アップ(1%)'
         })
       } else if (character.name === 'アルクェイド') {
         // 原初の一[D]
-        this.cardBuff = 30
+        this.cardBuff += 30
         this.classSkills.push({
           name: '原初の一[D]',
-          description: 'Buster性能UP(30%)'
+          description: 'Buster性能アップ(30%)'
         })
       }
     }

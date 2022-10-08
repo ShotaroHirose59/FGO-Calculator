@@ -1,14 +1,27 @@
 <template>
-  <v-dialog v-model="isDisplay" scrollable max-width="800px">
+  <v-dialog
+    v-model="isDisplay"
+    scrollable
+    max-width="1200px"
+    :fullscreen="$vuetify.breakpoint.xsOnly"
+    hide-overlay
+    transition="dialog-bottom-transition"
+  >
     <v-card>
       <v-toolbar height="64px">
-        <v-img :src="image_src" max-width="56px" class="mr-4"></v-img>
-        <v-toolbar-title>使い方と詳細</v-toolbar-title>
+        <client-only>
+          <v-icon
+            v-if="$vuetify.breakpoint.xs"
+            class="mr-2"
+            large
+            @click="isDisplay = false"
+          >
+            mdi-chevron-left
+          </v-icon>
+        </client-only>
+        <v-toolbar-title>ヘルプ</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
-        <h3 class="mt-4">
-          単体 or 全体宝具を持つArts Quickのサーヴァントが対象
-        </h3>
         <h3 class="mt-4 mb-2">
           使い方
         </h3>
@@ -51,17 +64,57 @@
             (例）3Hitする宝具で2Hit目に敵を倒しきれば2Hitオーバーキルと表現し、数値も上昇する。
           </li>
         </ul>
+
+        <v-divider class="mt-8"></v-divider>
+
+        <h3 class="mt-4 mb-2">
+          計算式
+        </h3>
+        <p>
+          獲得できるNP量 ＝ <br />
+          NPレート × (カード補正 × カードバフ補正) × 宝具のHit数 ×
+          NP獲得量バフ補正 × オーバーキルボーナス(1.5倍) × 敵クラス補正 × 敵の数
+        </p>
+
+        <v-divider class="mt-8"></v-divider>
+
+        <h3 class="mt-4 mb-2">
+          計算項目の説明
+        </h3>
+        <ul>
+          <li class="mb-2">
+            NPレート ・・・ 個々のサーヴァントに設定されている数値。
+          </li>
+          <li class="mb-2">
+            カード補正 ・・・ 宝具タイプで数値が決まる (Arts 3、Quick 1、Buster
+            0)
+          </li>
+          <li class="mb-2">
+            カードバフ補正 ・・・Arts性能〜%UPなど。同系統のバフは全て加算。<br />
+            (例) Arts性能30%UP、Arts性能50%UPを使用した場合は80%UPとなる。
+          </li>
+          <li class="mb-2">
+            NP獲得量バフ補正 ・・・ NP獲得量〜%UPなど。同系統のバフは全て加算。
+          </li>
+          <li class="mb-2">
+            敵クラス補正 ・・・ 敵のクラス別に入る補正値。<br />
+            キャスターなら1.2と高くバーサーカーは0.8と低い。
+          </li>
+        </ul>
       </v-card-text>
-      <v-col style="text-align: right;">
-        <v-btn
-          color="red"
-          text
-          style="font-size: 16px;"
-          @click="isDisplay = false"
-        >
-          Close
-        </v-btn>
-      </v-col>
+      <client-only>
+        <v-col style="text-align: right;">
+          <v-btn
+            v-if="!$vuetify.breakpoint.xs"
+            color="red"
+            text
+            style="font-size: 16px;"
+            @click="isDisplay = false"
+          >
+            Close
+          </v-btn>
+        </v-col>
+      </client-only>
     </v-card>
   </v-dialog>
 </template>
@@ -70,7 +123,6 @@
 export default {
   data() {
     return {
-      image_src: require('assets/jeannearuta.png'),
       isDisplay: false
     }
   }

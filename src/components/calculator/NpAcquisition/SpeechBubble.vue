@@ -3,9 +3,9 @@
     <div class="icon-box">
       <v-img :src="image_src" width="156"></v-img>
     </div>
-    <div class="balloon">
+    <!-- <div class="balloon">
       <p>{{ speechBubble }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 

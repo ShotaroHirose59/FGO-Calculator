@@ -1,29 +1,20 @@
 <template>
-  <v-card class="col-md-12 mt-6">
+  <v-card class="col-md-6">
     <v-toolbar class="title" elevation="4">
-      宝具NP獲得 結果
-      <v-row no-gutters>
-        <v-col style="text-align: right;">
-          <v-btn
-            outlined
-            small
-            fab
-            class="mr-4"
-            color="purple lighten-1"
-            @click="openResultDisplay()"
-          >
-            <v-icon>mdi-help</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+      結果
     </v-toolbar>
 
-    <!-- ダイアログ(計算方法) -->
-    <ResultDialog ref="rstDlg" />
+    <SkillDialog
+      ref="skillDlg"
+      :class-skills="classSkills"
+      :possession-skills="possessionSkills"
+      :np-skills="npSkills"
+      :oc-skills="ocSkills"
+    />
 
-    <v-card-text>
+    <v-card-text class="mt-12">
       <v-row no-gutters>
-        <v-col cols="6" sm="12" md="6">
+        <v-col cols="6" sm="6" md="6">
           <strong class="title">NP {{ totalAcquisitionAmount }}％</strong>
           <v-progress-linear
             :value="totalAcquisitionAmount"
@@ -33,47 +24,33 @@
             height="10"
             reactive
           ></v-progress-linear>
-          <v-list-item class="mt-2">
+          <v-list-item class="mt-4">
             <v-list-item-content>
-              <!-- <v-list-item-title>
-                サーヴァント : {{ characterName }}</v-list-item-title
-              > -->
               <v-list-item-title class="mt-1"
                 >NPレート : {{ npRate }}</v-list-item-title
               >
               <v-list-item-title class="mt-1"
                 >宝具ヒット数 : {{ npHits }}</v-list-item-title
               >
-              <!-- <v-list-item-title class="mt-1">
-                OC : アーツ耐性をダウン(10%)
-              </v-list-item-title> -->
-              <v-list-item-title class="mt-1">
-                <div>
-                  クラススキル :
-                  <span
-                    v-for="classSkill in classSkills"
-                    :key="classSkill.name"
-                  >
-                    <span>{{ classSkill.name }}</span>
-                    <span>{{ classSkill.description }}</span>
-                  </span>
-                </div>
-              </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-btn
+            color="teal"
+            class="mt-4 mr-4"
+            outlined
+            @click="openSkillDisplay()"
+            >バフ詳細</v-btn
+          >
+          <v-btn color="error" class="mt-4" outlined @click="reset()"
+            >リセット</v-btn
+          >
         </v-col>
 
-        <v-col class="ml-4" sm="9" md="4">
+        <v-col class="ml-4" sm="4" md="5">
           <SpeechBubble
             :character-name="characterName"
             :total-acquisition-amount="totalAcquisitionAmount"
           />
-        </v-col>
-
-        <v-col class="mt-12" style="text-align: right;" sm="2" md="1">
-          <v-btn color="error" class="mt-12" outlined @click="reset()"
-            >計算リセット</v-btn
-          >
         </v-col>
       </v-row>
     </v-card-text>
@@ -81,12 +58,12 @@
 </template>
 
 <script>
-import ResultDialog from '@/components/calculator/NpAcquisition/ResultDialog'
+import SkillDialog from '@/components/calculator/SkillDialog'
 import SpeechBubble from '@/components/calculator/NpAcquisition/SpeechBubble'
 
 export default {
   components: {
-    ResultDialog,
+    SkillDialog,
     SpeechBubble
   },
   props: {
@@ -127,6 +104,18 @@ export default {
       required: true
     },
     classSkills: {
+      type: Array,
+      required: true
+    },
+    possessionSkills: {
+      type: Array,
+      required: true
+    },
+    npSkills: {
+      type: Array,
+      required: true
+    },
+    ocSkills: {
       type: Array,
       required: true
     }
@@ -202,8 +191,8 @@ export default {
     }
   },
   methods: {
-    openResultDisplay() {
-      this.$refs.rstDlg.isResultDisplay = true
+    openSkillDisplay() {
+      this.$refs.skillDlg.isOpen = true
     },
     reset() {
       this.$emit('reset-val')
