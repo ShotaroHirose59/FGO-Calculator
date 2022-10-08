@@ -131,11 +131,19 @@ export default {
       miniVariant: false,
       title: 'FGO Calculator'
     }
+  },
+  head: {
+    bodyAttrs: {
+      class: 'body-class'
+    }
   }
 }
 </script>
 
-<style scoped>
+<style>
+.body-class {
+  background: #121212;
+}
 a {
   text-decoration: none;
 }
