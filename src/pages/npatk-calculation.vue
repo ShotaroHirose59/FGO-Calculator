@@ -815,7 +815,8 @@ export default {
         this.setClassSkillAtkBuff(character)
       } else if (
         character.name === '千子村正' ||
-        character.name === '闇のコヤンスカヤ'
+        character.name === '闇のコヤンスカヤ' ||
+        character.name === '殺生院キアラ'
       ) {
         this.setClassSkillSAtkBuff(character)
       }
