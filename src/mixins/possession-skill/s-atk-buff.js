@@ -161,6 +161,11 @@ export default {
         this.possessionSkills.push({
           description: '(キャスター)特攻を付与(30%)'
         })
+      } else if (character.name === '望月千代女') {
+        // this.sAtkBuff += 30
+        this.possessionSkills.push({
+          description: '(魔性・呪い)特攻を付与(魔性30%・呪い20%)'
+        })
       }
     }
   }
