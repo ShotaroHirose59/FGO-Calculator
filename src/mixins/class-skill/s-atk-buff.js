@@ -14,6 +14,12 @@ export default {
           name: '[NFFサービス]',
           description: '(猛獣)特攻を付与(20%)'
         })
+      } else if (character.name === '殺生院キアラ') {
+        this.classSkills.push({
+          name: '[ネガ・セイヴァー A]',
+          description:
+            '自身にルーラー特攻を付与(ルーラーに対して攻撃1.5倍有利になる)'
+        })
       }
     }
   }
