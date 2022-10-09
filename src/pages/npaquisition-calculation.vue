@@ -54,7 +54,6 @@
               label="サーヴァント"
               :items="$_filteredCharacters"
               :disabled="!characterClass || $_is_empty"
-              :placeholder="$_placeholder"
               class="mr-4"
               color="teal"
               @input="onChangeVal(characterName)"
