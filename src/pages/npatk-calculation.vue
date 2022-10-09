@@ -658,7 +658,7 @@ export default {
         this.npChargeLv = 1
         // Note: BusterとArtsでOC効果が違うため
         this.hadSelectedOcUpPrcentage = null
-        this.cardBuff -= 9
+        this.cardBuff = 0
         this.setOcSkillBusterBuff(this.characterName)
       } else if (
         this.characterName === 'メリュジーヌ' &&
