@@ -113,7 +113,8 @@ export default {
         character.name === 'バニヤン' ||
         character.name === '水着ダヴィンチ' ||
         character.name === 'パッションリップ' ||
-        character.name === '水着BB'
+        character.name === '水着BB' ||
+        character.name === '黄飛虎'
       ) {
         this.cardBuff += 20
         this.possessionSkills.push({ description: 'Buster性能アップ(20%)' })

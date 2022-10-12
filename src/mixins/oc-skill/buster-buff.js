@@ -39,6 +39,9 @@ export default {
       } else if (characterName === 'エレシュキガル') {
         const ocUpPrcentages = [10, 20, 30, 40, 50]
         this.changeCardBuff(ocUpPrcentages, buffDescription)
+      } else if (characterName === '黄飛虎') {
+        const ocUpPrcentages = [10, 12.5, 15, 17.5, 20]
+        this.changeCardBuff(ocUpPrcentages, buffDescription)
       }
     }
   }

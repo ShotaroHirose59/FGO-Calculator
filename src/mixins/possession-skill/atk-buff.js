@@ -86,7 +86,8 @@ export default {
         character.name === 'ジナコ' ||
         character.name === 'アルクェイド' ||
         character.name === '闇のコヤンスカヤ' ||
-        character.name === '呼延灼'
+        character.name === '呼延灼' ||
+        character.name === '黄飛虎'
       ) {
         this.atkBuff += 30
         this.possessionSkills.push({ description: '攻撃力アップ(30%)' })
