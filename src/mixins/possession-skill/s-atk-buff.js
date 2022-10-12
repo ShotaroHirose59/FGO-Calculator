@@ -166,6 +166,11 @@ export default {
         this.possessionSkills.push({
           description: '(魔性・呪い)特攻を付与(魔性30%・呪い20%)'
         })
+      } else if (character.name === '燕青') {
+        // this.sAtkBuff += 30
+        this.possessionSkills.push({
+          description: '(秩序・悪)特攻を付与(30%)'
+        })
       }
     }
   }
