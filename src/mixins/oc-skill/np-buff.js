@@ -48,7 +48,8 @@ export default {
         characterName === 'ネモ' ||
         characterName === '水着武則天' ||
         characterName === '張角' ||
-        characterName === 'カレン'
+        characterName === 'カレン' ||
+        characterName === '九紋竜エリザ'
       ) {
         const ocUpPrcentages = [10, 15, 20, 25, 30]
         this.changeNpBuff(ocUpPrcentages, buffDescription)

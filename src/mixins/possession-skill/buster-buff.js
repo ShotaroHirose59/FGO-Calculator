@@ -88,7 +88,8 @@ export default {
         character.name === 'ケツァルコアトル〔サンバ／サンタ〕' ||
         character.name === '魔王信長' ||
         character.name === '沖田総司〔オルタ〕' ||
-        character.name === '闇のコヤンスカヤ'
+        character.name === '闇のコヤンスカヤ' ||
+        character.name === '九紋竜エリザ'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Buster性能アップ(30%)' })

@@ -179,7 +179,8 @@ export default {
         character.name === '謎のアイドルX〔オルタ〕' ||
         character.name === '壱与' ||
         character.name === 'ネモ' ||
-        character.name === '闇のコヤンスカヤ'
+        character.name === '闇のコヤンスカヤ' ||
+        character.name === '九紋竜エリザ'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })
