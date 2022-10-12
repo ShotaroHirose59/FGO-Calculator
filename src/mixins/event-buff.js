@@ -3,39 +3,46 @@ export default {
     setEventCharacterBuff(character) {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
-      // ぐだぐだ新邪馬台国
+      // 2022 ハロウィン
       if (
-        character.name === '千利休' ||
-        character.name === '山南敬助' ||
-        character.name === '壱与'
+        character.name === '黄飛虎' ||
+        character.name === '呼延灼' ||
+        character.name === '九紋竜エリザ'
       ) {
         this.isEventCharacter = true
         this.sAtkBuff += 100
+      } else if (character.name === '燕青') {
+        this.isEventCharacter = true
+        this.sAtkBuff += 70
       } else if (
-        character.name === '沖田総司' ||
-        character.name === '斎藤一' ||
-        character.name === '茶々' ||
-        character.name === '森長可' ||
-        character.name === '魔王信長' ||
-        character.name === '沖田総司〔オルタ〕'
+        character.name === 'ゼノビア' ||
+        character.name === 'ロビンフッド' ||
+        character.name === 'ドン･キホーテ' ||
+        character.name === 'ナーサリー' ||
+        character.name === '天草四郎' ||
+        character.name === 'ヘシアン･ロボ' ||
+        character.name === 'アビゲイル' ||
+        character.name === 'ジャック・ド・モレー'
       ) {
         this.isEventCharacter = true
         this.sAtkBuff += 50
       } else if (
-        character.name === '水着沖田総司〔オルタ〕' ||
-        character.name === '織田信長' ||
-        character.name === '坂本龍馬' ||
-        character.name === '長尾景虎' ||
-        character.name === '坂本龍馬（ランサー）' ||
-        character.name === 'メドゥーサ' ||
-        character.name === '出雲阿国' ||
-        character.name === '謎のヒロインX' ||
-        character.name === '李書文（アサシン）' ||
-        character.name === '水着沖田総司' ||
-        character.name === '岡田以蔵' ||
-        character.name === '土方歳三' ||
-        character.name === '謎の蘭丸X' ||
-        character.name === '水着織田信長'
+        character.name === 'エリザベート〔ブレイブ〕' ||
+        character.name === '柳生但馬守宗矩' ||
+        character.name === 'フェルグス' ||
+        character.name === '清少納言' ||
+        character.name === 'エリザベート' ||
+        character.name === '太公望' ||
+        character.name === 'エリザベート〔シンデレラ〕' ||
+        character.name === 'マンドリカルド' ||
+        character.name === 'ティーチ' ||
+        character.name === '紫式部' ||
+        character.name === 'エリザベート〔ハロウィン〕' ||
+        character.name === 'アヴィケブロン' ||
+        character.name === '荊軻' ||
+        character.name === '風魔小太郎' ||
+        character.name === 'メカエリチャン' ||
+        character.name === 'メカエリチャンⅡ号機'
       ) {
         this.isEventCharacter = true
         this.sAtkBuff += 30
