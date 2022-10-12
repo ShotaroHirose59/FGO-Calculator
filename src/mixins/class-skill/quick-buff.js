@@ -48,7 +48,8 @@ export default {
         character.name === 'ラクシュミー' ||
         character.name === 'カエサル' ||
         character.name === '水着アルトリア〔オルタ〕' ||
-        character.name === 'メルトリリス'
+        character.name === 'メルトリリス' ||
+        character.name === '呼延灼'
       ) {
         // 騎乗[B]
         this.cardBuff += 8

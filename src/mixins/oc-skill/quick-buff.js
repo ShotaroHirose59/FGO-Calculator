@@ -17,7 +17,8 @@ export default {
         characterName === '水着沖田総司〔オルタ〕' ||
         characterName === 'カーマ' ||
         characterName === 'カルナ〔サンタ〕' ||
-        characterName === '謎のアイドルX〔オルタ〕'
+        characterName === '謎のアイドルX〔オルタ〕' ||
+        characterName === '呼延灼'
       ) {
         const ocUpPrcentages = [20, 25, 30, 35, 40]
         this.changeCardBuff(ocUpPrcentages, buffDescription)

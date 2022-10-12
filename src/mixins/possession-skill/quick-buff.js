@@ -37,7 +37,8 @@ export default {
         character.name === '謎のヒロインX〔オルタ〕' ||
         character.name === '項羽' ||
         character.name === 'バゼット' ||
-        character.name === '謎のアイドルX〔オルタ〕'
+        character.name === '謎のアイドルX〔オルタ〕' ||
+        character.name === '呼延灼'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Quick性能アップ(30%)' })
