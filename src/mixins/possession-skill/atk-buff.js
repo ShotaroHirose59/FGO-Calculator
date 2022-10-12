@@ -78,7 +78,7 @@ export default {
         character.name === '水着清少納言' ||
         character.name === '魔王信長' ||
         character.name === '平景清' ||
-        character.name === 'へシアン・ロボ' ||
+        character.name === 'ヘシアン･ロボ' ||
         character.name === 'メルトリリス' ||
         character.name === 'パッションリップ' ||
         character.name === 'スーパーバニヤン' ||

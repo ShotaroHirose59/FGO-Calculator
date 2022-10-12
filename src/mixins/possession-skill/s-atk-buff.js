@@ -150,7 +150,7 @@ export default {
       } else if (character.name === '水着武則天') {
         // this.sAtkBuff += 30
         this.possessionSkills.push({ description: '(死霊)特攻を付与(30%)' })
-      } else if (character.name === 'へシアン・ロボ') {
+      } else if (character.name === 'ヘシアン･ロボ') {
         // this.sAtkBuff += 30
         this.possessionSkills.push({ description: '(人属性)特攻を付与(30%)' })
       } else if (character.name === '沖田総司〔オルタ〕') {
