@@ -1,8 +1,6 @@
 export default {
   methods: {
     setEventCharacterBuff(character) {
-      this.isEventCharacter = false
-      this.isNpBuffEventCharacter = false
       // 2022 ハロウィン
       if (
         character.name === '黄飛虎' ||
