@@ -10,7 +10,12 @@
           reactive
           class="mt-4 mb-2"
         ></v-progress-linear>
-        <strong class="mt-1">NP {{ totalAcquisitionAmount }}％</strong>
+        <strong class="mt-1">
+          NP {{ totalAcquisitionAmount }}％
+          <span v-if="npRecharge > 0" style="font-size: 14px">
+            + リチャージ {{ npRecharge }}％
+          </span>
+        </strong>
       </v-col>
 
       <v-col cols="4">
@@ -57,6 +62,10 @@ export default {
     },
     npAcquisitionBuff: {
       type: [String, Number],
+      required: true
+    },
+    npRecharge: {
+      type: Number,
       required: true
     }
   },

@@ -255,6 +255,7 @@
         :possession-skills="possessionSkills"
         :np-skills="npSkills"
         :oc-skills="ocSkills"
+        :np-recharge="npRecharge"
         @reset-val="resetAll"
       />
       <!-- スマホの場合、固定フッター用意 -->
@@ -269,6 +270,7 @@
         :enemy-class="enemyClass"
         :enemy-count="enemyCount"
         :np-acquisition-buff="npAcquisitionBuff"
+        :np-recharge="npRecharge"
         @reset-val="resetAll"
       />
     </client-only>
@@ -294,12 +296,14 @@ import PossessionSkillNpAcquisitionBuff from '../mixins/possession-skill/np-acqu
 import NpSkillArtsBuff from '../mixins/np-skill/arts-buff'
 import NpSkillQuickBuff from '../mixins/np-skill/quick-buff'
 import NpSkillQuickDown from '../mixins/np-skill/quick-down'
+import NpSkillNpRecharge from '../mixins/np-skill/np-recharge'
 
 import OcSkillArtsBuff from '../mixins/oc-skill/arts-buff'
 import OcSkillArtsDown from '../mixins/oc-skill/arts-down'
 import OcSkillQuickBuff from '../mixins/oc-skill/quick-buff'
 import OcSkillQuickDown from '../mixins/oc-skill/quick-down'
 import OcSkillNpAcquisitionBuff from '../mixins/oc-skill/np-acquisition-buff'
+import OcSkillNpRecharge from '../mixins/oc-skill/np-recharge'
 
 import SelectClass from '../mixins/select-class'
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
@@ -329,11 +333,13 @@ export default {
     NpSkillArtsBuff,
     NpSkillQuickBuff,
     NpSkillQuickDown,
+    NpSkillNpRecharge,
     OcSkillArtsBuff,
     OcSkillArtsDown,
     OcSkillQuickBuff,
     OcSkillQuickDown,
     OcSkillNpAcquisitionBuff,
+    OcSkillNpRecharge,
     SelectClass
   ],
   data() {
@@ -408,7 +414,8 @@ export default {
       ],
       selectingOcUpPrcentage: 1,
       hadSelectedOcUpPrcentage: null,
-      selectableOcUpPrcentages: [1, 2, 3, 4, 5]
+      selectableOcUpPrcentages: [1, 2, 3, 4, 5],
+      npRecharge: 0
     }
   },
   computed: {},
@@ -424,6 +431,14 @@ export default {
       }
       if (this.characterName === 'メリュジーヌ') {
         this.setOcSkillNpAcquisitionBuff(this.characterName)
+      }
+      if (
+        this.characterName === 'メディア' ||
+        this.characterName === '水着アルトリア' ||
+        this.characterName === 'パールヴァティー' ||
+        this.characterName === '水着エレナ'
+      ) {
+        this.setOcSkillNpRecharge(this.characterName)
       }
     }
   },
@@ -474,6 +489,8 @@ export default {
       this.setNpSkillQuickBuff(character)
       // クイック耐性Down
       this.setNpSkillQuickDown(character)
+      // 宝具リチャージ
+      this.setNpSkillNpRecharge(character)
 
       // 宝具OC
       // アーツバフ
@@ -486,6 +503,8 @@ export default {
       this.setOcSkillQuickDown(character.name)
       // NP獲得量UP
       this.setOcSkillNpAcquisitionBuff(character.name)
+      // 宝具リチャージ
+      this.setOcSkillNpRecharge(character.name)
 
       if (character.card === 'A') {
         this.setClassSkillArtsBuff(character)
@@ -543,6 +562,7 @@ export default {
       this.ocSkills = []
       this.selectingOcUpPrcentage = 1
       this.hadSelectedOcUpPrcentage = null
+      this.npRecharge = 0
     },
     resetAll() {
       this.characterClass = ''
@@ -561,6 +581,7 @@ export default {
       this.ocSkills = []
       this.selectingOcUpPrcentage = 1
       this.hadSelectedOcUpPrcentage = null
+      this.npRecharge = 0
     }
   },
   head() {
