@@ -91,6 +91,10 @@ export default {
       type: [String, Number],
       required: true
     },
+    isNpBoosted: {
+      type: Boolean,
+      required: true
+    },
     classCompatibility: {
       type: Number,
       required: true
@@ -110,6 +114,11 @@ export default {
     // 宝具の平均ダメージ 乱数調整1.0倍 (100で割ってる箇所は数値を％として扱っているから)
     // 0.23はFGOのダメージ処理で必ず入る固定補正値
     averageDamage() {
+      let npBuff = this.npBuff
+      if (this.isNpBoosted) {
+        npBuff = npBuff * 2
+      }
+
       return Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
@@ -119,7 +128,7 @@ export default {
           this.attributeCompatibility *
           this.classCorrection *
           ((100 + this.atkBuff) / 100) *
-          ((100 + this.sAtkBuff + this.npBuff) / 100) *
+          ((100 + this.sAtkBuff + npBuff) / 100) *
           ((100 + this.sNpAtkBuff) / 100)
       )
     },

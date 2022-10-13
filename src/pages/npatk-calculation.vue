@@ -40,7 +40,7 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="4" md="4">
+          <v-col cols="12" sm="3" md="4">
             <v-select
               v-model="characterClass"
               label="クラス"
@@ -50,7 +50,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="12" sm="6" md="8">
+          <v-col cols="12" sm="5" md="8">
             <v-select
               v-model="characterName"
               label="サーヴァント"
@@ -62,7 +62,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="6" sm="2" md="4">
+          <v-col cols="4" sm="2" md="3">
             <v-select
               v-model="selectedLv"
               label="Lv."
@@ -74,7 +74,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="6" sm="2" md="4">
+          <v-col cols="4" sm="2" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -91,7 +91,7 @@
             </validation-provider>
           </v-col>
 
-          <v-col cols="4" sm="2" md="4">
+          <v-col cols="4" sm="2" md="3">
             <v-select
               v-model="fou"
               label="フォウくん"
@@ -102,7 +102,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="3">
+          <v-col cols="6" sm="2" md="3">
             <v-select
               v-model="servantNpType"
               label="宝具"
@@ -113,7 +113,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="2" md="3">
+          <v-col cols="6" sm="2" md="3">
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
@@ -153,6 +153,17 @@
               color="teal"
             ></v-select>
           </v-col>
+
+          <client-only>
+            <v-col v-if="!$vuetify.breakpoint.xs" cols="6" sm="2" md="3">
+              <v-switch
+                v-model="isNpBoosted"
+                label="宝具ブースト"
+                color="yellow darken-3"
+                class="np-boost-switch"
+              ></v-switch>
+            </v-col>
+          </client-only>
 
           <v-col cols="8" sm="2" md="2">
             <validation-provider
@@ -356,6 +367,17 @@
           </v-col>
 
           <client-only>
+            <v-col v-if="$vuetify.breakpoint.xs" cols="7">
+              <v-switch
+                v-model="isNpBoosted"
+                label="宝具威力ブースト"
+                color="yellow darken-3"
+                class="np-boost-switch"
+              ></v-switch>
+            </v-col>
+          </client-only>
+
+          <client-only>
             <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
               <v-select
                 v-model="classCompatibility"
@@ -421,6 +443,7 @@
         :possession-skills="possessionSkills"
         :np-skills="npSkills"
         :oc-skills="ocSkills"
+        :is-np-boosted="isNpBoosted"
         @reset-val="resetAll"
       />
       <!-- スマホの場合のみ、固定フッター用意 -->
@@ -439,6 +462,7 @@
         :np-buff="npBuff"
         :s-np-atk-buff="sNpAtkBuff"
         :dress-atk="dressAtk"
+        :is-np-boosted="isNpBoosted"
         :class-compatibility="classCompatibility"
         :attribute-compatibility="attributeCompatibility"
         @reset-val="resetAll"
@@ -632,7 +656,8 @@ export default {
       ],
       selectingOcUpPrcentage: 1,
       hadSelectedOcUpPrcentage: null,
-      selectableOcUpPrcentages: [1, 2, 3, 4, 5]
+      selectableOcUpPrcentages: [1, 2, 3, 4, 5],
+      isNpBoosted: false
     }
   },
   computed: {},
@@ -992,6 +1017,9 @@ export default {
       this.ocSkills = []
       this.selectingOcUpPrcentage = 1
       this.hadSelectedOcUpPrcentage = null
+      this.isEventCharacter = false
+      this.isNpBuffEventCharacter = false
+      this.isNpBoosted = false
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -1026,6 +1054,7 @@ export default {
       this.characterRarity = null
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
+      this.isNpBoosted = false
     }
   },
   head() {
@@ -1060,6 +1089,16 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 14px;
   @media screen and (max-width: 360px) {
     font-size: 12px;
+  }
+}
+.np-boost-switch {
+  label {
+    @media screen and (max-width: 540px) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 375px) {
+      font-size: 14px;
+    }
   }
 }
 </style>
