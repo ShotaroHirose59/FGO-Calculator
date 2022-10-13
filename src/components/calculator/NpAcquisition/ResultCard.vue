@@ -15,7 +15,12 @@
     <v-card-text class="mt-12">
       <v-row no-gutters>
         <v-col cols="6" sm="6" md="6">
-          <strong class="title">NP {{ totalAcquisitionAmount }}％</strong>
+          <strong class="title">
+            NP {{ totalAcquisitionAmount }}％
+            <span v-if="npRecharge > 0" style="font-size: 16px">
+              + リチャージ {{ npRecharge }}％
+            </span>
+          </strong>
           <v-progress-linear
             :value="totalAcquisitionAmount"
             rounded
@@ -117,6 +122,10 @@ export default {
     },
     ocSkills: {
       type: Array,
+      required: true
+    },
+    npRecharge: {
+      type: Number,
       required: true
     }
   },
