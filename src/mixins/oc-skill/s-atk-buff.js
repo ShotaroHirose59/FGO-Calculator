@@ -22,7 +22,7 @@ export default {
         // this.sAtkBuff += 20
         this.ocSkills.push({ description: '(魔性)特攻を付与(20~40%)' })
       } else if (character.name === 'モードレッド') {
-        this.sNpAtkBuff += 180
+        // this.sNpAtkBuff += 180
         this.ocSkills.push({
           description: '敵全体に強力なアーサー特攻攻撃(180~220%)'
         })
@@ -54,7 +54,11 @@ export default {
         this.ocSkills.push({
           description: '敵全体に強力な神性特攻攻撃(150~200%)'
         })
-      } else if (character.name === '源為朝') {
+      } else if (
+        character.name === '源為朝' ||
+        character.name === '水着スカディ' ||
+        character.name === 'オベロン'
+      ) {
         // this.sNpAtkBuff += 150
         this.ocSkills.push({
           description: '敵全体に強力な秩序特攻攻撃(150~200%)'
@@ -206,11 +210,6 @@ export default {
         // this.sNpAtkBuff += 150
         this.ocSkills.push({
           description: '敵単体に超強力なやけど特攻攻撃(150~200%)'
-        })
-      } else if (character.name === 'オベロン') {
-        this.sNpAtkBuff += 150
-        this.ocSkills.push({
-          description: '敵全体に強力な秩序特攻攻撃(150~200%)'
         })
       } else if (
         character.name === '清少納言' ||

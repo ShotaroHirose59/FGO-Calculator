@@ -2,7 +2,10 @@ export default {
   methods: {
     // クイック性能アップ
     setPossessionSkillQuickBuff(character) {
-      if (
+      if (character.name === '水着スカディ') {
+        this.cardBuff += 65
+        this.possessionSkills.push({ description: 'Quick性能アップ(65%)' })
+      } else if (
         character.name === '沖田総司' ||
         character.name === 'アタランテ' ||
         character.name === 'スカサハ' ||
