@@ -96,9 +96,9 @@ export default {
         this.cardBuff += 15
         this.possessionSkills.push({ description: 'Arts性能アップ(15%)' })
       } else if (character.name === 'スペースイシュタル') {
-        this.cardBuff += 15
+        this.cardBuff += 20
         this.possessionSkills.push({
-          description: 'Quick・Arts・Buster性能アップ(20%)'
+          description: 'Quick・Arts・Buster性能アップ(20%・確率80%))'
         })
       }
     }
