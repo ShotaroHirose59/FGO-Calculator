@@ -68,7 +68,6 @@ export default {
         character.name === '水着沖田総司' ||
         character.name === 'ベオウルフ' ||
         character.name === '水着ダヴィンチ' ||
-        character.name === 'キングプロテア' ||
         character.name === 'スペースイシュタル' ||
         character.name === '水着殺生院キアラ' ||
         character.name === 'アルクェイド'
