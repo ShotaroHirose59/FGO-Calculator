@@ -1,7 +1,7 @@
 <template>
   <div class="balloon-set-box left">
     <div class="icon-box">
-      <v-img :src="image_src" width="156"></v-img>
+      <v-img :src="image_src" max-width="180px"></v-img>
     </div>
     <!-- <div class="balloon">
       <p>{{ speechBubble }}</p>
