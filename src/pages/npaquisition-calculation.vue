@@ -190,7 +190,7 @@
           <v-col cols="8" sm="3" md="4">
             <v-select
               v-model="enemyClass"
-              label="敵クラス"
+              label="敵クラス補正"
               :items="items.selectEnemyClass"
               class="mr-4"
               color="teal"
@@ -369,25 +369,18 @@ export default {
           'プリテンダー'
         ],
         selectEnemyClass: [
-          'セイバー (1.0)',
-          'アーチャー (1.0)',
-          'ランサー (1.0)',
-          'ライダー (1.1)',
-          'キャスター (1.2)',
-          'アサシン (0.9)',
-          'バーサーカー (0.8)',
-          'ルーラー (1.0)',
-          'アヴェンジャー (1.0)',
-          'ムーンキャンサー (1.2)',
-          'アルターエゴ (1.0)',
-          'フォーリナー (1.0)'
+          '0.8(狂)',
+          '0.9(殺)',
+          '1.0',
+          '1.1(騎)',
+          '1.2(術・月)'
         ],
         selectEnemyCount: [1, 2, 3, 4, 5, 6], // 敵の数
         filterableRarities: [1, 2, 3, 4, 5],
         filterableServantNpType: ['Arts', 'Quick'],
         filterableServantNpEffect: ['全体宝具', '単体宝具']
       },
-      enemyClass: 'セイバー (1.0)',
+      enemyClass: '1.0',
       enemyCount: 3,
       cardBuff: 0, // カード性能UP倍率
       npAcquisitionBuff: 0, // NP獲得量UP倍率
@@ -571,7 +564,7 @@ export default {
       this.npRate = 0
       this.npHits = 0
       this.overkillHits = 0
-      this.enemyClass = 'セイバー (1.0)'
+      this.enemyClass = '1.0'
       this.enemyCount = 3
       this.cardBuff = 0
       this.npAcquisitionBuff = 0

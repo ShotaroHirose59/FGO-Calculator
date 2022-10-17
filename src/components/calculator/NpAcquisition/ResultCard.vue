@@ -170,32 +170,18 @@ export default {
     // クラス補正値
     enemyClassCorrection() {
       switch (this.enemyClass) {
-        case 'セイバー (1.0)':
+        case '1.0':
           return 1.0
-        case 'アーチャー (1.0)':
-          return 1.0
-        case 'ランサー (1.0)':
-          return 1.0
-        case 'ライダー (1.1)':
-          return 1.1
-        case 'キャスター (1.2)':
-          return 1.2
-        case 'アサシン (0.9)':
-          return 0.9
-        case 'バーサーカー (0.8)':
+        case '0.8(狂)':
           return 0.8
-        case 'ルーラー (1.0)':
-          return 1.0
-        case 'アヴェンジャー (1.0)':
-          return 1.0
-        case 'ムーンキャンサー (1.2)':
+        case '0.9(殺)':
+          return 0.9
+        case '1.1(騎)':
+          return 1.1
+        case '1.2(術・月)':
           return 1.2
-        case 'アルターエゴ (1.0)':
-          return 1.0
-        case 'フォーリナー (1.0)':
-          return 1.0
         default:
-          return 0
+          return 1.0
       }
     }
   },
