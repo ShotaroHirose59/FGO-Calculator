@@ -106,6 +106,11 @@ export default {
         this.possessionSkills.push({
           description: '(炎上の時、天属性)特攻を付与(50%)'
         })
+      } else if (character.name === 'クリームヒルト') {
+        // this.sAtkBuff += 50
+        this.possessionSkills.push({
+          description: '(混沌)特攻を付与(50%)'
+        })
       } else if (character.name === 'ジナコ') {
         // this.sAtkBuff += 50
         this.possessionSkills.push({ description: '(秩序)特攻を付与(50%)' })
