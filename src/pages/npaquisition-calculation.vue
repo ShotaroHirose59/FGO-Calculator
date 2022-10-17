@@ -187,7 +187,7 @@
             />
           </v-col>
 
-          <v-col cols="8" sm="3" md="4">
+          <v-col cols="6" sm="3" md="4">
             <v-select
               v-model="enemyClass"
               label="敵クラス補正"
@@ -197,7 +197,7 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="4" sm="3" md="4">
+          <v-col cols="6" sm="3" md="4">
             <v-select
               v-model.number="enemyCount"
               label="敵の数"
@@ -369,11 +369,11 @@ export default {
           'プリテンダー'
         ],
         selectEnemyClass: [
-          '0.8(狂)',
-          '0.9(殺)',
+          '0.8（狂）',
+          '0.9（殺）',
           '1.0',
-          '1.1(騎)',
-          '1.2(術・月)'
+          '1.1（騎）',
+          '1.2（術・月）'
         ],
         selectEnemyCount: [1, 2, 3, 4, 5, 6], // 敵の数
         filterableRarities: [1, 2, 3, 4, 5],

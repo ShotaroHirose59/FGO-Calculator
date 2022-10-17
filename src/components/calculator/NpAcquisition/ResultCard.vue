@@ -172,13 +172,13 @@ export default {
       switch (this.enemyClass) {
         case '1.0':
           return 1.0
-        case '0.8(狂)':
+        case '0.8（狂）':
           return 0.8
-        case '0.9(殺)':
+        case '0.9（殺）':
           return 0.9
-        case '1.1(騎)':
+        case '1.1（騎）':
           return 1.1
-        case '1.2(術・月)':
+        case '1.2（術・月）':
           return 1.2
         default:
           return 1.0
