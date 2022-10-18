@@ -213,7 +213,7 @@ export default {
           this.classCorrection *
           ((100 + this.atkBuff) / 100) *
           ((100 + this.sAtkBuff + npBuff) / 100) *
-          ((100 + this.sNpAtkBuff) / 100)
+          (this.sNpAtkBuff / 100)
       )
     },
     // 宝具の最小ダメージ 乱数調整0.9倍

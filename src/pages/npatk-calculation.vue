@@ -628,7 +628,7 @@ export default {
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
       npBuff: 0, // 宝具威力バフ倍率
-      sNpAtkBuff: 0, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
+      sNpAtkBuff: 100, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
       dressAtk: 0, // 概念礼装のATK
       characterRarity: null,
       isEventCharacter: false, // イベントで特攻が付与されるサーヴァントかどうか
@@ -1008,7 +1008,7 @@ export default {
       this.cardBuff = 0
       this.sAtkBuff = 0
       this.npBuff = 0
-      this.sNpAtkBuff = 0
+      this.sNpAtkBuff = 100
       this.dressAtk = 0
       this.characterRarity = null
       this.classSkills = []
@@ -1041,7 +1041,7 @@ export default {
       this.cardBuff = 0
       this.sAtkBuff = 0
       this.npBuff = 0
-      this.sNpAtkBuff = 0
+      this.sNpAtkBuff = 100
       this.dressAtk = 0
       this.classCompatibility = 2.0
       this.attributeCompatibility = 1.0
