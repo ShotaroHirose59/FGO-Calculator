@@ -146,7 +146,7 @@ export default {
         this.cardBuff += 3
         this.classSkills.push({
           name: 'ランマニウム[EX]',
-          description: 'Arts性能アップ(3%)'
+          description: 'Arts性能アップ(3%) / 毎ターンNP獲得を付与(3%)'
         })
       }
     }

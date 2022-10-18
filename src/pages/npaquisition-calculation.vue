@@ -286,6 +286,7 @@ import db from '../plugins/firebase'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import ClassSkillNpAcquisitionBuff from '../mixins/class-skill/np-acquisition-buff'
+import ClassSkillNpRecharge from '../mixins/class-skill/np-charge'
 
 import PossessionSkillArtsBuff from '../mixins/possession-skill/arts-buff'
 import PossessionSkillArtsDown from '../mixins/possession-skill/arts-down'
@@ -325,6 +326,7 @@ export default {
     ClassSkillArtsBuff,
     ClassSkillQuickBuff,
     ClassSkillNpAcquisitionBuff,
+    ClassSkillNpRecharge,
     PossessionSkillArtsBuff,
     PossessionSkillArtsDown,
     PossessionSkillQuickBuff,
@@ -499,6 +501,7 @@ export default {
       // 宝具リチャージ
       this.setOcSkillNpRecharge(character.name)
 
+      // クラススキル
       if (character.card === 'A') {
         this.setClassSkillArtsBuff(character)
       } else if (character.card === 'Q') {
@@ -507,6 +510,8 @@ export default {
       if (character.name === 'ディオスクロイ' || character.name === '千利休') {
         this.setClassSkillNpAcquisitionBuff(character)
       }
+      // 毎ターンNPチャージ
+      this.setClassSkillNpchargeEveryTurn(character)
     },
     // 選択されたキャラクターの「宝具タイプ」を返す
     setNpType(character) {

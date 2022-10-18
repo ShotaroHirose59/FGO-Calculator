@@ -76,27 +76,51 @@ export default {
   },
   computed: {
     totalAcquisitionAmount() {
-      return this.normalAcquisitionAmount + this.overAcquisitionAmount
+      const result = Math.floor(this.acquisitionAmount)
+
+      if (result === 99) {
+        return 100
+      } else {
+        return result
+      }
     },
-    normalAcquisitionAmount() {
-      return Math.floor(
-        this.npRate *
-          (this.cardVal * ((100 + this.cardBuff) / 100)) *
-          (this.npHits - this.overkillHits) *
+    acquisitionAmount() {
+      const base = Math.floor(
+        100 *
+          this.npRate *
+          this.cardVal *
+          ((100 + this.cardBuff) / 100) *
           ((100 + this.npAcquisitionBuff) / 100) *
-          this.enemyClassCorrection *
-          this.enemyCount
+          this.enemyClassCorrection
       )
-    },
-    overAcquisitionAmount() {
-      return Math.floor(
-        this.npRate *
-          (this.cardVal * ((100 + this.cardBuff) / 100)) *
-          ((1 * (this.overkillHits * 1.5)) / 1) *
-          ((100 + this.npAcquisitionBuff) / 100) *
-          this.enemyClassCorrection *
-          this.enemyCount
-      )
+      const result =
+        ((base * (this.npHits + 0.5 * this.overkillHits)) / 100) *
+        this.enemyCount
+
+      if (this.characterName === '水着宇津見エリセ') {
+        return result + 4.2
+      } else if (this.characterName === '水着カーマ') {
+        return result + 3.8
+      } else if (
+        this.characterName === 'スペースイシュタル' ||
+        this.characterName === 'ヘシアン･ロボ'
+      ) {
+        return result + 3.5
+      } else if (this.characterName === 'サリエリ') {
+        return result + 3.3
+      } else if (
+        this.characterName === 'ディオスクロイ' ||
+        this.characterName === '水着イリヤ' ||
+        this.characterName === '巌窟王' ||
+        this.characterName === '平景清' ||
+        this.characterName === '謎の蘭丸X'
+      ) {
+        return result + 3
+      } else if (this.characterName === 'アンリマユ') {
+        return result + 2
+      } else {
+        return result
+      }
     },
     // 宝具タイプ補正値
     cardVal() {
