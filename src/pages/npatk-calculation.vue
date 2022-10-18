@@ -884,21 +884,23 @@ export default {
           break
       }
     },
-    // クラス相性はdefaultで有利にする(数値が大きくなるからUX向上)
+    // クラス相性の設定
     setClassCompatibility(character) {
-      switch (character.class) {
-        case 'バーサーカー':
-          this.classCompatibility = 1.5
-          break
-        case 'アルターエゴ':
-          this.classCompatibility = 1.5
-          break
-        case 'プリテンダー':
-          this.classCompatibility = 1.5
-          break
-        default:
-          this.classCompatibility = 2.0
-          break
+      if (
+        character.class === 'ルーラー' ||
+        character.class === 'アヴェンジャー' ||
+        character.class === 'ムーンキャンサー' ||
+        character.class === 'フォーリナー'
+      ) {
+        this.classCompatibility = 1.0
+      } else if (
+        character.class === 'バーサーカー' ||
+        character.class === 'アルターエゴ' ||
+        character.class === 'プリテンダー'
+      ) {
+        this.classCompatibility = 1.5
+      } else {
+        this.classCompatibility = 2.0
       }
     },
     onChangeLv(selectedLv) {

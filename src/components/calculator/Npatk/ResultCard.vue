@@ -271,6 +271,27 @@ export default {
       }
     }
   },
+  watch: {
+    // クラス相性の設定
+    characterName() {
+      if (
+        this.characterClass === 'ルーラー' ||
+        this.characterClass === 'アヴェンジャー' ||
+        this.characterClass === 'ムーンキャンサー' ||
+        this.characterClass === 'フォーリナー'
+      ) {
+        this.classCompatibility = 1.0
+      } else if (
+        this.characterClass === 'バーサーカー' ||
+        this.characterClass === 'アルターエゴ' ||
+        this.characterClass === 'プリテンダー'
+      ) {
+        this.classCompatibility = 1.5
+      } else {
+        this.classCompatibility = 2.0
+      }
+    }
+  },
   methods: {
     openResultDisplay() {
       this.$refs.rstDlg.isResultDisplay = true
