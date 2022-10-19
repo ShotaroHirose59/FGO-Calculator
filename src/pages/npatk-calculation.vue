@@ -752,9 +752,8 @@ export default {
       this.resetBuffSystem()
       this.atk = character.atk // 「攻撃力」を一旦配列で取得
       this.characterAtk = this.atk[0] // デフォルトの攻撃力
-      this.npChargeLv = 1 // 「宝具レベル」を１にする
       this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で代入
-      this.characterNpmultiplier = this.npmultiplier[0] // 「宝具レベル１時」の宝具倍率を代入
+      this.setInitialNpChargeLv(character) // 初期「宝具レベル」と宝具倍率を設定
       this.characterRarity = character.rarity
       this.setSelectLv(this.characterRarity)
       this.setNpType(character)
@@ -973,6 +972,57 @@ export default {
           this.characterAtk = this.atk[6]
         }
       }
+    },
+    setInitialNpChargeLv(character) {
+      if (character.rarity <= 3) {
+        this.npChargeLv = 5
+      } else if (
+        character.name === 'アルトリア〔リリィ〕' ||
+        character.name === 'エリザベート〔ブレイブ〕' ||
+        character.name === '水着葛飾北斎' ||
+        character.name === 'カルナ〔サンタ〕' ||
+        character.name === '織田信長' ||
+        character.name === 'クロエ' ||
+        character.name === 'アルテラ・ザ・サン〔タ〕' ||
+        character.name === 'ナイチンゲール〔サンタ〕' ||
+        character.name === 'ジャンヌサンタリリィ' ||
+        character.name === '長尾景虎' ||
+        character.name === '宇津見エリセ' ||
+        character.name === '水着虞美人' ||
+        character.name === 'アルトリア〔サンタオルタ〕' ||
+        character.name === '坂田金時（ライダー）' ||
+        character.name === '水着イシュタル' ||
+        character.name === '坂本龍馬' ||
+        character.name === 'エリザベート〔シンデレラ〕' ||
+        character.name === 'エリザベート〔ハロウィン〕' ||
+        character.name === 'ジーク' ||
+        character.name === '酒呑童子（キャスター）' ||
+        character.name === '両儀式（アサシン）' ||
+        character.name === '水着スカサハ' ||
+        character.name === 'グレイ' ||
+        character.name === '鬼一法眼' ||
+        character.name === 'スルーズ' ||
+        character.name === 'ヒルド' ||
+        character.name === 'オルトリンデ' ||
+        character.name === '茶々' ||
+        character.name === 'バニヤン' ||
+        character.name === '水着ジャンヌ〔オルタ〕' ||
+        character.name === 'ケツァルコアトル〔サンバ／サンタ〕' ||
+        character.name === '水着ダヴィンチ' ||
+        character.name === '壱与' ||
+        character.name === '謎の蘭丸X' ||
+        character.name === 'メカエリチャン' ||
+        character.name === 'メカエリチャンⅡ号機' ||
+        character.name === '太歳星君' ||
+        character.name === 'BB' ||
+        character.name === '謎のアイドルX〔オルタ〕' ||
+        character.name === '九紋竜エリザ'
+      ) {
+        this.npChargeLv = 5
+      } else {
+        this.npChargeLv = 1
+      }
+      this.onChangeNpmultiplier(this.npChargeLv)
     },
     // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
     onChangeNpmultiplier(npChargeLv) {
