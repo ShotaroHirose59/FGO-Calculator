@@ -513,6 +513,7 @@ import OcSkillNpBuff from '../mixins/oc-skill/np-buff'
 import OcSkillQuickBuff from '../mixins/oc-skill/quick-buff'
 import OcSkillQuickDown from '../mixins/oc-skill/quick-down'
 import OcSkillsAtkBuff from '../mixins/oc-skill/s-atk-buff'
+import OcSkillNpmultiplierBuff from '../mixins/oc-skill/npmultiplier-buff'
 
 import EventCharacterBuff from '../mixins/event-buff'
 import SelectClass from '../mixins/select-class'
@@ -567,6 +568,7 @@ export default {
     OcSkillQuickBuff,
     OcSkillQuickDown,
     OcSkillsAtkBuff,
+    OcSkillNpmultiplierBuff,
     EventCharacterBuff,
     SelectClass
   ],
@@ -729,6 +731,9 @@ export default {
         this.setOcSkillQuickBuff(this.characterName)
         this.setOcSkillQuickDown(this.characterName)
       }
+      if (this.characterName === 'アーラシュ') {
+        this.OcSkillNpmultiplierBuff(this.characterName)
+      }
       this.setOcSkillAtkBuff(this.characterName)
       this.setOcSkillDefensiveDown(this.characterName)
       this.setOcSkillNpBuff(this.characterName)
@@ -820,6 +825,10 @@ export default {
       this.setOcSkillNpBuff(this.characterName)
       // 特攻
       this.setOcSkillSAtkBuff(character)
+      // 宝具威力アップ(倍率)
+      if (this.characterName === 'アーラシュ') {
+        this.OcSkillNpmultiplierBuff(this.characterName)
+      }
 
       if (character.card === 'B') {
         this.setClassSkillBusterBuff(character)
@@ -1042,6 +1051,9 @@ export default {
         case 5:
           this.characterNpmultiplier = this.npmultiplier[4]
           break
+      }
+      if (this.characterName === 'アーラシュ') {
+        this.OcSkillNpmultiplierBuff(this.characterName)
       }
     },
     openDisplay() {
