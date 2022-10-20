@@ -78,7 +78,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required"
             >
               <v-text-field
                 v-model.number="characterAtk"
@@ -169,7 +169,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required"
             >
               <v-text-field
                 v-model.number="atkBuff"
@@ -199,7 +199,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxCardBuff"
+              rules="required|maxCardBuff"
             >
               <v-text-field
                 v-model.number="cardBuff"
@@ -234,7 +234,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNpBuff"
+              rules="required|maxNpBuff"
             >
               <v-text-field
                 v-model.number="sAtkBuff"
@@ -270,7 +270,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxNpBuff"
+              rules="required|maxNpBuff"
             >
               <v-text-field
                 v-model.number="npBuff"
@@ -306,7 +306,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required"
             >
               <v-text-field
                 v-model.number="sNpAtkBuff"
@@ -336,7 +336,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxDressAtk"
+              rules="required|maxDressAtk"
             >
               <v-text-field
                 v-model.number="dressAtk"

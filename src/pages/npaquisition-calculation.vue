@@ -86,7 +86,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxCardBuff"
+              rules="required|maxCardBuff"
             >
               <v-text-field
                 v-model.number="cardBuff"
@@ -121,7 +121,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric|maxCardBuff"
+              rules="required|maxCardBuff"
             >
               <v-text-field
                 v-model.number="npAcquisitionBuff"
@@ -156,7 +156,7 @@
             <validation-provider
               ref="provider"
               v-slot="{ errors }"
-              rules="required|numeric"
+              rules="required"
             >
               <v-text-field
                 v-model.number="overkillHits"
