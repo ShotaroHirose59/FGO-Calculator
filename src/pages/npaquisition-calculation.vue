@@ -108,12 +108,7 @@
                   cardBuff += 10
                 }
               "
-              :on-click-minus-button="
-                () => {
-                  if (cardBuff === 0) return false
-                  cardBuff -= 10
-                }
-              "
+              :on-click-minus-button="() => (cardBuff -= 10)"
             />
           </v-col>
 
@@ -143,12 +138,7 @@
                   npAcquisitionBuff += 10
                 }
               "
-              :on-click-minus-button="
-                () => {
-                  if (npAcquisitionBuff === 0) return false
-                  npAcquisitionBuff -= 10
-                }
-              "
+              :on-click-minus-button="() => (npAcquisitionBuff -= 10)"
             />
           </v-col>
 

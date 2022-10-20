@@ -186,12 +186,7 @@
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
               :on-click-plus-button="() => (atkBuff += 10)"
-              :on-click-minus-button="
-                () => {
-                  if (atkBuff === 0) return false
-                  atkBuff -= 10
-                }
-              "
+              :on-click-minus-button="() => (atkBuff -= 10)"
             />
           </v-col>
 
@@ -221,12 +216,7 @@
                   cardBuff += 10
                 }
               "
-              :on-click-minus-button="
-                () => {
-                  if (cardBuff === 0) return false
-                  cardBuff -= 10
-                }
-              "
+              :on-click-minus-button="() => (cardBuff -= 10)"
             />
           </v-col>
 
@@ -257,12 +247,7 @@
                   sAtkBuff += 10
                 }
               "
-              :on-click-minus-button="
-                () => {
-                  if (sAtkBuff === 0) return false
-                  sAtkBuff -= 10
-                }
-              "
+              :on-click-minus-button="() => (sAtkBuff -= 10)"
             />
           </v-col>
 
@@ -293,12 +278,7 @@
                   npBuff += 10
                 }
               "
-              :on-click-minus-button="
-                () => {
-                  if (npBuff === 0) return false
-                  npBuff -= 10
-                }
-              "
+              :on-click-minus-button="() => (npBuff -= 10)"
             />
           </v-col>
 
