@@ -220,9 +220,9 @@ export default {
     minimumDamage() {
       return Math.floor(this.averageDamage * 0.9).toLocaleString()
     },
-    // 宝具の最高ダメージ 乱数調整1.1倍
+    // 宝具の最高ダメージ 乱数調整1.099倍
     maximumDamage() {
-      return Math.floor(this.averageDamage * 1.1).toLocaleString()
+      return Math.floor(this.averageDamage * 1.099).toLocaleString()
     },
     // クラス補正値
     classCorrection() {
