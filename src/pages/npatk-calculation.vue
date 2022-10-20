@@ -302,7 +302,12 @@
 
           <v-col cols="4" sm="2" md="2">
             <PlusMinusButton
-              :on-click-plus-button="() => (sNpAtkBuff += 10)"
+              :on-click-plus-button="
+                () => {
+                  if (sNpAtkBuff === 100) return (sNpAtkBuff += 50)
+                  sNpAtkBuff += 10
+                }
+              "
               :on-click-minus-button="
                 () => {
                   if (sNpAtkBuff === 0) return false
