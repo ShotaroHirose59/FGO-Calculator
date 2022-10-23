@@ -135,12 +135,9 @@ export default {
   computed: {
     totalAcquisitionAmount() {
       const result = Math.floor(this.acquisitionAmount)
+      if (this.shouldForceMax(result)) return 100
 
-      if (result === 99) {
-        return 100
-      } else {
-        return result
-      }
+      return result
     },
     acquisitionAmount() {
       const base = Math.floor(
@@ -210,6 +207,11 @@ export default {
     }
   },
   methods: {
+    shouldForceMax(num) {
+      if (num === 99) return true
+
+      return false
+    },
     openSkillDisplay() {
       this.$refs.skillDlg.isOpen = true
     },
