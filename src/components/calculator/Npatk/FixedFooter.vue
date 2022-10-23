@@ -134,16 +134,7 @@ export default {
     },
     // クラス補正値
     classCorrection() {
-      if (
-        this.characterClass === 'セイバー' ||
-        this.characterClass === 'ライダー' ||
-        this.characterClass === 'アルターエゴ' ||
-        this.characterClass === 'ムーンキャンサー' ||
-        this.characterClass === 'フォーリナー' ||
-        this.characterClass === 'プリテンダー'
-      ) {
-        return 1.0
-      } else if (this.characterClass === 'アーチャー') {
+      if (this.characterClass === 'アーチャー') {
         return 0.95
       } else if (this.characterClass === 'ランサー') {
         return 1.05
