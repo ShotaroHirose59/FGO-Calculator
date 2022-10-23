@@ -134,35 +134,32 @@ export default {
     },
     // クラス補正値
     classCorrection() {
-      switch (this.characterClass) {
-        case 'セイバー':
-          return 1.0
-        case 'ライダー':
-          return 1.0
-        case 'ムーンキャンサー':
-          return 1.0
-        case 'アルターエゴ':
-          return 1.0
-        case 'フォーリナー':
-          return 1.0
-        case 'プリテンダー':
-          return 1.0
-        case 'アーチャー':
-          return 0.95
-        case 'ランサー':
-          return 1.05
-        case 'キャスター':
-          return 0.9
-        case 'アサシン':
-          return 0.9
-        case 'バーサーカー':
-          return 1.1
-        case 'ルーラー':
-          return 1.1
-        case 'アヴェンジャー':
-          return 1.1
-        default:
-          return 0
+      if (
+        this.characterClass === 'セイバー' ||
+        this.characterClass === 'ライダー' ||
+        this.characterClass === 'アルターエゴ' ||
+        this.characterClass === 'ムーンキャンサー' ||
+        this.characterClass === 'フォーリナー' ||
+        this.characterClass === 'プリテンダー'
+      ) {
+        return 1.0
+      } else if (this.characterClass === 'アーチャー') {
+        return 0.95
+      } else if (this.characterClass === 'ランサー') {
+        return 1.05
+      } else if (
+        this.characterClass === 'キャスター' ||
+        this.characterClass === 'アサシン'
+      ) {
+        return 0.9
+      } else if (
+        this.characterClass === 'バーサーカー' ||
+        this.characterClass === 'ルーラー' ||
+        this.characterClass === 'アヴェンジャー'
+      ) {
+        return 1.1
+      } else {
+        return 1.0
       }
     },
     // 宝具タイプ補正値
