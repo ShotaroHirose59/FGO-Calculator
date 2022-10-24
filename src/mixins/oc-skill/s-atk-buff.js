@@ -18,9 +18,6 @@ export default {
         this.ocSkills.push({
           description: '敵単体に超強力な回避特攻攻撃(200~250%)'
         })
-      } else if (character.name === '渡辺綱') {
-        // this.sAtkBuff += 20
-        this.ocSkills.push({ description: '(魔性)特攻を付与(20~40%)' })
       } else if (character.name === 'モードレッド') {
         // this.sNpAtkBuff += 180
         this.ocSkills.push({
@@ -226,6 +223,9 @@ export default {
       } else if (character.name === '紅閻魔') {
         // this.sAtkBuff += 40
         this.ocSkills.push({ description: '(混沌)特攻を付与(40~60%)' })
+      } else if (character.name === '渡辺綱') {
+        // this.sAtkBuff += 20
+        this.ocSkills.push({ description: '(魔性)特攻を付与(20~40%)' })
       }
     }
   }

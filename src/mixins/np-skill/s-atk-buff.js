@@ -23,16 +23,6 @@ export default {
         this.npSkills.push({
           description: '敵単体に超強力なセイバーのサーヴァント特攻攻撃(200%)'
         })
-      } else if (character.name === '謎のヒロインX〔オルタ〕') {
-        // this.sAtkBuff += 50
-        this.npSkills.push({
-          description: '(善)特攻を付与(50%)'
-        })
-      } else if (character.name === 'モルガン') {
-        // this.sAtkBuff += 50
-        this.npSkills.push({
-          description: '(円卓の騎士)・妖精)特攻を付与(50%)'
-        })
       } else if (character.name === 'ケイローン') {
         // this.sNpAtkBuff += 150
         this.npSkills.push({
@@ -127,6 +117,16 @@ export default {
         this.npSkills.push({
           description:
             '(秩序のサーヴァント・シャドウサーヴァント)特攻を付与(50%)'
+        })
+      } else if (character.name === '謎のヒロインX〔オルタ〕') {
+        // this.sAtkBuff += 50
+        this.npSkills.push({
+          description: '(善)特攻を付与(50%)'
+        })
+      } else if (character.name === 'モルガン') {
+        // this.sAtkBuff += 50
+        this.npSkills.push({
+          description: '(円卓の騎士)・妖精)特攻を付与(50%)'
         })
       } else if (character.name === '曲亭馬琴') {
         // this.sAtkBuff += 30
