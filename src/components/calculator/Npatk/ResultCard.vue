@@ -195,9 +195,10 @@ export default {
     }
   },
   computed: {
-    // 宝具の平均ダメージ 乱数調整1.0倍 (100で割ってる箇所は数値を％として扱っているから)
-    // 0.23はFGOのダメージ処理で必ず入る固定補正値
     averageDamage() {
+      // 固定補正値
+      const FIXED_CORRECTION_NUMBER = 0.23
+
       let npBuff = this.npBuff
       if (this.isNpBoosted) {
         npBuff = npBuff * 2
@@ -206,7 +207,7 @@ export default {
       return Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
-          0.23 *
+          FIXED_CORRECTION_NUMBER *
           (this.cardVal * ((100 + this.cardBuff) / 100)) *
           this.classCompatibility *
           this.attributeCompatibility *
@@ -216,13 +217,21 @@ export default {
           (this.sNpAtkBuff / 100)
       )
     },
-    // 宝具の最小ダメージ 乱数調整0.9倍
+    // 宝具の最小ダメージ
     minimumDamage() {
-      return Math.floor(this.averageDamage * 0.9).toLocaleString()
+      const MINIMUM_RANDOM_NUMBER = 0.9
+
+      return Math.floor(
+        this.averageDamage * MINIMUM_RANDOM_NUMBER
+      ).toLocaleString()
     },
-    // 宝具の最高ダメージ 乱数調整1.099倍
+    // 宝具の最高ダメージ
     maximumDamage() {
-      return Math.floor(this.averageDamage * 1.099).toLocaleString()
+      const MAXIMUM__RANDOM_NUMBER = 1.099
+
+      return Math.floor(
+        this.averageDamage * MAXIMUM__RANDOM_NUMBER
+      ).toLocaleString()
     },
     // クラス補正値
     classCorrection() {

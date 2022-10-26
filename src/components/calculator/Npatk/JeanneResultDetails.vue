@@ -95,13 +95,21 @@ export default {
     }
   },
   computed: {
-    // 宝具の最小ダメージ 乱数調整0.9倍
+    // 宝具の最小ダメージ
     minimumDamage() {
-      return Math.floor(this.averageDamage * 0.9).toLocaleString()
+      const MINIMUM_RANDOM_NUMBER = 0.9
+
+      return Math.floor(
+        this.averageDamage * MINIMUM_RANDOM_NUMBER
+      ).toLocaleString()
     },
-    // 宝具の最高ダメージ 乱数調整1.099倍
+    // 宝具の最高ダメージ
     maximumDamage() {
-      return Math.floor(this.averageDamage * 1.099).toLocaleString()
+      const MAXIMUM__RANDOM_NUMBER = 1.099
+
+      return Math.floor(
+        this.averageDamage * MAXIMUM__RANDOM_NUMBER
+      ).toLocaleString()
     }
   }
 }
