@@ -115,11 +115,6 @@ export default {
       // 固定補正値
       const FIXED_CORRECTION_NUMBER = 0.23
 
-      let npBuff = this.npBuff
-      if (this.isNpBoosted) {
-        npBuff = npBuff * 2
-      }
-
       return Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
@@ -129,9 +124,14 @@ export default {
           this.attributeCompatibility *
           this.classCorrection *
           ((100 + this.atkBuff) / 100) *
-          ((100 + this.sAtkBuff + npBuff) / 100) *
+          ((100 + this.sAtkBuff + this.actualNpBuff) / 100) *
           (this.sNpAtkBuff / 100)
       )
+    },
+    actualNpBuff() {
+      if (this.isNpBoosted) return this.npBuff * 2
+
+      return this.npBuff
     },
     // クラス補正値
     classCorrection() {
