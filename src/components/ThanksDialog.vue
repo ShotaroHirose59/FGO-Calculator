@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isDisplay" scrollable max-width="800">
+  <v-dialog v-model="isOpen" scrollable max-width="800">
     <v-card>
       <client-only>
         <v-toolbar v-if="!$vuetify.breakpoint.xs" height="56" class="mb-8">
@@ -50,7 +50,7 @@ export default {
     return {
       image_src: require('assets/jeannearuta.png'),
       image_src2: require('assets/altria.png'),
-      isDisplay: false
+      isOpen: false
     }
   }
 }

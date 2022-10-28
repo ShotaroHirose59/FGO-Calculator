@@ -86,9 +86,14 @@ export default {
         feedback: this.feedback,
         created: serverTimestamp()
       })
-      this.feedback.opinion = ''
-      this.feedback.terminal = 'スマートフォン'
-      this.$refs.dlg.isDisplay = true // ダイアログ表示
+      this.openThanksDisplay()
+      this.initFeedbackData()
+    },
+    initFeedbackData() {
+      this.feedback = { opinion: '', terminal: 'スマートフォン' }
+    },
+    openThanksDisplay() {
+      this.$refs.dlg.isOpen = true
     }
   },
   head() {
