@@ -605,7 +605,7 @@ export default {
         { text: '+2000', value: 2000 },
         { text: 'なし', value: 0 }
       ],
-      npChargeLv: 0, // 選択された宝具レベル
+      npChargeLv: 1, // 選択された宝具レベル
       atkBuff: 0, // 攻撃力バフ倍率
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
@@ -1045,7 +1045,7 @@ export default {
     resetBuffSystem() {
       this.fou = 1000
       this.characterAtk = 0
-      this.npChargeLv = 0
+      this.npChargeLv = 1
       this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
@@ -1078,7 +1078,7 @@ export default {
       this.fou = 1000
       this.selectedLv = 0
       this.characterAtk = 0
-      this.npChargeLv = 0
+      this.npChargeLv = 1
       this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
