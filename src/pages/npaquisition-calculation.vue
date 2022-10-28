@@ -65,7 +65,6 @@
               v-model="servantNpType"
               label="宝具"
               :items="selectServantNpType"
-              :disabled="!characterName"
               class="mr-4"
               color="teal"
             ></v-select>
@@ -76,7 +75,6 @@
               v-model="selectingOcUpPrcentage"
               label="OC"
               :items="selectableOcUpPrcentages"
-              :disabled="!characterName"
               class="mr-4"
               color="teal"
             ></v-select>
@@ -192,7 +190,6 @@
               v-model.number="enemyCount"
               label="敵の数"
               :items="items.selectEnemyCount"
-              :disabled="!characterName"
               class="mr-4"
               color="teal"
             ></v-select>

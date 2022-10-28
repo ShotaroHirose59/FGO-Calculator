@@ -96,7 +96,6 @@
               v-model="fou"
               label="フォウくん"
               :items="selectFou"
-              :disabled="!characterName"
               class="mr-3"
               color="teal"
             ></v-select>
@@ -107,7 +106,6 @@
               v-model="servantNpType"
               label="宝具"
               :items="selectServantNpType"
-              :disabled="!characterName"
               class="mr-3"
               color="teal"
             ></v-select>
@@ -136,7 +134,6 @@
               v-model="npChargeLv"
               label="宝具Lv."
               :items="items.npChargeLevel"
-              :disabled="!characterName"
               class="mr-3"
               color="teal"
               @change="onChangeNpmultiplier(npChargeLv)"
@@ -148,7 +145,6 @@
               v-model="selectingOcUpPrcentage"
               label="OC"
               :items="selectableOcUpPrcentages"
-              :disabled="!characterName"
               class="mr-3"
               color="teal"
             ></v-select>
