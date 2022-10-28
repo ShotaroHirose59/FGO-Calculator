@@ -555,15 +555,15 @@ export default {
   data() {
     return {
       characters: [],
-      characterClass: '', // 選択されたクラス
-      characterName: '', // 選択されたキャラクター
-      atk: [], // キャラクターの攻撃力の配列
+      characterClass: '',
+      characterName: '',
+      atk: [],
       selectableLv: [90, 100, 110, 120],
       selectedLv: 0,
-      characterAtk: 0, // 配列から取得したサーヴァントの攻撃力
-      npmultiplier: [], // キャラクターの宝具倍率の配列
-      characterNpmultiplier: 0, // 配列から取り出したサーヴァントの宝具倍率
-      servantNpType: '', // キャラクターの宝具タイプ
+      characterAtk: 0,
+      npmultiplier: [],
+      characterNpmultiplier: 0,
+      servantNpType: '',
       selectServantNpType: ['Buster', 'Arts', 'Quick'],
       items: {
         class: [
@@ -584,16 +584,16 @@ export default {
         filterableRarities: [1, 2, 3, 4, 5],
         filterableServantNpType: ['Buster', 'Arts', 'Quick'],
         filterableServantNpEffect: ['全体宝具', '単体宝具'],
-        npChargeLevel: [1, 2, 3, 4, 5] // 宝具レベルの選択肢
+        npChargeLevel: [1, 2, 3, 4, 5]
       },
-      classCompatibility: 2.0, // クラス相性補正 デフォルトでselectClassCompatibilityを'有利'にする
+      classCompatibility: 2.0,
       selectClassCompatibility: [
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 2.0 },
         { text: '不利', value: 0.5 },
         { text: '狂・分・詐 有利', value: 1.5 }
       ],
-      attributeCompatibility: 1.0, // 属性相性補正デフォルトでselectAttributeCompatibilityを'等倍'にする
+      attributeCompatibility: 1.0,
       selectAttributeCompatibility: [
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 1.1 },
@@ -605,7 +605,7 @@ export default {
         { text: '+2000', value: 2000 },
         { text: 'なし', value: 0 }
       ],
-      npChargeLv: 1, // 選択された宝具レベル
+      npChargeLv: 1,
       atkBuff: 0, // 攻撃力バフ倍率
       cardBuff: 0, // カードバフ倍率
       sAtkBuff: 0, // 特攻バフ倍率 (special atk buff)
@@ -613,8 +613,8 @@ export default {
       sNpAtkBuff: 100, // 特攻宝具バフ倍率 (special noble phantasm atk buff)
       dressAtk: 0, // 概念礼装のATK
       characterRarity: null,
-      isEventCharacter: false, // イベントで特攻が付与されるサーヴァントかどうか
-      isNpBuffEventCharacter: false, // イベントで宝具威力がバフされるサーヴァントかどうか
+      isEventCharacter: false,
+      isNpBuffEventCharacter: false,
       classSkills: [
         {
           name: '',
@@ -729,16 +729,15 @@ export default {
     })
   },
   methods: {
-    // 選択されたキャラクターが持つ値を代入
     onChangeVal(characterName) {
       const character = this.characters.find(
         (character) => character.name === characterName
       )
       this.resetBuffSystem()
-      this.atk = character.atk // 「攻撃力」を一旦配列で取得
-      this.characterAtk = this.atk[0] // デフォルトの攻撃力
-      this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で代入
-      this.setInitialNpChargeLv(character) // 初期「宝具レベル」と宝具倍率を設定
+      this.atk = character.atk
+      this.characterAtk = this.atk[0]
+      this.npmultiplier = character.npmultiplier
+      this.setInitialNpChargeLv(character)
       this.characterRarity = character.rarity
       this.setSelectableLv(this.characterRarity)
       this.selectedLv = this.selectableLv[0]
@@ -858,7 +857,6 @@ export default {
           break
       }
     },
-    // 選択されたキャラクターの「宝具タイプ」を返す。
     setNpType(character) {
       switch (character.card) {
         case 'B':
@@ -872,7 +870,6 @@ export default {
           break
       }
     },
-    // クラス相性の設定
     setClassCompatibility(character) {
       if (
         character.class === 'ルーラー' ||
@@ -1013,7 +1010,6 @@ export default {
       }
       this.onChangeNpmultiplier(this.npChargeLv)
     },
-    // キャラクターが持つ「宝具倍率」は「宝具レベル」によって変更される
     onChangeNpmultiplier(npChargeLv) {
       switch (npChargeLv) {
         case 1:

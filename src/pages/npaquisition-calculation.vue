@@ -335,12 +335,12 @@ export default {
   data() {
     return {
       characters: [],
-      characterClass: '', // 選択されたクラス
-      characterName: '', // 選択されたキャラクター
-      servantNpType: '', // キャラクターの宝具タイプ
+      characterClass: '',
+      characterName: '',
+      servantNpType: '',
       selectServantNpType: ['Arts', 'Quick', 'Buster'],
-      npRate: 0, // NPレート
-      npHits: 0, // 宝具ヒット回数
+      npRate: 0,
+      npHits: 0,
       overkillHits: 0,
       items: {
         class: [
@@ -365,7 +365,7 @@ export default {
           '1.1（騎）',
           '1.2（術・月）'
         ],
-        selectEnemyCount: [1, 2, 3, 4, 5, 6], // 敵の数
+        selectEnemyCount: [1, 2, 3, 4, 5, 6],
         filterableRarities: [1, 2, 3, 4, 5],
         filterableServantNpType: ['Arts', 'Quick'],
         filterableServantNpEffect: ['全体宝具', '単体宝具']
@@ -442,7 +442,6 @@ export default {
       })
   },
   methods: {
-    // 選択されたキャラクターが持つ値を代入
     onChangeVal(characterName) {
       const character = this.characters.find(
         (character) => character.name === characterName
