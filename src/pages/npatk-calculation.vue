@@ -66,7 +66,7 @@
             <v-select
               v-model="selectedLv"
               label="Lv."
-              :items="selectLv"
+              :items="selectableLv"
               :disabled="!characterName"
               class="mr-3"
               color="teal"
@@ -563,7 +563,7 @@ export default {
       characterClass: '', // 選択されたクラス
       characterName: '', // 選択されたキャラクター
       atk: [], // キャラクターの攻撃力の配列
-      selectLv: [90, 100, 110, 120],
+      selectableLv: [90, 100, 110, 120],
       selectedLv: 0,
       characterAtk: 0, // 配列から取得したサーヴァントの攻撃力
       npmultiplier: [], // キャラクターの宝具倍率の配列
@@ -745,7 +745,8 @@ export default {
       this.npmultiplier = character.npmultiplier // 「宝具倍率」を一旦配列で代入
       this.setInitialNpChargeLv(character) // 初期「宝具レベル」と宝具倍率を設定
       this.characterRarity = character.rarity
-      this.setSelectLv(this.characterRarity)
+      this.setSelectableLv(this.characterRarity)
+      this.selectedLv = this.selectableLv[0]
       this.setNpType(character)
       this.setClassCompatibility(character)
 
@@ -840,28 +841,27 @@ export default {
       }
       this.setEventCharacterBuff(character)
     },
-    setSelectLv(characterRarity) {
+    setSelectableLv(characterRarity) {
       switch (characterRarity) {
         case 0:
-          this.selectLv = [65, 70, 80, 90, 100, 110, 120]
+          this.selectableLv = [65, 70, 80, 90, 100, 110, 120]
           break
         case 1:
-          this.selectLv = [60, 70, 80, 90, 100, 110, 120]
+          this.selectableLv = [60, 70, 80, 90, 100, 110, 120]
           break
         case 2:
-          this.selectLv = [65, 70, 80, 90, 100, 110, 120]
+          this.selectableLv = [65, 70, 80, 90, 100, 110, 120]
           break
         case 3:
-          this.selectLv = [70, 80, 90, 100, 110, 120]
+          this.selectableLv = [70, 80, 90, 100, 110, 120]
           break
         case 4:
-          this.selectLv = [80, 90, 100, 110, 120]
+          this.selectableLv = [80, 90, 100, 110, 120]
           break
         case 5:
-          this.selectLv = [90, 100, 110, 120]
+          this.selectableLv = [90, 100, 110, 120]
           break
       }
-      this.selectedLv = this.selectLv[0]
     },
     // 選択されたキャラクターの「宝具タイプ」を返す。
     setNpType(character) {
