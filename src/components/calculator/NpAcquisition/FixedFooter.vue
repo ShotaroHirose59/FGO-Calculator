@@ -3,7 +3,7 @@
     <v-row no-gutters>
       <v-col cols="8">
         <v-progress-linear
-          :value="totalAcquisitionAmount"
+          :value="acquisitionAmountResult"
           rounded
           color="yellow darken-2"
           height="10"
@@ -11,7 +11,7 @@
           class="mt-4 mb-2"
         ></v-progress-linear>
         <strong class="mt-1">
-          NP {{ totalAcquisitionAmount }}％
+          NP {{ acquisitionAmountResult }}％
           <span v-if="npRecharge > 0" style="font-size: 14px">
             + リチャージ {{ npRecharge }}％
           </span>
@@ -75,14 +75,14 @@ export default {
     }
   },
   computed: {
-    totalAcquisitionAmount() {
-      const result = Math.floor(this.acquisitionAmount)
-      if (this.shouldForceMax(result)) return 100
+    acquisitionAmountResult() {
+      const calcResult = Math.floor(this.calculatedAcquisitionAmount)
+      if (this.shouldForceMax(calcResult)) return 100
 
-      return result
+      return calcResult
     },
-    acquisitionAmount() {
-      const base = Math.floor(
+    calculatedAcquisitionAmount() {
+      const calcBase = Math.floor(
         100 *
           this.npRate *
           this.cardVal *
@@ -90,21 +90,21 @@ export default {
           ((100 + this.npAcquisitionBuff) / 100) *
           this.enemyClassCorrection
       )
-      const result =
-        ((base * (this.npHits + 0.5 * this.overkillHits)) / 100) *
+      const calcResult =
+        ((calcBase * (this.npHits + 0.5 * this.overkillHits)) / 100) *
         this.enemyCount
 
       if (this.characterName === '水着宇津見エリセ') {
-        return result + 4.2
+        return calcResult + 4.2
       } else if (this.characterName === '水着カーマ') {
-        return result + 3.8
+        return calcResult + 3.8
       } else if (
         this.characterName === 'スペースイシュタル' ||
         this.characterName === 'ヘシアン･ロボ'
       ) {
-        return result + 3.5
+        return calcResult + 3.5
       } else if (this.characterName === 'サリエリ') {
-        return result + 3.3
+        return calcResult + 3.3
       } else if (
         this.characterName === 'ディオスクロイ' ||
         this.characterName === '水着イリヤ' ||
@@ -112,11 +112,11 @@ export default {
         this.characterName === '平景清' ||
         this.characterName === '謎の蘭丸X'
       ) {
-        return result + 3
+        return calcResult + 3
       } else if (this.characterName === 'アンリマユ') {
-        return result + 2
+        return calcResult + 2
       } else {
-        return result
+        return calcResult
       }
     },
     // 宝具タイプ補正値

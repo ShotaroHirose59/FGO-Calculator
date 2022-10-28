@@ -16,7 +16,7 @@ export default {
       type: String,
       required: true
     },
-    totalAcquisitionAmount: {
+    acquisitionAmountResult: {
       type: Number,
       required: true
     }
@@ -52,17 +52,17 @@ export default {
           case 'メディア':
             return '自身のNPを20~100リチャージだ'
         }
-        if (this.totalAcquisitionAmount >= 100) {
+        if (this.acquisitionAmountResult >= 100) {
           return '『約束された勝利の剣』！！'
-        } else if (this.totalAcquisitionAmount >= 70) {
+        } else if (this.acquisitionAmountResult >= 70) {
           return '褒めてやる。良い数値だ'
-        } else if (this.totalAcquisitionAmount >= 50) {
+        } else if (this.acquisitionAmountResult >= 50) {
           return '連発できそうだな。'
-        } else if (this.totalAcquisitionAmount >= 30) {
+        } else if (this.acquisitionAmountResult >= 30) {
           return 'オーバーキルで数値が伸びるぞ'
-        } else if (this.totalAcquisitionAmount >= 20) {
+        } else if (this.acquisitionAmountResult >= 20) {
           return 'スキルで数値を伸ばせ。'
-        } else if (this.totalAcquisitionAmount >= 10) {
+        } else if (this.acquisitionAmountResult >= 10) {
           return '張り合いのない。'
         } else {
           return 'いい機会だ、教育してやる' // default
