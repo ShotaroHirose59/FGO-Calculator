@@ -1042,7 +1042,7 @@ export default {
       }
     },
     openDisplay() {
-      this.$refs.dlg.isDisplay = true
+      this.$refs.dlg.isOpen = true
     },
     openSkillDisplay() {
       this.$refs.skillDlg.isOpen = true

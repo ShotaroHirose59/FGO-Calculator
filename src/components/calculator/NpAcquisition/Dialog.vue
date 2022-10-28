@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="isDisplay"
+    v-model="isOpen"
     scrollable
     max-width="1200px"
     :fullscreen="$vuetify.breakpoint.xsOnly"
@@ -14,7 +14,7 @@
             v-if="$vuetify.breakpoint.xs"
             class="mr-2"
             large
-            @click="isDisplay = false"
+            @click="isOpen = false"
           >
             mdi-chevron-left
           </v-icon>
@@ -109,7 +109,7 @@
             color="red"
             text
             style="font-size: 16px;"
-            @click="isDisplay = false"
+            @click="isOpen = false"
           >
             Close
           </v-btn>
@@ -123,7 +123,7 @@
 export default {
   data() {
     return {
-      isDisplay: false
+      isOpen: false
     }
   }
 }
