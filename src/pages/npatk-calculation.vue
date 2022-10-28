@@ -70,7 +70,7 @@
               :disabled="!characterName"
               class="mr-3"
               color="teal"
-              @change="onChangeLv(selectedLv)"
+              @change="onChangeAtkByLv(selectedLv)"
             ></v-select>
           </v-col>
 
@@ -896,7 +896,7 @@ export default {
         this.classCompatibility = 2.0
       }
     },
-    onChangeLv(selectedLv) {
+    onChangeAtkByLv(selectedLv) {
       if (this.characterRarity === 5) {
         if (selectedLv === 90) {
           this.characterAtk = this.atk[0]
