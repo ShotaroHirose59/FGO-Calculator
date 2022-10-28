@@ -398,7 +398,7 @@
               cols="6"
               style="text-align: center;"
             >
-              <v-btn color="error" outlined @click="resetAll()">
+              <v-btn color="error" outlined @click="onResetData()">
                 リセット
               </v-btn>
             </v-col>
@@ -429,7 +429,7 @@
         :np-skills="npSkills"
         :oc-skills="ocSkills"
         :is-np-boosted="isNpBoosted"
-        @reset-val="resetAll"
+        @reset-data="onResetData"
       />
       <!-- スマホの場合のみ、固定フッター用意 -->
       <FixedFooter
@@ -450,7 +450,6 @@
         :is-np-boosted="isNpBoosted"
         :class-compatibility="classCompatibility"
         :attribute-compatibility="attributeCompatibility"
-        @reset-val="resetAll"
       />
     </client-only>
   </v-row>
@@ -1076,7 +1075,7 @@ export default {
         this.attributeCompatibility = 1.0
       }
     },
-    resetAll() {
+    onResetData() {
       this.characterClass = ''
       this.characterName = ''
       this.atk = []

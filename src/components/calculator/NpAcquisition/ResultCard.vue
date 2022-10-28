@@ -216,7 +216,7 @@ export default {
       this.$refs.skillDlg.isOpen = true
     },
     reset() {
-      this.$emit('reset-val')
+      this.$emit('reset-data')
     }
   }
 }

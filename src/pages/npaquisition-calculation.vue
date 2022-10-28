@@ -222,7 +222,9 @@
               class="mt-8"
               style="text-align: center;"
             >
-              <v-btn color="error" outlined @click="resetAll()">リセット</v-btn>
+              <v-btn color="error" outlined @click="onResetData()">
+                リセット
+              </v-btn>
             </v-col>
           </client-only>
         </v-row>
@@ -246,7 +248,7 @@
         :np-skills="npSkills"
         :oc-skills="ocSkills"
         :np-recharge="npRecharge"
-        @reset-val="resetAll"
+        @reset-data="onResetData"
       />
       <!-- スマホの場合、固定フッター用意 -->
       <FixedFooter
@@ -261,7 +263,6 @@
         :enemy-count="enemyCount"
         :np-acquisition-buff="npAcquisitionBuff"
         :np-recharge="npRecharge"
-        @reset-val="resetAll"
       />
     </client-only>
   </v-row>
@@ -552,7 +553,7 @@ export default {
       this.hadSelectedOcUpPrcentage = null
       this.npRecharge = 0
     },
-    resetAll() {
+    onResetData() {
       this.characterClass = ''
       this.characterName = ''
       this.servantNpType = ''
