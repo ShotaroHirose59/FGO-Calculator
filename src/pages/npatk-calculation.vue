@@ -833,7 +833,8 @@ export default {
       ) {
         this.setClassSkillSAtkBuff(character)
       }
-      this.setEventCharacterBuff(character)
+      // イベント特攻
+      // this.setEventCharacterBuff(character)
     },
     setSelectableLv(characterRarity) {
       switch (characterRarity) {
