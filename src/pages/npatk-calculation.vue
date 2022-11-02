@@ -1012,6 +1012,11 @@ export default {
       this.onChangeNpmultiplier(this.npChargeLv)
     },
     onChangeNpmultiplier(npChargeLv) {
+      if (this.npmultiplier.length === 0) {
+        this.characterNpmultiplier = 0
+        return
+      }
+
       switch (npChargeLv) {
         case 1:
           this.characterNpmultiplier = this.npmultiplier[0]
