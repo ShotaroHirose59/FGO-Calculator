@@ -1076,6 +1076,7 @@ export default {
       this.selectedLv = 0
       this.characterAtk = 0
       this.npChargeLv = 1
+      this.npmultiplier = []
       this.characterNpmultiplier = 0
       this.servantNpType = ''
       this.atkBuff = 0
