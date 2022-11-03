@@ -99,7 +99,6 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/google-analytics',
-    'nuxt-logrocket',
     [
       '@nuxtjs/google-gtag',
       {
@@ -110,10 +109,6 @@ export default {
   ],
   googleAnalytics: {
     id: 'UA-165731113-1'
-  },
-  logRocket: {
-    logRocketId: '3zrbyr/fgo-calculator',
-    devModeAllowed: false
   },
   manifest: {
     name: 'FGO Calculator',
@@ -169,12 +164,6 @@ export default {
         _: 'lodash'
       })
     ],
-    transpile: ['vee-validate/dist/rules'],
-    // Though the "loose" option was set to "false"...の暫定対応
-    babel: {
-      presets({ isServer }, [preset, options]) {
-        options.loose = true
-      }
-    }
+    transpile: ['vee-validate/dist/rules']
   }
 }
