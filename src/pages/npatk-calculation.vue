@@ -647,22 +647,19 @@ export default {
     servantNpType() {
       if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
         this.npmultiplier = [600, 750, 825, 862, 900]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
       } else if (
         this.characterName === 'エミヤ' &&
         this.servantNpType === 'Buster'
       ) {
         this.npmultiplier = [400, 500, 550, 575, 600]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
       } else if (
         this.characterName === 'メリュジーヌ' &&
         this.servantNpType === 'Buster'
       ) {
         this.npmultiplier = [300, 400, 450, 475, 500]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
         // Note: BusterとArtsでOC効果が違うため
         this.hadSelectedOcUpPrcentage = null
         this.cardBuff = 0
@@ -672,8 +669,7 @@ export default {
         this.servantNpType === 'Arts'
       ) {
         this.npmultiplier = [900, 1200, 1350, 1425, 1500]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
         // Note: BusterとArtsでOC効果が違うため
         this.ocSkills = []
         this.cardBuff = 9
@@ -682,22 +678,19 @@ export default {
         this.servantNpType === 'Buster'
       ) {
         this.npmultiplier = [300, 400, 450, 475, 500]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
       } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Quick'
       ) {
         this.npmultiplier = [600, 800, 900, 950, 1000]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
       } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Arts'
       ) {
         this.npmultiplier = [450, 600, 675, 712, 750]
-        this.characterNpmultiplier = this.npmultiplier[0]
-        this.npChargeLv = 1
+        this.onChangeNpmultiplier(this.npChargeLv)
       }
     },
     selectingOcUpPrcentage() {
