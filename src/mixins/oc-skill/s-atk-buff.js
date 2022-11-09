@@ -208,6 +208,11 @@ export default {
         this.ocSkills.push({
           description: '敵単体に超強力なやけど特攻攻撃(150~200%)'
         })
+      } else if (character.name === 'ブリトマート') {
+        // this.sNpAtkBuff += 150
+        this.ocSkills.push({
+          description: '敵全体に強力な(ライダー)特攻攻撃(150~200%)'
+        })
       } else if (
         character.name === '清少納言' ||
         character.name === '水着清少納言'

@@ -44,7 +44,8 @@ export default {
         character.name === 'ヴラド三世' ||
         character.name === '水着伊吹童子' ||
         character.name === 'ジナコ' ||
-        character.name === 'ヘファイスティオン'
+        character.name === 'ヘファイスティオン' ||
+        character.name === 'ブリトマート'
       ) {
         this.npAcquisitionBuff += 30
         this.possessionSkills.push({ description: 'NP獲得量アップ(30%)' })

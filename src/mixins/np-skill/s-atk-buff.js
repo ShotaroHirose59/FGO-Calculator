@@ -128,6 +128,11 @@ export default {
         this.npSkills.push({
           description: '(円卓の騎士)・妖精)特攻を付与(50%)'
         })
+      } else if (character.name === 'ブリトマート') {
+        // this.sAtkBuff += 50
+        this.npSkills.push({
+          description: '(騎乗スキル)特攻状態を付与(50%)'
+        })
       } else if (character.name === '曲亭馬琴') {
         // this.sAtkBuff += 30
         this.npSkills.push({ description: '(魔性)特攻を付与(30%)' })
