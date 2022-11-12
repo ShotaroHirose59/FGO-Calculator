@@ -1,5 +1,5 @@
 <template>
-  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="72" elevation="24">
     <v-row no-gutters>
       <v-col cols="8">
         <v-progress-linear
@@ -157,3 +157,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-footer {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.12);
+}
+</style>

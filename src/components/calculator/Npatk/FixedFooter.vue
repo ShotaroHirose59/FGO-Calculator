@@ -1,43 +1,59 @@
 <template>
-  <v-footer app fixed height="72" color="grey darken-4" elevation="24">
+  <v-footer app fixed height="64" elevation="24">
     <v-row no-gutters>
-      <v-col cols="3">
+      <!-- <v-col cols="3">
         <v-img
           :src="image_src"
           width="56"
           @click="displayJeanneDetails()"
         ></v-img>
-      </v-col>
-      <v-col cols="6" style="text-align: center;">
+      </v-col> -->
+      <v-col cols="4" style="text-align: center;">
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-subtitle>TOTAL</v-list-item-subtitle>
-            <h2>{{ averageDamage.toLocaleString() }}</h2>
+            <v-list-item-subtitle>最小</v-list-item-subtitle>
+            <h4 class="damage-text">{{ minimumDamage }}</h4>
           </v-list-item-content>
         </v-list-item>
       </v-col>
-      <v-col cols="3">
-        <v-img :src="image_src2" width="56" class="ml-8"></v-img>
+      <v-col cols="4" style="text-align: center;">
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-subtitle>平均</v-list-item-subtitle>
+            <h4 class="damage-text">{{ averageDamage.toLocaleString() }}</h4>
+          </v-list-item-content>
+        </v-list-item>
       </v-col>
+      <v-col cols="4" style="text-align: center;">
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-subtitle>最大</v-list-item-subtitle>
+            <h4 class="damage-text">{{ maximumDamage }}</h4>
+          </v-list-item-content>
+        </v-list-item>
+      </v-col>
+      <!-- <v-col cols="3">
+        <v-img :src="image_src2" width="56" class="ml-8"></v-img>
+      </v-col> -->
 
       <!-- 結果の詳細-->
-      <JeanneResultDetails
+      <!-- <JeanneResultDetails
         ref="DetailsJ"
         :character-name="characterName"
         :servant-np-type="servantNpType"
         :average-damage="averageDamage"
-      />
+      /> -->
     </v-row>
   </v-footer>
 </template>
 
 <script>
-import JeanneResultDetails from '@/components/calculator/Npatk/JeanneResultDetails'
+// import JeanneResultDetails from '@/components/calculator/Npatk/JeanneResultDetails'
 
 export default {
-  components: {
-    JeanneResultDetails
-  },
+  // components: {
+  //   JeanneResultDetails
+  // },
   props: {
     characterClass: {
       type: String,
@@ -111,6 +127,22 @@ export default {
     }
   },
   computed: {
+    // 宝具の最小ダメージ
+    minimumDamage() {
+      const MINIMUM_RANDOM_NUMBER = 0.9
+
+      return Math.floor(
+        this.averageDamage * MINIMUM_RANDOM_NUMBER
+      ).toLocaleString()
+    },
+    // 宝具の最高ダメージ
+    maximumDamage() {
+      const MAXIMUM__RANDOM_NUMBER = 1.099
+
+      return Math.floor(
+        this.averageDamage * MAXIMUM__RANDOM_NUMBER
+      ).toLocaleString()
+    },
     averageDamage() {
       // 固定補正値
       const FIXED_CORRECTION_NUMBER = 0.23
@@ -176,11 +208,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.v-footer {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.12);
+}
 .v-list-item__content {
   padding: 4px 0;
 }
 .v-list-item__subtitle {
   font-size: 0.7rem;
+}
+.damage-text {
+  font-size: 18px;
+  @media screen and (max-width: 393px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 14px;
+  }
 }
 </style>
