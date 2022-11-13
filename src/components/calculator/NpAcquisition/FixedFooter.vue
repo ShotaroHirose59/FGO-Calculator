@@ -19,7 +19,12 @@
       </v-col>
 
       <v-col cols="4">
-        <v-img :src="image_src" width="56" class="ml-8"></v-img>
+        <v-img
+          :src="image_src"
+          width="56"
+          class="ml-8"
+          style="touch-action: none"
+        />
       </v-col>
     </v-row>
   </v-footer>
