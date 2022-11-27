@@ -180,7 +180,8 @@ export default {
         character.name === '壱与' ||
         character.name === 'ネモ' ||
         character.name === '闇のコヤンスカヤ' ||
-        character.name === '九紋竜エリザ'
+        character.name === '九紋竜エリザ' ||
+        character.name === 'シバの女王'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })
@@ -202,9 +203,6 @@ export default {
       ) {
         this.atkBuff += 18
         this.possessionSkills.push({ description: '攻撃力アップ(18%)' })
-      } else if (character.name === 'シバの女王') {
-        this.atkBuff = 17.8
-        this.possessionSkills.push({ description: '攻撃力アップ(17.8%)' })
       } else if (
         character.name === 'ドレイク' ||
         character.name === '坂本龍馬' ||
