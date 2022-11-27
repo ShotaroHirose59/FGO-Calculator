@@ -85,6 +85,7 @@
                 label="ATK"
                 :error-messages="errors"
                 type="number"
+                inputmode="numeric"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -123,6 +124,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -173,6 +175,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -198,6 +201,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -228,6 +232,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 :class="{ 'event-buff-label': isEventCharacter }"
                 color="teal"
@@ -259,6 +264,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 :class="{ 'event-buff-label': isNpBuffEventCharacter }"
                 color="teal"
@@ -290,6 +296,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -324,6 +331,7 @@
                 label="礼装ATK"
                 :error-messages="errors"
                 type="number"
+                inputmode="numeric"
                 class="mr-4"
                 color="teal"
               ></v-text-field>

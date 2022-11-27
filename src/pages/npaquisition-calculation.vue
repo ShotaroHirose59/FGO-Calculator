@@ -92,6 +92,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -122,6 +123,7 @@
                 suffix="％"
                 :error-messages="errors"
                 type="number"
+                inputmode="decimal"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
@@ -152,6 +154,7 @@
                 suffix="hit"
                 :error-messages="errors"
                 type="number"
+                inputmode="numeric"
                 class="mr-4"
                 color="teal"
               ></v-text-field>
