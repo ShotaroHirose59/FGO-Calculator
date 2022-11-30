@@ -166,7 +166,7 @@ export default {
       } else if (
         this.characterName === 'ディオスクロイ' ||
         this.characterName === '水着イリヤ' ||
-        this.characterName === '巌窟王' ||
+        this.characterName === '巌窟王エドモン・ダンテス' ||
         this.characterName === '平景清' ||
         this.characterName === '謎の蘭丸X'
       ) {

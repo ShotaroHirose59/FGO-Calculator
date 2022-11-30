@@ -28,7 +28,7 @@ export default {
         })
       } else if (
         character.name === 'ディオスクロイ' ||
-        character.name === '巌窟王' ||
+        character.name === '巌窟王エドモン・ダンテス' ||
         character.name === '平景清'
       ) {
         this.classSkills.push({

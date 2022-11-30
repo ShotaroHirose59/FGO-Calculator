@@ -18,7 +18,7 @@ export default {
         character.name === '謎のアルターエゴ・Λ' ||
         character.name === '水着ネロ' ||
         character.name === '坂田金時' ||
-        character.name === '巌窟王' ||
+        character.name === '巌窟王エドモン・ダンテス' ||
         character.name === 'ゴルゴーン' ||
         character.name === '謎のヒロインXX'
       ) {
