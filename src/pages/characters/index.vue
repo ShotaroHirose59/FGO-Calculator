@@ -10,7 +10,7 @@
       <v-row no-gutters>
         <v-col cols="12" sm="12" md="12">
           <v-text-field
-            v-model="search"
+            v-model="searchText"
             label="サーヴァント名"
             class="ml-4 mr-4"
             prepend-inner-icon="mdi-magnify"
