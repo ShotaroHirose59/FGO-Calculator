@@ -19,7 +19,7 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <div v-if="searchText !== ''">
+      <div v-if="shouldUseFuse">
         <v-list disabled>
           <v-list-item-group
             v-for="character in searchedCharacters"
@@ -85,12 +85,25 @@ export default {
       const fuse = new Fuse(this.characters, this.fuseJsOptions)
       const searchedCharactersByfuse = fuse.search(this.hiraToKata)
 
-      return this.searchText !== '' ? searchedCharactersByfuse : this.characters
+      if (this.shouldUseFuse) {
+        return searchedCharactersByfuse
+      } else {
+        return this.characters.filter((character) =>
+          character.name.includes(this.searchText)
+        )
+      }
     },
     hiraToKata() {
       return this.searchText.replace(/[\u3041-\u3096]/g, (ch) =>
         String.fromCharCode(ch.charCodeAt(0) + 0x60)
       )
+    },
+    shouldUseFuse() {
+      if (this.searchText !== '' && !this.isKanji(this.searchText)) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   async created() {
@@ -102,7 +115,12 @@ export default {
       return { ...doc.data() }
     })
   },
-  methods: {},
+  methods: {
+    isKanji(text) {
+      const regexp = /([\u{3005}\u{3007}\u{303B}\u{3400}-\u{9FFF}\u{F900}-\u{FAFF}\u{20000}-\u{2FFFF}][\u{E0100}-\u{E01EF}\u{FE00}-\u{FE02}]?)/mu
+      return regexp.test(text)
+    }
+  },
   head() {
     return {
       titleTemplate: null,
