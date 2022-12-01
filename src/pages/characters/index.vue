@@ -83,9 +83,9 @@ export default {
   computed: {
     searchedCharacters() {
       const fuse = new Fuse(this.characters, this.fuseJsOptions)
-      const result = fuse.search(this.hiraToKata)
+      const searchedCharactersByfuse = fuse.search(this.hiraToKata)
 
-      return this.searchText !== '' ? result : this.characters
+      return this.searchText !== '' ? searchedCharactersByfuse : this.characters
     },
     hiraToKata() {
       return this.searchText.replace(/[\u3041-\u3096]/g, (ch) =>
