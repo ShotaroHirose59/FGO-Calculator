@@ -19,10 +19,30 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <div>
+      <div v-if="searchText !== ''">
         <v-list disabled>
           <v-list-item-group
-            v-for="character in searchCharacters"
+            v-for="character in searchedCharacters"
+            :key="character.item.id"
+            color="primary"
+          >
+            <v-list-item two-line>
+              <v-list-item-content>
+                <v-list-item-title>{{ character.item.name }}</v-list-item-title>
+                <v-list-item-subtitle class="caption">
+                  {{ character.item.kanaName }}
+                </v-list-item-subtitle>
+              </v-list-item-content>
+              <div>No. {{ character.item.number }}</div>
+            </v-list-item>
+            <v-divider />
+          </v-list-item-group>
+        </v-list>
+      </div>
+      <div v-else>
+        <v-list disabled>
+          <v-list-item-group
+            v-for="character in searchedCharacters"
             :key="character.id"
             color="primary"
           >
@@ -30,8 +50,7 @@
               <v-list-item-content>
                 <v-list-item-title>{{ character.name }}</v-list-item-title>
                 <v-list-item-subtitle class="caption">
-                  ★{{ character.rarity }} / {{ character.class }} /
-                  {{ character.attribute }}
+                  {{ character.kanaName }}
                 </v-list-item-subtitle>
               </v-list-item-content>
               <div>No. {{ character.number }}</div>
@@ -46,36 +65,31 @@
 
 <script>
 import { getDocs, collection, query, orderBy } from 'firebase/firestore/lite'
+import Fuse from 'fuse.js'
 import db from '../../plugins/firebase'
 export default {
   data() {
     return {
       characters: [],
-      search: '',
+      searchText: '',
       selectedClass: '',
-      items: {
-        class: [
-          'ALL',
-          'セイバー',
-          'アーチャー',
-          'ランサー',
-          'ライダー',
-          'キャスター',
-          'アサシン',
-          'バーサーカー',
-          'ルーラー',
-          'アヴェンジャー',
-          'アルターエゴ',
-          'ムーンキャンサー',
-          'フォーリナー'
-        ]
+      fuseJsOptions: {
+        threshold: 0.2,
+        keys: ['kanaName'],
+        shouldSort: true
       }
     }
   },
   computed: {
-    searchCharacters() {
-      return this.characters.filter((character) =>
-        character.name.includes(this.search)
+    searchedCharacters() {
+      const fuse = new Fuse(this.characters, this.fuseJsOptions)
+      const result = fuse.search(this.hiraToKata)
+
+      return this.searchText !== '' ? result : this.characters
+    },
+    hiraToKata() {
+      return this.searchText.replace(/[\u3041-\u3096]/g, (ch) =>
+        String.fromCharCode(ch.charCodeAt(0) + 0x60)
       )
     }
   },
