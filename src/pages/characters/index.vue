@@ -14,6 +14,7 @@
             label="サーヴァント名"
             class="ml-4 mr-4"
             prepend-inner-icon="mdi-magnify"
+            autofocus
             type="text"
             color="teal"
           ></v-text-field>
@@ -30,7 +31,8 @@
               <v-list-item-content>
                 <v-list-item-title>{{ character.item.name }}</v-list-item-title>
                 <v-list-item-subtitle class="caption">
-                  {{ character.item.kanaName }}
+                  ★{{ character.item.rarity }} / {{ character.item.class }} /
+                  {{ character.item.attribute }}
                 </v-list-item-subtitle>
               </v-list-item-content>
               <div>No. {{ character.item.number }}</div>
@@ -50,7 +52,8 @@
               <v-list-item-content>
                 <v-list-item-title>{{ character.name }}</v-list-item-title>
                 <v-list-item-subtitle class="caption">
-                  {{ character.kanaName }}
+                  ★{{ character.rarity }} / {{ character.class }} /
+                  {{ character.attribute }}
                 </v-list-item-subtitle>
               </v-list-item-content>
               <div>No. {{ character.number }}</div>
@@ -100,7 +103,11 @@ export default {
       )
     },
     shouldUseFuse() {
-      if (this.searchText !== '' && !this.isKanji(this.searchText)) {
+      if (
+        this.searchText !== '' &&
+        !this.isIncludedKanji(this.searchText) &&
+        !this.isIncludedEnglishLetter(this.searchText)
+      ) {
         return true
       } else {
         return false
@@ -117,8 +124,15 @@ export default {
     })
   },
   methods: {
-    isKanji(text) {
+    isIncludedKanji(text) {
       return this.regexpKanji.test(text)
+    },
+    isIncludedEnglishLetter(text) {
+      if (text.match(/[a-zA-Z]/)) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   head() {
