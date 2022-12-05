@@ -12,7 +12,7 @@
       :oc-skills="ocSkills"
     />
 
-    <v-card-text class="mt-12">
+    <v-card-text class="mt-1">
       <v-row no-gutters>
         <v-col cols="6" sm="6" md="6">
           <strong class="title">

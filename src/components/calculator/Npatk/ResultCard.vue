@@ -3,10 +3,10 @@
     <v-toolbar class="title" elevation="4">
       結果
     </v-toolbar>
-    <v-card-subtitle>
+    <!-- <v-card-subtitle>
       宝具ダメージには数値が強制的に0.9~1.099倍される乱数調整が発生する。<br />
       周回では確実に相手を倒すことが重要なので最小ダメージを参考にすると良い。
-    </v-card-subtitle>
+    </v-card-subtitle> -->
 
     <!-- ダイアログ(計算方法) -->
     <ResultDialog ref="rstDlg" />
@@ -19,7 +19,7 @@
       :oc-skills="ocSkills"
     />
 
-    <v-card-text>
+    <v-card-text class="mt-6">
       <v-row no-gutters>
         <v-col cols="6" sm="6" md="6">
           <!-- イラストと吹き出しを差し込む -->
