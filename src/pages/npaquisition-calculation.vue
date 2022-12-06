@@ -25,7 +25,9 @@
       <SelectCharacterDialog
         ref="selectCharacterDlg"
         :characters="characters"
+        :select-history-characters="historyCharacters"
         @selectCharacter="selectCharacter"
+        @deleteHistoryCharacter="deleteHistoryCharacter"
       />
 
       <SkillDialog
@@ -282,7 +284,9 @@ import OcSkillQuickDown from '../mixins/oc-skill/quick-down'
 import OcSkillNpAcquisitionBuff from '../mixins/oc-skill/np-acquisition-buff'
 import OcSkillNpRecharge from '../mixins/oc-skill/np-recharge'
 
+import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
+
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
 import SelectCharacterDialog from '@/components/calculator/SelectCharacterDialog'
 import SkillDialog from '@/components/calculator/SkillDialog'
@@ -322,6 +326,7 @@ export default {
     OcSkillQuickDown,
     OcSkillNpAcquisitionBuff,
     OcSkillNpRecharge,
+    HistoryCharacter,
     SelectClass
   ],
   data() {
@@ -390,7 +395,9 @@ export default {
       selectingOcUpPrcentage: 1,
       hadSelectedOcUpPrcentage: null,
       selectableOcUpPrcentages: [1, 2, 3, 4, 5],
-      npRecharge: 0
+      npRecharge: 0,
+      historyCharacterNumbers: [],
+      historyCharacters: []
     }
   },
   computed: {},
@@ -432,6 +439,8 @@ export default {
       .map((doc) => {
         return { ...doc.data() }
       })
+
+    this.initialHistoryCharacters()
   },
   methods: {
     selectCharacter(characterName) {
@@ -493,6 +502,8 @@ export default {
       }
       // 毎ターンNPチャージ
       this.setClassSkillNpchargeEveryTurn(character)
+
+      this.addHistoryCharacter(character.number)
     },
     // 選択されたキャラクターの「宝具タイプ」を返す
     setNpType(character) {

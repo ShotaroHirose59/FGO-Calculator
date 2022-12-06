@@ -26,7 +26,9 @@
       <SelectCharacterDialog
         ref="selectCharacterDlg"
         :characters="characters"
+        :select-history-characters="historyCharacters"
         @selectCharacter="selectCharacter"
+        @deleteHistoryCharacter="deleteHistoryCharacter"
       />
 
       <SkillDialog
@@ -45,6 +47,19 @@
               @openSelectCharacterDisplay="openSelectCharacterDisplay"
             />
           </v-col>
+
+          <!-- <v-col cols="12" sm="6" md="6">
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-subtitle
+                  >サーヴァント : {{ characterName }}</v-list-item-subtitle
+                >
+                <v-list-item-subtitle
+                  >クラス : {{ characterClass }}</v-list-item-subtitle
+                >
+              </v-list-item-content>
+            </v-list-item>
+          </v-col> -->
 
           <v-col cols="4" sm="2" md="3">
             <v-select
@@ -488,6 +503,7 @@ import OcSkillsAtkBuff from '../mixins/oc-skill/s-atk-buff'
 import OcSkillNpmultiplierBuff from '../mixins/oc-skill/npmultiplier-buff'
 
 import EventCharacterBuff from '../mixins/event-buff'
+import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
 
 import Dialog from '@/components/calculator/Npatk/Dialog'
@@ -546,6 +562,7 @@ export default {
     OcSkillsAtkBuff,
     OcSkillNpmultiplierBuff,
     EventCharacterBuff,
+    HistoryCharacter,
     SelectClass
   ],
   data() {
@@ -635,7 +652,9 @@ export default {
       selectingOcUpPrcentage: 1,
       hadSelectedOcUpPrcentage: null,
       selectableOcUpPrcentages: [1, 2, 3, 4, 5],
-      isNpBoosted: false
+      isNpBoosted: false,
+      historyCharacterNumbers: [],
+      historyCharacters: []
     }
   },
   computed: {},
@@ -716,6 +735,8 @@ export default {
     this.characters = querySnapshot.docs.map((doc) => {
       return { ...doc.data() }
     })
+
+    this.initialHistoryCharacters()
   },
   methods: {
     selectCharacter(characterName) {
@@ -826,6 +847,7 @@ export default {
       }
       // イベント特攻
       // this.setEventCharacterBuff(character)
+      this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
       switch (characterRarity) {
