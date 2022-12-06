@@ -23,7 +23,7 @@
               placeholder="サーヴァント名"
               autofocus
               type="text"
-              color="#AB47BC"
+              color="white"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -37,7 +37,7 @@
       <v-card-text>
         <template v-if="tabTitle === 0">
           <v-list>
-            <v-list-item-group color="teal">
+            <v-list-item-group color="white">
               <template v-if="shouldUseFuse">
                 <v-list-item
                   v-for="character in searchedCharacters"
@@ -81,7 +81,7 @@
         </template>
         <template v-if="tabTitle === 1">
           <v-list>
-            <v-list-item-group color="teal">
+            <v-list-item-group color="white">
               <template v-if="shouldUseFuse">
                 <v-list-item
                   v-for="character in searchedSelectHistoryCharacters.reverse()"
