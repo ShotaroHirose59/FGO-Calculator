@@ -5,9 +5,7 @@
     class="character-select-btn"
     @click="onOpenSelectCharacterDisplay"
   >
-    <div class="character-select-text">
-      {{ characterSelectText }}
-    </div>
+    <div class="character-select-text">{{ characterSelectText }}</div>
   </v-btn>
 </template>
 
