@@ -269,4 +269,7 @@ export default {
   height: 654px;
   padding: 0px !important;
 }
+.theme--dark.v-list-item--active:before {
+  opacity: 0;
+}
 </style>
