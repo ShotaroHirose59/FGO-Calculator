@@ -247,6 +247,7 @@ export default {
     },
     onSelectCharacter(characterName) {
       this.isOpen = false
+      this.searchText = ''
       this.$emit('selectCharacter', characterName)
     },
     onDeleteHistoryCharacter(characterNumber) {
