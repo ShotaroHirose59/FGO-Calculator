@@ -10,19 +10,41 @@
       <v-row no-gutters>
         <v-col cols="12" sm="12" md="12">
           <v-text-field
-            v-model="search"
+            v-model="searchText"
             label="サーヴァント名"
             class="ml-4 mr-4"
             prepend-inner-icon="mdi-magnify"
+            autofocus
             type="text"
             color="teal"
           ></v-text-field>
         </v-col>
       </v-row>
-      <div>
+      <div v-if="shouldUseFuse">
         <v-list disabled>
           <v-list-item-group
-            v-for="character in searchCharacters"
+            v-for="character in searchedCharacters"
+            :key="character.item.id"
+            color="primary"
+          >
+            <v-list-item two-line>
+              <v-list-item-content>
+                <v-list-item-title>{{ character.item.name }}</v-list-item-title>
+                <v-list-item-subtitle class="caption">
+                  ★{{ character.item.rarity }} / {{ character.item.class }} /
+                  {{ character.item.attribute }}
+                </v-list-item-subtitle>
+              </v-list-item-content>
+              <div>No. {{ character.item.number }}</div>
+            </v-list-item>
+            <v-divider />
+          </v-list-item-group>
+        </v-list>
+      </div>
+      <div v-else>
+        <v-list disabled>
+          <v-list-item-group
+            v-for="character in searchedCharacters"
             :key="character.id"
             color="primary"
           >
@@ -46,37 +68,50 @@
 
 <script>
 import { getDocs, collection, query, orderBy } from 'firebase/firestore/lite'
+import Fuse from 'fuse.js'
 import db from '../../plugins/firebase'
 export default {
   data() {
     return {
       characters: [],
-      search: '',
+      searchText: '',
       selectedClass: '',
-      items: {
-        class: [
-          'ALL',
-          'セイバー',
-          'アーチャー',
-          'ランサー',
-          'ライダー',
-          'キャスター',
-          'アサシン',
-          'バーサーカー',
-          'ルーラー',
-          'アヴェンジャー',
-          'アルターエゴ',
-          'ムーンキャンサー',
-          'フォーリナー'
-        ]
-      }
+      fuseJsOptions: {
+        threshold: 0.2,
+        keys: ['kanaName'],
+        shouldSort: true
+      },
+      regexpKanji: /([\u{3005}\u{3007}\u{303B}\u{3400}-\u{9FFF}\u{F900}-\u{FAFF}\u{20000}-\u{2FFFF}][\u{E0100}-\u{E01EF}\u{FE00}-\u{FE02}]?)/mu
     }
   },
   computed: {
-    searchCharacters() {
-      return this.characters.filter((character) =>
-        character.name.includes(this.search)
+    searchedCharacters() {
+      const fuse = new Fuse(this.characters, this.fuseJsOptions)
+      const searchedCharactersByfuse = fuse.search(this.hiraToKata)
+
+      if (this.shouldUseFuse) {
+        return searchedCharactersByfuse
+      } else {
+        return this.characters.filter((character) =>
+          character.name.includes(this.searchText)
+        )
+      }
+    },
+    hiraToKata() {
+      return this.searchText.replace(/[\u3041-\u3096]/g, (ch) =>
+        String.fromCharCode(ch.charCodeAt(0) + 0x60)
       )
+    },
+    shouldUseFuse() {
+      if (
+        this.searchText !== '' &&
+        !this.isIncludedKanji(this.searchText) &&
+        !this.isIncludedEnglishLetter(this.searchText)
+      ) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   async created() {
@@ -88,7 +123,18 @@ export default {
       return { ...doc.data() }
     })
   },
-  methods: {},
+  methods: {
+    isIncludedKanji(text) {
+      return this.regexpKanji.test(text)
+    },
+    isIncludedEnglishLetter(text) {
+      if (text.match(/[a-zA-Z]/)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
   head() {
     return {
       titleTemplate: null,

@@ -18,15 +18,17 @@
           </v-col>
         </v-row>
       </v-toolbar>
-      <!-- スマホだと幅取るからいらない -->
-      <client-only>
-        <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-          単体 or 全体宝具を持つArts Quickのサーヴァントが対象
-        </v-card-subtitle>
-      </client-only>
 
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
+
+      <SelectCharacterDialog
+        ref="selectCharacterDlg"
+        :characters="characters"
+        :select-history-characters="historyCharacters"
+        @selectCharacter="selectCharacter"
+        @deleteHistoryCharacter="deleteHistoryCharacter"
+      />
 
       <SkillDialog
         ref="skillDlg"
@@ -38,26 +40,11 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="4" md="4">
-            <v-select
-              v-model="characterClass"
-              label="クラス"
-              :items="items.class"
-              class="mr-4"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="12" sm="8" md="8">
-            <v-select
-              v-model="characterName"
-              label="サーヴァント"
-              :items="$_filteredCharacters"
-              :disabled="!characterClass || $_is_empty"
-              class="mr-4"
-              color="teal"
-              @input="onChangeVal(characterName)"
-            ></v-select>
+          <v-col cols="12" sm="12" md="12" class="mt-2 mb-4">
+            <SelectCharacterButton
+              :character-select-text="$_characterSelectText"
+              @openSelectCharacterDisplay="openSelectCharacterDisplay"
+            />
           </v-col>
 
           <v-col cols="6" sm="2" md="2">
@@ -297,9 +284,13 @@ import OcSkillQuickDown from '../mixins/oc-skill/quick-down'
 import OcSkillNpAcquisitionBuff from '../mixins/oc-skill/np-acquisition-buff'
 import OcSkillNpRecharge from '../mixins/oc-skill/np-recharge'
 
+import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
+
 import Dialog from '@/components/calculator/NpAcquisition/Dialog'
+import SelectCharacterDialog from '@/components/calculator/SelectCharacterDialog'
 import SkillDialog from '@/components/calculator/SkillDialog'
+import SelectCharacterButton from '@/components/calculator/SelectCharacterButton'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/NpAcquisition/ResultCard'
 import FixedFooter from '@/components/calculator/NpAcquisition/FixedFooter'
@@ -308,8 +299,10 @@ export default {
   components: {
     ValidationProvider,
     Dialog,
+    SelectCharacterDialog,
     SkillDialog,
     PlusMinusButton,
+    SelectCharacterButton,
     ResultCard,
     FixedFooter
   },
@@ -333,6 +326,7 @@ export default {
     OcSkillQuickDown,
     OcSkillNpAcquisitionBuff,
     OcSkillNpRecharge,
+    HistoryCharacter,
     SelectClass
   ],
   data() {
@@ -401,7 +395,9 @@ export default {
       selectingOcUpPrcentage: 1,
       hadSelectedOcUpPrcentage: null,
       selectableOcUpPrcentages: [1, 2, 3, 4, 5],
-      npRecharge: 0
+      npRecharge: 0,
+      historyCharacterNumbers: [],
+      historyCharacters: []
     }
   },
   computed: {},
@@ -443,13 +439,19 @@ export default {
       .map((doc) => {
         return { ...doc.data() }
       })
+
+    if (process.client) {
+      this.initialHistoryCharacters()
+    }
   },
   methods: {
-    onChangeVal(characterName) {
+    selectCharacter(characterName) {
       const character = this.characters.find(
         (character) => character.name === characterName
       )
       this.resetBuffSystem()
+      this.characterName = characterName
+      this.characterClass = character.class
       this.npRate = character.npchargeatk
       this.npHits = character.nphitcount
       this.setNpType(character)
@@ -502,6 +504,8 @@ export default {
       }
       // 毎ターンNPチャージ
       this.setClassSkillNpchargeEveryTurn(character)
+
+      this.addHistoryCharacter(character.number)
     },
     // 選択されたキャラクターの「宝具タイプ」を返す
     setNpType(character) {
@@ -535,6 +539,9 @@ export default {
     },
     openDisplay() {
       this.$refs.dlg.isOpen = true
+    },
+    openSelectCharacterDisplay() {
+      this.$refs.selectCharacterDlg.isOpen = true
     },
     openSkillDisplay() {
       this.$refs.skillDlg.isOpen = true

@@ -20,15 +20,16 @@
         </v-row>
       </v-toolbar>
 
-      <!-- スマホだと幅取るからいらない -->
-      <client-only>
-        <v-card-subtitle v-if="!$vuetify.breakpoint.xs">
-          単体 or 全体宝具を持つサーヴァントが対象
-        </v-card-subtitle>
-      </client-only>
-
       <!-- ダイアログ (使い方、計算項目の詳細) -->
       <Dialog ref="dlg" />
+
+      <SelectCharacterDialog
+        ref="selectCharacterDlg"
+        :characters="characters"
+        :select-history-characters="historyCharacters"
+        @selectCharacter="selectCharacter"
+        @deleteHistoryCharacter="deleteHistoryCharacter"
+      />
 
       <SkillDialog
         ref="skillDlg"
@@ -40,27 +41,25 @@
 
       <v-card-text>
         <v-row no-gutters>
-          <v-col cols="12" sm="3" md="4">
-            <v-select
-              v-model="characterClass"
-              label="クラス"
-              :items="items.class"
-              class="mr-4"
-              color="teal"
-            ></v-select>
+          <v-col cols="12" sm="12" md="12" class="mt-2 mb-4">
+            <SelectCharacterButton
+              :character-select-text="$_characterSelectText"
+              @openSelectCharacterDisplay="openSelectCharacterDisplay"
+            />
           </v-col>
 
-          <v-col cols="12" sm="5" md="8">
-            <v-select
-              v-model="characterName"
-              label="サーヴァント"
-              :items="$_filteredCharacters"
-              :disabled="!characterClass || $_is_empty"
-              class="mr-4"
-              color="teal"
-              @input="onChangeVal(characterName)"
-            ></v-select>
-          </v-col>
+          <!-- <v-col cols="12" sm="6" md="6">
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-subtitle
+                  >サーヴァント : {{ characterName }}</v-list-item-subtitle
+                >
+                <v-list-item-subtitle
+                  >クラス : {{ characterClass }}</v-list-item-subtitle
+                >
+              </v-list-item-content>
+            </v-list-item>
+          </v-col> -->
 
           <v-col cols="4" sm="2" md="3">
             <v-select
@@ -504,10 +503,13 @@ import OcSkillsAtkBuff from '../mixins/oc-skill/s-atk-buff'
 import OcSkillNpmultiplierBuff from '../mixins/oc-skill/npmultiplier-buff'
 
 import EventCharacterBuff from '../mixins/event-buff'
+import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
 
 import Dialog from '@/components/calculator/Npatk/Dialog'
+import SelectCharacterDialog from '@/components/calculator/SelectCharacterDialog'
 import SkillDialog from '@/components/calculator/SkillDialog'
+import SelectCharacterButton from '@/components/calculator/SelectCharacterButton'
 import PlusMinusButton from '@/components/calculator/PlusMinusButton'
 import ResultCard from '@/components/calculator/Npatk/ResultCard'
 import FixedFooter from '@/components/calculator/Npatk/FixedFooter'
@@ -516,7 +518,9 @@ export default {
   components: {
     ValidationProvider,
     Dialog,
+    SelectCharacterDialog,
     SkillDialog,
+    SelectCharacterButton,
     PlusMinusButton,
     ResultCard,
     FixedFooter
@@ -558,6 +562,7 @@ export default {
     OcSkillsAtkBuff,
     OcSkillNpmultiplierBuff,
     EventCharacterBuff,
+    HistoryCharacter,
     SelectClass
   ],
   data() {
@@ -647,7 +652,9 @@ export default {
       selectingOcUpPrcentage: 1,
       hadSelectedOcUpPrcentage: null,
       selectableOcUpPrcentages: [1, 2, 3, 4, 5],
-      isNpBoosted: false
+      isNpBoosted: false,
+      historyCharacterNumbers: [],
+      historyCharacters: []
     }
   },
   computed: {},
@@ -728,13 +735,19 @@ export default {
     this.characters = querySnapshot.docs.map((doc) => {
       return { ...doc.data() }
     })
+
+    if (process.client) {
+      this.initialHistoryCharacters()
+    }
   },
   methods: {
-    onChangeVal(characterName) {
+    selectCharacter(characterName) {
       const character = this.characters.find(
         (character) => character.name === characterName
       )
       this.resetBuffSystem()
+      this.characterName = characterName
+      this.characterClass = character.class
       this.atk = character.atk
       this.characterAtk = this.atk[0]
       this.npmultiplier = character.npmultiplier
@@ -835,7 +848,8 @@ export default {
         this.setClassSkillSAtkBuff(character)
       }
       // イベント特攻
-      // this.setEventCharacterBuff(character)
+      this.setEventCharacterBuff(character)
+      this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
       switch (characterRarity) {
@@ -1041,6 +1055,9 @@ export default {
     },
     openDisplay() {
       this.$refs.dlg.isOpen = true
+    },
+    openSelectCharacterDisplay() {
+      this.$refs.selectCharacterDlg.isOpen = true
     },
     openSkillDisplay() {
       this.$refs.skillDlg.isOpen = true
