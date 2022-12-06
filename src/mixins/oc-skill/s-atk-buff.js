@@ -53,7 +53,7 @@ export default {
         })
       } else if (
         character.name === '源為朝' ||
-        character.name === '水着スカディ' ||
+        character.name === '水着スカサハ＝スカディ' ||
         character.name === 'オベロン'
       ) {
         // this.sNpAtkBuff += 150

@@ -165,7 +165,7 @@ export default {
         character.name === '水着織田信長' ||
         character.name === '水着ジャンヌ〔オルタ〕' ||
         character.name === 'サロメ' ||
-        character.name === '水着スカディ' ||
+        character.name === '水着スカサハ＝スカディ' ||
         character.name === '水着マルタ' ||
         character.name === 'ケツァルコアトル〔サンバ／サンタ〕' ||
         character.name === 'アストライア' ||
