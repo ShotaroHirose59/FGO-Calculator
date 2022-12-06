@@ -440,7 +440,9 @@ export default {
         return { ...doc.data() }
       })
 
-    this.initialHistoryCharacters()
+    if (process.client) {
+      this.initialHistoryCharacters()
+    }
   },
   methods: {
     selectCharacter(characterName) {

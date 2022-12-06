@@ -736,7 +736,9 @@ export default {
       return { ...doc.data() }
     })
 
-    this.initialHistoryCharacters()
+    if (process.client) {
+      this.initialHistoryCharacters()
+    }
   },
   methods: {
     selectCharacter(characterName) {
@@ -846,7 +848,7 @@ export default {
         this.setClassSkillSAtkBuff(character)
       }
       // イベント特攻
-      // this.setEventCharacterBuff(character)
+      this.setEventCharacterBuff(character)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
