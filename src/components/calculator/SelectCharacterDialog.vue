@@ -17,9 +17,10 @@
             <v-text-field
               v-model="searchText"
               class="ml-4 mr-4 mt-6"
-              solo
-              flat
+              filled
+              rounded
               dense
+              flat
               clearable
               placeholder="サーヴァント名"
               autofocus
