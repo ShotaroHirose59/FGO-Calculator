@@ -18,6 +18,7 @@
               v-model="searchText"
               class="ml-4 mr-4 mt-6"
               solo
+              flat
               dense
               clearable
               placeholder="サーヴァント名"
