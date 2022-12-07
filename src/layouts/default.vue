@@ -150,4 +150,13 @@ a {
 .terms {
   color: white;
 }
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+  background: #1e1e1e;
+}
+.theme--dark.v-toolbar.v-sheet {
+  background: #1e1e1e;
+}
+.theme--dark.v-footer {
+  background: #1e1e1e;
+}
 </style>
