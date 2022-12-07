@@ -7,7 +7,7 @@
     hide-overlay
     :transition="transitionMode"
   >
-    <v-card>
+    <v-card style="border-radius: 12px;">
       <v-toolbar>
         <v-icon class="mr-2" @click="isOpen = false">
           mdi-close
