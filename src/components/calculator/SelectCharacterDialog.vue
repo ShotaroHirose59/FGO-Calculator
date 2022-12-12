@@ -1,7 +1,7 @@
 <template>
   <v-dialog
     v-model="isOpen"
-    max-width="640px"
+    max-width="720px"
     scrollable
     :fullscreen="$vuetify.breakpoint.xsOnly"
     hide-overlay
@@ -36,6 +36,52 @@
           {{ tabItem }}
         </v-tab>
       </v-tabs>
+      <div class="mx-4 my-4">
+        <h4>絞り込み</h4>
+        <v-row no-gutters class="mt-4">
+          <v-col cols="6" sm="4" md="3">
+            <v-select
+              v-model="filterdClass"
+              label="クラス"
+              :items="items.filterableClass"
+              class="mr-4"
+              color="teal"
+              dense
+            ></v-select>
+          </v-col>
+          <v-col cols="6" sm="4" md="3">
+            <v-select
+              v-model="filterdRarity"
+              label="レアリティ"
+              :items="items.filterableRarities"
+              class="mr-4"
+              color="teal"
+              dense
+            ></v-select>
+          </v-col>
+          <v-col cols="6" sm="4" md="3">
+            <v-select
+              v-model="filterdCard"
+              label="宝具タイプ"
+              :items="items.filterableCards"
+              class="mr-4"
+              color="teal"
+              dense
+            ></v-select>
+          </v-col>
+          <v-col cols="6" sm="4" md="3">
+            <v-select
+              v-model="filterdNprange"
+              label="宝具効果"
+              :items="items.filterableNprange"
+              class="mr-4"
+              color="teal"
+              dense
+            ></v-select>
+          </v-col>
+        </v-row>
+      </div>
+      <v-divider />
       <v-card-text>
         <template v-if="tabTitle === 0">
           <v-list>
@@ -53,6 +99,10 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
+                      <template v-if="isEventCharacter(character.item.name)">
+                        <span>/</span>
+                        <span style="color: orange">攻撃の威力UP</span>
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -71,6 +121,10 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
+                      <template v-if="isEventCharacter(character.name)">
+                        <span>/</span>
+                        <span style="color: orange">攻撃の威力UP</span>
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -97,6 +151,10 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
+                      <template v-if="isEventCharacter(character.item.name)">
+                        <span>/</span>
+                        <span style="color: orange">攻撃の威力UP</span>
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -124,6 +182,10 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
+                      <template v-if="isEventCharacter(character.name)">
+                        <span>/</span>
+                        <span style="color: orange">攻撃の威力UP</span>
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -151,6 +213,7 @@
 <script>
 import Fuse from 'fuse.js'
 export default {
+  // エミヤ、メリュ、Sイシュタル
   props: {
     characters: {
       type: Array,
@@ -173,6 +236,31 @@ export default {
         id: 'name',
         shouldSort: true
       },
+      items: {
+        filterableClass: [
+          '指定なし',
+          'セイバー',
+          'アーチャー',
+          'ランサー',
+          'ライダー',
+          'キャスター',
+          'アサシン',
+          'バーサーカー',
+          'ルーラー',
+          'アヴェンジャー',
+          'アルターエゴ',
+          'ムーンキャンサー',
+          'フォーリナー',
+          'プリテンダー'
+        ],
+        filterableRarities: ['指定なし', 5, 4, 3, 2, 1],
+        filterableCards: ['指定なし', 'Q', 'A', 'B'],
+        filterableNprange: ['指定なし', '全体', '単体']
+      },
+      filterdClass: '指定なし',
+      filterdRarity: '指定なし',
+      filterdCard: '指定なし',
+      filterdNprange: '指定なし',
       regexpKanji: /([\u{3005}\u{3007}\u{303B}\u{3400}-\u{9FFF}\u{F900}-\u{FAFF}\u{20000}-\u{2FFFF}][\u{E0100}-\u{E01EF}\u{FE00}-\u{FE02}]?)/mu
     }
   },
@@ -184,29 +272,84 @@ export default {
         return 'dialog-transition'
       }
     },
+    filterdCharacters() {
+      let characters = this.characters
+
+      if (this.filterdClass !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.class === this.filterdClass
+        )
+      }
+      if (this.filterdRarity !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.rarity === this.filterdRarity
+        )
+      }
+      if (this.filterdCard !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.card === this.filterdCard
+        )
+      }
+      if (this.filterdNprange !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.nprange === this.filterdNprange
+        )
+      }
+
+      return characters
+    },
+    filterdSelectHistoryCharacters() {
+      let characters = this.selectHistoryCharacters
+
+      if (this.filterdClass !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.class === this.filterdClass
+        )
+      }
+      if (this.filterdRarity !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.rarity === this.filterdRarity
+        )
+      }
+      if (this.filterdCard !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.card === this.filterdCard
+        )
+      }
+      if (this.filterdNprange !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.nprange === this.filterdNprange
+        )
+      }
+
+      return characters
+    },
     searchedCharacterCount() {
       return this.searchedCharacters.length
     },
     searchedCharacters() {
-      const fuse = new Fuse(this.characters, this.fuseJsOptions)
+      const fuse = new Fuse(this.filterdCharacters, this.fuseJsOptions)
       const searchedCharactersByfuse = fuse.search(this.hiraToKata)
 
       if (this.shouldUseFuse) {
         return searchedCharactersByfuse
       } else {
-        return this.characters.filter((character) =>
+        return this.filterdCharacters.filter((character) =>
           character.name.includes(this.searchText)
         )
       }
     },
     searchedSelectHistoryCharacters() {
-      const fuse = new Fuse(this.selectHistoryCharacters, this.fuseJsOptions)
+      const fuse = new Fuse(
+        this.filterdSelectHistoryCharacters,
+        this.fuseJsOptions
+      )
       const searchedCharactersByfuse = fuse.search(this.hiraToKata)
 
       if (this.shouldUseFuse) {
         return searchedCharactersByfuse
       } else {
-        return this.selectHistoryCharacters.filter((character) =>
+        return this.filterdSelectHistoryCharacters.filter((character) =>
           character.name.includes(this.searchText)
         )
       }
@@ -237,6 +380,45 @@ export default {
     }
   },
   methods: {
+    isEventCharacter(characterName) {
+      if (location.pathname.includes('npaquisition')) {
+        return false
+      }
+
+      if (
+        characterName === 'カルナ〔サンタ〕' ||
+        characterName === 'ヴリトラ' ||
+        characterName === 'アルジュナ' ||
+        characterName === 'アルテラ・ザ・サン〔タ〕' ||
+        characterName === 'ナイチンゲール〔サンタ〕' ||
+        characterName === 'カルナ' ||
+        characterName === 'ジャンヌサンタリリィ' ||
+        characterName === 'パールヴァティー' ||
+        characterName === 'アルトリア〔サンタオルタ〕' ||
+        characterName === 'ゲオルギウス' ||
+        characterName === 'アルジュナ〔オルタ〕' ||
+        characterName === 'ベオウルフ' ||
+        characterName === 'ケツァルコアトル〔サンバ／サンタ〕' ||
+        characterName === '水着マルタ' ||
+        characterName === 'シグルド' ||
+        characterName === 'モードレッド' ||
+        characterName === 'ジークフリート' ||
+        characterName === 'アシュヴァッターマン' ||
+        characterName === 'エリザベート' ||
+        characterName === '謎のアルターエゴ・Λ' ||
+        characterName === 'マルタ' ||
+        characterName === '赤兎馬' ||
+        characterName === 'ジーク' ||
+        characterName === 'ナーサリー' ||
+        characterName === 'カーマ' ||
+        characterName === '望月千代女' ||
+        characterName === '清姫' ||
+        characterName === '葛飾北斎'
+      ) {
+        return true
+      }
+      return false
+    },
     isIncludedKanji(text) {
       return this.regexpKanji.test(text)
     },
