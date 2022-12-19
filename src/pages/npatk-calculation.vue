@@ -848,7 +848,7 @@ export default {
         this.setClassSkillSAtkBuff(character)
       }
       // イベント特攻
-      this.setEventCharacterBuff(character)
+      // this.setEventCharacterBuff(character)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
