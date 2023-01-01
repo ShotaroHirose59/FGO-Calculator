@@ -19,6 +19,13 @@
           </thead>
           <tbody v-if="tabTitle === 0">
             <v-subheader>
+              2023
+            </v-subheader>
+            <tr v-for="i in normalInfo2023" :key="i.id">
+              <td>{{ i.created }}</td>
+              <td>{{ i.content }}</td>
+            </tr>
+            <v-subheader>
               2022
             </v-subheader>
             <tr v-for="i in normalInfo2022" :key="i.id">
@@ -41,6 +48,13 @@
             </tr>
           </tbody>
           <tbody v-if="tabTitle === 1">
+            <v-subheader>
+              2023
+            </v-subheader>
+            <tr v-for="i in updateInfo2023" :key="i.id">
+              <td>{{ i.created }}</td>
+              <td>{{ i.content }}</td>
+            </tr>
             <v-subheader>
               2022
             </v-subheader>
@@ -90,6 +104,9 @@ export default {
     normalInfo() {
       return this.info.filter((i) => i.category === 'normal')
     },
+    normalInfo2023() {
+      return this.normalInfo.filter((i) => i.createdAt.includes('2023'))
+    },
     normalInfo2022() {
       return this.normalInfo.filter((i) => i.createdAt.includes('2022'))
     },
@@ -101,6 +118,9 @@ export default {
     },
     updateInfo() {
       return this.info.filter((i) => i.category === 'update')
+    },
+    updateInfo2023() {
+      return this.updateInfo.filter((i) => i.createdAt.includes('2023'))
     },
     updateInfo2022() {
       return this.updateInfo.filter((i) => i.createdAt.includes('2022'))
