@@ -42,6 +42,7 @@ export default {
         this.possessionSkills.push({ description: '宝具威力アップ(25%)' })
       } else if (
         character.name === 'アルテラ' ||
+        character.name === 'ギルガメッシュ' ||
         character.name === '鈴鹿御前' ||
         character.name === '水着フラン' ||
         character.name === 'ベディヴィエール' ||
