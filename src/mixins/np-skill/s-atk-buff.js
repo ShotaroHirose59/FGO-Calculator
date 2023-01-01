@@ -100,7 +100,8 @@ export default {
         })
       } else if (
         character.name === '謎のアイドルX〔オルタ〕' ||
-        character.name === '呼延灼'
+        character.name === '呼延灼' ||
+        character.name === 'ラスプーチン（言峰綺礼）'
       ) {
         // this.sNpAtkBuff += 150
         this.npSkills.push({
