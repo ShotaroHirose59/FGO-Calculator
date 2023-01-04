@@ -18,7 +18,13 @@ export default {
     },
     changeNpRecharge(ocUpPrcentages) {
       this.npRecharge = ocUpPrcentages[this.selectingOcUpPrcentage - 1]
-      this.ocSkills.push({ description: `NPチャージ(${this.npRecharge}%)` })
+
+      if (this.hadSelectedOcUpPrcentage === null) {
+        this.ocSkills.push({
+          description: `NPチャージ(${ocUpPrcentages[0]}~${ocUpPrcentages[4]}%)`
+        })
+      }
+      this.hadSelectedOcUpPrcentage = this.selectingOcUpPrcentage
     }
   }
 }
