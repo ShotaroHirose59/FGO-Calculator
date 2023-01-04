@@ -34,6 +34,9 @@ export default {
     margin: 0 auto;
     display: block;
   }
+  @media screen and (max-width: 320px) {
+    width: 280px;
+  }
   .character-select-text {
     color: white;
   }
