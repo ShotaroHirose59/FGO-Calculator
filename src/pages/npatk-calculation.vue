@@ -1079,6 +1079,7 @@ export default {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
+      this.damageAdditionBuff = 0
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -1115,6 +1116,7 @@ export default {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
+      this.damageAdditionBuff = 0
     }
   },
   head() {
