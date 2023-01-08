@@ -75,7 +75,7 @@
                   :error-messages="errors"
                   type="number"
                   inputmode="numeric"
-                  class="mr-4"
+                  class="mr-3"
                   color="teal"
                 ></v-text-field>
               </validation-provider>
@@ -114,7 +114,7 @@
                   :error-messages="errors"
                   type="number"
                   inputmode="decimal"
-                  class="mr-4"
+                  class="mr-3"
                   color="teal"
                 ></v-text-field>
               </validation-provider>
@@ -152,196 +152,160 @@
               </v-col>
             </client-only>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required"
+            <v-col cols="6" sm="3" md="4" lg="3">
+              <v-text-field
+                v-model.number="atkBuff"
+                label="攻撃力バフ%"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                color="teal"
               >
-                <v-text-field
-                  v-model.number="atkBuff"
-                  label="攻撃力バフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+                <template v-slot:append>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        if (atkBuff >= 400) return false
+                        if (atkBuff === '') atkBuff = 0
+                        atkBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="() => (atkBuff -= 10)"
+                  />
+                </template>
+              </v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
-              <PlusMinusButton
-                :on-click-plus-button="() => (atkBuff += 10)"
-                :on-click-minus-button="() => (atkBuff -= 10)"
-              />
-            </v-col>
-
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxCardBuff"
+            <v-col cols="6" sm="3" md="4" lg="3">
+              <v-text-field
+                v-model.number="cardBuff"
+                label="カードバフ%"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                color="teal"
               >
-                <v-text-field
-                  v-model.number="cardBuff"
-                  label="カードバフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+                <template v-slot:append>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        if (cardBuff >= 400) return false
+                        if (cardBuff === '') cardBuff = 0
+                        cardBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="() => (cardBuff -= 10)"
+                  />
+                </template>
+              </v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
-              <PlusMinusButton
-                :on-click-plus-button="
-                  () => {
-                    if (cardBuff >= 400) return false
-                    cardBuff += 10
-                  }
-                "
-                :on-click-minus-button="() => (cardBuff -= 10)"
-              />
-            </v-col>
-
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxNpBuff"
+            <v-col cols="6" sm="3" md="4" lg="3">
+              <v-text-field
+                v-model.number="sAtkBuff"
+                label="特攻バフ%"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                :class="{ 'event-buff-label': isEventCharacter }"
+                color="teal"
               >
-                <v-text-field
-                  v-model.number="sAtkBuff"
-                  label="特攻バフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  :class="{ 'event-buff-label': isEventCharacter }"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+                <template v-slot:append>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        if (sAtkBuff >= 1000) return false
+                        if (sAtkBuff === '') sAtkBuff = 0
+                        sAtkBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="() => (sAtkBuff -= 10)"
+                  />
+                </template>
+              </v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
-              <PlusMinusButton
-                :on-click-plus-button="
-                  () => {
-                    if (sAtkBuff >= 500) return false
-                    sAtkBuff += 10
-                  }
-                "
-                :on-click-minus-button="() => (sAtkBuff -= 10)"
-              />
-            </v-col>
-
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxNpBuff"
+            <v-col cols="6" sm="3" md="4" lg="3">
+              <v-text-field
+                v-model.number="npBuff"
+                label="宝具バフ%"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                :class="{ 'event-buff-label': isNpBuffEventCharacter }"
+                color="teal"
               >
-                <v-text-field
-                  v-model.number="npBuff"
-                  label="宝具威力バフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  :class="{ 'event-buff-label': isNpBuffEventCharacter }"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+                <template v-slot:append>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        if (npBuff >= 500) return false
+                        if (npBuff === '') npBuff = 0
+                        npBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="() => (npBuff -= 10)"
+                  />
+                </template>
+              </v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
-              <PlusMinusButton
-                :on-click-plus-button="
-                  () => {
-                    if (npBuff >= 500) return false
-                    npBuff += 10
-                  }
-                "
-                :on-click-minus-button="() => (npBuff -= 10)"
-              />
-            </v-col>
-
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required"
+            <v-col cols="6" sm="3" md="4" lg="3">
+              <v-text-field
+                v-model.number="sNpAtkBuff"
+                label="特攻宝具%"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                color="teal"
               >
-                <v-text-field
-                  v-model.number="sNpAtkBuff"
-                  label="特攻宝具"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+                <template v-slot:append>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        if (sNpAtkBuff === 100) return (sNpAtkBuff += 50)
+                        if (sNpAtkBuff === '') sNpAtkBuff = 0
+                        sNpAtkBuff += 10
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (sNpAtkBuff === 0) return false
+                        sNpAtkBuff -= 10
+                      }
+                    "
+                  />
+                </template>
+              </v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
-              <PlusMinusButton
-                :on-click-plus-button="
-                  () => {
-                    if (sNpAtkBuff === 100) return (sNpAtkBuff += 50)
-                    sNpAtkBuff += 10
-                  }
-                "
-                :on-click-minus-button="
-                  () => {
-                    if (sNpAtkBuff === 0) return false
-                    sNpAtkBuff -= 10
-                  }
-                "
-              />
-            </v-col>
-
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxDressAtk"
+            <v-col cols="6" sm="3" md="4" lg="3">
+              <v-text-field
+                v-model.number="dressAtk"
+                label="礼装ATK"
+                type="number"
+                inputmode="numeric"
+                class="mr-3"
+                color="teal"
               >
-                <v-text-field
-                  v-model.number="dressAtk"
-                  label="礼装ATK"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="numeric"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
-            </v-col>
-
-            <v-col cols="4" sm="2" md="2">
-              <PlusMinusButton
-                :on-click-plus-button="
-                  () => {
-                    if (dressAtk >= 3000) return false
-                    dressAtk += 100
-                  }
-                "
-                :on-click-minus-button="
-                  () => {
-                    if (dressAtk === 0) return false
-                    dressAtk -= 100
-                  }
-                "
-              />
+                <template v-slot:append>
+                  <PlusMinusButton
+                    :on-click-plus-button="
+                      () => {
+                        if (dressAtk >= 3000) return false
+                        if (dressAtk === '') dressAtk = 0
+                        dressAtk += 100
+                      }
+                    "
+                    :on-click-minus-button="
+                      () => {
+                        if (dressAtk === 0) return false
+                        dressAtk -= 100
+                      }
+                    "
+                  />
+                </template>
+              </v-text-field>
             </v-col>
 
             <client-only>
@@ -361,7 +325,7 @@
                   v-model="classCompatibility"
                   label="クラス相性"
                   :items="selectClassCompatibility"
-                  class="mr-4"
+                  class="mr-3"
                   color="teal"
                 ></v-select>
               </v-col>
@@ -371,7 +335,7 @@
                   v-model="attributeCompatibility"
                   label="属性相性"
                   :items="selectAttributeCompatibility"
-                  class="mr-4"
+                  class="mr-3"
                   color="teal"
                 ></v-select>
               </v-col>
@@ -651,8 +615,22 @@ export default {
       damageAdditionBuff: 0
     }
   },
-  computed: {},
   watch: {
+    atkBuff() {
+      if (this.atkBuff > 400) this.atkBuff = 400
+    },
+    cardBuff() {
+      if (this.cardBuff > 400) this.cardBuff = 400
+    },
+    sAtkBuff() {
+      if (this.sAtkBuff > 1000) this.sAtkBuff = 1000
+    },
+    npBuff() {
+      if (this.npBufff > 500) this.npBuff = 500
+    },
+    dressAtk() {
+      if (this.dressAtk > 3000) this.dressAtk = 3000
+    },
     servantNpType() {
       if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
         this.npmultiplier = [600, 750, 825, 862, 900]
@@ -1162,5 +1140,8 @@ input[type='number']::-webkit-inner-spin-button {
       font-size: 14px;
     }
   }
+}
+.v-application--is-ltr .v-text-field .v-input__append-inner {
+  padding-left: 0;
 }
 </style>

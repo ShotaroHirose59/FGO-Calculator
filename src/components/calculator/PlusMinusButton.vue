@@ -1,21 +1,19 @@
 <template>
-  <div>
-    <v-icon
-      color="teal"
-      class="mt-4"
-      style="font-size: 36px"
-      @click="onClickPlusButton()"
-    >
-      mdi-plus-box-outline
-    </v-icon>
-    <v-icon
-      color="rgba(255, 255, 255, 0.7)"
-      class="mt-4 ml-1"
-      style="font-size: 36px"
+  <div style="display: flex">
+    <v-btn icon style="width: 32px; height: 32px;" @click="onClickPlusButton()">
+      <v-icon>
+        mdi-chevron-up
+      </v-icon>
+    </v-btn>
+    <v-btn
+      icon
+      style="width: 32px; height: 32px;"
       @click="onClickMinusButton()"
     >
-      mdi-minus-box-outline
-    </v-icon>
+      <v-icon>
+        mdi-chevron-down
+      </v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -36,8 +34,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .v-icon {
   touch-action: none;
 }
-</style>
+</style> -->
