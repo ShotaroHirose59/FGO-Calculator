@@ -72,12 +72,10 @@ export default {
     changeJaneOcBuffs(ocUpPrcentages) {
       if (this.hadSelectedOcUpPrcentage !== null) {
         const downCont = ocUpPrcentages[this.hadSelectedOcUpPrcentage - 1]
-        if (location.pathname === '/npatk-calculation') {
-          if (this.atkBuff - downCont >= 0) {
-            this.atkBuff -= downCont
-          } else {
-            this.atkBuff = 0
-          }
+        if (this.atkBuff - downCont >= 0) {
+          this.atkBuff -= downCont
+        } else {
+          this.atkBuff = 0
         }
         if (this.cardBuff - downCont >= 0) {
           this.cardBuff -= downCont
@@ -87,9 +85,7 @@ export default {
       }
       const upCont = ocUpPrcentages[this.selectingOcUpPrcentage - 1]
       this.cardBuff += upCont
-      if (location.pathname === '/npatk-calculation') {
-        this.atkBuff += upCont
-      }
+      this.atkBuff += upCont
 
       if (this.hadSelectedOcUpPrcentage === null) {
         this.ocSkills.push({

@@ -2,10 +2,10 @@
   <v-dialog
     v-model="isOpen"
     scrollable
-    max-width="1200px"
+    max-width="720px"
     :fullscreen="$vuetify.breakpoint.xsOnly"
     hide-overlay
-    transition="dialog-bottom-transition"
+    :transition="transitionMode"
   >
     <v-card>
       <v-toolbar height="64px">
@@ -22,85 +22,80 @@
         <v-toolbar-title>ヘルプ</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
-        <h3 class="mt-4 mb-2">
-          使い方
-        </h3>
-        <client-only>
-          <p v-if="!$vuetify.breakpoint.xs">
-            ①クラスの選択後、サーヴァントを選択してください。<br />
-            ②サーヴァントを選択すると「NP獲得量」が自動で反映されます。<br />
-            ③入力値を変更すると「NP獲得量」が更新されます。
-          </p>
-
-          <p v-if="$vuetify.breakpoint.xs">
-            ①クラスの選択後、サーヴァントを選択してください。<br />
-            ②サーヴァントを選択すると「NP獲得量」が自動で反映されます。<br />
-            ③入力値を変更すると「NP獲得量」が更新されます。<br />
-            ④アルトリア・オルタをタッチするとセリフを楽しめます。
-          </p>
-        </client-only>
-
-        <v-divider class="mt-8"></v-divider>
-
-        <h3 class="mt-4 mb-2">
-          入力項目の詳細
-        </h3>
-        <ul>
-          <li class="mb-2">
-            カード性能UP ・・・ カード性能UPバフ
-          </li>
-          <li class="mb-2">
-            NP獲得量UP ・・・ NP獲得量UPバフ
-          </li>
-          <li class="mb-2">
-            敵クラス ・・・ 敵のクラスによって獲得できるNP量に変化が生じる。
-          </li>
-          <li class="mb-2">
-            敵の数 ・・・ 敵の数によって獲得できるNP量に変化が生じる。
-          </li>
-          <li class="mb-2">
-            オーバーキルHit数 ・・・
-            オーバーキルHit数は敵を倒しきったタイミングを指す。
-            (例）3Hitする宝具で2Hit目に敵を倒しきれば2Hitオーバーキルと表現し、数値も上昇する。
-          </li>
-        </ul>
-
-        <v-divider class="mt-8"></v-divider>
-
-        <h3 class="mt-4 mb-2">
-          計算式
-        </h3>
-        <p>
-          獲得できるNP量 ＝ <br />
-          NPレート × (カード補正 × カードバフ補正) × 宝具のHit数 ×
-          NP獲得量バフ補正 × オーバーキルボーナス(1.5倍) × 敵クラス補正 × 敵の数
+        <p class="mt-4 mb-2">
+          各Hitまでの累計ダメージとオバキル判定毎の最終的に獲得できるNPを算出して<br />
+          システム可能な敵のHPを確認できるようにしました。
         </p>
 
         <v-divider class="mt-8"></v-divider>
 
         <h3 class="mt-4 mb-2">
-          計算項目の説明
+          使い方
         </h3>
+        <p>
+          以下はアタッカーを水着カーマにしたWキャストリア編成を想定した例です。
+        </p>
         <ul>
           <li class="mb-2">
-            NPレート ・・・ 個々のサーヴァントに設定されている数値。
+            Lv.90
           </li>
           <li class="mb-2">
-            カード補正 ・・・ 宝具タイプで数値が決まる (Arts 3、Quick 1、Buster
-            0)
+            宝具Lv.1
           </li>
           <li class="mb-2">
-            カードバフ補正 ・・・Arts性能〜%UPなど。同系統のバフは全て加算。<br />
-            (例) Arts性能30%UP、Arts性能50%UPを使用した場合は80%UPとなる。
+            アペンドスキル2：Lv.10 (NPチャージ20)
           </li>
           <li class="mb-2">
-            NP獲得量バフ補正 ・・・ NP獲得量〜%UPなど。同系統のバフは全て加算。
+            使用スキル
+            <ul>
+              <li>水着カーマ：Aバフ30%, NPチャージ50</li>
+              <li>
+                Wキャストリア：Aバフ100%, NPチャージ40, NP獲得量バフ60%
+              </li>
+            </ul>
           </li>
           <li class="mb-2">
-            敵クラス補正 ・・・ 敵のクラス別に入る補正値。<br />
-            キャスターなら1.2と高くバーサーカーは0.8と低い。
+            概念礼装：黒聖杯 Lv.100
           </li>
         </ul>
+
+        <h4 class="mt-8 mb-2">
+          敵クラスがキャスターの場合
+        </h4>
+        <v-img :src="imageExCaster" max-width="480px"></v-img>
+        <p>
+          3Hit目に敵を処理すればNPを100以上獲得できます。<br />
+          3Hit目の累計ダメージは42418なので、敵のHPがこのダメージ以下であればシステム可能です。
+        </p>
+
+        <h4 class="mt-8 mb-2">
+          敵クラスがバーサーカーの場合
+        </h4>
+        <v-img :src="imageExBerserker" max-width="480px"></v-img>
+        <p>
+          カーマは毎ターンNPを3.8獲得できるのとキャストリアのスキル1(NPチャージ30%)を温存しているので、
+          3Hit目に処理できればシステムが成立します。<br />
+          3Hit目までの累計ダメージは84702なので、敵のHPがこのダメージ以下であればシステム可能です。
+        </p>
+
+        <h4 class="mt-8 mb-2">
+          メモについて
+        </h4>
+        <p>
+          以下のシーンなどを想定する際にご使用ください。
+        </p>
+        <ul>
+          <li class="mb-2">
+            混成クエスト
+          </li>
+          <li class="mb-2">
+            敵全体のクラスが同じでもHPに差がある
+          </li>
+          <li class="mb-2">
+            リチャージ効果のある宝具や毎ターンNP獲得できるクラススキルを持つサーヴァント
+          </li>
+        </ul>
+        <v-img :src="imageExMemo" max-width="320px"></v-img>
       </v-card-text>
       <client-only>
         <v-col style="text-align: right;">
@@ -123,7 +118,19 @@
 export default {
   data() {
     return {
-      isOpen: false
+      isOpen: false,
+      imageExCaster: require('assets/NpAcquisition/ex-caster.png'),
+      imageExBerserker: require('assets/NpAcquisition/ex-berserker.png'),
+      imageExMemo: require('assets/NpAcquisition/ex-memo.png')
+    }
+  },
+  computed: {
+    transitionMode() {
+      if (this.$vuetify.breakpoint.xsOnly) {
+        return 'dialog-bottom-transition'
+      } else {
+        return 'dialog-transition'
+      }
     }
   }
 }

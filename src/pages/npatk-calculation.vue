@@ -1,461 +1,454 @@
 <template>
-  <v-row no-gutters>
-    <v-card class="col-md-6">
-      <v-toolbar class="title" elevation="4">
-        宝具ダメージ 計算
-        <v-row no-gutters>
-          <v-col style="text-align: right;">
-            <v-btn
-              style="text-align: right;"
-              outlined
-              small
-              fab
-              class="mr-4"
-              color="purple lighten-1"
-              @click="openDisplay()"
-            >
-              <v-icon>mdi-help</v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-toolbar>
+  <div>
+    <p class="mb-4" style="font-size: 14px;">
+      お知らせ：
+      <nuxt-link :to="{ name: 'npaquisition-calculation' }">
+        <span style="color: orange;">宝具NP獲得計算機能</span>
+      </nuxt-link>
+      <span>をリニューアルしました</span>
+    </p>
+    <v-row no-gutters>
+      <v-card class="col-md-6">
+        <v-toolbar class="title" elevation="4">
+          宝具ダメージ 計算
+        </v-toolbar>
 
-      <!-- ダイアログ (使い方、計算項目の詳細) -->
-      <Dialog ref="dlg" />
+        <SelectCharacterDialog
+          ref="selectCharacterDlg"
+          :characters="characters"
+          :select-history-characters="historyCharacters"
+          @selectCharacter="selectCharacter"
+          @deleteHistoryCharacter="deleteHistoryCharacter"
+        />
 
-      <SelectCharacterDialog
-        ref="selectCharacterDlg"
-        :characters="characters"
-        :select-history-characters="historyCharacters"
-        @selectCharacter="selectCharacter"
-        @deleteHistoryCharacter="deleteHistoryCharacter"
-      />
+        <SkillDialog
+          ref="skillDlg"
+          :class-skills="classSkills"
+          :possession-skills="possessionSkills"
+          :np-skills="npSkills"
+          :oc-skills="ocSkills"
+        />
 
-      <SkillDialog
-        ref="skillDlg"
-        :class-skills="classSkills"
-        :possession-skills="possessionSkills"
-        :np-skills="npSkills"
-        :oc-skills="ocSkills"
-      />
-
-      <v-card-text>
-        <v-row no-gutters>
-          <v-col cols="12" sm="12" md="12" class="mt-2 mb-4">
-            <SelectCharacterButton
-              :character-select-text="$_characterSelectText"
-              @openSelectCharacterDisplay="openSelectCharacterDisplay"
-            />
-          </v-col>
-
-          <!-- <v-col cols="12" sm="6" md="6">
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-subtitle
-                  >サーヴァント : {{ characterName }}</v-list-item-subtitle
-                >
-                <v-list-item-subtitle
-                  >クラス : {{ characterClass }}</v-list-item-subtitle
-                >
-              </v-list-item-content>
-            </v-list-item>
-          </v-col> -->
-
-          <v-col cols="4" sm="2" md="3">
-            <v-select
-              v-model="selectedLv"
-              label="Lv."
-              :items="selectableLv"
-              :disabled="!characterName"
-              class="mr-3"
-              color="teal"
-              @change="onChangeAtkByLv(selectedLv)"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="3">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required"
-            >
-              <v-text-field
-                v-model.number="characterAtk"
-                label="ATK"
-                :error-messages="errors"
-                type="number"
-                inputmode="numeric"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="3">
-            <v-select
-              v-model="fou"
-              label="フォウくん"
-              :items="selectFou"
-              class="mr-3"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="2" md="3">
-            <v-select
-              v-model="servantNpType"
-              label="宝具"
-              :items="selectServantNpType"
-              class="mr-3"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="2" md="3">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required"
-            >
-              <v-text-field
-                v-model.number="characterNpmultiplier"
-                label="宝具倍率"
-                suffix="％"
-                :error-messages="errors"
-                type="number"
-                inputmode="decimal"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="6" sm="2" md="3">
-            <v-select
-              v-model="npChargeLv"
-              label="宝具Lv."
-              :items="items.npChargeLevel"
-              class="mr-3"
-              color="teal"
-              @change="onChangeNpmultiplier(npChargeLv)"
-            ></v-select>
-          </v-col>
-
-          <v-col cols="6" sm="2" md="3">
-            <v-select
-              v-model="selectingOcUpPrcentage"
-              label="OC"
-              :items="selectableOcUpPrcentages"
-              class="mr-3"
-              color="teal"
-            ></v-select>
-          </v-col>
-
-          <client-only>
-            <v-col v-if="!$vuetify.breakpoint.xs" cols="6" sm="2" md="3">
-              <v-switch
-                v-model="isNpBoosted"
-                label="宝具ブースト"
-                color="yellow darken-3"
-                class="np-boost-switch"
-              ></v-switch>
+        <v-card-text>
+          <v-row no-gutters>
+            <v-col cols="12" sm="12" md="12" class="mt-2 mb-4">
+              <SelectCharacterButton
+                :character-select-text="$_characterSelectText"
+                @openSelectCharacterDisplay="openSelectCharacterDisplay"
+              />
             </v-col>
-          </client-only>
 
-          <v-col cols="8" sm="2" md="2">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required"
-            >
-              <v-text-field
-                v-model.number="atkBuff"
-                label="攻撃力バフ"
-                suffix="％"
-                :error-messages="errors"
-                type="number"
-                inputmode="decimal"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
+            <!-- <v-col cols="12" sm="6" md="6">
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-subtitle
+                    >サーヴァント : {{ characterName }}</v-list-item-subtitle
+                  >
+                  <v-list-item-subtitle
+                    >クラス : {{ characterClass }}</v-list-item-subtitle
+                  >
+                </v-list-item-content>
+              </v-list-item>
+            </v-col> -->
 
-          <v-col cols="4" sm="2" md="2">
-            <PlusMinusButton
-              :on-click-plus-button="() => (atkBuff += 10)"
-              :on-click-minus-button="() => (atkBuff -= 10)"
-            />
-          </v-col>
-
-          <v-col cols="8" sm="2" md="2">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required|maxCardBuff"
-            >
-              <v-text-field
-                v-model.number="cardBuff"
-                label="カードバフ"
-                suffix="％"
-                :error-messages="errors"
-                type="number"
-                inputmode="decimal"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="2">
-            <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  if (cardBuff >= 400) return false
-                  cardBuff += 10
-                }
-              "
-              :on-click-minus-button="() => (cardBuff -= 10)"
-            />
-          </v-col>
-
-          <v-col cols="8" sm="2" md="2">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required|maxNpBuff"
-            >
-              <v-text-field
-                v-model.number="sAtkBuff"
-                label="特攻バフ"
-                suffix="％"
-                :error-messages="errors"
-                type="number"
-                inputmode="decimal"
-                class="mr-4"
-                :class="{ 'event-buff-label': isEventCharacter }"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="2">
-            <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  if (sAtkBuff >= 500) return false
-                  sAtkBuff += 10
-                }
-              "
-              :on-click-minus-button="() => (sAtkBuff -= 10)"
-            />
-          </v-col>
-
-          <v-col cols="8" sm="2" md="2">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required|maxNpBuff"
-            >
-              <v-text-field
-                v-model.number="npBuff"
-                label="宝具威力バフ"
-                suffix="％"
-                :error-messages="errors"
-                type="number"
-                inputmode="decimal"
-                class="mr-4"
-                :class="{ 'event-buff-label': isNpBuffEventCharacter }"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="2">
-            <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  if (npBuff >= 500) return false
-                  npBuff += 10
-                }
-              "
-              :on-click-minus-button="() => (npBuff -= 10)"
-            />
-          </v-col>
-
-          <v-col cols="8" sm="2" md="2">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required"
-            >
-              <v-text-field
-                v-model.number="sNpAtkBuff"
-                label="特攻宝具"
-                suffix="％"
-                :error-messages="errors"
-                type="number"
-                inputmode="decimal"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="2">
-            <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  if (sNpAtkBuff === 100) return (sNpAtkBuff += 50)
-                  sNpAtkBuff += 10
-                }
-              "
-              :on-click-minus-button="
-                () => {
-                  if (sNpAtkBuff === 0) return false
-                  sNpAtkBuff -= 10
-                }
-              "
-            />
-          </v-col>
-
-          <v-col cols="8" sm="2" md="2">
-            <validation-provider
-              ref="provider"
-              v-slot="{ errors }"
-              rules="required|maxDressAtk"
-            >
-              <v-text-field
-                v-model.number="dressAtk"
-                label="礼装ATK"
-                :error-messages="errors"
-                type="number"
-                inputmode="numeric"
-                class="mr-4"
-                color="teal"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-
-          <v-col cols="4" sm="2" md="2">
-            <PlusMinusButton
-              :on-click-plus-button="
-                () => {
-                  if (dressAtk >= 3000) return false
-                  dressAtk += 100
-                }
-              "
-              :on-click-minus-button="
-                () => {
-                  if (dressAtk === 0) return false
-                  dressAtk -= 100
-                }
-              "
-            />
-          </v-col>
-
-          <client-only>
-            <v-col v-if="$vuetify.breakpoint.xs" cols="7">
-              <v-switch
-                v-model="isNpBoosted"
-                label="宝具威力ブースト"
-                color="yellow darken-3"
-                class="np-boost-switch"
-              ></v-switch>
-            </v-col>
-          </client-only>
-
-          <client-only>
-            <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+            <v-col cols="4" sm="3" md="3">
               <v-select
-                v-model="classCompatibility"
-                label="クラス相性"
-                :items="selectClassCompatibility"
-                class="mr-4"
+                v-model="selectedLv"
+                label="Lv."
+                :items="selectableLv"
+                :disabled="!characterName"
+                class="mr-3"
                 color="teal"
+                @change="onChangeAtkByLv(selectedLv)"
               ></v-select>
             </v-col>
 
-            <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
-              <v-select
-                v-model="attributeCompatibility"
-                label="属性相性"
-                :items="selectAttributeCompatibility"
-                class="mr-4"
-                color="teal"
-              ></v-select>
-            </v-col>
-
-            <v-col
-              v-show="$vuetify.breakpoint.xs"
-              cols="6"
-              style="text-align: center;"
-            >
-              <v-btn color="teal" outlined @click="openSkillDisplay()"
-                >バフ詳細</v-btn
+            <v-col cols="4" sm="3" md="3">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required"
               >
+                <v-text-field
+                  v-model.number="characterAtk"
+                  label="ATK"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="numeric"
+                  class="mr-4"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
             </v-col>
 
-            <v-col
-              v-show="$vuetify.breakpoint.xs"
-              cols="6"
-              style="text-align: center;"
-            >
-              <v-btn color="error" outlined @click="onResetData()">
-                リセット
-              </v-btn>
+            <v-col cols="4" sm="2" md="3">
+              <v-select
+                v-model="fou"
+                label="フォウくん"
+                :items="selectFou"
+                class="mr-3"
+                color="teal"
+              ></v-select>
             </v-col>
-          </client-only>
-        </v-row>
-      </v-card-text>
-    </v-card>
-    <!-- 結果カード スマホの場合は表示しない -->
-    <client-only>
-      <ResultCard
-        v-if="!$vuetify.breakpoint.xs"
-        ref="child"
-        :character-class="characterClass"
-        :character-name="characterName"
-        :character-atk="characterAtk"
-        :fou="fou"
-        :np-charge-lv="npChargeLv"
-        :character-npmultiplier="characterNpmultiplier"
-        :servant-np-type="servantNpType"
-        :atk-buff="atkBuff"
-        :card-buff="cardBuff"
-        :s-atk-buff="sAtkBuff"
-        :np-buff="npBuff"
-        :s-np-atk-buff="sNpAtkBuff"
-        :dress-atk="dressAtk"
-        :class-skills="classSkills"
-        :possession-skills="possessionSkills"
-        :np-skills="npSkills"
-        :oc-skills="ocSkills"
-        :is-np-boosted="isNpBoosted"
-        @reset-data="onResetData"
-      />
-      <!-- スマホの場合のみ、固定フッター用意 -->
-      <FixedFooter
-        v-if="$vuetify.breakpoint.xs"
-        :character-class="characterClass"
-        :character-name="characterName"
-        :character-atk="characterAtk"
-        :fou="fou"
-        :np-charge-lv="npChargeLv"
-        :character-npmultiplier="characterNpmultiplier"
-        :servant-np-type="servantNpType"
-        :atk-buff="atkBuff"
-        :card-buff="cardBuff"
-        :s-atk-buff="sAtkBuff"
-        :np-buff="npBuff"
-        :s-np-atk-buff="sNpAtkBuff"
-        :dress-atk="dressAtk"
-        :is-np-boosted="isNpBoosted"
-        :class-compatibility="classCompatibility"
-        :attribute-compatibility="attributeCompatibility"
-      />
-    </client-only>
-  </v-row>
+
+            <v-col cols="6" sm="3" md="3">
+              <v-select
+                v-model="servantNpType"
+                label="宝具"
+                :items="selectServantNpType"
+                class="mr-3"
+                color="teal"
+              ></v-select>
+            </v-col>
+
+            <v-col cols="6" sm="3" md="3">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required"
+              >
+                <v-text-field
+                  v-model.number="characterNpmultiplier"
+                  label="宝具倍率"
+                  suffix="％"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="decimal"
+                  class="mr-4"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="6" sm="3" md="3">
+              <v-select
+                v-model="npChargeLv"
+                label="宝具Lv."
+                :items="items.npChargeLevel"
+                class="mr-3"
+                color="teal"
+                @change="onChangeNpmultiplier(npChargeLv)"
+              ></v-select>
+            </v-col>
+
+            <v-col cols="6" sm="3" md="3">
+              <v-select
+                v-model="selectingOcUpPrcentage"
+                label="OC"
+                :items="selectableOcUpPrcentages"
+                class="mr-3"
+                color="teal"
+              ></v-select>
+            </v-col>
+
+            <client-only>
+              <v-col v-if="!$vuetify.breakpoint.xs" cols="6" sm="3" md="3">
+                <v-switch
+                  v-model="isNpBoosted"
+                  label="宝具ブースト"
+                  color="yellow darken-3"
+                  class="np-boost-switch"
+                ></v-switch>
+              </v-col>
+            </client-only>
+
+            <v-col cols="8" sm="2" md="2">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required"
+              >
+                <v-text-field
+                  v-model.number="atkBuff"
+                  label="攻撃力バフ"
+                  suffix="％"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="decimal"
+                  class="mr-4"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="4" sm="2" md="2">
+              <PlusMinusButton
+                :on-click-plus-button="() => (atkBuff += 10)"
+                :on-click-minus-button="() => (atkBuff -= 10)"
+              />
+            </v-col>
+
+            <v-col cols="8" sm="2" md="2">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required|maxCardBuff"
+              >
+                <v-text-field
+                  v-model.number="cardBuff"
+                  label="カードバフ"
+                  suffix="％"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="decimal"
+                  class="mr-4"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="4" sm="2" md="2">
+              <PlusMinusButton
+                :on-click-plus-button="
+                  () => {
+                    if (cardBuff >= 400) return false
+                    cardBuff += 10
+                  }
+                "
+                :on-click-minus-button="() => (cardBuff -= 10)"
+              />
+            </v-col>
+
+            <v-col cols="8" sm="2" md="2">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required|maxNpBuff"
+              >
+                <v-text-field
+                  v-model.number="sAtkBuff"
+                  label="特攻バフ"
+                  suffix="％"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="decimal"
+                  class="mr-4"
+                  :class="{ 'event-buff-label': isEventCharacter }"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="4" sm="2" md="2">
+              <PlusMinusButton
+                :on-click-plus-button="
+                  () => {
+                    if (sAtkBuff >= 500) return false
+                    sAtkBuff += 10
+                  }
+                "
+                :on-click-minus-button="() => (sAtkBuff -= 10)"
+              />
+            </v-col>
+
+            <v-col cols="8" sm="2" md="2">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required|maxNpBuff"
+              >
+                <v-text-field
+                  v-model.number="npBuff"
+                  label="宝具威力バフ"
+                  suffix="％"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="decimal"
+                  class="mr-4"
+                  :class="{ 'event-buff-label': isNpBuffEventCharacter }"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="4" sm="2" md="2">
+              <PlusMinusButton
+                :on-click-plus-button="
+                  () => {
+                    if (npBuff >= 500) return false
+                    npBuff += 10
+                  }
+                "
+                :on-click-minus-button="() => (npBuff -= 10)"
+              />
+            </v-col>
+
+            <v-col cols="8" sm="2" md="2">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required"
+              >
+                <v-text-field
+                  v-model.number="sNpAtkBuff"
+                  label="特攻宝具"
+                  suffix="％"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="decimal"
+                  class="mr-4"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="4" sm="2" md="2">
+              <PlusMinusButton
+                :on-click-plus-button="
+                  () => {
+                    if (sNpAtkBuff === 100) return (sNpAtkBuff += 50)
+                    sNpAtkBuff += 10
+                  }
+                "
+                :on-click-minus-button="
+                  () => {
+                    if (sNpAtkBuff === 0) return false
+                    sNpAtkBuff -= 10
+                  }
+                "
+              />
+            </v-col>
+
+            <v-col cols="8" sm="2" md="2">
+              <validation-provider
+                ref="provider"
+                v-slot="{ errors }"
+                rules="required|maxDressAtk"
+              >
+                <v-text-field
+                  v-model.number="dressAtk"
+                  label="礼装ATK"
+                  :error-messages="errors"
+                  type="number"
+                  inputmode="numeric"
+                  class="mr-4"
+                  color="teal"
+                ></v-text-field>
+              </validation-provider>
+            </v-col>
+
+            <v-col cols="4" sm="2" md="2">
+              <PlusMinusButton
+                :on-click-plus-button="
+                  () => {
+                    if (dressAtk >= 3000) return false
+                    dressAtk += 100
+                  }
+                "
+                :on-click-minus-button="
+                  () => {
+                    if (dressAtk === 0) return false
+                    dressAtk -= 100
+                  }
+                "
+              />
+            </v-col>
+
+            <client-only>
+              <v-col v-if="$vuetify.breakpoint.xs" cols="7">
+                <v-switch
+                  v-model="isNpBoosted"
+                  label="宝具威力ブースト"
+                  color="yellow darken-3"
+                  class="np-boost-switch"
+                ></v-switch>
+              </v-col>
+            </client-only>
+
+            <client-only>
+              <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+                <v-select
+                  v-model="classCompatibility"
+                  label="クラス相性"
+                  :items="selectClassCompatibility"
+                  class="mr-4"
+                  color="teal"
+                ></v-select>
+              </v-col>
+
+              <v-col v-show="$vuetify.breakpoint.xs" cols="6" sm="4" md="4">
+                <v-select
+                  v-model="attributeCompatibility"
+                  label="属性相性"
+                  :items="selectAttributeCompatibility"
+                  class="mr-4"
+                  color="teal"
+                ></v-select>
+              </v-col>
+
+              <v-col
+                v-show="$vuetify.breakpoint.xs"
+                cols="6"
+                style="text-align: center;"
+              >
+                <v-btn color="teal" outlined @click="openSkillDisplay()"
+                  >バフ詳細</v-btn
+                >
+              </v-col>
+
+              <v-col
+                v-show="$vuetify.breakpoint.xs"
+                cols="6"
+                style="text-align: center;"
+              >
+                <v-btn color="error" outlined @click="onResetData()">
+                  リセット
+                </v-btn>
+              </v-col>
+            </client-only>
+          </v-row>
+        </v-card-text>
+      </v-card>
+      <!-- 結果カード スマホの場合は表示しない -->
+      <client-only>
+        <ResultCard
+          v-if="!$vuetify.breakpoint.xs"
+          ref="child"
+          :character-class="characterClass"
+          :character-name="characterName"
+          :character-atk="characterAtk"
+          :fou="fou"
+          :np-charge-lv="npChargeLv"
+          :character-npmultiplier="characterNpmultiplier"
+          :servant-np-type="servantNpType"
+          :atk-buff="atkBuff"
+          :card-buff="cardBuff"
+          :s-atk-buff="sAtkBuff"
+          :np-buff="npBuff"
+          :s-np-atk-buff="sNpAtkBuff"
+          :dress-atk="dressAtk"
+          :class-skills="classSkills"
+          :possession-skills="possessionSkills"
+          :np-skills="npSkills"
+          :oc-skills="ocSkills"
+          :is-np-boosted="isNpBoosted"
+          :damage-addition-buff="damageAdditionBuff"
+          @reset-data="onResetData"
+        />
+        <!-- スマホの場合のみ、固定フッター用意 -->
+        <FixedFooter
+          v-if="$vuetify.breakpoint.xs"
+          :character-class="characterClass"
+          :character-name="characterName"
+          :character-atk="characterAtk"
+          :fou="fou"
+          :np-charge-lv="npChargeLv"
+          :character-npmultiplier="characterNpmultiplier"
+          :servant-np-type="servantNpType"
+          :atk-buff="atkBuff"
+          :card-buff="cardBuff"
+          :s-atk-buff="sAtkBuff"
+          :np-buff="npBuff"
+          :s-np-atk-buff="sNpAtkBuff"
+          :dress-atk="dressAtk"
+          :is-np-boosted="isNpBoosted"
+          :class-compatibility="classCompatibility"
+          :attribute-compatibility="attributeCompatibility"
+          :damage-addition-buff="damageAdditionBuff"
+        />
+      </client-only>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -469,6 +462,7 @@ import ClassSkillBusterBuff from '../mixins/class-skill/buster-buff'
 import ClassSkillArtsBuff from '../mixins/class-skill/arts-buff'
 import ClassSkillQuickBuff from '../mixins/class-skill/quick-buff'
 import ClassSkillNpBuff from '../mixins/class-skill/np-buff'
+import ClassSkillDamageAdditionBuff from '../mixins/class-skill/damage-addition-buff'
 
 import PossessionSkillArtsBuff from '../mixins/possession-skill/arts-buff'
 import PossessionSkillArtsDown from '../mixins/possession-skill/arts-down'
@@ -506,7 +500,6 @@ import EventCharacterBuff from '../mixins/event-buff'
 import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
 
-import Dialog from '@/components/calculator/Npatk/Dialog'
 import SelectCharacterDialog from '@/components/calculator/SelectCharacterDialog'
 import SkillDialog from '@/components/calculator/SkillDialog'
 import SelectCharacterButton from '@/components/calculator/SelectCharacterButton'
@@ -517,7 +510,6 @@ import FixedFooter from '@/components/calculator/Npatk/FixedFooter'
 export default {
   components: {
     ValidationProvider,
-    Dialog,
     SelectCharacterDialog,
     SkillDialog,
     SelectCharacterButton,
@@ -532,6 +524,7 @@ export default {
     ClassSkillArtsBuff,
     ClassSkillQuickBuff,
     ClassSkillNpBuff,
+    ClassSkillDamageAdditionBuff,
     PossessionSkillArtsBuff,
     PossessionSkillArtsDown,
     PossessionSkillAtkBuff,
@@ -654,7 +647,8 @@ export default {
       selectableOcUpPrcentages: [1, 2, 3, 4, 5],
       isNpBoosted: false,
       historyCharacterNumbers: [],
-      historyCharacters: []
+      historyCharacters: [],
+      damageAdditionBuff: 0
     }
   },
   computed: {},
@@ -847,6 +841,7 @@ export default {
       ) {
         this.setClassSkillSAtkBuff(character)
       }
+      this.setClassSkillDamageAdditionBuff(character)
       // イベント特攻
       // this.setEventCharacterBuff(character)
       this.addHistoryCharacter(character.number)
@@ -1084,6 +1079,7 @@ export default {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
+      this.damageAdditionBuff = 0
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -1120,6 +1116,7 @@ export default {
       this.isEventCharacter = false
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
+      this.damageAdditionBuff = 0
     }
   },
   head() {

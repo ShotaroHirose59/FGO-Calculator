@@ -42,7 +42,7 @@
             <v-list-item-content>
               <v-list-item-subtitle>TOTAL(平均)</v-list-item-subtitle>
               <v-list-item-title class="headline">{{
-                averageDamage.toLocaleString()
+                (averageDamage + damageAdditionBuff).toLocaleString()
               }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -175,6 +175,10 @@ export default {
     isNpBoosted: {
       type: Boolean,
       required: true
+    },
+    damageAdditionBuff: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -199,6 +203,8 @@ export default {
       // 固定補正値
       const FIXED_CORRECTION_NUMBER = 0.23
 
+      const sAtkBuff = this.sAtkBuff === '' ? 0 : this.sAtkBuff
+
       return Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
@@ -208,7 +214,7 @@ export default {
           this.attributeCompatibility *
           this.classCorrection *
           ((100 + this.atkBuff) / 100) *
-          ((100 + this.sAtkBuff + this.actualNpBuff) / 100) *
+          ((100 + sAtkBuff + this.actualNpBuff) / 100) *
           (this.sNpAtkBuff / 100)
       )
     },
@@ -217,7 +223,7 @@ export default {
       const MINIMUM_RANDOM_NUMBER = 0.9
 
       return Math.floor(
-        this.averageDamage * MINIMUM_RANDOM_NUMBER
+        this.averageDamage * MINIMUM_RANDOM_NUMBER + this.damageAdditionBuff
       ).toLocaleString()
     },
     // 宝具の最高ダメージ
@@ -225,7 +231,7 @@ export default {
       const MAXIMUM__RANDOM_NUMBER = 1.099
 
       return Math.floor(
-        this.averageDamage * MAXIMUM__RANDOM_NUMBER
+        this.averageDamage * MAXIMUM__RANDOM_NUMBER + this.damageAdditionBuff
       ).toLocaleString()
     },
     actualNpBuff() {
