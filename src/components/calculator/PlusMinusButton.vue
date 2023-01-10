@@ -42,8 +42,8 @@ export default {
 }
 </script>
 
-<!-- <style scoped>
-.v-icon {
+<style scoped>
+.v-btn {
   touch-action: none;
 }
-</style> -->
+</style>
