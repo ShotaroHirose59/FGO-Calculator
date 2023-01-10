@@ -609,7 +609,7 @@ export default {
       if (this.sAtkBuff > 1000) this.sAtkBuff = 1000
     },
     npBuff() {
-      if (this.npBufff > 500) this.npBuff = 500
+      if (this.npBuff > 500) this.npBuff = 500
     },
     dressAtk() {
       if (this.dressAtk > 3000) this.dressAtk = 3000
