@@ -64,21 +64,14 @@
             </v-col>
 
             <v-col cols="4" sm="3" md="3">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required"
-              >
-                <v-text-field
-                  v-model.number="characterAtk"
-                  label="ATK"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="numeric"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+              <v-text-field
+                v-model.number="characterAtk"
+                label="ATK"
+                type="number"
+                inputmode="numeric"
+                class="mr-3"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
             <v-col cols="4" sm="2" md="3">
@@ -102,22 +95,15 @@
             </v-col>
 
             <v-col cols="6" sm="3" md="3">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required"
-              >
-                <v-text-field
-                  v-model.number="characterNpmultiplier"
-                  label="宝具倍率"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+              <v-text-field
+                v-model.number="characterNpmultiplier"
+                label="宝具倍率"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
             <v-col cols="6" sm="3" md="3">
@@ -152,56 +138,47 @@
               </v-col>
             </client-only>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required"
-              >
-                <v-text-field
-                  v-model.number="atkBuff"
-                  label="攻撃力バフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
+                v-model.number="atkBuff"
+                label="攻撃力バフ"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
+            <v-col cols="2" sm="1" md="1" lg="1">
               <PlusMinusButton
-                :on-click-plus-button="() => (atkBuff += 10)"
+                :on-click-plus-button="
+                  () => {
+                    if (atkBuff >= 400) return false
+                    if (atkBuff === '') atkBuff = 0
+                    atkBuff += 10
+                  }
+                "
                 :on-click-minus-button="() => (atkBuff -= 10)"
               />
             </v-col>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxCardBuff"
-              >
-                <v-text-field
-                  v-model.number="cardBuff"
-                  label="カードバフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
+                v-model.number="cardBuff"
+                label="カードバフ"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
+            <v-col cols="2" sm="1" md="1" lg="1">
               <PlusMinusButton
                 :on-click-plus-button="
                   () => {
                     if (cardBuff >= 400) return false
+                    if (cardBuff === '') cardBuff = 0
                     cardBuff += 10
                   }
                 "
@@ -209,31 +186,24 @@
               />
             </v-col>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxNpBuff"
-              >
-                <v-text-field
-                  v-model.number="sAtkBuff"
-                  label="特攻バフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  :class="{ 'event-buff-label': isEventCharacter }"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
+                v-model.number="sAtkBuff"
+                label="特攻バフ"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                :class="{ 'event-buff-label': isEventCharacter }"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
+            <v-col cols="2" sm="1" md="1" lg="1">
               <PlusMinusButton
                 :on-click-plus-button="
                   () => {
-                    if (sAtkBuff >= 500) return false
+                    if (sAtkBuff >= 1000) return false
+                    if (sAtkBuff === '') sAtkBuff = 0
                     sAtkBuff += 10
                   }
                 "
@@ -241,31 +211,24 @@
               />
             </v-col>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxNpBuff"
-              >
-                <v-text-field
-                  v-model.number="npBuff"
-                  label="宝具威力バフ"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  :class="{ 'event-buff-label': isNpBuffEventCharacter }"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
+                v-model.number="npBuff"
+                label="宝具威力バフ"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                :class="{ 'event-buff-label': isNpBuffEventCharacter }"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
+            <v-col cols="2" sm="1" md="1" lg="1">
               <PlusMinusButton
                 :on-click-plus-button="
                   () => {
                     if (npBuff >= 500) return false
+                    if (npBuff === '') npBuff = 0
                     npBuff += 10
                   }
                 "
@@ -273,30 +236,23 @@
               />
             </v-col>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required"
-              >
-                <v-text-field
-                  v-model.number="sNpAtkBuff"
-                  label="特攻宝具"
-                  suffix="％"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="decimal"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
+                v-model.number="sNpAtkBuff"
+                label="特攻宝具"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
+            <v-col cols="2" sm="1" md="1" lg="1">
               <PlusMinusButton
                 :on-click-plus-button="
                   () => {
                     if (sNpAtkBuff === 100) return (sNpAtkBuff += 50)
+                    if (sNpAtkBuff === '') sNpAtkBuff = 0
                     sNpAtkBuff += 10
                   }
                 "
@@ -309,29 +265,22 @@
               />
             </v-col>
 
-            <v-col cols="8" sm="2" md="2">
-              <validation-provider
-                ref="provider"
-                v-slot="{ errors }"
-                rules="required|maxDressAtk"
-              >
-                <v-text-field
-                  v-model.number="dressAtk"
-                  label="礼装ATK"
-                  :error-messages="errors"
-                  type="number"
-                  inputmode="numeric"
-                  class="mr-4"
-                  color="teal"
-                ></v-text-field>
-              </validation-provider>
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
+                v-model.number="dressAtk"
+                label="礼装ATK"
+                type="number"
+                inputmode="numeric"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
-            <v-col cols="4" sm="2" md="2">
+            <v-col cols="2" sm="1" md="1" lg="1">
               <PlusMinusButton
                 :on-click-plus-button="
                   () => {
                     if (dressAtk >= 3000) return false
+                    if (dressAtk === '') dressAtk = 0
                     dressAtk += 100
                   }
                 "
@@ -361,7 +310,7 @@
                   v-model="classCompatibility"
                   label="クラス相性"
                   :items="selectClassCompatibility"
-                  class="mr-4"
+                  class="mr-3"
                   color="teal"
                 ></v-select>
               </v-col>
@@ -371,7 +320,7 @@
                   v-model="attributeCompatibility"
                   label="属性相性"
                   :items="selectAttributeCompatibility"
-                  class="mr-4"
+                  class="mr-3"
                   color="teal"
                 ></v-select>
               </v-col>
@@ -452,7 +401,6 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
 import { collection, query, orderBy, getDocs } from 'firebase/firestore/lite'
 import db from '../plugins/firebase'
 
@@ -509,7 +457,6 @@ import FixedFooter from '@/components/calculator/Npatk/FixedFooter'
 
 export default {
   components: {
-    ValidationProvider,
     SelectCharacterDialog,
     SkillDialog,
     SelectCharacterButton,
@@ -651,8 +598,22 @@ export default {
       damageAdditionBuff: 0
     }
   },
-  computed: {},
   watch: {
+    atkBuff() {
+      if (this.atkBuff > 400) this.atkBuff = 400
+    },
+    cardBuff() {
+      if (this.cardBuff > 400) this.cardBuff = 400
+    },
+    sAtkBuff() {
+      if (this.sAtkBuff > 1000) this.sAtkBuff = 1000
+    },
+    npBuff() {
+      if (this.npBufff > 500) this.npBuff = 500
+    },
+    dressAtk() {
+      if (this.dressAtk > 3000) this.dressAtk = 3000
+    },
     servantNpType() {
       if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
         this.npmultiplier = [600, 750, 825, 862, 900]
