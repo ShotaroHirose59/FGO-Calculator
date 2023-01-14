@@ -844,7 +844,7 @@ export default {
     },
     checkChangeableNpType() {
       if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
-        this.npmultiplier = [600, 750, 825, 862, 900]
+        this.npmultiplier = [600, 750, 825, 862.5, 900]
         this.onChangeNpmultiplier(this.npChargeLv)
       } else if (
         this.characterName === 'エミヤ' &&
@@ -888,7 +888,7 @@ export default {
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Arts'
       ) {
-        this.npmultiplier = [450, 600, 675, 712, 750]
+        this.npmultiplier = [450, 600, 675, 712.5, 750]
         this.onChangeNpmultiplier(this.npChargeLv)
       }
     },

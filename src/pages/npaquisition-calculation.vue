@@ -909,7 +909,7 @@ export default {
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Arts'
       ) {
-        this.npmultiplier = [450, 600, 675, 712, 750]
+        this.npmultiplier = [450, 600, 675, 712.5, 750]
         this.onChangeNpmultiplier(this.npChargeLv)
       }
     },
