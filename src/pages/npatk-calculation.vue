@@ -1,12 +1,5 @@
 <template>
   <div>
-    <p class="mb-4" style="font-size: 14px;">
-      お知らせ：
-      <nuxt-link :to="{ name: 'npaquisition-calculation' }">
-        <span style="color: orange;">宝具NP獲得計算機能</span>
-      </nuxt-link>
-      <span>をリニューアルしました</span>
-    </p>
     <v-row no-gutters>
       <v-card class="col-md-6">
         <v-toolbar class="title" elevation="4">
