@@ -627,52 +627,12 @@ export default {
       if (this.dressAtk > 3000) this.dressAtk = 3000
     },
     servantNpType() {
-      if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
-        this.npmultiplier = [600, 750, 825, 862, 900]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'エミヤ' &&
-        this.servantNpType === 'Buster'
+      if (
+        this.characterName === 'エミヤ' ||
+        this.characterName === 'メリュジーヌ' ||
+        this.characterName === 'スペースイシュタル'
       ) {
-        this.npmultiplier = [400, 500, 550, 575, 600]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'メリュジーヌ' &&
-        this.servantNpType === 'Buster'
-      ) {
-        this.npmultiplier = [300, 400, 450, 475, 500]
-        this.onChangeNpmultiplier(this.npChargeLv)
-        // Note: BusterとArtsでOC効果が違うため
-        this.hadSelectedOcUpPrcentage = null
-        this.cardBuff = 0
-        this.setOcSkillBusterBuff(this.characterName)
-      } else if (
-        this.characterName === 'メリュジーヌ' &&
-        this.servantNpType === 'Arts'
-      ) {
-        this.npmultiplier = [900, 1200, 1350, 1425, 1500]
-        this.onChangeNpmultiplier(this.npChargeLv)
-        // Note: BusterとArtsでOC効果が違うため
-        this.ocSkills = []
-        this.cardBuff = 9
-      } else if (
-        this.characterName === 'スペースイシュタル' &&
-        this.servantNpType === 'Buster'
-      ) {
-        this.npmultiplier = [300, 400, 450, 475, 500]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'スペースイシュタル' &&
-        this.servantNpType === 'Quick'
-      ) {
-        this.npmultiplier = [600, 800, 900, 950, 1000]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'スペースイシュタル' &&
-        this.servantNpType === 'Arts'
-      ) {
-        this.npmultiplier = [450, 600, 675, 712, 750]
-        this.onChangeNpmultiplier(this.npChargeLv)
+        this.checkChangeableNpType()
       }
     },
     selectingOcUpPrcentage() {
@@ -708,7 +668,7 @@ export default {
     }
   },
   methods: {
-    selectCharacter(characterName) {
+    selectCharacter(characterName, filterdCard) {
       const character = this.characters.find(
         (character) => character.name === characterName
       )
@@ -722,7 +682,7 @@ export default {
       this.characterRarity = character.rarity
       this.setSelectableLv(this.characterRarity)
       this.selectedLv = this.selectableLv[0]
-      this.setNpType(character)
+      this.setNpType(character, filterdCard)
       this.setClassCompatibility(character)
 
       // スキルバフ
@@ -842,7 +802,34 @@ export default {
           break
       }
     },
-    setNpType(character) {
+    setNpType(character, filterdCard) {
+      // メリュジーヌはfilterdCard指定なしの時にBusterにする
+      if (character.name === 'メリュジーヌ' && filterdCard === '指定なし') {
+        this.servantNpType = 'Buster'
+        return this.checkChangeableNpType()
+      }
+
+      if (
+        character.name === 'エミヤ' ||
+        character.name === 'スペースイシュタル' ||
+        character.name === 'メリュジーヌ'
+      ) {
+        switch (filterdCard) {
+          case 'B':
+            this.servantNpType = 'Buster'
+            break
+          case 'A':
+            this.servantNpType = 'Arts'
+            break
+          case 'Q':
+            this.servantNpType = 'Quick'
+            break
+        }
+        if (filterdCard !== '指定なし') {
+          return this.checkChangeableNpType()
+        }
+      }
+
       switch (character.card) {
         case 'B':
           this.servantNpType = 'Buster'
@@ -853,6 +840,56 @@ export default {
         case 'Q':
           this.servantNpType = 'Quick'
           break
+      }
+    },
+    checkChangeableNpType() {
+      if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
+        this.npmultiplier = [600, 750, 825, 862, 900]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'エミヤ' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [400, 500, 550, 575, 600]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'メリュジーヌ' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [300, 400, 450, 475, 500]
+        this.onChangeNpmultiplier(this.npChargeLv)
+        // Note: BusterとArtsでOC効果が違うため
+        this.hadSelectedOcUpPrcentage = null
+        this.ocSkills = []
+        this.cardBuff = 0
+        this.setOcSkillBusterBuff(this.characterName)
+      } else if (
+        this.characterName === 'メリュジーヌ' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [900, 1200, 1350, 1425, 1500]
+        this.onChangeNpmultiplier(this.npChargeLv)
+        // Note: BusterとArtsでOC効果が違うため
+        this.ocSkills = []
+        this.cardBuff = 9
+      } else if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [300, 400, 450, 475, 500]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Quick'
+      ) {
+        this.npmultiplier = [600, 800, 900, 950, 1000]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [450, 600, 675, 712, 750]
+        this.onChangeNpmultiplier(this.npChargeLv)
       }
     },
     setClassCompatibility(character) {

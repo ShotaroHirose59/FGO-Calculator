@@ -660,52 +660,8 @@ export default {
       if (this.npAcquisitionBuff > 400) this.npAcquisitionBuff = 400
     },
     servantNpType() {
-      if (this.characterName === 'エミヤ' && this.servantNpType === 'Arts') {
-        this.npmultiplier = [600, 750, 825, 862, 900]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'エミヤ' &&
-        this.servantNpType === 'Buster'
-      ) {
-        this.npmultiplier = [400, 500, 550, 575, 600]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'メリュジーヌ' &&
-        this.servantNpType === 'Buster'
-      ) {
-        this.npmultiplier = [300, 400, 450, 475, 500]
-        this.onChangeNpmultiplier(this.npChargeLv)
-        // Note: BusterとArtsでOC効果が違うため
-        this.hadSelectedOcUpPrcentage = null
-        this.cardBuff = 0
-        this.setOcSkillBusterBuff(this.characterName)
-      } else if (
-        this.characterName === 'メリュジーヌ' &&
-        this.servantNpType === 'Arts'
-      ) {
-        this.npmultiplier = [900, 1200, 1350, 1425, 1500]
-        this.onChangeNpmultiplier(this.npChargeLv)
-        // Note: BusterとArtsでOC効果が違うため
-        this.ocSkills = []
-        this.cardBuff = 9
-      } else if (
-        this.characterName === 'スペースイシュタル' &&
-        this.servantNpType === 'Buster'
-      ) {
-        this.npmultiplier = [300, 400, 450, 475, 500]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'スペースイシュタル' &&
-        this.servantNpType === 'Quick'
-      ) {
-        this.npmultiplier = [600, 800, 900, 950, 1000]
-        this.onChangeNpmultiplier(this.npChargeLv)
-      } else if (
-        this.characterName === 'スペースイシュタル' &&
-        this.servantNpType === 'Arts'
-      ) {
-        this.npmultiplier = [450, 600, 675, 712, 750]
-        this.onChangeNpmultiplier(this.npChargeLv)
+      if (this.characterName === 'スペースイシュタル') {
+        this.checkChangeableNpType()
       }
     },
     selectingOcUpPrcentage() {
@@ -759,7 +715,7 @@ export default {
     }
   },
   methods: {
-    selectCharacter(characterName) {
+    selectCharacter(characterName, filterdCard) {
       const character = this.characters.find(
         (character) => character.name === characterName
       )
@@ -776,7 +732,7 @@ export default {
       this.npRate = character.npchargeatk
       this.npHitCount = character.nphitcount
       this.npRange = character.nprange
-      this.setNpType(character)
+      this.setNpType(character, filterdCard)
       this.setClassCompatibility(character)
 
       // スキルバフ
@@ -912,7 +868,21 @@ export default {
           break
       }
     },
-    setNpType(character) {
+    setNpType(character, filterdCard) {
+      if (character.name === 'スペースイシュタル') {
+        switch (filterdCard) {
+          case 'A':
+            this.servantNpType = 'Arts'
+            break
+          case 'Q':
+            this.servantNpType = 'Quick'
+            break
+        }
+        if (filterdCard === 'A' || filterdCard === 'Q') {
+          return this.checkChangeableNpType()
+        }
+      }
+
       switch (character.card) {
         case 'B':
           this.servantNpType = 'Buster'
@@ -926,6 +896,21 @@ export default {
       }
       if (character.name === 'エミヤ') {
         this.servantNpType = 'Arts'
+      }
+    },
+    checkChangeableNpType() {
+      if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Quick'
+      ) {
+        this.npmultiplier = [600, 800, 900, 950, 1000]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'スペースイシュタル' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [450, 600, 675, 712, 750]
+        this.onChangeNpmultiplier(this.npChargeLv)
       }
     },
     setClassCompatibility(character) {

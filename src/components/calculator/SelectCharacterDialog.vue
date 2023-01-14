@@ -286,9 +286,21 @@ export default {
         )
       }
       if (this.filterdCard !== '指定なし') {
-        characters = characters.filter(
-          (character) => character.card === this.filterdCard
-        )
+        if (this.filterdCard === 'Q') {
+          characters = characters.filter(
+            (character) =>
+              character.card === this.filterdCard ||
+              character.name === 'スペースイシュタル'
+          )
+        } else {
+          characters = characters.filter(
+            (character) =>
+              character.card === this.filterdCard ||
+              character.name === 'エミヤ' ||
+              character.name === 'スペースイシュタル' ||
+              character.name === 'メリュジーヌ'
+          )
+        }
       }
       if (this.filterdNprange !== '指定なし') {
         characters = characters.filter(
@@ -312,9 +324,21 @@ export default {
         )
       }
       if (this.filterdCard !== '指定なし') {
-        characters = characters.filter(
-          (character) => character.card === this.filterdCard
-        )
+        if (this.filterdCard === 'Q') {
+          characters = characters.filter(
+            (character) =>
+              character.card === this.filterdCard ||
+              character.name === 'スペースイシュタル'
+          )
+        } else {
+          characters = characters.filter(
+            (character) =>
+              character.card === this.filterdCard ||
+              character.name === 'エミヤ' ||
+              character.name === 'スペースイシュタル' ||
+              character.name === 'メリュジーヌ'
+          )
+        }
       }
       if (this.filterdNprange !== '指定なし') {
         characters = characters.filter(
@@ -432,7 +456,7 @@ export default {
     onSelectCharacter(characterName) {
       this.isOpen = false
       this.searchText = ''
-      this.$emit('selectCharacter', characterName)
+      this.$emit('selectCharacter', characterName, this.filterdCard)
     },
     onDeleteHistoryCharacter(characterNumber) {
       this.$emit('deleteHistoryCharacter', characterNumber)
