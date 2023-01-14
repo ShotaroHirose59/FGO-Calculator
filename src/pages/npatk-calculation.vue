@@ -218,6 +218,8 @@
                 suffix="％"
                 type="number"
                 inputmode="decimal"
+                :hint="dressNpBuffHint"
+                persistent-hint
                 :class="{ 'event-buff-label': isNpBuffEventCharacter }"
                 color="teal"
               ></v-text-field>
@@ -291,6 +293,16 @@
                   }
                 "
               />
+            </v-col>
+
+            <v-col cols="6" sm="3" md="3">
+              <v-select
+                v-model="craftEssence"
+                label="概念礼装"
+                :items="selectableCraftEssences"
+                class="mr-3"
+                color="teal"
+              ></v-select>
             </v-col>
 
             <client-only>
@@ -372,6 +384,7 @@
           :oc-skills="ocSkills"
           :is-np-boosted="isNpBoosted"
           :damage-addition-buff="damageAdditionBuff"
+          :dress-np-buff="dressNpBuff"
           @reset-data="onResetData"
         />
         <!-- スマホの場合のみ、固定フッター用意 -->
@@ -394,6 +407,7 @@
           :class-compatibility="classCompatibility"
           :attribute-compatibility="attributeCompatibility"
           :damage-addition-buff="damageAdditionBuff"
+          :dress-np-buff="dressNpBuff"
         />
       </client-only>
     </v-row>
@@ -445,6 +459,7 @@ import OcSkillsAtkBuff from '../mixins/oc-skill/s-atk-buff'
 import OcSkillNpmultiplierBuff from '../mixins/oc-skill/npmultiplier-buff'
 
 import EventCharacterBuff from '../mixins/event-buff'
+import CraftEssence from '../mixins/craft-essence'
 import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
 
@@ -502,6 +517,7 @@ export default {
     OcSkillsAtkBuff,
     OcSkillNpmultiplierBuff,
     EventCharacterBuff,
+    CraftEssence,
     HistoryCharacter,
     SelectClass
   ],
@@ -595,7 +611,10 @@ export default {
       isNpBoosted: false,
       historyCharacterNumbers: [],
       historyCharacters: [],
-      damageAdditionBuff: 0
+      damageAdditionBuff: 0,
+      craftEssence: '指定なし',
+      dressNpBuff: 0,
+      dressNpBuffHint: ''
     }
   },
   watch: {
@@ -803,6 +822,7 @@ export default {
         this.setClassSkillSAtkBuff(character)
       }
       this.setClassSkillDamageAdditionBuff(character)
+      this.checkCraftEssence(character.class)
       // イベント特攻
       // this.setEventCharacterBuff(character)
       this.addHistoryCharacter(character.number)
@@ -1029,7 +1049,6 @@ export default {
       this.sAtkBuff = 0
       this.npBuff = 0
       this.sNpAtkBuff = 100
-      this.dressAtk = 0
       this.characterRarity = null
       this.classSkills = []
       this.possessionSkills = []
@@ -1041,6 +1060,9 @@ export default {
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
       this.damageAdditionBuff = 0
+      if (this.craftEssence === '指定なし') {
+        this.dressAtk = 0
+      }
       if (!this.$vuetify.breakpoint.xs) {
         this.$refs.child.resetCompatibility()
       } else {
@@ -1078,6 +1100,7 @@ export default {
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
       this.damageAdditionBuff = 0
+      this.craftEssence = '指定なし'
     }
   },
   head() {
@@ -1123,5 +1146,8 @@ input[type='number']::-webkit-inner-spin-button {
       font-size: 14px;
     }
   }
+}
+.v-messages__message {
+  color: gold;
 }
 </style>

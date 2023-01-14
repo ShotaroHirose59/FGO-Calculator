@@ -124,6 +124,10 @@ export default {
     damageAdditionBuff: {
       type: Number,
       required: true
+    },
+    dressNpBuff: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -169,9 +173,10 @@ export default {
       )
     },
     actualNpBuff() {
-      if (this.isNpBoosted) return this.npBuff * 2
+      const npBuff = this.npBuff + this.dressNpBuff
+      if (this.isNpBoosted) return npBuff * 2
 
-      return this.npBuff
+      return npBuff
     },
     // クラス補正値
     classCorrection() {

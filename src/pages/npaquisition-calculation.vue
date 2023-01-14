@@ -288,6 +288,8 @@
               suffix="％"
               type="number"
               inputmode="decimal"
+              :hint="dressNpBuffHint"
+              persistent-hint
               :class="{ 'event-buff-label': isNpBuffEventCharacter }"
               color="teal"
             ></v-text-field>
@@ -363,6 +365,16 @@
             />
           </v-col>
 
+          <v-col cols="6" sm="3" md="3">
+            <v-select
+              v-model="craftEssence"
+              label="概念礼装"
+              :items="selectableCraftEssences"
+              class="mr-3"
+              color="teal"
+            ></v-select>
+          </v-col>
+
           <client-only>
             <v-col v-if="$vuetify.breakpoint.xs" cols="7">
               <v-switch
@@ -402,6 +414,7 @@
       :np-range="npRange"
       :np-recharge="npRecharge"
       :damage-addition-buff="damageAdditionBuff"
+      :dress-np-buff="dressNpBuff"
       @reset-data="onResetData"
     />
   </v-row>
@@ -458,6 +471,7 @@ import OcSkillNpAcquisitionBuff from '../mixins/oc-skill/np-acquisition-buff'
 import OcSkillNpRecharge from '../mixins/oc-skill/np-recharge'
 
 import EventCharacterBuff from '../mixins/event-buff'
+import CraftEssence from '../mixins/craft-essence'
 import HistoryCharacter from '../mixins/history-character'
 import SelectClass from '../mixins/select-class'
 
@@ -521,6 +535,7 @@ export default {
     OcSkillNpAcquisitionBuff,
     OcSkillNpRecharge,
     EventCharacterBuff,
+    CraftEssence,
     HistoryCharacter,
     SelectClass
   ],
@@ -619,7 +634,10 @@ export default {
       npRate: 0,
       npRange: '',
       npRecharge: 0,
-      damageAdditionBuff: 0
+      damageAdditionBuff: 0,
+      craftEssence: '指定なし',
+      dressNpBuff: 0,
+      dressNpBuffHint: ''
     }
   },
   watch: {
@@ -867,7 +885,7 @@ export default {
       this.setClassSkillNpchargeEveryTurn(character)
       // 与ダメージプラス
       this.setClassSkillDamageAdditionBuff(character)
-
+      this.checkCraftEssence(character.class)
       // イベント特攻
       // this.setEventCharacterBuff(character)
       this.addHistoryCharacter(character.number)
@@ -1098,7 +1116,6 @@ export default {
       this.sAtkBuff = 0
       this.npBuff = 0
       this.sNpAtkBuff = 100
-      this.dressAtk = 0
       this.characterRarity = null
       this.classSkills = []
       this.possessionSkills = []
@@ -1110,6 +1127,9 @@ export default {
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
       this.npRecharge = 0
+      if (this.craftEssence === '指定なし') {
+        this.dressAtk = 0
+      }
     },
     onResetData() {
       this.characterClass = ''
@@ -1142,6 +1162,7 @@ export default {
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
       this.npRecharge = 0
+      this.craftEssence = '指定なし'
     }
   },
   head() {
@@ -1187,5 +1208,8 @@ input[type='number']::-webkit-inner-spin-button {
       font-size: 14px;
     }
   }
+}
+.v-messages__message {
+  color: gold;
 }
 </style>
