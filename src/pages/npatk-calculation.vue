@@ -262,6 +262,35 @@
 
             <v-col cols="4" sm="2" md="3" lg="2">
               <v-text-field
+                v-model.number="specialResist"
+                label="特殊耐性"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                color="teal"
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="2" sm="1" md="1" lg="1">
+              <PlusMinusButton
+                :on-click-plus-button="
+                  () => {
+                    if (npBuff >= 100) return false
+                    if (specialResist === '') specialResist = 0
+                    specialResist += 10
+                  }
+                "
+                :on-click-minus-button="
+                  () => {
+                    if (specialResist === 0) return false
+                    specialResist -= 10
+                  }
+                "
+              />
+            </v-col>
+
+            <v-col cols="4" sm="2" md="3" lg="2">
+              <v-text-field
                 v-model.number="dressAtk"
                 label="礼装ATK"
                 type="number"
@@ -378,6 +407,7 @@
           :is-np-boosted="isNpBoosted"
           :damage-addition-buff="damageAdditionBuff"
           :dress-np-buff="dressNpBuff"
+          :special-resist="specialResist"
           @reset-data="onResetData"
         />
         <!-- スマホの場合のみ、固定フッター用意 -->
@@ -401,6 +431,7 @@
           :attribute-compatibility="attributeCompatibility"
           :damage-addition-buff="damageAdditionBuff"
           :dress-np-buff="dressNpBuff"
+          :special-resist="specialResist"
         />
       </client-only>
     </v-row>
@@ -607,7 +638,8 @@ export default {
       damageAdditionBuff: 0,
       craftEssence: '指定なし',
       dressNpBuff: 0,
-      dressNpBuffHint: ''
+      dressNpBuffHint: '',
+      specialResist: 0
     }
   },
   watch: {
@@ -625,6 +657,10 @@ export default {
     },
     dressAtk() {
       if (this.dressAtk > 3000) this.dressAtk = 3000
+    },
+    specialResist() {
+      if (this.specialResist > 100) this.specialResist = 100
+      if (this.specialResist < 0) this.specialResist = 0
     },
     servantNpType() {
       if (
@@ -1131,6 +1167,7 @@ export default {
       this.isNpBoosted = false
       this.damageAdditionBuff = 0
       this.craftEssence = '指定なし'
+      this.specialResist = 0
     }
   },
   head() {

@@ -183,6 +183,10 @@ export default {
     dressNpBuff: {
       type: Number,
       required: true
+    },
+    specialResist: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -208,6 +212,7 @@ export default {
       const FIXED_CORRECTION_NUMBER = 0.23
 
       const sAtkBuff = this.sAtkBuff === '' ? 0 : this.sAtkBuff
+      const specialResist = (100 - this.specialResist) * 0.01
 
       return Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
@@ -219,7 +224,8 @@ export default {
           this.classCorrection *
           ((100 + this.atkBuff) / 100) *
           ((100 + sAtkBuff + this.actualNpBuff) / 100) *
-          (this.sNpAtkBuff / 100)
+          (this.sNpAtkBuff / 100) *
+          specialResist
       )
     },
     // 宝具の最小ダメージ
