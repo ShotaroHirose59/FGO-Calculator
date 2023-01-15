@@ -82,6 +82,7 @@
                 v-model="servantNpType"
                 label="宝具"
                 :items="selectServantNpType"
+                :disabled="!isChangeableNpType"
                 class="mr-3"
                 color="teal"
               ></v-select>
@@ -639,7 +640,8 @@ export default {
       craftEssence: '指定なし',
       dressNpBuff: 0,
       dressNpBuffHint: '',
-      specialResist: 0
+      specialResist: 0,
+      isChangeableNpType: true
     }
   },
   watch: {
@@ -662,6 +664,17 @@ export default {
       if (this.specialResist > 100) this.specialResist = 100
       if (this.specialResist < 0) this.specialResist = 0
     },
+    characterName() {
+      if (
+        this.characterName === 'エミヤ' ||
+        this.characterName === 'メリュジーヌ' ||
+        this.characterName === 'スペースイシュタル'
+      ) {
+        this.isChangeableNpType = true
+      } else {
+        this.isChangeableNpType = false
+      }
+    },
     servantNpType() {
       if (
         this.characterName === 'エミヤ' ||
@@ -669,6 +682,7 @@ export default {
         this.characterName === 'スペースイシュタル'
       ) {
         this.checkChangeableNpType()
+        this.isChangeableNpType = true
       }
     },
     selectingOcUpPrcentage() {
