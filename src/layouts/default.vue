@@ -129,8 +129,18 @@ export default {
         }
       ],
       miniVariant: false,
-      title: 'FGO Calculator'
+      title: 'FGO Calculator',
+      isClicked: false
     }
+  },
+  mounted() {
+    document.addEventListener(
+      'dblclick',
+      function(e) {
+        e.preventDefault()
+      },
+      { passive: false }
+    )
   },
   head: {
     bodyAttrs: {
