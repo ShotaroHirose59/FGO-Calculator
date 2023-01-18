@@ -63,7 +63,10 @@ export default {
         this.npSkills.push({
           description: '敵単体に超強力な地属性特攻攻撃(150%)'
         })
-      } else if (character.name === '水着武則天') {
+      } else if (
+        character.name === '水着武則天' ||
+        character.name === 'ニトクリス〔オルタ〕'
+      ) {
         // this.sNpAtkBuff += 150
         this.npSkills.push({
           description: '敵全体に強力な人属性特攻攻撃(150%)'

@@ -622,7 +622,8 @@ export default {
         this.classSkillNp = 3.8
       } else if (
         this.characterName === 'スペースイシュタル' ||
-        this.characterName === 'ヘシアン･ロボ'
+        this.characterName === 'ヘシアン･ロボ' ||
+        this.characterName === 'ニトクリス〔オルタ〕'
       ) {
         this.classSkillNp = 3.5
       } else if (this.characterName === 'サリエリ') {

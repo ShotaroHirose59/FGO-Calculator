@@ -23,7 +23,8 @@ export default {
         character.name === '水着スカディ' ||
         character.name === 'ケツァルコアトル〔サンバ/サンタ〕' ||
         character.name === 'キングプロテア' ||
-        character.name === '水着BB'
+        character.name === '水着BB' ||
+        character.name === 'ニトクリス〔オルタ〕'
       ) {
         this.damageAdditionBuff = 250
         this.classSkills.push({
