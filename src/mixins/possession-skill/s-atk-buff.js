@@ -42,10 +42,10 @@ export default {
         this.possessionSkills.push({
           description: '(神性・悪魔・死霊)特攻を付与(100%)'
         })
-      } else if (character.name === 'ジークフリート') {
-        // this.sAtkBuff += 80
-        this.possessionSkills.push({ description: '(竜)特攻を付与(80%)' })
-      } else if (character.name === 'ニキチッチ') {
+      } else if (
+        character.name === 'ジークフリート' ||
+        character.name === 'ニキチッチ'
+      ) {
         // this.sAtkBuff += 80
         this.possessionSkills.push({ description: '(竜)特攻を付与(80%)' })
       } else if (character.name === 'サンソン') {
