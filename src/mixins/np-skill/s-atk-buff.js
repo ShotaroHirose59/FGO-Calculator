@@ -130,7 +130,7 @@ export default {
       } else if (character.name === 'モルガン') {
         // this.sAtkBuff += 50
         this.npSkills.push({
-          description: '(円卓の騎士)・妖精)特攻を付与(50%)'
+          description: '(円卓の騎士・妖精)特攻を付与(50%)'
         })
       } else if (character.name === 'ブリトマート') {
         // this.sAtkBuff += 50
