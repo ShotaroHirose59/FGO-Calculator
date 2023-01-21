@@ -101,6 +101,12 @@ export default {
         this.npSkills.push({
           description: '敵全体に強力な天属性特攻攻撃(150%)'
         })
+      } else if (character.name === '宮本武蔵') {
+        // this.sNpAtkBuff += 150
+        this.npSkills.push({
+          description:
+            '敵単体に超強力なアルターエゴ・ムーンキャンサー特攻攻撃(150%)'
+        })
       } else if (
         character.name === '謎のアイドルX〔オルタ〕' ||
         character.name === '呼延灼' ||
