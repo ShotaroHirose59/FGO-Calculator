@@ -20,7 +20,7 @@ export default {
         character.name === 'メドゥーサ（ランサー）' ||
         character.name === 'アルジュナ〔オルタ〕' ||
         character.name === '水着伊吹童子' ||
-        character.name === '水着スカディ' ||
+        character.name === '水着スカサハ＝スカディ' ||
         character.name === 'ケツァルコアトル〔サンバ/サンタ〕' ||
         character.name === 'キングプロテア' ||
         character.name === '水着BB' ||
