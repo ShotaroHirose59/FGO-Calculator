@@ -12,6 +12,7 @@ export default {
         character.name === '水着スカサハ' ||
         character.name === '水着アルトリア〔オルタ〕' ||
         character.name === '水着沖田総司' ||
+        character.name === 'ジャック' ||
         character.name === 'アタランテ〔オルタ〕' ||
         character.name === 'ボイジャー'
       ) {
