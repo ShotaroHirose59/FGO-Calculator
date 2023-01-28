@@ -39,8 +39,8 @@
               v-model="feedback.opinion"
               counter="300"
               :error-messages="errors"
-              label="機能追加の要望 バグ報告 感想など"
-              outlined
+              placeholder="機能追加の要望 バグ報告 感想など"
+              filled
             ></v-textarea>
           </validation-provider>
           <p>
