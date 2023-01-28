@@ -1,24 +1,26 @@
 export default {
   methods: {
-    setClassSkillSAtkBuff(character) {
-      if (character.name === '千子村正') {
-        // Note: 特攻バフは自動入力しない
-        // this.sAtkBuff += 20
+    setClassSkillSAtkBuff(characterName) {
+      if (characterName === '千子村正') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 20
+        this.setClassSkills('(王)特攻を付与(20%)')
+      } else if (characterName === '闇のコヤンスカヤ') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 20
+        this.setClassSkills('(猛獣)特攻を付与(20%)')
+      } else if (characterName === '殺生院キアラ') {
+        this.setClassSkills(
+          '自身にルーラー特攻を付与(ルーラーに対して攻撃1.5倍有利になる)'
+        )
+      }
+    },
+    setClassSkills(description) {
+      if (
+        !this.classSkills.some(
+          (classSkill) => classSkill.description === description
+        )
+      ) {
         this.classSkills.push({
-          name: '[当代不吉]',
-          description: '(王)特攻を付与(20%)'
-        })
-      } else if (character.name === '闇のコヤンスカヤ') {
-        // this.sAtkBuff += 20
-        this.classSkills.push({
-          name: '[NFFサービス]',
-          description: '(猛獣)特攻を付与(20%)'
-        })
-      } else if (character.name === '殺生院キアラ') {
-        this.classSkills.push({
-          name: '[ネガ・セイヴァー A]',
-          description:
-            '自身にルーラー特攻を付与(ルーラーに対して攻撃1.5倍有利になる)'
+          description
         })
       }
     }

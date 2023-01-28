@@ -328,11 +328,29 @@
               ></v-select>
             </v-col>
 
+            <v-col cols="6" sm="2" md="3" lg="2">
+              <v-checkbox
+                v-model="isActiveSpecialAtkBuff"
+                label="特攻状態"
+                color="yellow darken-3"
+                class="np-boost-switch"
+              ></v-checkbox>
+            </v-col>
+
+            <v-col cols="6" sm="2" md="3" lg="2">
+              <v-checkbox
+                v-model="isActiveSpecialNpAtkBuff"
+                label="特攻宝具"
+                color="yellow darken-3"
+                class="np-boost-switch"
+              ></v-checkbox>
+            </v-col>
+
             <client-only>
               <v-col v-if="$vuetify.breakpoint.xs" cols="7">
                 <v-switch
                   v-model="isNpBoosted"
-                  label="宝具威力ブースト"
+                  label="宝具ブースト"
                   color="yellow darken-3"
                   class="np-boost-switch"
                 ></v-switch>
@@ -470,6 +488,8 @@ import NpSkillNpBuff from '../mixins/np-skill/np-buff'
 import NpSkillQuickBuff from '../mixins/np-skill/quick-buff'
 import NpSkillQuickDown from '../mixins/np-skill/quick-down'
 import NpSkillsAtkBuff from '../mixins/np-skill/s-atk-buff'
+import NpSkillsNpAtkBuff from '../mixins/np-skill/s-np-atk-buff'
+import NpSkillsNpAtkBuffByNplv from '../mixins/np-skill/s-np-atk-buff-by-nplv'
 
 import OcSkillArtsBuff from '../mixins/oc-skill/arts-buff'
 import OcSkillArtsDown from '../mixins/oc-skill/arts-down'
@@ -481,6 +501,7 @@ import OcSkillNpBuff from '../mixins/oc-skill/np-buff'
 import OcSkillQuickBuff from '../mixins/oc-skill/quick-buff'
 import OcSkillQuickDown from '../mixins/oc-skill/quick-down'
 import OcSkillsAtkBuff from '../mixins/oc-skill/s-atk-buff'
+import OcSkillsNpAtkBuff from '../mixins/oc-skill/s-np-atk-buff'
 import OcSkillNpmultiplierBuff from '../mixins/oc-skill/npmultiplier-buff'
 
 import EventCharacterBuff from '../mixins/event-buff'
@@ -530,6 +551,8 @@ export default {
     NpSkillQuickBuff,
     NpSkillQuickDown,
     NpSkillsAtkBuff,
+    NpSkillsNpAtkBuff,
+    NpSkillsNpAtkBuffByNplv,
     OcSkillArtsBuff,
     OcSkillArtsDown,
     OcSkillAtkBuff,
@@ -540,6 +563,7 @@ export default {
     OcSkillQuickBuff,
     OcSkillQuickDown,
     OcSkillsAtkBuff,
+    OcSkillsNpAtkBuff,
     OcSkillNpmultiplierBuff,
     EventCharacterBuff,
     CraftEssence,
@@ -641,7 +665,9 @@ export default {
       dressNpBuff: 0,
       dressNpBuffHint: '',
       specialResist: 0,
-      isChangeableNpType: true
+      isChangeableNpType: true,
+      isActiveSpecialAtkBuff: false,
+      isActiveSpecialNpAtkBuff: false
     }
   },
   watch: {
@@ -702,6 +728,33 @@ export default {
       this.setOcSkillAtkBuff(this.characterName)
       this.setOcSkillDefensiveDown(this.characterName)
       this.setOcSkillNpBuff(this.characterName)
+      this.setOcSkillSAtkBuff(this.characterName)
+      this.setOcSkillSNpAtkBuff(this.characterName)
+    },
+    isActiveSpecialAtkBuff() {
+      if (this.isActiveSpecialAtkBuff === true) {
+        this.setPossessionSkillSAtkBuff(this.characterName)
+        this.setNpSkillSAtkBuff(this.characterName)
+        this.setOcSkillSAtkBuff(this.characterName)
+        if (
+          this.characterName === '千子村正' ||
+          this.characterName === '闇のコヤンスカヤ' ||
+          this.characterName === '殺生院キアラ'
+        ) {
+          this.setClassSkillSAtkBuff(this.characterName)
+        }
+      } else {
+        this.sAtkBuff = 0
+      }
+    },
+    isActiveSpecialNpAtkBuff() {
+      if (this.isActiveSpecialNpAtkBuff === true) {
+        this.setOcSkillSNpAtkBuff(this.characterName)
+        this.setNpSkillSNpAtkBuff(this.characterName)
+        this.setNpSkillSNpAtkBuffByNpLv(this.characterName)
+      } else {
+        this.sNpAtkBuff = 100
+      }
     }
   },
   async created() {
@@ -754,8 +807,8 @@ export default {
       this.setPossessionSkillQuickDown(character)
       // 宝具威力UP
       this.setPossessionSkillNpBuff(character)
-      // 特攻バフ
-      this.setPossessionSkillSAtkBuff(character)
+      // 特状態付与
+      this.setPossessionSkillSAtkBuff(character.name)
 
       // 宝具バフ
       // 攻撃力UPバフ
@@ -772,8 +825,10 @@ export default {
       this.setNpSkillQuickDown(character)
       // 宝具威力UP
       this.setNpSkillNpBuff(character)
+      // 特状態付与
+      this.setNpSkillSAtkBuff(character.name)
       // 特攻宝具
-      this.setNpSkillSAtkBuff(character)
+      this.setNpSkillSNpAtkBuff(this.characterName)
 
       // 宝具OC
       // 攻撃バフ
@@ -794,8 +849,10 @@ export default {
       this.setOcSkillQuickDown(character.name)
       // 宝具威力バフ
       this.setOcSkillNpBuff(this.characterName)
-      // 特攻
-      this.setOcSkillSAtkBuff(character)
+      // 特攻状態付与
+      this.setOcSkillSAtkBuff(this.characterName)
+      // 宝具特攻
+      this.setOcSkillSNpAtkBuff(this.characterName)
       // 宝具威力アップ(倍率)
       if (this.characterName === 'アーラシュ') {
         this.OcSkillNpmultiplierBuff(this.characterName)
@@ -822,7 +879,7 @@ export default {
         character.name === '闇のコヤンスカヤ' ||
         character.name === '殺生院キアラ'
       ) {
-        this.setClassSkillSAtkBuff(character)
+        this.setClassSkillSAtkBuff(character.name)
       }
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
@@ -1108,6 +1165,12 @@ export default {
       if (this.characterName === 'アーラシュ') {
         this.OcSkillNpmultiplierBuff(this.characterName)
       }
+      if (
+        this.characterName === 'エウリュアレ' ||
+        this.characterName === 'アルクェイド'
+      ) {
+        this.setNpSkillSNpAtkBuffByNpLv(this.characterName)
+      }
     },
     openDisplay() {
       this.$refs.dlg.isOpen = true
@@ -1140,6 +1203,8 @@ export default {
       this.isNpBuffEventCharacter = false
       this.isNpBoosted = false
       this.damageAdditionBuff = 0
+      this.isActiveSpecialAtkBuff = false
+      this.isActiveSpecialNpAtkBuff = false
       if (this.craftEssence === '指定なし') {
         this.dressAtk = 0
       }
@@ -1182,6 +1247,8 @@ export default {
       this.damageAdditionBuff = 0
       this.craftEssence = '指定なし'
       this.specialResist = 0
+      this.isActiveSpecialAtkBuff = false
+      this.isActiveSpecialNpAtkBuff = false
     }
   },
   head() {
