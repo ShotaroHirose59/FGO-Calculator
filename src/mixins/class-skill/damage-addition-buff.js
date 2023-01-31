@@ -60,7 +60,10 @@ export default {
         this.classSkills.push({
           description: '自身にダメージプラスを付与(225)'
         })
-      } else if (character.name === 'アシュヴァッターマン') {
+      } else if (
+        character.name === 'アシュヴァッターマン' ||
+        character.name === 'トラロック'
+      ) {
         this.damageAdditionBuff = 210
         this.classSkills.push({
           description: '自身にダメージプラスを付与(210)'

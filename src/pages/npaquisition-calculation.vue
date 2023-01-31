@@ -506,6 +506,7 @@ import NpSkillsAtkBuff from '../mixins/np-skill/s-atk-buff'
 import NpSkillNpRecharge from '../mixins/np-skill/np-recharge'
 import NpSkillsNpAtkBuff from '../mixins/np-skill/s-np-atk-buff'
 import NpSkillsNpAtkBuffByNplv from '../mixins/np-skill/s-np-atk-buff-by-nplv'
+import NpSkillNpAcquisitionBuff from '../mixins/np-skill/np-acquisition-buff'
 
 import OcSkillArtsBuff from '../mixins/oc-skill/arts-buff'
 import OcSkillArtsDown from '../mixins/oc-skill/arts-down'
@@ -575,6 +576,7 @@ export default {
     NpSkillNpRecharge,
     NpSkillsNpAtkBuff,
     NpSkillsNpAtkBuffByNplv,
+    NpSkillNpAcquisitionBuff,
     OcSkillArtsBuff,
     OcSkillArtsDown,
     OcSkillAtkBuff,
@@ -941,6 +943,9 @@ export default {
       }
       if (character.name === 'ディオスクロイ' || character.name === '千利休') {
         this.setClassSkillNpAcquisitionBuff(character)
+      }
+      if (character.name === 'トラロック') {
+        this.setNpSkillNpAcquisitionBuff(character)
       }
       // 毎ターンNPチャージ
       this.setClassSkillNpchargeEveryTurn(character)

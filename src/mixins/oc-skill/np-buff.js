@@ -33,7 +33,8 @@ export default {
         characterName === '水着ダヴィンチ' ||
         characterName === 'ボイジャー' ||
         characterName === 'ジャック・ド・モレー' ||
-        characterName === 'テスカトリポカ'
+        characterName === 'テスカトリポカ' ||
+        characterName === 'トラロック'
       ) {
         const ocUpPrcentages = [20, 25, 30, 35, 40]
         this.changeNpBuff(ocUpPrcentages, buffDescription)

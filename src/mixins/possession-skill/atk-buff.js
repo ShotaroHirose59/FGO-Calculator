@@ -183,7 +183,8 @@ export default {
         character.name === 'ネモ' ||
         character.name === '闇のコヤンスカヤ' ||
         character.name === '九紋竜エリザ' ||
-        character.name === 'シバの女王'
+        character.name === 'シバの女王' ||
+        character.name === 'トラロック'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })
