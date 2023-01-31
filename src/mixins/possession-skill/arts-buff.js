@@ -68,7 +68,8 @@ export default {
         character.name === 'BB' ||
         character.name === '葛飾北斎' ||
         character.name === '徴姉妹' ||
-        character.name === 'ヘファイスティオン'
+        character.name === 'ヘファイスティオン' ||
+        character.name === 'テスカトリポカ'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Arts性能アップ(30%)' })

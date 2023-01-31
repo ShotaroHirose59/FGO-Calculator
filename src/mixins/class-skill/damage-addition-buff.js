@@ -144,7 +144,8 @@ export default {
         character.name === '酒呑童子' ||
         character.name === 'セミラミス' ||
         character.name === 'クーフーリン（バーサーカー）' ||
-        character.name === '源頼光'
+        character.name === '源頼光' ||
+        character.name === 'テスカトリポカ'
       ) {
         this.damageAdditionBuff = 150
         this.classSkills.push({

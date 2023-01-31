@@ -38,7 +38,8 @@ export default {
         character.name === 'メディア' ||
         character.name === 'アストライア' ||
         character.name === 'BB' ||
-        character.name === 'シトナイ'
+        character.name === 'シトナイ' ||
+        character.name === 'テスカトリポカ'
       ) {
         // 陣地作成[A]
         this.cardBuff += 10

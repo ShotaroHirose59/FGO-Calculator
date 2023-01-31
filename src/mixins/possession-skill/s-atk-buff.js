@@ -101,6 +101,9 @@ export default {
       } else if (characterName === '謎のヒロインXX') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 50
         this.setPossessionSkills('(人類の脅威)特攻を付与(50%)')
+      } else if (characterName === 'テスカトリポカ') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 50
+        this.setPossessionSkills('(神性・超巨大)特攻を付与(50%)')
       } else if (characterName === '謎のアイドルX〔オルタ〕') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 50
         this.setPossessionSkills('(機械)特攻を付与(50%)')
