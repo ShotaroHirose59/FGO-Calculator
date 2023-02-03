@@ -479,6 +479,12 @@ export default {
           if (this.enemyClass === 'バーサーカー') return 2.0
           return 1.0
         case 'アルターエゴ':
+          if (
+            this.characterName === '殺生院キアラ' &&
+            this.enemyClass === 'ルーラー'
+          ) {
+            return 1.5
+          }
           if (this.enemyClass === 'フォーリナー') return 2.0
           if (this.enemyClass === 'バーサーカー') return 2.0
           if (
