@@ -1177,6 +1177,7 @@ export default {
     },
     openSelectCharacterDisplay() {
       this.$refs.selectCharacterDlg.isOpen = true
+      this.$refs.selectCharacterDlg.searchText = ''
     },
     openSkillDisplay() {
       this.$refs.skillDlg.isOpen = true

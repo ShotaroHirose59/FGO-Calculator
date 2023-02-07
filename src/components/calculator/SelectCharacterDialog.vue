@@ -455,7 +455,6 @@ export default {
     },
     onSelectCharacter(characterName) {
       this.isOpen = false
-      this.searchText = ''
       this.$emit('selectCharacter', characterName, this.filterdCard)
     },
     onDeleteHistoryCharacter(characterNumber) {
