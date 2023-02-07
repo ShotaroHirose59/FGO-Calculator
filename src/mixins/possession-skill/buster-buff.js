@@ -89,7 +89,8 @@ export default {
         character.name === '魔王信長' ||
         character.name === '沖田総司〔オルタ〕' ||
         character.name === '闇のコヤンスカヤ' ||
-        character.name === '九紋竜エリザ'
+        character.name === '九紋竜エリザ' ||
+        character.name === 'ククルカン'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Buster性能アップ(30%)' })

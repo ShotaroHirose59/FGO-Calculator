@@ -20,7 +20,8 @@ export default {
         character.name === '坂田金時' ||
         character.name === '巌窟王エドモン・ダンテス' ||
         character.name === 'ゴルゴーン' ||
-        character.name === '謎のヒロインXX'
+        character.name === '謎のヒロインXX' ||
+        character.name === 'ククルカン'
       ) {
         this.atkBuff += 50
         this.possessionSkills.push({ description: '攻撃力アップ(50%)' })

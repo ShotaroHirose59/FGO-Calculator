@@ -33,7 +33,8 @@ export default {
         character.name === '太歳星君' ||
         character.name === 'ジナコ' ||
         character.name === 'アビゲイル' ||
-        character.name === 'オベロン'
+        character.name === 'オベロン' ||
+        character.name === 'ククルカン'
       ) {
         this.npBuff += 30
         this.possessionSkills.push({ description: '宝具威力アップ(30%)' })

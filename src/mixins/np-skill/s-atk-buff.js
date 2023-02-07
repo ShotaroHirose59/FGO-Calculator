@@ -22,6 +22,9 @@ export default {
       } else if (characterName === 'ブリトマート') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 50
         this.setNpSkills('(騎乗スキル)特攻状態を付与(50%)')
+      } else if (characterName === 'ククルカン') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 50
+        this.setNpSkills('(人類の脅威)特攻状態を付与(50%)')
       } else if (characterName === '曲亭馬琴') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 30
         this.setNpSkills('(魔性)特攻を付与(30%)')
