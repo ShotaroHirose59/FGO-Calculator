@@ -47,7 +47,7 @@
               ></v-select>
             </v-col>
           </v-row>
-          <v-simple-table style="color: white">
+          <v-simple-table style="color: white" dense>
             <template>
               <thead>
                 <tr>
