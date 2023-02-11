@@ -1255,13 +1255,13 @@ export default {
   head() {
     return {
       titleTemplate: null,
-      title: '【FGO】宝具ダメージ計算 ~Wオルタと計算~',
+      title: '【FGO】宝具ダメージ計算',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content:
-            'FGOの計算アプリです。このページでは宝具のダメージ計算ができます。単体または全体宝具を持つ全てのサーヴァントが対象です。'
+            'FGOの計算サイトです。このページでは宝具のダメージ計算ができます。'
         }
       ]
     }

@@ -1277,13 +1277,13 @@ export default {
   head() {
     return {
       titleTemplate: null,
-      title: '【FGO】宝具NP計算 ~Wオルタと計算~',
+      title: '【FGO】宝具NP計算',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content:
-            'FGOの計算アプリです。このページでは宝具のNP獲得計算ができます。単体または全体宝具を持つArts Quickのサーヴァントが対象です。'
+            'このページでは宝具のNP回収計算ができます。各ヒットまでの累計ダメージとオーバーキルヒット数毎の獲得NPを計算できるので、宝具を連発できる敵の最大HPを確認できます。'
         }
       ]
     }
