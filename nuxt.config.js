@@ -22,7 +22,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         name: 'keywords',
-        content: 'FGO,Wオルタ,計算,宝具,NP,ダメージ,回収,獲得'
+        content: 'FGO,ダメージ計算,NP計算,宝具,NP回収,NP獲得,オルタ'
       },
       {
         hid: 'description',
