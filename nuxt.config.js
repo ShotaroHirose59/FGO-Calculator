@@ -62,9 +62,20 @@ export default {
         hid: 'og:site_name',
         name: 'og:site_name',
         content: 'FGO Calculator Wオルタと一緒に計算！'
-      }
+      },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-title', content: 'FGO Calculator' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        src: 'https://cdn.jsdelivr.net/npm/pwacompat@2.0.9/pwacompat.min.js',
+        integrity:
+          'sha384-VcI6S+HIsE80FVM1jgbd6WDFhzKYA0PecD/LcIyMQpT4fMJdijBh0I7Iblaacawc',
+        crossorigin: 'anonymous',
+        defer: true
+      }
+    ]
   },
   srcDir: 'src/',
   /*
