@@ -187,7 +187,8 @@ export default {
         characterName === 'モルガン' ||
         characterName === '千利休' ||
         characterName === '太歳星君' ||
-        characterName === '葛飾北斎'
+        characterName === '葛飾北斎' ||
+        characterName === 'ヨハンナ'
       ) {
         if (this.isActiveSpecialNpAtkBuff === true) {
           const ocBuffs = [150, 162.5, 175, 187.5, 200]
