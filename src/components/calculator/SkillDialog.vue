@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isOpen" scrollable max-width="800px">
+  <v-dialog v-model="isOpen" scrollable max-width="720px">
     <v-card>
       <v-toolbar height="64px">
         <!-- <v-img :src="image_src" max-width="56px" class="mr-4"></v-img> -->
