@@ -99,10 +99,10 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
-                      <!-- <template v-if="isEventCharacter(character.item.name)">
+                      <template v-if="isEventCharacter(character.item.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -121,10 +121,10 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
-                      <!-- <template v-if="isEventCharacter(character.name)">
+                      <template v-if="isEventCharacter(character.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -151,10 +151,10 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
-                      <!-- <template v-if="isEventCharacter(character.item.name)">
+                      <template v-if="isEventCharacter(character.item.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -182,10 +182,10 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
-                      <!-- <template v-if="isEventCharacter(character.name)">
+                      <template v-if="isEventCharacter(character.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -405,39 +405,15 @@ export default {
   },
   methods: {
     isEventCharacter(characterName) {
-      if (location.pathname.includes('npaquisition')) {
-        return false
-      }
-
       if (
-        characterName === 'カルナ〔サンタ〕' ||
-        characterName === 'ヴリトラ' ||
-        characterName === 'アルジュナ' ||
-        characterName === 'アルテラ・ザ・サン〔タ〕' ||
-        characterName === 'ナイチンゲール〔サンタ〕' ||
-        characterName === 'カルナ' ||
-        characterName === 'ジャンヌサンタリリィ' ||
-        characterName === 'パールヴァティー' ||
-        characterName === 'アルトリア〔サンタオルタ〕' ||
-        characterName === 'ゲオルギウス' ||
-        characterName === 'アルジュナ〔オルタ〕' ||
-        characterName === 'ベオウルフ' ||
-        characterName === 'ケツァルコアトル〔サンバ／サンタ〕' ||
-        characterName === '水着マルタ' ||
-        characterName === 'シグルド' ||
-        characterName === 'モードレッド' ||
-        characterName === 'ジークフリート' ||
-        characterName === 'アシュヴァッターマン' ||
-        characterName === 'エリザベート' ||
-        characterName === '謎のアルターエゴ・Λ' ||
-        characterName === 'マルタ' ||
-        characterName === '赤兎馬' ||
-        characterName === 'ジーク' ||
-        characterName === 'ナーサリー' ||
-        characterName === 'カーマ' ||
-        characterName === '望月千代女' ||
-        characterName === '清姫' ||
-        characterName === '葛飾北斎'
+        characterName === 'ヨハンナ' ||
+        characterName === 'ネロ〔ブライド〕' ||
+        characterName === '清少納言' ||
+        characterName === '紫式部' ||
+        characterName === 'セミラミス' ||
+        characterName === '謎のヒロインX〔オルタ〕' ||
+        characterName === 'カレン' ||
+        characterName === 'バゼット'
       ) {
         return true
       }
