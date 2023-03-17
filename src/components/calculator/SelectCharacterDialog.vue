@@ -99,10 +99,6 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
-                      <template v-if="isEventCharacter(character.item.name)">
-                        <span>/</span>
-                        <span style="color: orange">攻撃の威力UP</span>
-                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -121,10 +117,6 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
-                      <template v-if="isEventCharacter(character.name)">
-                        <span>/</span>
-                        <span style="color: orange">攻撃の威力UP</span>
-                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -140,6 +132,50 @@
             <v-list-item-group color="white">
               <template v-if="shouldUseFuse">
                 <v-list-item
+                  v-for="character in searchedEventCharacters"
+                  :key="character.item.id"
+                >
+                  <v-list-item-content
+                    @click="onSelectCharacter(character.item.name)"
+                  >
+                    <v-list-item-title>{{
+                      character.item.name
+                    }}</v-list-item-title>
+                    <v-list-item-subtitle class="caption">
+                      ★{{ character.item.rarity }} / {{ character.item.class }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                  <div style="color: #ffffffb3;">
+                    No. {{ character.item.number }}
+                  </div>
+                </v-list-item>
+              </template>
+              <template v-else>
+                <v-list-item
+                  v-for="character in searchedEventCharacters"
+                  :key="character.id"
+                >
+                  <v-list-item-content
+                    @click="onSelectCharacter(character.name)"
+                  >
+                    <v-list-item-title>{{ character.name }}</v-list-item-title>
+                    <v-list-item-subtitle class="caption">
+                      ★{{ character.rarity }} / {{ character.class }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                  <div style="color: #ffffffb3;">
+                    No. {{ character.number }}
+                  </div>
+                </v-list-item>
+              </template>
+            </v-list-item-group>
+          </v-list>
+        </template>
+        <template v-if="tabTitle === 2">
+          <v-list>
+            <v-list-item-group color="white">
+              <template v-if="shouldUseFuse">
+                <v-list-item
                   v-for="character in searchedSelectHistoryCharacters.reverse()"
                   :key="character.item.id"
                 >
@@ -151,10 +187,6 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
-                      <template v-if="isEventCharacter(character.item.name)">
-                        <span>/</span>
-                        <span style="color: orange">攻撃の威力UP</span>
-                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -182,10 +214,6 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
-                      <template v-if="isEventCharacter(character.name)">
-                        <span>/</span>
-                        <span style="color: orange">攻撃の威力UP</span>
-                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -226,8 +254,9 @@ export default {
   },
   data() {
     return {
+      eventCharacters: [],
       tabTitle: null,
-      tabItems: ['探す', '履歴'],
+      tabItems: ['オール', 'イベ', '履歴'],
       isOpen: false,
       searchText: '',
       fuseJsOptions: {
@@ -348,6 +377,44 @@ export default {
 
       return characters
     },
+    filterdEventCharacters() {
+      let characters = this.eventCharacters
+
+      if (this.filterdClass !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.class === this.filterdClass
+        )
+      }
+      if (this.filterdRarity !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.rarity === this.filterdRarity
+        )
+      }
+      if (this.filterdCard !== '指定なし') {
+        if (this.filterdCard === 'Q') {
+          characters = characters.filter(
+            (character) =>
+              character.card === this.filterdCard ||
+              character.name === 'スペースイシュタル'
+          )
+        } else {
+          characters = characters.filter(
+            (character) =>
+              character.card === this.filterdCard ||
+              character.name === 'エミヤ' ||
+              character.name === 'スペースイシュタル' ||
+              character.name === 'メリュジーヌ'
+          )
+        }
+      }
+      if (this.filterdNprange !== '指定なし') {
+        characters = characters.filter(
+          (character) => character.nprange === this.filterdNprange
+        )
+      }
+
+      return characters
+    },
     searchedCharacterCount() {
       return this.searchedCharacters.length
     },
@@ -378,6 +445,18 @@ export default {
         )
       }
     },
+    searchedEventCharacters() {
+      const fuse = new Fuse(this.filterdEventCharacters, this.fuseJsOptions)
+      const searchedCharactersByfuse = fuse.search(this.hiraToKata)
+
+      if (this.shouldUseFuse) {
+        return searchedCharactersByfuse
+      } else {
+        return this.filterdEventCharacters.filter((character) =>
+          character.name.includes(this.searchText)
+        )
+      }
+    },
     hiraToKata() {
       return this.searchText.replace(/[\u3041-\u3096]/g, (ch) =>
         String.fromCharCode(ch.charCodeAt(0) + 0x60)
@@ -401,21 +480,26 @@ export default {
       if (this.searchText === null) {
         this.searchText = ''
       }
+    },
+    characters() {
+      if (this.eventCharacters.length > 0) return
+
+      if (this.characters.length > 0) {
+        this.setEventCharacters()
+      }
     }
   },
   methods: {
-    isEventCharacter(characterName) {
-      if (
-        characterName === '高杉晋作' ||
-        characterName === '魔王信長' ||
-        characterName === 'エミヤ〔オルタ〕' ||
-        characterName === 'ヘクトール' ||
-        characterName === '佐々木小次郎' ||
-        characterName === '出雲阿国'
-      ) {
-        return true
-      }
-      return false
+    setEventCharacters() {
+      this.eventCharacters = this.characters.filter(
+        (character) =>
+          character.name === '高杉晋作' ||
+          character.name === '魔王信長' ||
+          character.name === 'エミヤ〔オルタ〕' ||
+          character.name === 'ヘクトール' ||
+          character.name === '佐々木小次郎' ||
+          character.name === '出雲阿国'
+      )
     },
     isIncludedKanji(text) {
       return this.regexpKanji.test(text)
