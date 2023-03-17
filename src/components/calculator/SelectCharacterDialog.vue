@@ -99,10 +99,10 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
-                      <!-- <template v-if="isEventCharacter(character.item.name)">
+                      <template v-if="isEventCharacter(character.item.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -121,10 +121,10 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
-                      <!-- <template v-if="isEventCharacter(character.name)">
+                      <template v-if="isEventCharacter(character.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div style="color: #ffffffb3;">
@@ -151,10 +151,10 @@
                     }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.item.rarity }} / {{ character.item.class }}
-                      <!-- <template v-if="isEventCharacter(character.item.name)">
+                      <template v-if="isEventCharacter(character.item.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -182,10 +182,10 @@
                     <v-list-item-title>{{ character.name }}</v-list-item-title>
                     <v-list-item-subtitle class="caption">
                       ★{{ character.rarity }} / {{ character.class }}
-                      <!-- <template v-if="isEventCharacter(character.name)">
+                      <template v-if="isEventCharacter(character.name)">
                         <span>/</span>
                         <span style="color: orange">攻撃の威力UP</span>
-                      </template> -->
+                      </template>
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <div class="mr-2" style="color: #ffffffb3;">
@@ -404,21 +404,19 @@ export default {
     }
   },
   methods: {
-    // isEventCharacter(characterName) {
-    //   if (
-    //     characterName === 'ヨハンナ' ||
-    //     characterName === 'ネロ〔ブライド〕' ||
-    //     characterName === '清少納言' ||
-    //     characterName === '紫式部' ||
-    //     characterName === 'セミラミス' ||
-    //     characterName === '謎のヒロインX〔オルタ〕' ||
-    //     characterName === 'カレン' ||
-    //     characterName === 'バゼット'
-    //   ) {
-    //     return true
-    //   }
-    //   return false
-    // },
+    isEventCharacter(characterName) {
+      if (
+        characterName === '高杉晋作' ||
+        characterName === '魔王信長' ||
+        characterName === 'エミヤ〔オルタ〕' ||
+        characterName === 'ヘクトール' ||
+        characterName === '佐々木小次郎' ||
+        characterName === '出雲阿国'
+      ) {
+        return true
+      }
+      return false
+    },
     isIncludedKanji(text) {
       return this.regexpKanji.test(text)
     },

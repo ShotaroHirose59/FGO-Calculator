@@ -1,18 +1,15 @@
 export default {
   methods: {
     setEventCharacterBuff(character) {
-      // 復刻クリスマス
-      if (character.name === 'ヨハンナ') {
+      // CBC 2023
+      if (character.name === '高杉晋作' || character.name === '魔王信長') {
         this.isEventCharacter = true
         this.sAtkBuff += 100
       } else if (
-        character.name === 'ネロ〔ブライド〕' ||
-        character.name === '清少納言' ||
-        character.name === '紫式部' ||
-        character.name === 'セミラミス' ||
-        character.name === '謎のヒロインX〔オルタ〕' ||
-        character.name === 'カレン' ||
-        character.name === 'バゼット'
+        character.name === 'エミヤ〔オルタ〕' ||
+        character.name === 'ヘクトール' ||
+        character.name === '佐々木小次郎' ||
+        character.name === '出雲阿国'
       ) {
         this.isEventCharacter = true
         this.sAtkBuff += 50
