@@ -15,6 +15,7 @@ export default {
       } else if (
         characterName === 'アストルフォ（セイバー）' ||
         characterName === '水着沖田総司〔オルタ〕' ||
+        characterName === '高杉晋作' ||
         characterName === 'カーマ' ||
         characterName === 'カルナ〔サンタ〕' ||
         characterName === '謎のアイドルX〔オルタ〕' ||

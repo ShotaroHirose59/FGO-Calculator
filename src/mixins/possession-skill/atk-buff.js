@@ -90,6 +90,7 @@ export default {
         character.name === '闇のコヤンスカヤ' ||
         character.name === '呼延灼' ||
         character.name === '黄飛虎' ||
+        character.name === '高杉晋作' ||
         character.name === 'ラスプーチン（言峰綺礼）'
       ) {
         this.atkBuff += 30

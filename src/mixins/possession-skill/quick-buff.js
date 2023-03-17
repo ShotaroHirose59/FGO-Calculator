@@ -53,6 +53,7 @@ export default {
         character.name === 'ディルムッド（セイバー）' ||
         character.name === 'ラクシュミー' ||
         character.name === '水着イリヤ' ||
+        character.name === '高杉晋作' ||
         character.name === '水着虞美人' ||
         character.name === 'ドン・キホーテ' ||
         character.name === 'ディルムッド' ||
