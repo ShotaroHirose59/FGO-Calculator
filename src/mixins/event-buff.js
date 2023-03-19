@@ -2,17 +2,19 @@ export default {
   methods: {
     setEventCharacterBuff(character) {
       // CBC 2023
-      if (character.name === '高杉晋作' || character.name === '魔王信長') {
-        this.isEventCharacter = true
-        this.sAtkBuff += 100
-      } else if (
-        character.name === 'エミヤ〔オルタ〕' ||
-        character.name === 'ヘクトール' ||
-        character.name === '佐々木小次郎' ||
-        character.name === '出雲阿国'
+      const eventCharacters = {
+        高杉晋作: 100,
+        魔王信長: 100,
+        'エミヤ〔オルタ〕': 50,
+        ヘクトール: 50,
+        佐々木小次郎: 50,
+        出雲阿国: 50
+      }
+      if (
+        Object.prototype.hasOwnProperty.call(eventCharacters, character.name)
       ) {
         this.isEventCharacter = true
-        this.sAtkBuff += 50
+        this.sAtkBuff += eventCharacters[character.name]
       }
     }
   }
