@@ -1,11 +1,7 @@
 export default {
   computed: {
     $_characterSelectText() {
-      if (this.characterName !== '') {
-        return `${this.characterName}`
-      } else {
-        return 'サーヴァントを選択する'
-      }
+      return this.characterName ? this.characterName : 'サーヴァントを選択する'
     }
   }
 }
