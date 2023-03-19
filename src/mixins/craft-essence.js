@@ -1,61 +1,55 @@
+const craftEssences = {
+  バーサーカー: [
+    '指定なし',
+    '黒聖杯 Lv.100',
+    '黒聖杯 Lv.20',
+    '白聖杯 Lv.100',
+    '幻想の姫 Lv.100',
+    '幻想の姫 Lv.20'
+  ],
+  default: ['指定なし', '黒聖杯 Lv.100', '黒聖杯 Lv.20', '白聖杯 Lv.100']
+}
+
+const CRAFT_ESSENCE_STATS = {
+  '黒聖杯 Lv.100': { dressAtk: 2400, dressNpBuff: 80 },
+  '黒聖杯 Lv.20': { dressAtk: 943, dressNpBuff: 60 },
+  '白聖杯 Lv.100': { dressAtk: 2000, dressNpBuff: 50 },
+  '幻想の姫 Lv.100': { dressAtk: 2000, dressNpBuff: 80 },
+  '幻想の姫 Lv.20': { dressAtk: 786, dressNpBuff: 60 },
+  指定なし: { dressAtk: 0, dressNpBuff: 0 }
+}
+
 export default {
+  data() {
+    return {
+      craftEssenceStats: CRAFT_ESSENCE_STATS
+    }
+  },
   computed: {
     selectableCraftEssences() {
-      if (this.characterClass === 'バーサーカー') {
-        return [
-          '指定なし',
-          '黒聖杯 Lv.100',
-          '黒聖杯 Lv.20',
-          '白聖杯 Lv.100',
-          '幻想の姫 Lv.100',
-          '幻想の姫 Lv.20'
-        ]
-      } else {
-        return ['指定なし', '黒聖杯 Lv.100', '黒聖杯 Lv.20', '白聖杯 Lv.100']
-      }
+      return craftEssences[this.characterClass] || craftEssences.default
     }
   },
   watch: {
     craftEssence() {
-      switch (this.craftEssence) {
-        case '黒聖杯 Lv.100':
-          this.dressAtk = 2400
-          this.dressNpBuff = 80
-          break
-        case '黒聖杯 Lv.20':
-          this.dressAtk = 943
-          this.dressNpBuff = 60
-          break
-        case '白聖杯 Lv.100':
-          this.dressAtk = 2000
-          this.dressNpBuff = 50
-          break
-        case '幻想の姫 Lv.100':
-          this.dressAtk = 2000
-          this.dressNpBuff = 80
-          break
-        case '幻想の姫 Lv.20':
-          this.dressAtk = 786
-          this.dressNpBuff = 60
-          break
-        default:
-          this.dressAtk = 0
-          this.dressNpBuff = 0
+      if (this.craftEssence in this.craftEssenceStats) {
+        const stats = this.craftEssenceStats[this.craftEssence]
+        this.dressAtk = stats.dressAtk
+        this.dressNpBuff = stats.dressNpBuff
+      } else {
+        this.dressAtk = 0
+        this.dressNpBuff = 0
       }
     },
     dressNpBuff() {
-      if (this.dressNpBuff > 0) {
-        this.dressNpBuffHint = `+${this.dressNpBuff}`
-      } else {
-        this.dressNpBuffHint = ''
-      }
+      this.dressNpBuffHint = this.dressNpBuff > 0 ? `+${this.dressNpBuff}` : ''
     }
   },
   methods: {
     checkCraftEssence(characterClass) {
+      const berserkerOnlyCraftEssences = ['幻想の姫 Lv.100', '幻想の姫 Lv.20']
       if (
-        (this.craftEssence === '幻想の姫 Lv.100' ||
-          this.craftEssence === '幻想の姫 Lv.20') &&
+        berserkerOnlyCraftEssences.includes(this.craftEssence) &&
         characterClass !== 'バーサーカー'
       ) {
         this.craftEssence = '指定なし'
