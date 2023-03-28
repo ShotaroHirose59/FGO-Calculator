@@ -1,7 +1,7 @@
 export default {
   computed: {
     $_characterSelectText() {
-      return this.characterName ? this.characterName : 'サーヴァントを選択する'
+      return this.characterName ? this.characterName : 'サーヴァントを選ぶ'
     }
   }
 }
