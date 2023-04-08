@@ -1122,7 +1122,7 @@ export default {
         character.name === '茶々' ||
         character.name === 'バニヤン' ||
         character.name === '水着ジャンヌ〔オルタ〕' ||
-        character.name === 'ケツァルコアトル〔サンバ／サンタ〕' ||
+        character.name === 'ケツァル･コアトル〔サンバ／サンタ〕' ||
         character.name === '水着ダヴィンチ' ||
         character.name === '壱与' ||
         character.name === '謎の蘭丸X' ||

@@ -108,7 +108,7 @@ export default {
         character.name === 'ギルガメッシュ' ||
         character.name === 'ギルガメッシュ（キャスター）' ||
         character.name === '子ギル' ||
-        character.name === 'ケツァルコアトル'
+        character.name === 'ケツァル･コアトル'
       ) {
         this.atkBuff += 21
         this.possessionSkills.push({ description: '攻撃力アップ(21%)' })
@@ -171,7 +171,7 @@ export default {
         character.name === 'サロメ' ||
         character.name === '水着スカサハ＝スカディ' ||
         character.name === '水着マルタ' ||
-        character.name === 'ケツァルコアトル〔サンバ／サンタ〕' ||
+        character.name === 'ケツァル･コアトル〔サンバ／サンタ〕' ||
         character.name === 'アストライア' ||
         character.name === '壱与' ||
         character.name === 'ジャンヌ〔オルタ〕' ||

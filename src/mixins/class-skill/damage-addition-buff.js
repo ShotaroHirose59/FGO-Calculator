@@ -4,7 +4,7 @@ export default {
     setClassSkillDamageAdditionBuff(character) {
       if (
         character.name === 'エウリュアレ' ||
-        character.name === 'ケツァルコアトル'
+        character.name === 'ケツァル･コアトル'
       ) {
         this.damageAdditionBuff = 300
         this.classSkills.push({
@@ -21,7 +21,7 @@ export default {
         character.name === 'アルジュナ〔オルタ〕' ||
         character.name === '水着伊吹童子' ||
         character.name === '水着スカサハ＝スカディ' ||
-        character.name === 'ケツァルコアトル〔サンバ/サンタ〕' ||
+        character.name === 'ケツァル･コアトル〔サンバ/サンタ〕' ||
         character.name === 'キングプロテア' ||
         character.name === '水着BB' ||
         character.name === 'ニトクリス〔オルタ〕'

@@ -72,7 +72,7 @@ export default {
         character.name === '水着清姫' ||
         character.name === 'ロムルス' ||
         character.name === 'ジャガーマン' ||
-        character.name === 'ケツァルコアトル' ||
+        character.name === 'ケツァル･コアトル' ||
         character.name === 'エウロペ' ||
         character.name === '水着カイニス' ||
         character.name === 'エリザベート〔シンデレラ〕' ||
@@ -85,7 +85,7 @@ export default {
         character.name === '水着ブリュンヒルデ' ||
         character.name === '清姫' ||
         character.name === '天草四郎' ||
-        character.name === 'ケツァルコアトル〔サンバ／サンタ〕' ||
+        character.name === 'ケツァル･コアトル〔サンバ／サンタ〕' ||
         character.name === '魔王信長' ||
         character.name === '沖田総司〔オルタ〕' ||
         character.name === '闇のコヤンスカヤ' ||
