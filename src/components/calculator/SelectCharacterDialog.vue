@@ -37,7 +37,10 @@
         </v-tab>
       </v-tabs>
       <div class="mx-4 my-4">
-        <h4>絞り込み</h4>
+        <div style="display: flex">
+          <h4>絞り込み</h4>
+          <v-btn flat small class="ml-4" @click="resetFilter">クリア</v-btn>
+        </div>
         <v-row no-gutters class="mt-4">
           <v-col cols="6" sm="4" md="3">
             <v-select
@@ -514,6 +517,12 @@ export default {
     },
     onDeleteHistoryCharacter(characterNumber) {
       this.$emit('deleteHistoryCharacter', characterNumber)
+    },
+    resetFilter() {
+      this.filterdClass = '指定なし'
+      this.filterdRarity = '指定なし'
+      this.filterdCard = '指定なし'
+      this.filterdNprange = '指定なし'
     }
   }
 }
