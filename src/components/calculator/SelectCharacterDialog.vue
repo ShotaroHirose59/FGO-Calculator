@@ -493,12 +493,9 @@ export default {
     setEventCharacters() {
       this.eventCharacters = this.characters.filter(
         (character) =>
-          character.name === '高杉晋作' ||
-          character.name === '魔王信長' ||
-          character.name === 'エミヤ〔オルタ〕' ||
-          character.name === 'ヘクトール' ||
-          character.name === '佐々木小次郎' ||
-          character.name === '出雲阿国'
+          character.name === '坂田金時（ライダー）' ||
+          character.name === '酒呑童子（キャスター）' ||
+          character.name === 'ケツァル･コアトル〔サンバ／サンタ〕'
       )
     },
     isIncludedKanji(text) {

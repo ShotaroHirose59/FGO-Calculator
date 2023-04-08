@@ -1,14 +1,11 @@
 export default {
   methods: {
     setEventCharacterBuff(character) {
-      // CBC 2023
+      // 巡霊の祝祭 第1弾
       const eventCharacters = {
-        高杉晋作: 100,
-        魔王信長: 100,
-        'エミヤ〔オルタ〕': 50,
-        ヘクトール: 50,
-        佐々木小次郎: 50,
-        出雲阿国: 50
+        '坂田金時（ライダー）': 50,
+        '酒呑童子（キャスター）': 50,
+        'ケツァル･コアトル〔サンバ／サンタ〕': 50
       }
       if (
         Object.prototype.hasOwnProperty.call(eventCharacters, character.name)
