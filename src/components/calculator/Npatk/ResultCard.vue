@@ -245,7 +245,8 @@ export default {
       ).toLocaleString()
     },
     actualNpBuff() {
-      const npBuff = this.npBuff + this.dressNpBuff
+      let npBuff = this.npBuff === '' ? 0 : this.npBuff
+      npBuff += this.dressNpBuff
       if (this.isNpBoosted) return npBuff * 2
 
       return npBuff
