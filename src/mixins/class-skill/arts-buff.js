@@ -64,7 +64,8 @@ export default {
         })
       } else if (character.name === 'メリュジーヌ') {
         // 陣地作成[B+]
-        if (this.servantNpType === 'Arts') this.cardBuff += 9
+        // Note: メリュジーヌのみ = にする
+        if (this.servantNpType === 'Arts') this.cardBuff = 9
         this.classSkills.push({
           name: '陣地作成[B+]',
           description: 'Arts性能アップ(9%)'

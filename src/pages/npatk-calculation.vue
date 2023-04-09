@@ -1217,39 +1217,17 @@ export default {
       }
     },
     onResetData() {
-      this.characterClass = ''
-      this.characterName = ''
-      this.atk = []
-      this.fou = 1000
-      this.selectedLv = 0
-      this.characterAtk = 0
-      this.npChargeLv = 1
-      this.npmultiplier = []
-      this.characterNpmultiplier = 0
-      this.servantNpType = ''
-      this.atkBuff = 0
-      this.cardBuff = 0
-      this.sAtkBuff = 0
-      this.npBuff = 0
-      this.sNpAtkBuff = 100
-      this.dressAtk = 0
-      this.classCompatibility = 2.0
-      this.attributeCompatibility = 1.0
-      this.classSkills = []
-      this.possessionSkills = []
-      this.npSkills = []
-      this.ocSkills = []
-      this.selectingOcUpPrcentage = 1
-      this.hadSelectedOcUpPrcentage = null
-      this.characterRarity = null
-      this.isEventCharacter = false
-      this.isNpBuffEventCharacter = false
-      this.isNpBoosted = false
-      this.damageAdditionBuff = 0
-      this.craftEssence = '指定なし'
+      const prevSelectedLv = this.selectedLv
+      const prevNpChargeLv = this.npChargeLv
+      const prevFou = this.fou
       this.specialResist = 0
-      this.isActiveSpecialAtkBuff = false
-      this.isActiveSpecialNpAtkBuff = false
+
+      this.$refs.selectCharacterDlg.onSelectCharacter(this.characterName)
+      this.selectedLv = prevSelectedLv
+      this.npChargeLv = prevNpChargeLv
+      this.onChangeAtkByLv(this.selectedLv)
+      this.onChangeNpmultiplier(this.npChargeLv)
+      this.fou = prevFou
     }
   },
   head() {
