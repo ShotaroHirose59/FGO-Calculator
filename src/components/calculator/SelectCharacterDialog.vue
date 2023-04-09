@@ -38,8 +38,17 @@
       </v-tabs>
       <div class="mx-4 my-4">
         <div style="display: flex">
-          <h4>絞り込み</h4>
-          <v-btn flat small class="ml-4" @click="resetFilter">クリア</v-btn>
+          <h4 style="margin-top: 2px">絞り込み</h4>
+          <template v-if="$vuetify.breakpoint.xs">
+            <v-btn text small class="ml-auto mr-4" @click="resetFilter">
+              クリア
+            </v-btn>
+          </template>
+          <template v-else>
+            <v-btn text small class="ml-4 mr-4" @click="resetFilter">
+              クリア
+            </v-btn>
+          </template>
         </div>
         <v-row no-gutters class="mt-4">
           <v-col cols="6" sm="4" md="3">
