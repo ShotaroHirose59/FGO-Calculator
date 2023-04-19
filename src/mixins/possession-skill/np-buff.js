@@ -72,7 +72,8 @@ export default {
         character.name === '水着ダヴィンチ' ||
         character.name === 'スペースイシュタル' ||
         character.name === '水着殺生院キアラ' ||
-        character.name === 'アルクェイド'
+        character.name === 'アルクェイド' ||
+        character.name === 'ラーヴァ／ティアマト'
       ) {
         this.npBuff += 20
         this.possessionSkills.push({ description: '宝具威力アップ(20%)' })

@@ -4,7 +4,8 @@ export default {
     setClassSkillDamageAdditionBuff(character) {
       if (
         character.name === 'エウリュアレ' ||
-        character.name === 'ケツァル･コアトル'
+        character.name === 'ケツァル･コアトル' ||
+        character.name === 'ラーヴァ／ティアマト'
       ) {
         this.damageAdditionBuff = 300
         this.classSkills.push({
