@@ -5,7 +5,7 @@ export default {
       if (
         character.name === 'エウリュアレ' ||
         character.name === 'ケツァル･コアトル' ||
-        character.name === 'ラーヴァ／ティアマト'
+        character.name === 'ティアマト'
       ) {
         this.damageAdditionBuff = 300
         this.classSkills.push({
