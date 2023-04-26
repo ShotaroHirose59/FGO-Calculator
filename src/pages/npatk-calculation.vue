@@ -597,7 +597,8 @@ export default {
           'アルターエゴ',
           'ムーンキャンサー',
           'フォーリナー',
-          'プリテンダー'
+          'プリテンダー',
+          'ビースト'
         ],
         filterableRarities: [1, 2, 3, 4, 5],
         filterableServantNpType: ['Buster', 'Arts', 'Quick'],
@@ -609,7 +610,7 @@ export default {
         { text: '等倍', value: 1.0 },
         { text: '有利', value: 2.0 },
         { text: '不利', value: 0.5 },
-        { text: '狂・分・詐 有利', value: 1.5 }
+        { text: '狂・分・詐・獣 有利', value: 1.5 }
       ],
       attributeCompatibility: 1.0,
       selectAttributeCompatibility: [
@@ -1010,7 +1011,8 @@ export default {
       } else if (
         character.class === 'バーサーカー' ||
         character.class === 'アルターエゴ' ||
-        character.class === 'プリテンダー'
+        character.class === 'プリテンダー' ||
+        character.class === 'ビースト'
       ) {
         this.classCompatibility = 1.5
       } else {

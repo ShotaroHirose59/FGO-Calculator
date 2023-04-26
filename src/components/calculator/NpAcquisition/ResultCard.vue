@@ -532,6 +532,29 @@ export default {
           ) {
             return 0.5
           }
+          return 1.0
+        case 'ビースト':
+          if (this.enemyClass === 'バーサーカー') return 2.0
+          if (
+            this.enemyClass === 'セイバー' ||
+            this.enemyClass === 'アーチャー' ||
+            this.enemyClass === 'ランサー' ||
+            this.enemyClass === 'ライダー' ||
+            this.enemyClass === 'キャスター' ||
+            this.enemyClass === 'アサシン'
+          ) {
+            return 1.5
+          }
+          if (
+            this.enemyClass === 'ルーラー' ||
+            this.enemyClass === 'アヴェンジャー' ||
+            this.enemyClass === 'ムーンキャンサー' ||
+            this.enemyClass === 'アルターエゴ' ||
+            this.enemyClass === 'フォーリナー' ||
+            this.enemyClass === 'プリテンダー'
+          ) {
+            return 0.5
+          }
       }
       return 1.0
     },

@@ -292,7 +292,8 @@ export default {
           'アルターエゴ',
           'ムーンキャンサー',
           'フォーリナー',
-          'プリテンダー'
+          'プリテンダー',
+          'ビースト'
         ],
         filterableRarities: ['指定なし', 5, 4, 3, 2, 1],
         filterableCards: ['指定なし', 'Q', 'A', 'B'],
