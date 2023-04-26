@@ -219,6 +219,14 @@ export default {
           this.sNpAtkBuff = ocBuffs[this.selectingOcUpPrcentage - 1]
         }
         this.setOcSkills('敵全体に強力な(ライダー)特攻攻撃(150~200%)')
+      } else if (characterName === 'ドラコー') {
+        if (this.isActiveSpecialNpAtkBuff === true) {
+          const ocBuffs = [150, 162.5, 175, 187.5, 200]
+          this.sNpAtkBuff = ocBuffs[this.selectingOcUpPrcentage - 1]
+        }
+        this.setOcSkills(
+          '敵単体に超強力な(7騎士のサーヴァント)特攻攻撃(150~200%)'
+        )
       }
     },
     setOcSkills(description) {

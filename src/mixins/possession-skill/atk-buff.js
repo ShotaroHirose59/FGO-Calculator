@@ -46,7 +46,8 @@ export default {
         character.name === 'バベッジ' ||
         character.name === 'クレオパトラ' ||
         character.name === 'キングプロテア' ||
-        character.name === 'テスカトリポカ'
+        character.name === 'テスカトリポカ' ||
+        character.name === 'ドラコー'
       ) {
         this.atkBuff += 40
         this.possessionSkills.push({ description: '攻撃力アップ(40%)' })

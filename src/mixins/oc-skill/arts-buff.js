@@ -17,7 +17,8 @@ export default {
       } else if (
         characterName === '千子村正' ||
         characterName === 'メアリー・アニング' ||
-        characterName === '水着宇津見エリセ'
+        characterName === '水着宇津見エリセ' ||
+        characterName === 'ロクスタ'
       ) {
         const ocUpPrcentages = [10, 15, 20, 25, 30]
         this.changeCardBuff(ocUpPrcentages, buffDescription)

@@ -107,6 +107,9 @@ export default {
       } else if (characterName === '謎のアイドルX〔オルタ〕') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 50
         this.setPossessionSkills('(機械)特攻を付与(50%)')
+      } else if (characterName === 'ドラコー') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 40
+        this.setPossessionSkills('(竜・ローマ)特攻を付与(40%)')
       } else if (characterName === '水着宇津見エリセ') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 35
         this.setPossessionSkills('(サーヴァント)特攻を付与(35%)')
