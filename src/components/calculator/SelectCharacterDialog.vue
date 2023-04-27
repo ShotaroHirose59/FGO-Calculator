@@ -266,6 +266,16 @@ export default {
   },
   data() {
     return {
+      eventCharacterNames: [
+        'セタンタ',
+        'ロクスタ',
+        'ティアマト',
+        'ドラコー',
+        'ギルガメッシュ（キャスター）',
+        'ジャック',
+        'クーフーリン〔オルタ〕',
+        'ジャック・ド・モレー'
+      ],
       eventCharacters: [],
       tabTitle: null,
       tabItems: ['オール', 'イベ', '履歴'],
@@ -504,11 +514,8 @@ export default {
   },
   methods: {
     setEventCharacters() {
-      this.eventCharacters = this.characters.filter(
-        (character) =>
-          character.name === '坂田金時（ライダー）' ||
-          character.name === '酒呑童子（キャスター）' ||
-          character.name === 'ケツァル･コアトル〔サンバ／サンタ〕'
+      this.eventCharacters = this.characters.filter((character) =>
+        this.eventCharacterNames.includes(character.name)
       )
     },
     isIncludedKanji(text) {
