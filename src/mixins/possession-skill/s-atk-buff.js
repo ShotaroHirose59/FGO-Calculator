@@ -17,7 +17,10 @@ export default {
       } else if (characterName === 'スカサハ') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 100
         this.setPossessionSkills('(神性・死霊)特攻を付与(100%)')
-      } else if (characterName === 'クーフーリン〔プロトタイプ〕') {
+      } else if (
+        characterName === 'クーフーリン〔プロトタイプ〕' ||
+        characterName === 'セタンタ'
+      ) {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 100
         this.setPossessionSkills('(猛獣)特攻を付与(100%)')
       } else if (characterName === 'ジーク') {

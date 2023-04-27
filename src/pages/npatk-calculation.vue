@@ -1133,7 +1133,8 @@ export default {
         character.name === '太歳星君' ||
         character.name === 'BB' ||
         character.name === '謎のアイドルX〔オルタ〕' ||
-        character.name === '九紋竜エリザ'
+        character.name === '九紋竜エリザ' ||
+        character.name === 'セタンタ'
       ) {
         this.npChargeLv = 5
       } else {
