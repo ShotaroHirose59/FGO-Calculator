@@ -91,6 +91,10 @@ export default {
         this.setNpSkills(
           '敵単体に超強力な攻撃<いいね！の数だけ威力アップ>(100+5×n%/最大10個)'
         )
+      } else if (characterName === 'ロクスタ') {
+        this.setNpSkills(
+          '超強力な毒特攻攻撃<対象の〔毒〕状態の数だけ威力アップ>(100+15×n%/最大10個)'
+        )
       }
     },
     setNpSkills(description) {
