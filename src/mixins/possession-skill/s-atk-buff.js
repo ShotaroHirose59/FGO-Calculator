@@ -152,6 +152,9 @@ export default {
       } else if (characterName === '燕青') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 30
         this.setPossessionSkills('(秩序・悪)特攻を付与(30%)')
+      } else if (characterName === 'アルトリア〔ランサーオルタ〕') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff = 30
+        this.setPossessionSkills('(秩序・善)特攻を付与(30%)')
       } else if (characterName === '水着カーマ') {
         this.setPossessionSkills(
           '愛炎特攻を付与<愛炎の数だけ威力アップ>(3T/10×n%/最大10個)'

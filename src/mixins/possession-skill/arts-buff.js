@@ -12,7 +12,8 @@ export default {
         character.name === 'アナスタシア' ||
         character.name === 'ジェロニモ' ||
         character.name === '両儀式（アサシン）' ||
-        character.name === 'ニトクリス〔オルタ〕'
+        character.name === 'ニトクリス〔オルタ〕' ||
+        character.name === 'ネロ'
       ) {
         this.cardBuff += 50
         this.possessionSkills.push({ description: 'Arts性能アップ(50%)' })
@@ -76,7 +77,6 @@ export default {
         this.possessionSkills.push({ description: 'Arts性能アップ(30%)' })
       } else if (
         character.name === 'ディオスクロイ' ||
-        character.name === 'ネロ' ||
         character.name === '齋藤一' ||
         character.name === '謎のアルターエゴ・Λ' ||
         character.name === 'ディルムッド' ||

@@ -190,7 +190,9 @@ export default {
         character.name === 'シバの女王' ||
         character.name === 'トラロック' ||
         character.name === 'ヨハンナ' ||
-        character.name === 'セタンタ'
+        character.name === 'セタンタ' ||
+        character.name === 'モードレッド' ||
+        character.name === 'アルトリア〔ランサーオルタ〕'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })
@@ -237,10 +239,7 @@ export default {
       } else if (character.name === 'レジライ') {
         this.atkBuff += 14
         this.possessionSkills.push({ description: '攻撃力アップ(14%)' })
-      } else if (
-        character.name === 'アルトリア〔オルタ〕' ||
-        character.name === 'アルトリア〔ランサーオルタ〕'
-      ) {
+      } else if (character.name === 'アルトリア〔オルタ〕') {
         this.atkBuff += 12
         this.possessionSkills.push({ description: '攻撃力アップ(12%)' })
       } else if (character.name === '曲亭馬琴') {
