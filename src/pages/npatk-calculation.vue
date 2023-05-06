@@ -746,6 +746,7 @@ export default {
         }
       } else {
         this.sAtkBuff = 0
+        this.setEventCharacterBuff(this.characterName)
       }
     },
     isActiveSpecialNpAtkBuff() {
