@@ -885,7 +885,7 @@ export default {
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
       // イベント特攻
-      this.setEventCharacterBuff(character)
+      this.setEventCharacterBuff(this.characterName)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {

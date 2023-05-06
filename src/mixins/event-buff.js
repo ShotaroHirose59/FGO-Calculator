@@ -1,6 +1,6 @@
 export default {
   methods: {
-    setEventCharacterBuff(character) {
+    setEventCharacterBuff(characterName) {
       // 螺旋証明世界 リリムハーロット ～喝采なき薔薇～ / 巡霊の祝祭 第1弾
       const eventCharacters = {
         セタンタ: 100,
@@ -102,10 +102,10 @@ export default {
         'ケツァル･コアトル〔サンバ／サンタ〕': 50
       }
       if (
-        Object.prototype.hasOwnProperty.call(eventCharacters, character.name)
+        Object.prototype.hasOwnProperty.call(eventCharacters, characterName)
       ) {
         this.isEventCharacter = true
-        this.sAtkBuff += eventCharacters[character.name]
+        this.sAtkBuff += eventCharacters[characterName]
       }
     }
   }
