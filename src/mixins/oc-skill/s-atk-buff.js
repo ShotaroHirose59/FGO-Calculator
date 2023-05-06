@@ -4,10 +4,11 @@ export default {
     // 宝具、OCバフで重なる可能性アリ
     setOcSkillSAtkBuff(characterName) {
       if (characterName === '清少納言' || characterName === '水着清少納言') {
-        if (this.isActiveSpecialAtkBuff === true) {
-          const ocBuffs = [50, 62.5, 75, 87.5, 100]
-          this.sAtkBuff += ocBuffs[this.selectingOcUpPrcentage - 1]
-        }
+        // 暫定的にコメントアウト
+        // if (this.isActiveSpecialAtkBuff === true) {
+        //   const ocBuffs = [50, 62.5, 75, 87.5, 100]
+        //   this.sAtkBuff += ocBuffs[this.selectingOcUpPrcentage - 1]
+        // }
         this.setOcSkills('(人属性)特攻を付与(50~100%)')
       } else if (characterName === '俵藤太') {
         if (this.isActiveSpecialAtkBuff === true) {
