@@ -1213,12 +1213,7 @@ export default {
       if (this.craftEssence === '指定なし') {
         this.dressAtk = 0
       }
-      if (!this.$vuetify.breakpoint.xs) {
-        this.$refs.child.resetCompatibility()
-      } else {
-        this.classCompatibility = 2.0
-        this.attributeCompatibility = 1.0
-      }
+      this.attributeCompatibility = 1.0
     },
     onResetData() {
       const prevSelectedLv = this.selectedLv

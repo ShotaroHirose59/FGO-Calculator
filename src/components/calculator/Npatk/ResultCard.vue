@@ -316,13 +316,7 @@ export default {
       this.$refs.skillDlg.isOpen = true
     },
     reset() {
-      this.classCompatibility = 2.0
-      this.attributeCompatibility = 1.0
       this.$emit('reset-data')
-    },
-    resetCompatibility() {
-      this.classCompatibility = 2.0
-      this.attributeCompatibility = 1.0
     }
   }
 }
