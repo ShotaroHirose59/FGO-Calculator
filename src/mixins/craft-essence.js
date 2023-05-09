@@ -1,22 +1,90 @@
 const craftEssences = {
   バーサーカー: [
     '指定なし',
-    '黒聖杯 Lv.100',
+    '凸揺籃の歌 Lv15',
+    '凸揺籃の歌 Lv100',
+    '揺籃の歌 Lv1',
+    '凸黒聖杯 Lv.100',
     '黒聖杯 Lv.20',
-    '白聖杯 Lv.100',
-    '幻想の姫 Lv.100',
+    '凸白聖杯 Lv.100',
+    '凸幻想の姫 Lv.100',
     '幻想の姫 Lv.20'
   ],
-  default: ['指定なし', '黒聖杯 Lv.100', '黒聖杯 Lv.20', '白聖杯 Lv.100']
+  default: [
+    '指定なし',
+    '凸揺籃の歌 Lv15',
+    '凸揺籃の歌 Lv100',
+    '揺籃の歌 Lv1',
+    '凸黒聖杯 Lv.100',
+    '黒聖杯 Lv.20',
+    '凸白聖杯 Lv.100'
+  ]
 }
 
 const CRAFT_ESSENCE_STATS = {
-  '黒聖杯 Lv.100': { dressAtk: 2400, dressNpBuff: 80 },
-  '黒聖杯 Lv.20': { dressAtk: 943, dressNpBuff: 60 },
-  '白聖杯 Lv.100': { dressAtk: 2000, dressNpBuff: 50 },
-  '幻想の姫 Lv.100': { dressAtk: 2000, dressNpBuff: 80 },
-  '幻想の姫 Lv.20': { dressAtk: 786, dressNpBuff: 60 },
-  指定なし: { dressAtk: 0, dressNpBuff: 0 }
+  '凸揺籃の歌 Lv15': {
+    dressAtk: 711,
+    dressNpBuff: 0,
+    dressSatkBuff: 200,
+    dressCardBuff: 10,
+    dressNpAcquisitionBuff: 8
+  },
+  '凸揺籃の歌 Lv100': {
+    dressAtk: 2000,
+    dressNpBuff: 0,
+    dressSatkBuff: 200,
+    dressCardBuff: 10,
+    dressNpAcquisitionBuff: 8
+  },
+  '揺籃の歌 Lv1': {
+    dressAtk: 500,
+    dressNpBuff: 0,
+    dressSatkBuff: 100,
+    dressCardBuff: 8,
+    dressNpAcquisitionBuff: 5
+  },
+  '凸黒聖杯 Lv.100': {
+    dressAtk: 2400,
+    dressNpBuff: 80,
+    dressSatkBuff: 0,
+    dressCardBuff: 0,
+    dressNpAcquisitionBuff: 0
+  },
+  '黒聖杯 Lv.20': {
+    dressAtk: 943,
+    dressNpBuff: 60,
+    dressSatkBuff: 0,
+    dressCardBuff: 0,
+    dressNpAcquisitionBuff: 0
+  },
+  '凸白聖杯 Lv.100': {
+    dressAtk: 2000,
+    dressNpBuff: 50,
+    dressSatkBuff: 0,
+    dressCardBuff: 0,
+    dressNpAcquisitionBuff: 0
+  },
+  '凸幻想の姫 Lv.100': {
+    dressAtk: 2000,
+    dressNpBuff: 80,
+    dressSatkBuff: 0,
+    dressCardBuff: 0,
+    dressNpAcquisitionBuff: 0
+  },
+  '幻想の姫 Lv.20': {
+    dressAtk: 786,
+    dressNpBuff: 60,
+    dressSatkBuff: 0,
+    dressCardBuff: 0,
+    dressNpAcquisitionBuff: 0
+  },
+  指定なし: {
+    dressAtk: 0,
+    dressNpBuff: 0,
+    dressSatkBuff: 0,
+    dressCardBuff: 0,
+    dressNpAcquisitionBuff: 0
+  }
 }
 
 export default {
@@ -36,23 +104,55 @@ export default {
         const stats = this.craftEssenceStats[this.craftEssence]
         this.dressAtk = stats.dressAtk
         this.dressNpBuff = stats.dressNpBuff
+        this.dressSatkBuff = stats.dressSatkBuff
+        this.dressCardBuff = stats.dressCardBuff
+        this.dressNpAcquisitionBuff = stats.dressNpAcquisitionBuff
+        this.updateDressCardBuff()
       } else {
         this.dressAtk = 0
         this.dressNpBuff = 0
+        this.dressSatkBuff = 0
+        this.dressCardBuff = 0
+        this.dressNpAcquisitionBuff = 0
       }
     },
     dressNpBuff() {
       this.dressNpBuffHint = this.dressNpBuff > 0 ? `+${this.dressNpBuff}` : ''
+    },
+    dressSatkBuff() {
+      this.dressSatkBuffHint =
+        this.dressSatkBuff > 0 ? `+${this.dressSatkBuff}` : ''
+    },
+    dressCardBuff() {
+      this.dressCardBuffHint =
+        this.dressCardBuff > 0 ? `+${this.dressCardBuff}` : ''
+    },
+    dressNpAcquisitionBuff() {
+      this.dressNpAcquisitionBuffHint =
+        this.dressNpAcquisitionBuff > 0 ? `+${this.dressNpAcquisitionBuff}` : ''
     }
   },
   methods: {
     checkCraftEssence(characterClass) {
-      const berserkerOnlyCraftEssences = ['幻想の姫 Lv.100', '幻想の姫 Lv.20']
+      const berserkerOnlyCraftEssences = ['凸幻想の姫 Lv.100', '幻想の姫 Lv.20']
       if (
         berserkerOnlyCraftEssences.includes(this.craftEssence) &&
         characterClass !== 'バーサーカー'
       ) {
         this.craftEssence = '指定なし'
+      }
+    },
+    // NOTE: 揺籃の歌
+    updateDressCardBuff() {
+      const cesToCheck = ['凸揺籃の歌 Lv15', '凸揺籃の歌 Lv100', '揺籃の歌 Lv1']
+
+      if (cesToCheck.includes(this.craftEssence)) {
+        if (this.servantNpType === 'Quick') {
+          this.dressCardBuff = 0
+        } else {
+          const stats = this.craftEssenceStats[this.craftEssence]
+          this.dressCardBuff = stats.dressCardBuff
+        }
       }
     }
   }

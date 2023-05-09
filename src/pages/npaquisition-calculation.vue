@@ -146,6 +146,8 @@
               suffix="％"
               type="number"
               inputmode="decimal"
+              :hint="dressCardBuffHint"
+              persistent-hint
               color="teal"
             ></v-text-field>
           </v-col>
@@ -198,6 +200,8 @@
               suffix="％"
               type="number"
               inputmode="decimal"
+              :hint="dressNpAcquisitionBuffHint"
+              persistent-hint
               color="teal"
             ></v-text-field>
           </v-col>
@@ -264,6 +268,8 @@
               suffix="％"
               type="number"
               inputmode="decimal"
+              :hint="dressSatkBuffHint"
+              persistent-hint
               :class="{ 'event-buff-label': isEventCharacter }"
               color="teal"
             ></v-text-field>
@@ -463,6 +469,9 @@
       :np-recharge="npRecharge"
       :damage-addition-buff="damageAdditionBuff"
       :dress-np-buff="dressNpBuff"
+      :dress-satk-buff="dressSatkBuff"
+      :dress-card-buff="dressCardBuff"
+      :dress-np-acquisition-buff="dressNpAcquisitionBuff"
       :special-resist="specialResist"
       @reset-data="onResetData"
     />
@@ -696,6 +705,12 @@ export default {
       craftEssence: '指定なし',
       dressNpBuff: 0,
       dressNpBuffHint: '',
+      dressSatkBuff: 0,
+      dressSatkBuffHint: '',
+      dressCardBuff: 0,
+      dressCardBuffHint: '',
+      dressNpAcquisitionBuff: 0,
+      dressNpAcquisitionBuffHint: '',
       specialResist: 0,
       isChangeableNpType: true,
       isActiveSpecialAtkBuff: false,
@@ -740,6 +755,7 @@ export default {
       if (this.characterName === 'スペースイシュタル') {
         this.checkChangeableNpType()
       }
+      this.updateDressCardBuff()
     },
     selectingOcUpPrcentage() {
       if (this.servantNpType === 'Buster') {
@@ -1241,6 +1257,8 @@ export default {
       }
     },
     onResetData() {
+      if (this.characterName === '') return
+
       const prevSelectedLv = this.selectedLv
       const prevNpChargeLv = this.npChargeLv
       const prevFou = this.fou

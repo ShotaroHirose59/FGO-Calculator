@@ -129,6 +129,14 @@ export default {
       type: Number,
       required: true
     },
+    dressSatkBuff: {
+      type: Number,
+      required: true
+    },
+    dressCardBuff: {
+      type: Number,
+      required: true
+    },
     specialResist: {
       type: Number,
       required: true
@@ -161,19 +169,19 @@ export default {
       // 固定補正値
       const FIXED_CORRECTION_NUMBER = 0.23
 
-      const sAtkBuff = this.sAtkBuff === '' ? 0 : this.sAtkBuff
+      // const sAtkBuff = this.sAtkBuff === '' ? 0 : this.sAtkBuff
       const specialResist = (100 - this.specialResist) * 0.01
 
       return Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
           FIXED_CORRECTION_NUMBER *
-          (this.cardVal * ((100 + this.cardBuff) / 100)) *
+          (this.cardVal * ((100 + this.actualCardBuff) / 100)) *
           this.classCompatibility *
           this.attributeCompatibility *
           this.classCorrection *
           ((100 + this.atkBuff) / 100) *
-          ((100 + sAtkBuff + this.actualNpBuff) / 100) *
+          ((100 + this.actualSatkBuff + this.actualNpBuff) / 100) *
           (this.sNpAtkBuff / 100) *
           specialResist
       )
@@ -184,6 +192,15 @@ export default {
       if (this.isNpBoosted) return npBuff * 2
 
       return npBuff
+    },
+    actualSatkBuff() {
+      let sAtkBuff = this.sAtkBuff === '' ? 0 : this.sAtkBuff
+      sAtkBuff += this.dressSatkBuff
+
+      return sAtkBuff
+    },
+    actualCardBuff() {
+      return this.cardBuff + this.dressCardBuff
     },
     // クラス補正値
     classCorrection() {

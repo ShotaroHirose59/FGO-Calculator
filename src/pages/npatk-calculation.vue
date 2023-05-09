@@ -163,6 +163,8 @@
                 suffix="％"
                 type="number"
                 inputmode="decimal"
+                :hint="dressCardBuffHint"
+                persistent-hint
                 color="teal"
               ></v-text-field>
             </v-col>
@@ -187,6 +189,8 @@
                 suffix="％"
                 type="number"
                 inputmode="decimal"
+                :hint="dressSatkBuffHint"
+                persistent-hint
                 :class="{ 'event-buff-label': isEventCharacter }"
                 color="teal"
               ></v-text-field>
@@ -426,6 +430,8 @@
           :is-np-boosted="isNpBoosted"
           :damage-addition-buff="damageAdditionBuff"
           :dress-np-buff="dressNpBuff"
+          :dress-satk-buff="dressSatkBuff"
+          :dress-card-buff="dressCardBuff"
           :special-resist="specialResist"
           @reset-data="onResetData"
         />
@@ -450,6 +456,8 @@
           :attribute-compatibility="attributeCompatibility"
           :damage-addition-buff="damageAdditionBuff"
           :dress-np-buff="dressNpBuff"
+          :dress-satk-buff="dressSatkBuff"
+          :dress-card-buff="dressCardBuff"
           :special-resist="specialResist"
         />
       </client-only>
@@ -665,6 +673,12 @@ export default {
       craftEssence: '指定なし',
       dressNpBuff: 0,
       dressNpBuffHint: '',
+      dressSatkBuff: 0,
+      dressSatkBuffHint: '',
+      dressCardBuff: 0,
+      dressCardBuffHint: '',
+      dressNpAcquisitionBuff: 0,
+      dressNpAcquisitionBuffHint: '',
       specialResist: 0,
       isChangeableNpType: true,
       isActiveSpecialAtkBuff: false,
@@ -711,6 +725,7 @@ export default {
         this.checkChangeableNpType()
         this.isChangeableNpType = true
       }
+      this.updateDressCardBuff()
     },
     selectingOcUpPrcentage() {
       if (this.servantNpType === 'Buster') {
@@ -1216,6 +1231,8 @@ export default {
       this.attributeCompatibility = 1.0
     },
     onResetData() {
+      if (this.characterName === '') return
+
       const prevSelectedLv = this.selectedLv
       const prevNpChargeLv = this.npChargeLv
       const prevFou = this.fou
