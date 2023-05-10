@@ -1,7 +1,7 @@
 export default {
   methods: {
     setEventCharacterBuff(characterName) {
-      // 螺旋証明世界 リリムハーロット ～喝采なき薔薇～ / 巡霊の祝祭 第1弾
+      // 螺旋証明世界 リリムハーロット ～喝采なき薔薇～ / 巡霊の祝祭 第1弾 / 巡霊の祝祭 第2弾
       const eventCharacters = {
         セタンタ: 100,
         ロクスタ: 100,
@@ -36,7 +36,6 @@ export default {
         浅上藤乃: 30,
         アタランテ: 30,
         エミヤ: 30,
-        織田信長: 30,
         クロエ: 30,
         'アルトリア（ランサー）': 30,
         エルキドゥ: 30,
@@ -99,7 +98,11 @@ export default {
         謎のヒロインXX: 30,
         '坂田金時（ライダー）': 50,
         '酒呑童子（キャスター）': 50,
-        'ケツァル･コアトル〔サンバ／サンタ〕': 50
+        'ケツァル･コアトル〔サンバ／サンタ〕': 50,
+        'エリザベート〔ブレイブ〕': 50,
+        織田信長: 50,
+        'エリザベート〔ハロウィン〕': 50,
+        '謎のアイドルX〔オルタ〕': 50
       }
       if (
         Object.prototype.hasOwnProperty.call(eventCharacters, characterName)
