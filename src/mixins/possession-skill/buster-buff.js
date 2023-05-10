@@ -6,7 +6,7 @@ export default {
         this.cardBuff += 100
         this.possessionSkills.push({ description: 'Buster性能アップ(100%)' })
       } else if (character.name === 'エリザベート〔ブレイブ〕') {
-        this.cardBuff += 90
+        this.cardBuff += 40 // スキル3で90%になる(NP50%減少)
         this.possessionSkills.push({ description: 'Buster性能アップ(90%)' })
       } else if (
         character.name === 'アルトリア〔ランサーオルタ〕' ||
