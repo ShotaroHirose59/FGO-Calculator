@@ -108,6 +108,7 @@ export default {
         character.name === '哪吒' ||
         character.name === 'ドレイク' ||
         character.name === 'レジライ' ||
+        character.name === '織田信長' ||
         character.name === '土方歳三' ||
         character.name === 'ヘラクレス' ||
         character.name === 'ペンテシレイア' ||

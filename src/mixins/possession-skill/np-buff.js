@@ -44,6 +44,7 @@ export default {
       } else if (
         character.name === 'アルテラ' ||
         character.name === 'ギルガメッシュ' ||
+        character.name === '織田信長' ||
         character.name === '鈴鹿御前' ||
         character.name === '水着フラン' ||
         character.name === 'ベディヴィエール' ||
