@@ -355,9 +355,25 @@ export default {
         }
       }
       if (this.filterdNprange !== '指定なし') {
-        characters = characters.filter(
-          (character) => character.nprange === this.filterdNprange
-        )
+        if (this.filterdCard === 'B') {
+          if (this.filterdNprange === '全体') {
+            characters = characters.filter(
+              (character) =>
+                character.nprange === this.filterdNprange ||
+                character.name === 'メリュジーヌ'
+            )
+          } else {
+            characters = characters.filter(
+              (character) =>
+                character.nprange === this.filterdNprange &&
+                character.name !== 'メリュジーヌ'
+            )
+          }
+        } else {
+          characters = characters.filter(
+            (character) => character.nprange === this.filterdNprange
+          )
+        }
       }
 
       return characters
@@ -393,9 +409,25 @@ export default {
         }
       }
       if (this.filterdNprange !== '指定なし') {
-        characters = characters.filter(
-          (character) => character.nprange === this.filterdNprange
-        )
+        if (this.filterdCard === 'B') {
+          if (this.filterdNprange === '全体') {
+            characters = characters.filter(
+              (character) =>
+                character.nprange === this.filterdNprange ||
+                character.name === 'メリュジーヌ'
+            )
+          } else {
+            characters = characters.filter(
+              (character) =>
+                character.nprange === this.filterdNprange &&
+                character.name !== 'メリュジーヌ'
+            )
+          }
+        } else {
+          characters = characters.filter(
+            (character) => character.nprange === this.filterdNprange
+          )
+        }
       }
 
       return characters
