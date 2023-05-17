@@ -1,9 +1,9 @@
 const craftEssences = {
   バーサーカー: [
     '指定なし',
-    '凸揺籃の歌 Lv15',
-    '凸揺籃の歌 Lv100',
-    '揺籃の歌 Lv1',
+    // '凸揺籃の歌 Lv15',
+    // '凸揺籃の歌 Lv100',
+    // '揺籃の歌 Lv1',
     '凸黒聖杯 Lv.100',
     '黒聖杯 Lv.20',
     '凸白聖杯 Lv.100',
@@ -12,9 +12,9 @@ const craftEssences = {
   ],
   default: [
     '指定なし',
-    '凸揺籃の歌 Lv15',
-    '凸揺籃の歌 Lv100',
-    '揺籃の歌 Lv1',
+    // '凸揺籃の歌 Lv15',
+    // '凸揺籃の歌 Lv100',
+    // '揺籃の歌 Lv1',
     '凸黒聖杯 Lv.100',
     '黒聖杯 Lv.20',
     '凸白聖杯 Lv.100'
@@ -22,27 +22,27 @@ const craftEssences = {
 }
 
 const CRAFT_ESSENCE_STATS = {
-  '凸揺籃の歌 Lv15': {
-    dressAtk: 711,
-    dressNpBuff: 0,
-    dressSatkBuff: 200,
-    dressCardBuff: 10,
-    dressNpAcquisitionBuff: 8
-  },
-  '凸揺籃の歌 Lv100': {
-    dressAtk: 2000,
-    dressNpBuff: 0,
-    dressSatkBuff: 200,
-    dressCardBuff: 10,
-    dressNpAcquisitionBuff: 8
-  },
-  '揺籃の歌 Lv1': {
-    dressAtk: 500,
-    dressNpBuff: 0,
-    dressSatkBuff: 100,
-    dressCardBuff: 8,
-    dressNpAcquisitionBuff: 5
-  },
+  // '凸揺籃の歌 Lv15': {
+  //   dressAtk: 711,
+  //   dressNpBuff: 0,
+  //   dressSatkBuff: 200,
+  //   dressCardBuff: 10,
+  //   dressNpAcquisitionBuff: 8
+  // },
+  // '凸揺籃の歌 Lv100': {
+  //   dressAtk: 2000,
+  //   dressNpBuff: 0,
+  //   dressSatkBuff: 200,
+  //   dressCardBuff: 10,
+  //   dressNpAcquisitionBuff: 8
+  // },
+  // '揺籃の歌 Lv1': {
+  //   dressAtk: 500,
+  //   dressNpBuff: 0,
+  //   dressSatkBuff: 100,
+  //   dressCardBuff: 8,
+  //   dressNpAcquisitionBuff: 5
+  // },
   '凸黒聖杯 Lv.100': {
     dressAtk: 2400,
     dressNpBuff: 80,
@@ -107,7 +107,7 @@ export default {
         this.dressSatkBuff = stats.dressSatkBuff
         this.dressCardBuff = stats.dressCardBuff
         this.dressNpAcquisitionBuff = stats.dressNpAcquisitionBuff
-        this.updateDressCardBuff()
+        // this.updateDressCardBuff()
       } else {
         this.dressAtk = 0
         this.dressNpBuff = 0
@@ -141,19 +141,19 @@ export default {
       ) {
         this.craftEssence = '指定なし'
       }
-    },
-    // NOTE: 揺籃の歌
-    updateDressCardBuff() {
-      const cesToCheck = ['凸揺籃の歌 Lv15', '凸揺籃の歌 Lv100', '揺籃の歌 Lv1']
-
-      if (cesToCheck.includes(this.craftEssence)) {
-        if (this.servantNpType === 'Quick') {
-          this.dressCardBuff = 0
-        } else {
-          const stats = this.craftEssenceStats[this.craftEssence]
-          this.dressCardBuff = stats.dressCardBuff
-        }
-      }
     }
+    // NOTE: 揺籃の歌
+    // updateDressCardBuff() {
+    //   const cesToCheck = ['凸揺籃の歌 Lv15', '凸揺籃の歌 Lv100', '揺籃の歌 Lv1']
+
+    //   if (cesToCheck.includes(this.craftEssence)) {
+    //     if (this.servantNpType === 'Quick') {
+    //       this.dressCardBuff = 0
+    //     } else {
+    //       const stats = this.craftEssenceStats[this.craftEssence]
+    //       this.dressCardBuff = stats.dressCardBuff
+    //     }
+    //   }
+    // }
   }
 }

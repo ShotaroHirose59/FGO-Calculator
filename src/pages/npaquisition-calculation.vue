@@ -755,7 +755,7 @@ export default {
       if (this.characterName === 'スペースイシュタル') {
         this.checkChangeableNpType()
       }
-      this.updateDressCardBuff()
+      // this.updateDressCardBuff()
     },
     selectingOcUpPrcentage() {
       if (this.servantNpType === 'Buster') {

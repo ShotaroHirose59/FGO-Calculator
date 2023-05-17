@@ -725,7 +725,7 @@ export default {
         this.checkChangeableNpType()
         this.isChangeableNpType = true
       }
-      this.updateDressCardBuff()
+      // this.updateDressCardBuff()
     },
     selectingOcUpPrcentage() {
       if (this.servantNpType === 'Buster') {
