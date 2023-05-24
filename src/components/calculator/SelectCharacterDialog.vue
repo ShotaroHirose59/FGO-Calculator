@@ -267,10 +267,12 @@ export default {
   data() {
     return {
       eventCharacterNames: [
-        'エリザベート〔ブレイブ〕',
-        '織田信長',
-        'エリザベート〔ハロウィン〕',
-        '謎のアイドルX〔オルタ〕'
+        '果心居士',
+        'クロエ',
+        'イリヤ',
+        '加藤段蔵',
+        '風魔小太郎',
+        'シトナイ'
       ],
       eventCharacters: [],
       tabTitle: null,
