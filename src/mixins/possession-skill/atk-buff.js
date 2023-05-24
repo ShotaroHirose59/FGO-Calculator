@@ -192,7 +192,8 @@ export default {
         character.name === 'ヨハンナ' ||
         character.name === 'セタンタ' ||
         character.name === 'モードレッド' ||
-        character.name === 'アルトリア〔ランサーオルタ〕'
+        character.name === 'アルトリア〔ランサーオルタ〕' ||
+        character.name === '果心居士'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })

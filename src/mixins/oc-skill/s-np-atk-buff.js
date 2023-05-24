@@ -225,8 +225,14 @@ export default {
           this.sNpAtkBuff = ocBuffs[this.selectingOcUpPrcentage - 1]
         }
         this.setOcSkills(
-          '敵単体に超強力な(7騎士のサーヴァント)特攻攻撃(150~200%)'
+          '敵単体に超強力な7騎士のサーヴァント特攻攻撃(150~200%)'
         )
+      } else if (characterName === '果心居士') {
+        if (this.isActiveSpecialNpAtkBuff === true) {
+          const ocBuffs = [150, 162.5, 175, 187.5, 200]
+          this.sNpAtkBuff = ocBuffs[this.selectingOcUpPrcentage - 1]
+        }
+        this.setOcSkills('敵全体に強力な(拘束)特攻攻撃(150~200%)')
       }
     },
     setOcSkills(description) {

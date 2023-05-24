@@ -65,6 +65,13 @@ export default {
           name: '騎乗[C+]',
           description: 'Quick性能アップ(7%)'
         })
+      } else if (character.name === '果心居士') {
+        // 絡繰作成[EX]
+        this.cardBuff += 6
+        this.classSkills.push({
+          name: '絡繰作成[EX]',
+          description: 'Quick性能アップ(6%)'
+        })
       } else if (character.name === '燕青') {
         // 無頼漢[A]
         this.cardBuff += 5
