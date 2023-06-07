@@ -1,9 +1,9 @@
 const craftEssences = {
   バーサーカー: [
     '指定なし',
-    '凸安息の館 Lv15',
-    '凸安息の館 Lv100',
-    '安息の館 Lv1',
+    // '凸安息の館 Lv15',
+    // '凸安息の館 Lv100',
+    // '安息の館 Lv1',
     '凸黒聖杯 Lv.100',
     '黒聖杯 Lv.20',
     '凸白聖杯 Lv.100',
@@ -12,9 +12,9 @@ const craftEssences = {
   ],
   default: [
     '指定なし',
-    '凸安息の館 Lv15',
-    '凸安息の館 Lv100',
-    '安息の館 Lv1',
+    // '凸安息の館 Lv15',
+    // '凸安息の館 Lv100',
+    // '安息の館 Lv1',
     '凸黒聖杯 Lv.100',
     '黒聖杯 Lv.20',
     '凸白聖杯 Lv.100'
@@ -22,27 +22,27 @@ const craftEssences = {
 }
 
 const CRAFT_ESSENCE_STATS = {
-  '凸安息の館 Lv15': {
-    dressAtk: 355,
-    dressNpBuff: 0,
-    dressSatkBuff: 200,
-    dressCardBuff: 0,
-    dressNpAcquisitionBuff: 0
-  },
-  '凸安息の館 Lv100': {
-    dressAtk: 1000,
-    dressNpBuff: 0,
-    dressSatkBuff: 200,
-    dressCardBuff: 0,
-    dressNpAcquisitionBuff: 0
-  },
-  '安息の館 Lv1': {
-    dressAtk: 250,
-    dressNpBuff: 0,
-    dressSatkBuff: 100,
-    dressCardBuff: 0,
-    dressNpAcquisitionBuff: 0
-  },
+  // '凸安息の館 Lv15': {
+  //   dressAtk: 355,
+  //   dressNpBuff: 0,
+  //   dressSatkBuff: 200,
+  //   dressCardBuff: 0,
+  //   dressNpAcquisitionBuff: 0
+  // },
+  // '凸安息の館 Lv100': {
+  //   dressAtk: 1000,
+  //   dressNpBuff: 0,
+  //   dressSatkBuff: 200,
+  //   dressCardBuff: 0,
+  //   dressNpAcquisitionBuff: 0
+  // },
+  // '安息の館 Lv1': {
+  //   dressAtk: 250,
+  //   dressNpBuff: 0,
+  //   dressSatkBuff: 100,
+  //   dressCardBuff: 0,
+  //   dressNpAcquisitionBuff: 0
+  // },
   '凸黒聖杯 Lv.100': {
     dressAtk: 2400,
     dressNpBuff: 80,

@@ -267,12 +267,12 @@ export default {
   data() {
     return {
       eventCharacterNames: [
-        '果心居士',
-        'クロエ',
-        'イリヤ',
-        '加藤段蔵',
-        '風魔小太郎',
-        'シトナイ'
+        // '果心居士',
+        // 'クロエ',
+        // 'イリヤ',
+        // '加藤段蔵',
+        // '風魔小太郎',
+        // 'シトナイ'
       ],
       eventCharacters: [],
       tabTitle: null,
