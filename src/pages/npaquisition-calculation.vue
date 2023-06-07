@@ -741,11 +741,7 @@ export default {
       if (this.specialResist < 0) this.specialResist = 0
     },
     characterName() {
-      if (
-        this.characterName === 'エミヤ' ||
-        this.characterName === 'メリュジーヌ' ||
-        this.characterName === 'スペースイシュタル'
-      ) {
+      if (this.characterName === 'スペースイシュタル') {
         this.isChangeableNpType = true
       } else {
         this.isChangeableNpType = false
@@ -1024,6 +1020,7 @@ export default {
       }
       if (character.name === 'エミヤ') {
         this.servantNpType = 'Arts'
+        this.checkChangeableNpType()
       }
     },
     checkChangeableNpType() {
@@ -1038,6 +1035,12 @@ export default {
         this.servantNpType === 'Arts'
       ) {
         this.npmultiplier = [450, 600, 675, 712.5, 750]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'エミヤ' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [600, 750, 825, 862.5, 900]
         this.onChangeNpmultiplier(this.npChargeLv)
       }
     },
