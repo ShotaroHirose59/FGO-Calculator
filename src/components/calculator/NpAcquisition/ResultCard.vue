@@ -693,6 +693,9 @@ export default {
       } else if (this.characterName === 'アンリマユ') {
         this.classSkillNp = 2
       }
+    },
+    characterClass() {
+      this.setEnemyClass(this.characterClass)
     }
   },
   methods: {
@@ -729,6 +732,26 @@ export default {
       if (num === 99) return true
 
       return false
+    },
+    setEnemyClass(characterClass) {
+      switch (characterClass) {
+        case 'セイバー':
+          return (this.enemyClass = 'ランサー')
+        case 'アーチャー':
+          return (this.enemyClass = 'セイバー')
+        case 'ランサー':
+          return (this.enemyClass = 'アーチャー')
+        case 'ライダー':
+          return (this.enemyClass = 'キャスター')
+        case 'キャスター':
+          return (this.enemyClass = 'アサシン')
+        case 'アサシン':
+          return (this.enemyClass = 'ライダー')
+        case 'アルターエゴ':
+          return (this.enemyClass = 'ライダー')
+        default:
+          return (this.enemyClass = 'セイバー')
+      }
     }
   }
 }
