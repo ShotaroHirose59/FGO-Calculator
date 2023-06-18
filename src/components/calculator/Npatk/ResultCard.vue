@@ -195,6 +195,10 @@ export default {
     specialResist: {
       type: Number,
       required: true
+    },
+    selectingOcUpPrcentage: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -222,7 +226,7 @@ export default {
       // const sAtkBuff = this.sAtkBuff === '' ? 0 : this.sAtkBuff
       const specialResist = (100 - this.specialResist) * 0.01
 
-      return Math.floor(
+      let result = Math.floor(
         (this.characterAtk + this.fou + this.dressAtk) *
           (this.characterNpmultiplier / 100) *
           FIXED_CORRECTION_NUMBER *
@@ -235,6 +239,40 @@ export default {
           (this.sNpAtkBuff / 100) *
           specialResist
       )
+      if (
+        this.characterName === 'ビーマ' &&
+        this.selectingOcUpPrcentage !== 1
+      ) {
+        let npmultiplier = 0
+        switch (this.selectingOcUpPrcentage) {
+          case 2:
+            npmultiplier = 200
+            break
+          case 3:
+            npmultiplier = 300
+            break
+          case 4:
+            npmultiplier = 400
+            break
+          case 5:
+            npmultiplier = 500
+            break
+        }
+        result += Math.floor(
+          (this.characterAtk + this.fou + this.dressAtk) *
+            (npmultiplier / 100) *
+            FIXED_CORRECTION_NUMBER *
+            (this.cardVal * ((100 + this.actualCardBuff) / 100)) *
+            this.classCompatibility *
+            this.attributeCompatibility *
+            this.classCorrection *
+            ((100 + this.atkBuff) / 100) *
+            ((100 + this.actualSatkBuff + this.actualNpBuff) / 100) *
+            (this.sNpAtkBuff / 100) *
+            specialResist
+        )
+      }
+      return result
     },
     // 宝具の最小ダメージ
     minimumDamage() {

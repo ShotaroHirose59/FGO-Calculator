@@ -433,6 +433,7 @@
           :dress-satk-buff="dressSatkBuff"
           :dress-card-buff="dressCardBuff"
           :special-resist="specialResist"
+          :selecting-oc-up-prcentage="selectingOcUpPrcentage"
           @reset-data="onResetData"
         />
         <!-- スマホの場合のみ、固定フッター用意 -->
@@ -459,6 +460,7 @@
           :dress-satk-buff="dressSatkBuff"
           :dress-card-buff="dressCardBuff"
           :special-resist="specialResist"
+          :selecting-oc-up-prcentage="selectingOcUpPrcentage"
         />
       </client-only>
     </v-row>
@@ -897,6 +899,11 @@ export default {
         character.name === '殺生院キアラ'
       ) {
         this.setClassSkillSAtkBuff(character.name)
+      }
+      if (character.name === 'ビーマ') {
+        this.ocSkills.push({
+          description: `オーバーチャージで追加で強力な攻撃(宝具倍率：0, 200, 300, 400, 500)`
+        })
       }
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
