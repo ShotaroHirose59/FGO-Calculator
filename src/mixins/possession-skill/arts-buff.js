@@ -71,7 +71,8 @@ export default {
         character.name === '徴姉妹' ||
         character.name === 'ヘファイスティオン' ||
         character.name === 'テスカトリポカ' ||
-        character.name === 'ロクスタ'
+        character.name === 'ロクスタ' ||
+        character.name === 'ドゥリーヨダナ'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Arts性能アップ(30%)' })

@@ -122,7 +122,8 @@ export default {
         character.name === '葛飾北斎' ||
         character.name === '楊貴妃' ||
         character.name === 'ジャック・ド・モレー' ||
-        character.name === 'セタンタ'
+        character.name === 'セタンタ' ||
+        character.name === 'ビーマ'
       ) {
         this.damageAdditionBuff = 175
         this.classSkills.push({

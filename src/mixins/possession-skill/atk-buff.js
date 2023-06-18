@@ -93,7 +93,8 @@ export default {
         character.name === '黄飛虎' ||
         character.name === '高杉晋作' ||
         character.name === 'ラスプーチン（言峰綺礼）' ||
-        character.name === 'ティアマト'
+        character.name === 'ティアマト' ||
+        character.name === 'ビーマ'
       ) {
         this.atkBuff += 30
         this.possessionSkills.push({ description: '攻撃力アップ(30%)' })
@@ -193,7 +194,8 @@ export default {
         character.name === 'セタンタ' ||
         character.name === 'モードレッド' ||
         character.name === 'アルトリア〔ランサーオルタ〕' ||
-        character.name === '果心居士'
+        character.name === '果心居士' ||
+        character.name === 'ドゥリーヨダナ'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })
