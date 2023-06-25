@@ -55,7 +55,8 @@ export default {
         character.name === '水着カーマ' ||
         character.name === 'メルトリリス' ||
         character.name === 'シトナイ' ||
-        character.name === '蘆屋道満'
+        character.name === '蘆屋道満' ||
+        character.name === 'ドゥルガー'
       ) {
         this.damageAdditionBuff = 225
         this.classSkills.push({

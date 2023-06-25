@@ -62,6 +62,13 @@ export default {
           name: '伝令神の加護[B]',
           description: 'Arts性能アップ(10%)'
         })
+      } else if (character.name === 'ドゥルガー') {
+        // 神授の武具[EX]
+        this.cardBuff += 10
+        this.classSkills.push({
+          name: '神授の武具',
+          description: 'Arts性能アップ(10%)'
+        })
       } else if (character.name === 'メリュジーヌ') {
         // 陣地作成[B+]
         // Note: メリュジーヌのみ = にする

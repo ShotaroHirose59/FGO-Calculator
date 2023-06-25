@@ -34,7 +34,8 @@ export default {
         character.name === 'ジナコ' ||
         character.name === 'アビゲイル' ||
         character.name === 'オベロン' ||
-        character.name === 'ククルカン'
+        character.name === 'ククルカン' ||
+        character.name === 'ドゥルガー'
       ) {
         this.npBuff += 30
         this.possessionSkills.push({ description: '宝具威力アップ(30%)' })

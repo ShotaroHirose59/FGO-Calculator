@@ -94,7 +94,8 @@ export default {
         character.name === '水着ダヴィンチ' ||
         character.name === '太歳星君' ||
         character.name === 'ラスプーチン（言峰綺礼）' ||
-        character.name === 'ヨハンナ'
+        character.name === 'ヨハンナ' ||
+        character.name === 'ドゥルガー'
       ) {
         this.cardBuff += 20
         this.possessionSkills.push({ description: 'Arts性能アップ(20%)' })
