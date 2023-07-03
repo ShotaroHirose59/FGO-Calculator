@@ -86,7 +86,7 @@ export default {
       } else if (characterName === 'サロメ') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 50
         this.setPossessionSkills('(秩序かつ善)特攻を付与(50%)')
-      } else if (characterName === '壱与') {
+      } else if (characterName === '壱与' || characterName === '水着スカサハ') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 50
         this.setPossessionSkills('(神性)特攻を付与(50%)')
       } else if (characterName === '魔王信長') {
