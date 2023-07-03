@@ -1,14 +1,11 @@
 export default {
   methods: {
     setEventCharacterBuff(characterName) {
-      // 風雲からくりイリヤ城
+      // 巡霊の祝祭 第3弾
       const eventCharacters = {
-        果心居士: 100,
-        クロエ: 50,
-        イリヤ: 50,
-        加藤段蔵: 50,
-        風魔小太郎: 50,
-        シトナイ: 50
+        '水着ジャンヌ〔オルタ〕': 50,
+        水着葛飾北斎: 50,
+        水着スカサハ: 50
       }
       if (
         Object.prototype.hasOwnProperty.call(eventCharacters, characterName)
