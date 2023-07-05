@@ -175,6 +175,11 @@ export default {
         this.classSkills.push({
           description: '自身にダメージプラスを付与(125)'
         })
+      } else if (character.name === 'メドゥーサ（セイバー）') {
+        this.damageAdditionBuff = 120
+        this.classSkills.push({
+          description: '自身にダメージプラスを付与(120)'
+        })
       } else if (
         character.name === '水着葛飾北斎' ||
         character.name === 'ブリュンヒルデ' ||

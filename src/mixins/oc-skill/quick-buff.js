@@ -29,7 +29,10 @@ export default {
       } else if (characterName === '水着イリヤ') {
         const ocUpPrcentages = [10, 20, 30, 40, 50]
         this.changeCardBuff(ocUpPrcentages, buffDescription)
-      } else if (characterName === '鬼一法眼') {
+      } else if (
+        characterName === '鬼一法眼' ||
+        characterName === 'メドゥーサ（セイバー）'
+      ) {
         const ocUpPrcentages = [10, 15, 20, 25, 30]
         this.changeCardBuff(ocUpPrcentages, buffDescription)
       }

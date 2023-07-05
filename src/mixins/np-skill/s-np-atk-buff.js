@@ -45,6 +45,9 @@ export default {
       ) {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵全体に強力な人属性特攻攻撃(150%)')
+      } else if (characterName === 'メドゥーサ（セイバー）') {
+        if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
+        this.setNpSkills('敵単体に超強力な人属性特攻攻撃(150%)')
       } else if (characterName === '水着牛若丸') {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵全体に強力な秩序特攻攻撃(150%)')
