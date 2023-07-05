@@ -1,8 +1,9 @@
 export default {
   methods: {
     setEventCharacterBuff(characterName) {
-      // 巡霊の祝祭 第3弾
+      // ミスティックアイズ･シンフォニー / 巡霊の祝祭 第3弾
       const eventCharacters = {
+        'メドゥーサ（セイバー）': 100,
         '水着ジャンヌ〔オルタ〕': 50,
         水着葛飾北斎: 50,
         水着スカサハ: 50

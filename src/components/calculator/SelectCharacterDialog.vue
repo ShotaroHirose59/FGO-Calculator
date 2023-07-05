@@ -267,12 +267,10 @@ export default {
   data() {
     return {
       eventCharacterNames: [
-        // '果心居士',
-        // 'クロエ',
-        // 'イリヤ',
-        // '加藤段蔵',
-        // '風魔小太郎',
-        // 'シトナイ'
+        'メドゥーサ（セイバー）',
+        '水着ジャンヌ〔オルタ〕',
+        '水着葛飾北斎',
+        '水着スカサハ'
       ],
       eventCharacters: [],
       tabTitle: null,
