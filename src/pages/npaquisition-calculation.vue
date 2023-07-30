@@ -1214,7 +1214,8 @@ export default {
       }
       if (
         this.characterName === 'エウリュアレ' ||
-        this.characterName === 'アルクェイド'
+        this.characterName === 'アルクェイド' ||
+        this.characterName === 'トネリコ'
       ) {
         this.setNpSkillSNpAtkBuffByNpLv(this.characterName)
       }

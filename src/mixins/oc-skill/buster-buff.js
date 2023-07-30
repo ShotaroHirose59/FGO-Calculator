@@ -45,6 +45,9 @@ export default {
       } else if (characterName === 'ティアマト') {
         const ocUpPrcentages = [30, 37.5, 45, 52.5, 60]
         this.changeCardBuff(ocUpPrcentages, buffDescription)
+      } else if (characterName === 'トネリコ') {
+        const ocUpPrcentages = [30, 35, 40, 45, 50]
+        this.changeCardBuff(ocUpPrcentages, buffDescription)
       }
     }
   }

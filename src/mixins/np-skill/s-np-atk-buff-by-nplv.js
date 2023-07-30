@@ -44,6 +44,27 @@ export default {
           }
         }
         this.setNpSkills('敵全体に強力な混沌特攻攻撃(LV:150〜200%)')
+      } else if (characterName === 'トネリコ') {
+        if (this.isActiveSpecialNpAtkBuff === true) {
+          switch (this.npChargeLv) {
+            case 1:
+              this.sNpAtkBuff = 150
+              break
+            case 2:
+              this.sNpAtkBuff = 175
+              break
+            case 3:
+              this.sNpAtkBuff = 187.5
+              break
+            case 4:
+              this.sNpAtkBuff = 193.8
+              break
+            case 5:
+              this.sNpAtkBuff = 200
+              break
+          }
+        }
+        this.setNpSkills('敵全体に強力な悪特攻攻撃(LV:150〜200%)')
       }
     },
     setNpSkills(description) {
