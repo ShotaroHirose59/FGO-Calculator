@@ -267,10 +267,10 @@ export default {
   data() {
     return {
       eventCharacterNames: [
-        'メドゥーサ（セイバー）',
-        '水着ジャンヌ〔オルタ〕',
-        '水着葛飾北斎',
-        '水着スカサハ'
+        // 'メドゥーサ（セイバー）',
+        // '水着ジャンヌ〔オルタ〕',
+        // '水着葛飾北斎',
+        // '水着スカサハ'
       ],
       eventCharacters: [],
       tabTitle: null,
