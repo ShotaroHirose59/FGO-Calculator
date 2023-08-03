@@ -92,7 +92,8 @@ export default {
         character.name === '九紋竜エリザ' ||
         character.name === 'ククルカン' ||
         character.name === 'ティアマト' ||
-        character.name === 'ビーマ'
+        character.name === 'ビーマ' ||
+        character.name === '源頼光'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Buster性能アップ(30%)' })
