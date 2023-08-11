@@ -93,7 +93,8 @@ export default {
         character.name === 'ククルカン' ||
         character.name === 'ティアマト' ||
         character.name === 'ビーマ' ||
-        character.name === '源頼光'
+        character.name === '源頼光' ||
+        character.name === 'アビゲイル〔夏〕'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Buster性能アップ(30%)' })
