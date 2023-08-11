@@ -4,7 +4,8 @@ export default {
     setPossessionSkillArtsDown(character) {
       if (
         character.name === '水着紫式部' ||
-        character.name === '殺生院キアラ'
+        character.name === '殺生院キアラ' ||
+        character.name === 'アナスタシア'
       ) {
         this.cardBuff += 30
         this.possessionSkills.push({ description: 'Arts耐性ダウン(30%)' })
