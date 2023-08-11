@@ -36,6 +36,7 @@ export default {
         this.possessionSkills.push({ description: '攻撃力アップ(43%)' })
       } else if (
         character.name === 'ネロ〔ブライド〕' ||
+        character.name === 'ガウェイン' ||
         character.name === '伊吹童子' ||
         character.name === 'ナポレオン' ||
         character.name === 'エミヤ〔オルタ〕' ||
@@ -120,7 +121,6 @@ export default {
         character.name === '紅閻魔' ||
         character.name === 'アストルフォ（セイバー）' ||
         character.name === 'シャルルマーニュ' ||
-        character.name === 'ガウェイン' ||
         character.name === '水着フラン' ||
         character.name === '柳生但馬守宗矩' ||
         character.name === '水着女王メイヴ' ||
