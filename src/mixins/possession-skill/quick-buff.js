@@ -67,7 +67,8 @@ export default {
         character.name === '千利休' ||
         character.name === 'カレン' ||
         character.name === 'ジャック・ド・モレー' ||
-        character.name === 'セタンタ'
+        character.name === 'セタンタ' ||
+        character.name === '鈴鹿御前〔サマバケ〕'
       ) {
         this.cardBuff += 20
         this.possessionSkills.push({ description: 'Quick性能アップ(20%)' })

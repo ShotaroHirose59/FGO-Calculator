@@ -47,7 +47,8 @@ export default {
         character.name === 'ヘファイスティオン' ||
         character.name === 'ブリトマート' ||
         character.name === 'ブラダマンテ' ||
-        character.name === '水着沖田総司'
+        character.name === '水着沖田総司' ||
+        character.name === '鈴鹿御前〔サマバケ〕'
       ) {
         this.npAcquisitionBuff += 30
         this.possessionSkills.push({ description: 'NP獲得量アップ(30%)' })
@@ -64,7 +65,8 @@ export default {
         character.name === '太歳星君' ||
         character.name === 'スルーズ' ||
         character.name === 'ヒルド' ||
-        character.name === 'オルトリンデ'
+        character.name === 'オルトリンデ' ||
+        character.name === '水着アルトリア・キャスター'
       ) {
         this.npAcquisitionBuff += 20
         this.possessionSkills.push({ description: 'NP獲得量アップ(20%)' })

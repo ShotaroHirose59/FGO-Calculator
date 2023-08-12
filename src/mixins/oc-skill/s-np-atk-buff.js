@@ -166,7 +166,8 @@ export default {
         characterName === '大黒天' ||
         characterName === '水着伊吹童子' ||
         characterName === '闇のコヤンスカヤ' ||
-        characterName === 'ククルカン'
+        characterName === 'ククルカン' ||
+        characterName === '鈴鹿御前〔サマバケ〕'
       ) {
         if (this.isActiveSpecialNpAtkBuff === true) {
           const ocBuffs = [150, 162.5, 175, 187.5, 200]

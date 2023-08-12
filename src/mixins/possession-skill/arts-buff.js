@@ -13,7 +13,8 @@ export default {
         character.name === 'ジェロニモ' ||
         character.name === '両儀式（アサシン）' ||
         character.name === 'ニトクリス〔オルタ〕' ||
-        character.name === 'ネロ'
+        character.name === 'ネロ' ||
+        character.name === '水着アルトリア・キャスター'
       ) {
         this.cardBuff += 50
         this.possessionSkills.push({ description: 'Arts性能アップ(50%)' })

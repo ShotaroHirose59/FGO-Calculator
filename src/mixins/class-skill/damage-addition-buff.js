@@ -84,7 +84,8 @@ export default {
         character.name === 'ヒルド' ||
         character.name === 'オルトリンデ' ||
         character.name === 'ヘラクレス' ||
-        character.name === 'パッションリップ'
+        character.name === 'パッションリップ' ||
+        character.name === '鈴鹿御前〔サマバケ〕'
       ) {
         this.damageAdditionBuff = 200
         this.classSkills.push({

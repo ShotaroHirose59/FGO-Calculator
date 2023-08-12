@@ -12,6 +12,9 @@ export default {
       } else if (characterName === 'エルキドゥ') {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 200
         this.setNpSkills('敵単体に超強力な人類の脅威特攻攻撃(200%)')
+      } else if (characterName === '水着アルトリア・キャスター') {
+        if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
+        this.setNpSkills('敵単体に超強力な人類の脅威特攻攻撃(150%)')
       } else if (characterName === '謎のヒロインXX') {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 200
         this.setNpSkills('敵単体に超強力なセイバーのサーヴァント特攻攻撃(200%)')
@@ -97,6 +100,10 @@ export default {
       } else if (characterName === 'ロクスタ') {
         this.setNpSkills(
           '超強力な毒特攻攻撃<対象の〔毒〕状態の数だけ威力アップ>(100+15×n%/最大10個)'
+        )
+      } else if (characterName === '水着クロエ') {
+        this.setNpSkills(
+          '超強力な攻撃<原稿完成>の数だけ威力アップ(100+10×n%/最大10個)'
         )
       }
     },

@@ -37,7 +37,8 @@ export default {
         character.name === 'カーマ' ||
         character.name === 'シャルルマーニュ' ||
         character.name === 'バゼット' ||
-        character.name === 'メドゥーサ（セイバー）'
+        character.name === 'メドゥーサ（セイバー）' ||
+        character.name === '鈴鹿御前〔サマバケ〕'
       ) {
         // 騎乗[A]
         this.cardBuff += 10

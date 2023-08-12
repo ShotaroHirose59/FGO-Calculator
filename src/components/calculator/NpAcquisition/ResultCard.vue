@@ -677,7 +677,8 @@ export default {
       } else if (
         this.characterName === 'スペースイシュタル' ||
         this.characterName === 'ヘシアン･ロボ' ||
-        this.characterName === 'ニトクリス〔オルタ〕'
+        this.characterName === 'ニトクリス〔オルタ〕' ||
+        this.characterName === '水着クロエ'
       ) {
         this.classSkillNp = 3.5
       } else if (this.characterName === 'サリエリ') {

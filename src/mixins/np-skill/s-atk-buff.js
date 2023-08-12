@@ -34,6 +34,9 @@ export default {
       } else if (characterName === '曲亭馬琴') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 30
         this.setNpSkills('(魔性)特攻を付与(30%)')
+      } else if (characterName === '鈴鹿御前〔サマバケ〕') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 30
+        this.setNpSkills('(秩序)特攻を付与(30%)')
       }
     },
     setNpSkills(description) {

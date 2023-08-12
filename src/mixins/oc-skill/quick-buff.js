@@ -31,7 +31,8 @@ export default {
         this.changeCardBuff(ocUpPrcentages, buffDescription)
       } else if (
         characterName === '鬼一法眼' ||
-        characterName === 'メドゥーサ（セイバー）'
+        characterName === 'メドゥーサ（セイバー）' ||
+        characterName === '水着クロエ'
       ) {
         const ocUpPrcentages = [10, 15, 20, 25, 30]
         this.changeCardBuff(ocUpPrcentages, buffDescription)

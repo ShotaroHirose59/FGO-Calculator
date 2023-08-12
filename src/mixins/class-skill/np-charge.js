@@ -16,7 +16,8 @@ export default {
       } else if (
         character.name === 'スペースイシュタル' ||
         character.name === 'ヘシアン･ロボ' ||
-        character.name === 'ニトクリス〔オルタ〕'
+        character.name === 'ニトクリス〔オルタ〕' ||
+        character.name === '水着クロエ'
       ) {
         this.classSkills.push({
           name: '自己回復(魔力) [B]',
