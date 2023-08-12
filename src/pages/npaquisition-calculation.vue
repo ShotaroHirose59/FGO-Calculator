@@ -798,7 +798,7 @@ export default {
         }
       } else {
         this.sAtkBuff = 0
-        // this.setEventCharacterBuff(this.characterName)
+        this.setEventCharacterBuff(this.characterName)
       }
     },
     isActiveSpecialNpAtkBuff() {
@@ -967,7 +967,7 @@ export default {
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
       // イベント特攻
-      // this.setEventCharacterBuff(this.characterName)
+      this.setEventCharacterBuff(this.characterName)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
