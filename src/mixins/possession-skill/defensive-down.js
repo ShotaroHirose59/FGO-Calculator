@@ -45,7 +45,8 @@ export default {
         character.name === 'アビゲイル' ||
         character.name === '葛飾北斎' ||
         character.name === '楊貴妃' ||
-        character.name === 'アルクェイド'
+        character.name === 'アルクェイド' ||
+        character.name === 'ノクナレア'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '防御力ダウン(20%)' })

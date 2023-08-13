@@ -672,6 +672,8 @@ export default {
 
       if (this.characterName === '水着宇津見エリセ') {
         this.classSkillNp = 4.2
+      } else if (this.characterName === 'ノクナレア') {
+        this.classSkillNp = 4.0
       } else if (this.characterName === '水着カーマ') {
         this.classSkillNp = 3.8
       } else if (

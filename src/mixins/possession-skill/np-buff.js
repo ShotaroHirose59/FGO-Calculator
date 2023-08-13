@@ -78,7 +78,8 @@ export default {
         character.name === 'ティアマト' ||
         character.name === 'トネリコ' ||
         character.name === '水着クロエ' ||
-        character.name === '鈴鹿御前〔サマバケ〕'
+        character.name === '鈴鹿御前〔サマバケ〕' ||
+        character.name === 'ノクナレア'
       ) {
         this.npBuff += 20
         this.possessionSkills.push({ description: '宝具威力アップ(20%)' })

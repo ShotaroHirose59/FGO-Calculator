@@ -8,6 +8,11 @@ export default {
           name: '自己回復(魔力) [EX]',
           description: '自身に毎ターンNP獲得を付与(4.2%)'
         })
+      } else if (character.name === 'ノクナレア') {
+        this.classSkills.push({
+          name: '南天の星 [EX]',
+          description: '自身に毎ターンNP獲得を付与(4%)'
+        })
       } else if (character.name === '水着カーマ') {
         this.classSkills.push({
           name: '自己回復(魔力) [A]',
