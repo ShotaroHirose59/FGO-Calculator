@@ -35,7 +35,9 @@ export default {
         character.name === 'アビゲイル' ||
         character.name === 'オベロン' ||
         character.name === 'ククルカン' ||
-        character.name === 'ドゥルガー'
+        character.name === 'ドゥルガー' ||
+        character.name === '水着メリュジーヌ' ||
+        character.name === 'ＵＤＫ－バーゲスト'
       ) {
         this.npBuff += 30
         this.possessionSkills.push({ description: '宝具威力アップ(30%)' })
@@ -79,7 +81,8 @@ export default {
         character.name === 'トネリコ' ||
         character.name === '水着クロエ' ||
         character.name === '鈴鹿御前〔サマバケ〕' ||
-        character.name === 'ノクナレア'
+        character.name === 'ノクナレア' ||
+        character.name === 'ケット・クー・ミコケル'
       ) {
         this.npBuff += 20
         this.possessionSkills.push({ description: '宝具威力アップ(20%)' })

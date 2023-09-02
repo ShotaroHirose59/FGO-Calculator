@@ -16,7 +16,8 @@ export default {
       } else if (
         characterName === 'ローラン' ||
         characterName === 'エリザベート〔シンデレラ〕' ||
-        characterName === '鬼女紅葉'
+        characterName === '鬼女紅葉' ||
+        characterName === '水着メリュジーヌ'
       ) {
         const ocUpPrcentages = [20, 25, 30, 35, 40]
         this.changeAtkBuff(ocUpPrcentages, buffDescription)

@@ -95,7 +95,8 @@ export default {
         character.name === '高杉晋作' ||
         character.name === 'ラスプーチン（言峰綺礼）' ||
         character.name === 'ティアマト' ||
-        character.name === 'ビーマ'
+        character.name === 'ビーマ' ||
+        character.name === 'ＵＤＫ－バーゲスト'
       ) {
         this.atkBuff += 30
         this.possessionSkills.push({ description: '攻撃力アップ(30%)' })
@@ -199,7 +200,8 @@ export default {
         character.name === 'メドゥーサ（セイバー）' ||
         character.name === 'トネリコ' ||
         character.name === '水着クロエ' ||
-        character.name === '鈴鹿御前〔サマバケ〕'
+        character.name === '鈴鹿御前〔サマバケ〕' ||
+        character.name === 'ケット・クー・ミコケル'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })

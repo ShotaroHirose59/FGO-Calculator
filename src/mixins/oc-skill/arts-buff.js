@@ -10,7 +10,8 @@ export default {
         characterName === 'イアソン' ||
         characterName === 'ダヴィンチ（ライダー）' ||
         characterName === 'マンドリカルド' ||
-        characterName === 'ラスプーチン（言峰綺礼）'
+        characterName === 'ラスプーチン（言峰綺礼）' ||
+        characterName === 'ＵＤＫ－バーゲスト'
       ) {
         const ocUpPrcentages = [20, 25, 30, 35, 40]
         this.changeCardBuff(ocUpPrcentages, buffDescription)

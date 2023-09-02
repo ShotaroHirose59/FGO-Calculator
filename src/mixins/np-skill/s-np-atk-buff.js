@@ -27,7 +27,10 @@ export default {
       } else if (characterName === 'ゼノビア') {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵全体に強力な王特攻攻撃(150%)')
-      } else if (characterName === 'エレシュキガル') {
+      } else if (
+        characterName === 'エレシュキガル' ||
+        characterName === '水着メリュジーヌ'
+      ) {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵全体に強力な地属性特攻攻撃(150%)')
       } else if (characterName === '水着虞美人') {
@@ -44,7 +47,8 @@ export default {
         this.setNpSkills('敵全体に強力な神性特攻攻撃(150%)')
       } else if (
         characterName === '水着武則天' ||
-        characterName === 'ニトクリス〔オルタ〕'
+        characterName === 'ニトクリス〔オルタ〕' ||
+        characterName === 'ケット・クー・ミコケル'
       ) {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵全体に強力な人属性特攻攻撃(150%)')
