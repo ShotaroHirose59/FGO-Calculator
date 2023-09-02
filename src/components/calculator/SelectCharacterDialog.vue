@@ -84,7 +84,7 @@
           <v-col cols="6" sm="4" md="3">
             <v-select
               v-model="filterdNprange"
-              label="宝具効果"
+              label="宝具範囲"
               :items="items.filterableNprange"
               class="mr-4"
               color="teal"
