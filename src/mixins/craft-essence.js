@@ -1,6 +1,7 @@
 const craftEssences = {
   バーサーカー: [
     '指定なし',
+    // '凸一衣帯水',
     // '凸安息の館 Lv15',
     // '凸安息の館 Lv100',
     // '安息の館 Lv1',
@@ -12,6 +13,7 @@ const craftEssences = {
   ],
   default: [
     '指定なし',
+    // '凸一衣帯水',
     // '凸安息の館 Lv15',
     // '凸安息の館 Lv100',
     // '安息の館 Lv1',
@@ -41,6 +43,13 @@ const CRAFT_ESSENCE_STATS = {
   //   dressNpBuff: 0,
   //   dressSatkBuff: 100,
   //   dressCardBuff: 0,
+  //   dressNpAcquisitionBuff: 0
+  // },
+  // 凸一衣帯水: {
+  //   dressAtk: 0,
+  //   dressNpBuff: 100,
+  //   dressSatkBuff: 0,
+  //   dressCardBuff: 100,
   //   dressNpAcquisitionBuff: 0
   // },
   '凸黒聖杯 Lv.100': {
