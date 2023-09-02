@@ -89,15 +89,14 @@
             </v-col>
 
             <v-col cols="6" sm="3" md="3">
-              <v-text-field
-                v-model.number="characterNpmultiplier"
-                label="宝具倍率"
-                suffix="％"
-                type="number"
-                inputmode="decimal"
+              <v-select
+                v-model="selectedNpRange"
+                label="宝具範囲"
+                :items="selectableNpRange"
+                :disabled="!isChangeableNpRange"
                 class="mr-3"
                 color="teal"
-              ></v-text-field>
+              ></v-select>
             </v-col>
 
             <v-col cols="6" sm="3" md="3">
@@ -109,6 +108,18 @@
                 color="teal"
                 @change="onChangeNpmultiplier(npChargeLv)"
               ></v-select>
+            </v-col>
+
+            <v-col cols="6" sm="3" md="3">
+              <v-text-field
+                v-model.number="characterNpmultiplier"
+                label="宝具倍率"
+                suffix="％"
+                type="number"
+                inputmode="decimal"
+                class="mr-3"
+                color="teal"
+              ></v-text-field>
             </v-col>
 
             <v-col cols="6" sm="3" md="3">
@@ -684,7 +695,10 @@ export default {
       specialResist: 0,
       isChangeableNpType: true,
       isActiveSpecialAtkBuff: false,
-      isActiveSpecialNpAtkBuff: false
+      isActiveSpecialNpAtkBuff: false,
+      selectableNpRange: ['全体', '単体'],
+      selectedNpRange: '全体',
+      isChangeableNpRange: false
     }
   },
   watch: {
@@ -714,8 +728,22 @@ export default {
         this.characterName === 'スペースイシュタル'
       ) {
         this.isChangeableNpType = true
+      } else if (this.characterName === 'ＵＤＫ－バーゲスト') {
+        this.isChangeableNpRange = true
       } else {
         this.isChangeableNpType = false
+        this.isChangeableNpRange = false
+      }
+    },
+    selectedNpRange() {
+      if (this.characterName === 'ＵＤＫ－バーゲスト') {
+        if (this.selectedNpRange === '全体') {
+          this.npmultiplier = [450, 600, 675, 712.5, 750]
+          this.onChangeNpmultiplier(this.npChargeLv)
+        } else {
+          this.npmultiplier = [900, 1200, 1350, 1425, 1500]
+          this.onChangeNpmultiplier(this.npChargeLv)
+        }
       }
     },
     servantNpType() {
@@ -763,7 +791,7 @@ export default {
         }
       } else {
         this.sAtkBuff = 0
-        this.setEventCharacterBuff(this.characterName)
+        // this.setEventCharacterBuff(this.characterName)
       }
     },
     isActiveSpecialNpAtkBuff() {
@@ -804,6 +832,7 @@ export default {
       this.characterRarity = character.rarity
       this.setSelectableLv(this.characterRarity)
       this.selectedLv = this.selectableLv[0]
+      this.selectedNpRange = character.nprange
       this.setNpType(character, filterdCard)
       this.setClassCompatibility(character)
 
@@ -908,7 +937,7 @@ export default {
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
       // イベント特攻
-      this.setEventCharacterBuff(this.characterName)
+      // this.setEventCharacterBuff(this.characterName)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {

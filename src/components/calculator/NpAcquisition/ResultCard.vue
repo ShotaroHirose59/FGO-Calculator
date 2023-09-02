@@ -282,6 +282,10 @@ export default {
     specialResist: {
       type: Number,
       required: true
+    },
+    selectedNpRange: {
+      type: [String],
+      required: true
     }
   },
   data() {
@@ -661,6 +665,15 @@ export default {
       }
       if (this.npRange === '単体') {
         this.selectedEnemyCount = 1
+      }
+    },
+    selectedNpRange() {
+      if (this.characterName === 'ＵＤＫ－バーゲスト') {
+        if (this.selectedNpRange === '全体') {
+          this.selectedEnemyCount = 3
+        } else {
+          this.selectedEnemyCount = 1
+        }
       }
     },
     characterName() {
