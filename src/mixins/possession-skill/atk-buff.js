@@ -9,6 +9,9 @@ export default {
       ) {
         this.atkBuff += 70
         this.possessionSkills.push({ description: '攻撃力アップ(70%)' })
+      } else if (character.name === 'オジマンディアス') {
+        this.atkBuff += 60
+        this.possessionSkills.push({ description: '攻撃力アップ(60%)' })
       } else if (character.name === '武則天') {
         this.atkBuff += 58
         this.possessionSkills.push({ description: '攻撃力アップ(58%)' })
@@ -43,7 +46,6 @@ export default {
         character.name === 'パリス' ||
         character.name === 'メリュジーヌ' ||
         character.name === 'カイニス' ||
-        character.name === 'オジマンディアス' ||
         character.name === 'バベッジ' ||
         character.name === 'クレオパトラ' ||
         character.name === 'キングプロテア' ||
@@ -151,7 +153,6 @@ export default {
         character.name === 'ガレス' ||
         character.name === '女王メイヴ' ||
         character.name === 'イスカンダル' ||
-        character.name === 'オジマンディアス' ||
         character.name === 'マリー' ||
         character.name === '水着カイニス' ||
         character.name === '牛若丸' ||
@@ -201,7 +202,8 @@ export default {
         character.name === 'トネリコ' ||
         character.name === '水着クロエ' ||
         character.name === '鈴鹿御前〔サマバケ〕' ||
-        character.name === 'ケット・クー・ミコケル'
+        character.name === 'ケット・クー・ミコケル' ||
+        character.name === 'ワンジナ'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })
