@@ -109,6 +109,10 @@ export default {
         this.setNpSkills(
           '超強力な攻撃<原稿完成>の数だけ威力アップ(100+10×n%/最大10個)'
         )
+      } else if (characterName === 'ワンジナ') {
+        this.setNpSkills(
+          '超強力な攻撃<精霊の怒り>の数だけ威力アップ(100+10×n%/最大10個)'
+        )
       }
     },
     setNpSkills(description) {
