@@ -203,7 +203,8 @@ export default {
         character.name === '水着クロエ' ||
         character.name === '鈴鹿御前〔サマバケ〕' ||
         character.name === 'ケット・クー・ミコケル' ||
-        character.name === 'ワンジナ'
+        character.name === 'ワンジナ' ||
+        character.name === 'プトレマイオス'
       ) {
         this.atkBuff += 20
         this.possessionSkills.push({ description: '攻撃力アップ(20%)' })

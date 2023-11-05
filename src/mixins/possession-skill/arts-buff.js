@@ -110,6 +110,11 @@ export default {
         this.possessionSkills.push({
           description: 'Quick・Arts・Buster性能アップ(20%・確率80%))'
         })
+      } else if (character.name === 'プトレマイオス') {
+        this.cardBuff = 20
+        this.possessionSkills.push({
+          description: 'Arts・Buster性能アップ(20%))'
+        })
       }
     }
   }

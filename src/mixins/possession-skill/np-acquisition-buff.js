@@ -16,7 +16,8 @@ export default {
         character.name === 'メディア' ||
         character.name === '水着宮本武蔵' ||
         character.name === '殺生院キアラ' ||
-        character.name === '巌窟王エドモン・ダンテス'
+        character.name === '巌窟王エドモン・ダンテス' ||
+        character.name === 'プトレマイオス'
       ) {
         this.npAcquisitionBuff += 50
         this.possessionSkills.push({ description: 'NP獲得量アップ(50%)' })

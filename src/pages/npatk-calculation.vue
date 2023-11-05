@@ -725,7 +725,8 @@ export default {
       if (
         this.characterName === 'エミヤ' ||
         this.characterName === 'メリュジーヌ' ||
-        this.characterName === 'スペースイシュタル'
+        this.characterName === 'スペースイシュタル' ||
+        this.characterName === 'プトレマイオス'
       ) {
         this.isChangeableNpType = true
       } else if (this.characterName === 'ＵＤＫ－バーゲスト') {
@@ -750,7 +751,8 @@ export default {
       if (
         this.characterName === 'エミヤ' ||
         this.characterName === 'メリュジーヌ' ||
-        this.characterName === 'スペースイシュタル'
+        this.characterName === 'スペースイシュタル' ||
+        this.characterName === 'プトレマイオス'
       ) {
         this.checkChangeableNpType()
         this.isChangeableNpType = true
@@ -791,7 +793,7 @@ export default {
         }
       } else {
         this.sAtkBuff = 0
-        // this.setEventCharacterBuff(this.characterName)
+        this.setEventCharacterBuff(this.characterName)
       }
     },
     isActiveSpecialNpAtkBuff() {
@@ -937,7 +939,7 @@ export default {
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
       // イベント特攻
-      // this.setEventCharacterBuff(this.characterName)
+      this.setEventCharacterBuff(this.characterName)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
@@ -972,7 +974,8 @@ export default {
       if (
         character.name === 'エミヤ' ||
         character.name === 'スペースイシュタル' ||
-        character.name === 'メリュジーヌ'
+        character.name === 'メリュジーヌ' ||
+        character.name === 'プトレマイオス'
       ) {
         switch (filterdCard) {
           case 'B':
@@ -1032,6 +1035,26 @@ export default {
         // Note: BusterとArtsでOC効果が違うため
         this.ocSkills = []
         this.cardBuff = 9
+      } else if (
+        this.characterName === 'プトレマイオス' &&
+        this.servantNpType === 'Buster'
+      ) {
+        this.npmultiplier = [600, 800, 900, 950, 1000]
+        this.onChangeNpmultiplier(this.npChargeLv)
+        this.cardBuff = 20
+      } else if (
+        this.characterName === 'プトレマイオス' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [450, 600, 675, 712.5, 750]
+        this.onChangeNpmultiplier(this.npChargeLv)
+        this.cardBuff = 31
+        if (this.classSkills.length === 0) {
+          this.classSkills.push({
+            name: '陣地作成',
+            description: 'Arts性能アップ(11%)'
+          })
+        }
       } else if (
         this.characterName === 'スペースイシュタル' &&
         this.servantNpType === 'Buster'

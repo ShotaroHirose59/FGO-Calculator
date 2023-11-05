@@ -26,6 +26,14 @@ export default {
           name: '陣地作成[A++]',
           description: 'Arts性能アップ(11.5%)'
         })
+      } else if (character.name === 'プトレマイオス') {
+        // 陣地作成
+        // Note: Arts時のみ
+        if (this.servantNpType === 'Arts') this.cardBuff += 11
+        this.classSkills.push({
+          name: '陣地作成',
+          description: 'Arts性能アップ(11%)'
+        })
       } else if (
         character.name === '千子村正' ||
         character.name === '水着アルトリア' ||
@@ -71,7 +79,7 @@ export default {
         })
       } else if (character.name === 'メリュジーヌ') {
         // 陣地作成[B+]
-        // Note: メリュジーヌのみ = にする
+        // Note: メリュジーヌは = にする
         if (this.servantNpType === 'Arts') this.cardBuff = 9
         this.classSkills.push({
           name: '陣地作成[B+]',

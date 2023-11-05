@@ -827,7 +827,7 @@ export default {
         }
       } else {
         this.sAtkBuff = 0
-        // this.setEventCharacterBuff(this.characterName)
+        this.setEventCharacterBuff(this.characterName)
       }
     },
     isActiveSpecialNpAtkBuff() {
@@ -850,7 +850,8 @@ export default {
         (doc) =>
           doc.data().card === 'A' ||
           doc.data().card === 'Q' ||
-          doc.data().name === 'エミヤ'
+          doc.data().name === 'エミヤ' ||
+          doc.data().name === 'プトレマイオス'
       )
       .map((doc) => {
         return { ...doc.data() }
@@ -875,10 +876,15 @@ export default {
       this.characterRarity = character.rarity
       this.setSelectableLv(this.characterRarity)
       this.selectedLv = this.selectableLv[0]
-      this.selectedNpRange = character.nprange
       this.npRate = character.npchargeatk
       this.npHitCount = character.nphitcount
-      this.npRange = character.nprange
+      if (characterName === 'プトレマイオス') {
+        this.npRange = '全体'
+        this.selectedNpRange = '全体'
+      } else {
+        this.npRange = character.nprange
+        this.selectedNpRange = character.nprange
+      }
       this.setNpType(character, filterdCard)
       this.setClassCompatibility(character)
 
@@ -962,9 +968,11 @@ export default {
       // 宝具リチャージ
       this.setOcSkillNpRecharge(this.characterName)
 
-      if (character.card === 'B') {
-        this.setClassSkillBusterBuff(character)
-      } else if (character.card === 'A') {
+      if (
+        character.card === 'A' ||
+        character.name === 'エミヤ' ||
+        character.name === 'プトレマイオス'
+      ) {
         this.setClassSkillArtsBuff(character)
       } else if (character.card === 'Q') {
         this.setClassSkillQuickBuff(character)
@@ -997,7 +1005,7 @@ export default {
       this.setClassSkillDamageAdditionBuff(character)
       this.checkCraftEssence(character.class)
       // イベント特攻
-      // this.setEventCharacterBuff(this.characterName)
+      this.setEventCharacterBuff(this.characterName)
       this.addHistoryCharacter(character.number)
     },
     setSelectableLv(characterRarity) {
@@ -1048,7 +1056,7 @@ export default {
           this.servantNpType = 'Quick'
           break
       }
-      if (character.name === 'エミヤ') {
+      if (character.name === 'エミヤ' || character.name === 'プトレマイオス') {
         this.servantNpType = 'Arts'
         this.checkChangeableNpType()
       }
@@ -1071,6 +1079,12 @@ export default {
         this.servantNpType === 'Arts'
       ) {
         this.npmultiplier = [600, 750, 825, 862.5, 900]
+        this.onChangeNpmultiplier(this.npChargeLv)
+      } else if (
+        this.characterName === 'プトレマイオス' &&
+        this.servantNpType === 'Arts'
+      ) {
+        this.npmultiplier = [450, 600, 675, 712.5, 750]
         this.onChangeNpmultiplier(this.npChargeLv)
       }
     },

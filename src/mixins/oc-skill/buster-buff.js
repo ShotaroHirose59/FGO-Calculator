@@ -33,7 +33,8 @@ export default {
         characterName === 'エウロペ' ||
         characterName === 'ニキチッチ' ||
         characterName === '水着アルトリア（ルーラー）' ||
-        characterName === 'ケット・クー・ミコケル'
+        characterName === 'ケット・クー・ミコケル' ||
+        characterName === '杉谷善住坊'
       ) {
         const ocUpPrcentages = [20, 25, 30, 35, 40]
         this.changeCardBuff(ocUpPrcentages, buffDescription)
