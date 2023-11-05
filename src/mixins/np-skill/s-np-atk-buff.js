@@ -36,7 +36,10 @@ export default {
       } else if (characterName === '水着虞美人') {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵単体に超強力な男性特攻攻撃(150%)')
-      } else if (characterName === 'ドン・キホーテ') {
+      } else if (
+        characterName === 'ドン・キホーテ' ||
+        characterName === 'テセウス'
+      ) {
         if (this.isActiveSpecialNpAtkBuff === true) this.sNpAtkBuff = 150
         this.setNpSkills('敵単体に超強力な巨人特攻攻撃(150%)')
       } else if (characterName === 'ネモ') {

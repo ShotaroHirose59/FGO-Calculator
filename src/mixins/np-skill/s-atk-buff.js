@@ -34,6 +34,9 @@ export default {
       } else if (characterName === 'ドゥルガー') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 50
         this.setNpSkills('(天属性)特攻状態を付与(50%)')
+      } else if (characterName === 'テセウス') {
+        if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 50
+        this.setNpSkills('(魔獣型のサーヴァント)特攻状態を付与(50%)')
       } else if (characterName === '曲亭馬琴') {
         if (this.isActiveSpecialAtkBuff === true) this.sAtkBuff += 30
         this.setNpSkills('(魔性)特攻を付与(30%)')

@@ -98,7 +98,8 @@ export default {
         character.name === 'ラスプーチン（言峰綺礼）' ||
         character.name === 'ティアマト' ||
         character.name === 'ビーマ' ||
-        character.name === 'ＵＤＫ－バーゲスト'
+        character.name === 'ＵＤＫ－バーゲスト' ||
+        character.name === 'テセウス'
       ) {
         this.atkBuff += 30
         this.possessionSkills.push({ description: '攻撃力アップ(30%)' })
