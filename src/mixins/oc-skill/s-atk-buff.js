@@ -20,7 +20,6 @@ export default {
         if (this.isActiveSpecialAtkBuff === true) {
           const ocBuffs = [50, 62.5, 75, 87.5, 100]
           this.sAtkBuff = ocBuffs[this.selectingOcUpPrcentage - 1]
-          this.sAtkBuff += 100 // +100%固定 (サバフェス2023)
         }
         this.setOcSkills('(混沌・神性)特攻を付与(50~100%)')
       } else if (characterName === 'ジャック') {
